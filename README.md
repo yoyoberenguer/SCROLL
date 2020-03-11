@@ -19,7 +19,7 @@ gives easy access to the texture's pixels (with row and column indexing).
 eg buffer[row, column, 0] pointing to a pixel RGB or RGBA model
 
 Other methods such as TRANSPOSE and STACKING are not essential but could be very useful 
-in certain circumstances when doing image processing.
+in certain circumstances for image processing.
 
 All the algorithms have been coded for the model RGB or RGBA and for 24-bit and 32-bit
 pygame texture. 8-bit format image will failed to load and an error message will be thrown
