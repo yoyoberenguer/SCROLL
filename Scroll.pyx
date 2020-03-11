@@ -38,13 +38,15 @@ gives easy access to the texture's pixels (with row and column indexing).
 eg buffer[row, column, 0] pointing to a pixel RGB or RGBA model
 
 Other methods such as TRANSPOSE and STACKING are not essential but could be very useful
-in certain circumstances when doing image processing.
+in certain circumstances for image processing.
 
 All the algorithms have been coded for the model RGB or RGBA and for 24-bit and 32-bit
 pygame texture. 8-bit format image will failed to load and an error message will be thrown
 to your screen.
 Other pixel model such as BGR and BGRA have not been tested but this, should not
 be a great deal to adjust.
+
+
 REQUIRMENT:
 - python > 3.0
 - numpy
@@ -52,9 +54,13 @@ REQUIRMENT:
   Cython
 - A compiler such visual studio, MSVC, cgywin setup correctly
   on your system
+
+
 BUILDING PROJECT:
 Use the following command:
 C:\>python setup_scroll.py build_ext --inplace
+
+
 PYGAME SCROLL METHOD VS CYTHON:
 scroll(dx=0, dy=0) -> None
 Move the image by dx pixels right and dy pixels down.
@@ -1291,9 +1297,9 @@ cdef unsigned char [:] vfb24_c(unsigned char [:] source, unsigned char [:] targe
         for j in range(0, height):
             index = i + (w3 * j)
             k = (j * 3) + (i * height)
-            target[k] =  <unsigned char>source[index]
-            target[k + 1] =  <unsigned char>source[index + 1]
-            target[k + 2] =  <unsigned char>source[index + 2]
+            target[k] =  source[index]
+            target[k + 1] =  source[index + 1]
+            target[k + 2] =  source[index + 2]
 
     return target
 
@@ -1347,9 +1353,9 @@ cdef unsigned char [::1] vfb32_c(unsigned char [:] source, unsigned char [::1] t
         for j in range(0, height):
             index = i + (w4 * j)
             k = (j * 4) + (i * height)
-            target[k] =  <unsigned char>source[index]
-            target[k + 1] =  <unsigned char>source[index + 1]
-            target[k + 2] =  <unsigned char>source[index + 2]
-            target[k + 3] =  <unsigned char>source[index + 3]
+            target[k] =  source[index]
+            target[k + 1] =  source[index + 1]
+            target[k + 2] =  source[index + 2]
+            target[k + 3] =  source[index + 3]
 
     return target
