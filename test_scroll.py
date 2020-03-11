@@ -44,31 +44,6 @@ N = 1000
 
 if __name__ == '__main__':
 
-    """
-    a = numpy.array([x for x in range(8 * 8 * 3)], numpy.uint8)  # create a contiguous array 8x8x3 pixels
-    aa = a.reshape(8, 8, 3) # --> create a 3d array of RGB values
-    print(aa.shape, aa.flags, aa.strides)
-    print(aa)
-    b = aa.transpose(1, 0, 2)
-    print(b.shape)
-    print(b.flags)
-    print(b.strides)
-    print('b', b.flatten())
-
-    empty = numpy.empty(8*8*3, numpy.uint8)
-    d = numpy.asarray(Scroll.vfb_rgb(a, empty, 8, 8))
-    print('d', d)
-
-    c = aa.T
-    print(c.shape)
-    print(c.flags)
-    print(c.strides)
-    print(c)
-
-    screen = pygame.display.set_mode((8*3, 8))
-    screen.blit(pygame.image.frombuffer(c, (8, 8), 'RGB'), (0, 0))
-    pygame.display.flip()
-    """
 
     im = pygame.image.load("sand24.jpg")
     im = pygame.transform.smoothscale(im, (500, 500))
@@ -86,16 +61,16 @@ if __name__ == '__main__':
     #                                           "from __main__ import pygame, im32", number=N) / N)
     dx = 1
     dy = -1
-    DEMO = True
-    while DEMO:
-        pygame.event.pump()
-        keys = pygame.key.get_pressed()
-        if keys[pygame.K_ESCAPE]:
-            DEMO = False
-        pygame.Surface.scroll(im32, 1, 1)
-
-        screen.blit(im32, (0, 0))
-        pygame.display.flip()
+    # DEMO = True
+    # while DEMO:
+    #     pygame.event.pump()
+    #     keys = pygame.key.get_pressed()
+    #     if keys[pygame.K_ESCAPE]:
+    #         DEMO = False
+    #     pygame.Surface.scroll(im32, 1, 1)
+    #
+    #     screen.blit(im32, (0, 0))
+    #     pygame.display.flip()
 
     array32 = pygame.surfarray.pixels3d(im32)
     alpha = pygame.surfarray.array_alpha(im32)
@@ -219,36 +194,36 @@ if __name__ == '__main__':
     print("SCROLL buffer 24 :", timeit.timeit("scroll_buffer24(array, w, h, 1, 1)",
                                               "from __main__ import scroll_buffer24, w, h, array", number=N) / N)
 
-    dx = 1
-    dy = -1
-    DEMO = True
-    while DEMO:
-        pygame.event.pump()
-        keys = pygame.key.get_pressed()
-        if keys[pygame.K_ESCAPE]:
-            DEMO = False
-        array = scroll_buffer24(array, w, h, dy, dx)
-        surface = pygame.image.frombuffer(array, (w, h), 'RGB')
-        screen.blit(surface, (0, 0))
-        pygame.display.flip()
+    # dx = 1
+    # dy = -1
+    # DEMO = True
+    # while DEMO:
+    #     pygame.event.pump()
+    #     keys = pygame.key.get_pressed()
+    #     if keys[pygame.K_ESCAPE]:
+    #         DEMO = False
+    #     array = scroll_buffer24(array, w, h, dy, dx)
+    #     surface = pygame.image.frombuffer(array, (w, h), 'RGB')
+    #     screen.blit(surface, (0, 0))
+    #     pygame.display.flip()
 
     buff = numpy.frombuffer(im32.get_view('2'), dtype=uint8)
     print(buff.shape, w, h, w * h * 4)
     print("SCROLL buffer 32 :", timeit.timeit("scroll_buffer32(buff, w, h, 1, 1)",
                                               "from __main__ import scroll_buffer32, w, h, buff", number=N) / N)
-    dx = 1
-    dy = -1
-    DEMO = True
-    while DEMO:
-        screen.fill((255, 0, 0, 0))
-        pygame.event.pump()
-        keys = pygame.key.get_pressed()
-        if keys[pygame.K_ESCAPE]:
-            DEMO = False
-        buff = scroll_buffer32(buff, w, h, dy, dx)
-        surface = pygame.image.frombuffer(buff, (w, h), 'RGBA')
-        screen.blit(surface, (0, 0))
-        pygame.display.flip()
+    # dx = 1
+    # dy = -1
+    # DEMO = True
+    # while DEMO:
+    #     screen.fill((255, 0, 0, 0))
+    #     pygame.event.pump()
+    #     keys = pygame.key.get_pressed()
+    #     if keys[pygame.K_ESCAPE]:
+    #         DEMO = False
+    #     buff = scroll_buffer32(buff, w, h, dy, dx)
+    #     surface = pygame.image.frombuffer(buff, (w, h), 'RGBA')
+    #     screen.blit(surface, (0, 0))
+    #     pygame.display.flip()
 
     print('\nTranspose')
     print(timeit.timeit("transpose24(array_)",
@@ -278,48 +253,5 @@ if __name__ == '__main__':
 
     stack_array = numpy.ascontiguousarray(numpy.dstack((array32, alpha)).transpose(1, 0, 2))
 
-    del array32, alpha
 
-    i = 0
-    j = 255
-    STOP_DEMO = True
-    while STOP_DEMO:
-        pygame.event.pump()
-        keys = pygame.key.get_pressed()
-        # screen.fill((255, 0, 0, 0))
 
-        # test scroll_array24
-        # array_ = scroll_array24(array_, 0, 1)
-        # screen.blit(pygame.image.frombuffer(array_, (w, h), 'RGB'), (0, 0))
-
-        # test scroll_array32
-        # stack_array = scroll_array32(stack_array, 1, 1)
-        # screen.blit(pygame.image.frombuffer(stack_array, (w, h), 'RGBA'), (0, 0))
-
-        # test scroll_array32m
-        # array32, alpha = scroll_array32m(array32, alpha, -1, -1)
-        # stack_array = stack_mem(array32, alpha, True)
-        # screen.blit(pygame.image.frombuffer(stack_array, (w, h), 'RGBA'), (0, 0))
-
-        # surface, array_ = scroll_surface(array_, -1, -1)
-        # screen.blit(surface, (0, 0))
-
-        # im, array_ = scroll_surface24(im, 1, 0)
-        # screen.blit(im, (0, 0))
-
-        im32 = scroll_surface32(im32, 0, 0)
-        screen.blit(im32, (0, 0))
-
-        pygame.display.flip()
-
-        if keys[pygame.K_ESCAPE]:
-            STOP_DEMO = False
-
-        if keys[pygame.K_F8]:
-            pygame.image.save(screen, 'Screendump' + str(i) + '.png')
-
-        i += 1
-        j -= 1
-
-        if j < 0:
-            j = 255
