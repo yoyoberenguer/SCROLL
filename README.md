@@ -16,7 +16,7 @@ Note that we are using prange to increase algorithm speed.
 
 2) Numpy arrays or memoryviewslice (memory buffer types) are also providing good performances and
 gives easy access to the texture's pixels (with row and column indexing).
-eg buffer[row, column, 0] pointing to a pixel RGB or RGBA model
+eg buffer[row, column, 0] pointing to a red pixel 
 
 Other methods such as TRANSPOSE and STACKING are not essential but could be very useful 
 in certain circumstances for image processing.
