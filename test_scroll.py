@@ -33,23 +33,48 @@ try:
     from Scroll import scroll_array24, scroll_array32, scroll_array32m, \
         stack_object, stack_mem, transpose24, transpose32, roll_surface, roll_array, \
         scroll_surface24, scroll_surface32, unstack_object, unstack_buffer, \
-        stack_buffer, vfb24, vfb32, scroll_buffer24, scroll_buffer32
+        stack_buffer, scroll_buffer24, scroll_buffer32, scroll_transparency
 except ImportError:
     print("\nScroll.pyx is missing.\n"
           "Try: C:>python setup_scroll.py build_ext --inplace")
 
 import timeit
 
-N = 1000
+N = 100
 
 if __name__ == '__main__':
 
+    """
+    a = numpy.array([x for x in range(8 * 8 * 3)], numpy.uint8)  # create a contiguous array 8x8x3 pixels
+    aa = a.reshape(8, 8, 3) # --> create a 3d array of RGB values
+    print(aa.shape, aa.flags, aa.strides)
+    print(aa)
+    b = aa.transpose(1, 0, 2)
+    print(b.shape)
+    print(b.flags)
+    print(b.strides)
+    print('b', b.flatten())
+
+    empty = numpy.empty(8*8*3, numpy.uint8)
+    d = numpy.asarray(Scroll.vfb_rgb(a, empty, 8, 8))
+    print('d', d)
+
+    c = aa.T
+    print(c.shape)
+    print(c.flags)
+    print(c.strides)
+    print(c)
+
+    screen = pygame.display.set_mode((8*3, 8))
+    screen.blit(pygame.image.frombuffer(c, (8, 8), 'RGB'), (0, 0))
+    pygame.display.flip()
+    """
 
     im = pygame.image.load("sand24.jpg")
-    im = pygame.transform.smoothscale(im, (500, 500))
+    im = pygame.transform.smoothscale(im, (510, 500))
 
     w, h = im.get_size()
-    screen = pygame.display.set_mode((w, h * 2))
+    screen = pygame.display.set_mode((w, h))
     array_ = pygame.surfarray.pixels3d(im).transpose(1, 0, 2)
 
     im32 = pygame.image.load("sand32.png")
@@ -59,8 +84,8 @@ if __name__ == '__main__':
     #                                           "from __main__ import pygame, im", number=N) / N)
     # print("PYGAME SCROLL 32 :", timeit.timeit("pygame.Surface.scroll(im32, 1, 1)",
     #                                           "from __main__ import pygame, im32", number=N) / N)
-    dx = 1
-    dy = -1
+    # dx = 1
+    # dy = -1
     # DEMO = True
     # while DEMO:
     #     pygame.event.pump()
@@ -71,6 +96,21 @@ if __name__ == '__main__':
     #
     #     screen.blit(im32, (0, 0))
     #     pygame.display.flip()
+
+    print("SCROOL TRANSPARENCY: ", timeit.timeit("scroll_transparency(im32, 1, 1)",
+                                                 "from __main__ import scroll_transparency, im32", number=N) / N)
+    dx = 1
+    dy = -1
+    DEMO = True
+    while DEMO:
+        screen.fill((0, 0, 0, 0))
+        pygame.event.pump()
+        keys = pygame.key.get_pressed()
+        if keys[pygame.K_ESCAPE]:
+            DEMO = False
+        im32 = scroll_transparency(im32, -1, 1)
+        screen.blit(im32, (0, 0))
+        pygame.display.flip()
 
     array32 = pygame.surfarray.pixels3d(im32)
     alpha = pygame.surfarray.array_alpha(im32)
@@ -167,7 +207,7 @@ if __name__ == '__main__':
 
     stack_array = stack_mem(array32, alpha, True)
 
-    N = 100
+    N = 10
     print("SCROLL ARRAY 24 :", timeit.timeit("scroll_array24(array_, 1, 1)",
                                              "from __main__ import scroll_array24, array_", number=N) / N)
 
@@ -234,12 +274,7 @@ if __name__ == '__main__':
     print('\nTranspose buffer')
     empty = numpy.empty(w * h * 3, numpy.uint8)
     array1_ = numpy.array(im.get_view('3'), numpy.uint8).flatten()
-    print(timeit.timeit("vfb24(array1_, empty, w, h)",
-                        "from __main__ import vfb24, stack_array, array1_, w, h, empty", number=N) / N)
-    array1_ = numpy.frombuffer(im32.get_view('2'), numpy.uint8)
-    empty = numpy.empty(w * h * 4, numpy.uint8)
-    print(timeit.timeit("vfb32(array1_, empty, w, h)",
-                        "from __main__ import vfb32, stack_array, array1_, w, h, empty", number=N) / N)
+
     stack_array = stack_mem(array32, alpha, False)
     stack_array = numpy.asarray(stack_array)
     print(timeit.timeit("stack_array.transpose(1, 0, 2)",
@@ -253,5 +288,59 @@ if __name__ == '__main__':
 
     stack_array = numpy.ascontiguousarray(numpy.dstack((array32, alpha)).transpose(1, 0, 2))
 
+    del array32, alpha
 
+    i = 0
+    j = 255
+    im = pygame.image.load("sand24.jpg")
+    im = pygame.transform.smoothscale(im, (300, 256))
+    w, h = im.get_size()
+    screen = pygame.display.set_mode((w, h))
+    STOP_DEMO = True
+    while STOP_DEMO:
+        pygame.event.pump()
+        keys = pygame.key.get_pressed()
+        im, array = roll_surface(im, 0, 1)
+        screen.blit(im, (0, 0))
+
+        pygame.display.flip()
+
+        if keys[pygame.K_ESCAPE]:
+            STOP_DEMO = False
+
+        if keys[pygame.K_F8]:
+            pygame.image.save(screen, 'Screendump' + str(i) + '.png')
+
+        i += 1
+        j -= 1
+
+        if j < 0:
+            j = 255
+
+    i = 0
+    j = 255
+    im = pygame.image.load("sand24.jpg")
+    im = pygame.transform.smoothscale(im, (300, 256))
+    w, h = im.get_size()
+    screen = pygame.display.set_mode((w, h))
+    STOP_DEMO = True
+    while STOP_DEMO:
+        pygame.event.pump()
+        keys = pygame.key.get_pressed()
+        im, array = scroll_surface24(im, -1, 1)
+        screen.blit(im, (0, 0))
+
+        pygame.display.flip()
+
+        if keys[pygame.K_ESCAPE]:
+            STOP_DEMO = False
+
+        if keys[pygame.K_F8]:
+            pygame.image.save(screen, 'Screendump' + str(i) + '.png')
+
+        i += 1
+        j -= 1
+
+        if j < 0:
+            j = 255
 

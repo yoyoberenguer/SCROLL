@@ -1121,54 +1121,31 @@ typedef npy_clongdouble __pyx_t_5numpy_clongdouble_t;
  * cdef inline object PyArray_MultiIterNew1(a):
  */
 typedef npy_cdouble __pyx_t_5numpy_complex_t;
-struct __pyx_opt_args_6Scroll_stack_object_c;
-struct __pyx_opt_args_6Scroll_stack_buffer_c;
-struct __pyx_opt_args_6Scroll_stack_mem_c;
-struct __pyx_opt_args_6Scroll_roll_array_c;
 struct __pyx_opt_args_6Scroll_roll_surface_c;
+struct __pyx_opt_args_6Scroll_roll_array_c;
+struct __pyx_opt_args_6Scroll_stack_object_c;
+struct __pyx_opt_args_6Scroll_stack_mem_c;
+struct __pyx_opt_args_6Scroll_stack_buffer_c;
 
-/* "Scroll.pyx":354
- * @cython.nonecheck(False)
- * @cython.cdivision(True)
- * cdef stack_object_c(unsigned char[:, :, :] rgb_array_,             # <<<<<<<<<<<<<<
- *                     unsigned char[:, :] alpha_, bint transpose=False):
- *     """
- */
-struct __pyx_opt_args_6Scroll_stack_object_c {
-  int __pyx_n;
-  int transpose;
-};
-
-/* "Scroll.pyx":407
- * # TODO try to declare rgb_array_ and alpha as memoryviewslice instead
+/* "Scroll.pxd":21
  * 
- * cdef unsigned char[::1] stack_buffer_c(rgb_array_, alpha_, int w, int h, bint transpose=False):             # <<<<<<<<<<<<<<
- *     """
- *     Stack RGB & ALPHA memoryviewslice C-buffers structures together.
+ * # USE NUMPY LIBRARY (NUMPY.ROLL METHOD)
+ * cdef roll_surface_c(surface_, dx=*, dy=*)             # <<<<<<<<<<<<<<
+ * cdef roll_array_c(array_, dx=*, dy=*)
+ * 
  */
-struct __pyx_opt_args_6Scroll_stack_buffer_c {
+struct __pyx_opt_args_6Scroll_roll_surface_c {
   int __pyx_n;
-  int transpose;
+  PyObject *dx;
+  PyObject *dy;
 };
 
-/* "Scroll.pyx":461
- * @cython.nonecheck(False)
- * @cython.cdivision(True)
- * cdef unsigned char[:, :,::1] stack_mem_c(unsigned char[:, :, :] rgb_array_,             # <<<<<<<<<<<<<<
- *                                          unsigned char[:, :] alpha_, bint transpose=False):
- *     """
- */
-struct __pyx_opt_args_6Scroll_stack_mem_c {
-  int __pyx_n;
-  int transpose;
-};
-
-/* "Scroll.pyx":993
- * @cython.nonecheck(False)
- * @cython.cdivision(True)
- * cdef roll_array_c(array_, dx=0, dy=0):             # <<<<<<<<<<<<<<
- *     """
- *     Scroll array using numpy.roll method
+/* "Scroll.pxd":22
+ * # USE NUMPY LIBRARY (NUMPY.ROLL METHOD)
+ * cdef roll_surface_c(surface_, dx=*, dy=*)
+ * cdef roll_array_c(array_, dx=*, dy=*)             # <<<<<<<<<<<<<<
+ * 
+ * # STACK RGB & ALPHA ARRAY VALUES,
  */
 struct __pyx_opt_args_6Scroll_roll_array_c {
   int __pyx_n;
@@ -1176,17 +1153,40 @@ struct __pyx_opt_args_6Scroll_roll_array_c {
   PyObject *dy;
 };
 
-/* "Scroll.pyx":1034
- * @cython.nonecheck(False)
- * @cython.cdivision(True)
- * cdef roll_surface_c(surface_, dx=0, dy=0):             # <<<<<<<<<<<<<<
- *     """
- *     Scroll a pygame.Surface using numpy.roll method
+/* "Scroll.pxd":25
+ * 
+ * # STACK RGB & ALPHA ARRAY VALUES,
+ * cdef stack_object_c(unsigned char[:, :, :] rgb_array_,             # <<<<<<<<<<<<<<
+ *                     unsigned char[:, :] alpha_, bint transpose=*)
+ * # STACK RGB & ALPHA ARRAY VALUES
  */
-struct __pyx_opt_args_6Scroll_roll_surface_c {
+struct __pyx_opt_args_6Scroll_stack_object_c {
   int __pyx_n;
-  PyObject *dx;
-  PyObject *dy;
+  int transpose;
+};
+
+/* "Scroll.pxd":28
+ *                     unsigned char[:, :] alpha_, bint transpose=*)
+ * # STACK RGB & ALPHA ARRAY VALUES
+ * cdef unsigned char[:, :,::1] stack_mem_c(unsigned char[:, :, :] rgb_array_,             # <<<<<<<<<<<<<<
+ *                                          unsigned char[:, :] alpha_, bint transpose=*)
+ * # UN-STACK RGBA ARRAY VALUES
+ */
+struct __pyx_opt_args_6Scroll_stack_mem_c {
+  int __pyx_n;
+  int transpose;
+};
+
+/* "Scroll.pxd":33
+ * cdef unstack_object_c(unsigned char[:, :, :] rgba_array_)
+ * # STACK RGB AND ALPHA BUFFERS
+ * cdef unsigned char[::1] stack_buffer_c(rgb_array_, alpha_, int w, int h, bint transpose=*)             # <<<<<<<<<<<<<<
+ * # UN-STACK/SPLIT RGBA BUFFER WITH RGBA INTO
+ * cdef unstack_buffer_c(unsigned char [:] rgba_buffer_, int w, int h)
+ */
+struct __pyx_opt_args_6Scroll_stack_buffer_c {
+  int __pyx_n;
+  int transpose;
 };
 
 /* "View.MemoryView":103
@@ -2006,16 +2006,19 @@ static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_dsdsds
 static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_dsds_unsigned_char(PyObject *);
 
 /* ObjectToMemviewSlice.proto */
-static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_dc_unsigned_char(PyObject *);
+static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_d_d_dc_unsigned_char(PyObject *);
 
 /* ObjectToMemviewSlice.proto */
-static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_d_d_dc_unsigned_char(PyObject *);
+static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_dc_unsigned_char(PyObject *);
 
 /* ObjectToMemviewSlice.proto */
 static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_d_dc_unsigned_char(PyObject *);
 
 /* CheckBinaryVersion.proto */
 static int __Pyx_check_binary_version(void);
+
+/* FunctionExport.proto */
+static int __Pyx_ExportFunction(const char *name, void (*f)(void), const char *sig);
 
 /* PyIdentifierFromString.proto */
 #if !defined(__Pyx_PyIdentifier_FromString)
@@ -2095,24 +2098,23 @@ static PyObject *contiguous = 0;
 static PyObject *indirect_contiguous = 0;
 static int __pyx_memoryview_thread_locks_used;
 static PyThread_type_lock __pyx_memoryview_thread_locks[8];
-static __Pyx_memviewslice __pyx_f_6Scroll_transpose24_c(__Pyx_memviewslice); /*proto*/
-static __Pyx_memviewslice __pyx_f_6Scroll_transpose32_c(__Pyx_memviewslice); /*proto*/
-static PyObject *__pyx_f_6Scroll_stack_object_c(__Pyx_memviewslice, __Pyx_memviewslice, struct __pyx_opt_args_6Scroll_stack_object_c *__pyx_optional_args); /*proto*/
-static __Pyx_memviewslice __pyx_f_6Scroll_stack_buffer_c(PyObject *, PyObject *, int, int, struct __pyx_opt_args_6Scroll_stack_buffer_c *__pyx_optional_args); /*proto*/
-static __Pyx_memviewslice __pyx_f_6Scroll_stack_mem_c(__Pyx_memviewslice, __Pyx_memviewslice, struct __pyx_opt_args_6Scroll_stack_mem_c *__pyx_optional_args); /*proto*/
-static PyObject *__pyx_f_6Scroll_unstack_object_c(__Pyx_memviewslice); /*proto*/
-static PyObject *__pyx_f_6Scroll_unstack_buffer_c(__Pyx_memviewslice, int, int); /*proto*/
 static PyObject *__pyx_f_6Scroll_scroll_buffer24_c(__Pyx_memviewslice, int, int, int, int); /*proto*/
 static PyObject *__pyx_f_6Scroll_scroll_buffer32_c(__Pyx_memviewslice, int, int, int, int); /*proto*/
 static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array24_c(__Pyx_memviewslice, int, int); /*proto*/
 static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array32_c(__Pyx_memviewslice, int, int); /*proto*/
 static PyObject *__pyx_f_6Scroll_scroll_array32m_c(__Pyx_memviewslice, __Pyx_memviewslice, int, int); /*proto*/
-static PyObject *__pyx_f_6Scroll_roll_array_c(PyObject *, struct __pyx_opt_args_6Scroll_roll_array_c *__pyx_optional_args); /*proto*/
-static PyObject *__pyx_f_6Scroll_roll_surface_c(PyObject *, struct __pyx_opt_args_6Scroll_roll_surface_c *__pyx_optional_args); /*proto*/
+static PyObject *__pyx_f_6Scroll_scroll_transparency_c(PyObject *, int, int); /*proto*/
 static PyObject *__pyx_f_6Scroll_scroll_surface24_c(PyObject *, int, int); /*proto*/
 static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *, int, int); /*proto*/
-static __Pyx_memviewslice __pyx_f_6Scroll_vfb24_c(__Pyx_memviewslice, __Pyx_memviewslice, int, int); /*proto*/
-static __Pyx_memviewslice __pyx_f_6Scroll_vfb32_c(__Pyx_memviewslice, __Pyx_memviewslice, int, int); /*proto*/
+static PyObject *__pyx_f_6Scroll_roll_surface_c(PyObject *, struct __pyx_opt_args_6Scroll_roll_surface_c *__pyx_optional_args); /*proto*/
+static PyObject *__pyx_f_6Scroll_roll_array_c(PyObject *, struct __pyx_opt_args_6Scroll_roll_array_c *__pyx_optional_args); /*proto*/
+static PyObject *__pyx_f_6Scroll_stack_object_c(__Pyx_memviewslice, __Pyx_memviewslice, struct __pyx_opt_args_6Scroll_stack_object_c *__pyx_optional_args); /*proto*/
+static __Pyx_memviewslice __pyx_f_6Scroll_stack_mem_c(__Pyx_memviewslice, __Pyx_memviewslice, struct __pyx_opt_args_6Scroll_stack_mem_c *__pyx_optional_args); /*proto*/
+static PyObject *__pyx_f_6Scroll_unstack_object_c(__Pyx_memviewslice); /*proto*/
+static __Pyx_memviewslice __pyx_f_6Scroll_stack_buffer_c(PyObject *, PyObject *, int, int, struct __pyx_opt_args_6Scroll_stack_buffer_c *__pyx_optional_args); /*proto*/
+static PyObject *__pyx_f_6Scroll_unstack_buffer_c(__Pyx_memviewslice, int, int); /*proto*/
+static __Pyx_memviewslice __pyx_f_6Scroll_transpose24_c(__Pyx_memviewslice); /*proto*/
+static __Pyx_memviewslice __pyx_f_6Scroll_transpose32_c(__Pyx_memviewslice); /*proto*/
 static struct __pyx_array_obj *__pyx_array_new(PyObject *, Py_ssize_t, char *, char *, char *); /*proto*/
 static void *__pyx_align_pointer(void *, size_t); /*proto*/
 static PyObject *__pyx_memoryview_new(PyObject *, int, int, __Pyx_TypeInfo *); /*proto*/
@@ -2209,25 +2211,19 @@ static const char __pyx_k_range[] = "range";
 static const char __pyx_k_shape[] = "shape";
 static const char __pyx_k_start[] = "start";
 static const char __pyx_k_uint8[] = "uint8";
-static const char __pyx_k_vfb24[] = "vfb24";
-static const char __pyx_k_vfb32[] = "vfb32";
-static const char __pyx_k_width[] = "width";
 static const char __pyx_k_zeros[] = "zeros";
 static const char __pyx_k_Scroll[] = "Scroll";
 static const char __pyx_k_buffer[] = "buffer_";
 static const char __pyx_k_dstack[] = "dstack";
 static const char __pyx_k_encode[] = "encode";
 static const char __pyx_k_format[] = "format";
-static const char __pyx_k_height[] = "height";
 static const char __pyx_k_import[] = "__import__";
 static const char __pyx_k_name_2[] = "__name__";
 static const char __pyx_k_pickle[] = "pickle";
 static const char __pyx_k_pygame[] = "pygame";
 static const char __pyx_k_random[] = "random";
 static const char __pyx_k_reduce[] = "__reduce__";
-static const char __pyx_k_source[] = "source";
 static const char __pyx_k_struct[] = "struct";
-static const char __pyx_k_target[] = "target";
 static const char __pyx_k_unpack[] = "unpack";
 static const char __pyx_k_update[] = "update";
 static const char __pyx_k_Surface[] = "Surface";
@@ -2239,7 +2235,8 @@ static const char __pyx_k_fortran[] = "fortran";
 static const char __pyx_k_memview[] = "memview";
 static const char __pyx_k_ndarray[] = "ndarray";
 static const char __pyx_k_randint[] = "randint";
-static const char __pyx_k_surface[] = "surface_";
+static const char __pyx_k_surface[] = "surface";
+static const char __pyx_k_version[] = "__version__";
 static const char __pyx_k_Ellipsis[] = "Ellipsis";
 static const char __pyx_k_RLEACCEL[] = "RLEACCEL";
 static const char __pyx_k_SRCALPHA[] = "SRCALPHA";
@@ -2255,7 +2252,7 @@ static const char __pyx_k_pyx_state[] = "__pyx_state";
 static const char __pyx_k_reduce_ex[] = "__reduce_ex__";
 static const char __pyx_k_rgb_array[] = "rgb_array_";
 static const char __pyx_k_stack_mem[] = "stack_mem";
-static const char __pyx_k_surface_2[] = "surface";
+static const char __pyx_k_surface_2[] = "surface_";
 static const char __pyx_k_surfarray[] = "surfarray";
 static const char __pyx_k_transpose[] = "transpose";
 static const char __pyx_k_IndexError[] = "IndexError";
@@ -2304,6 +2301,7 @@ static const char __pyx_k_ascontiguousarray[] = "ascontiguousarray";
 static const char __pyx_k_pyx_unpickle_Enum[] = "__pyx_unpickle_Enum";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
 static const char __pyx_k_strided_and_direct[] = "<strided and direct>";
+static const char __pyx_k_scroll_transparency[] = "scroll_transparency";
 static const char __pyx_k_strided_and_indirect[] = "<strided and indirect>";
 static const char __pyx_k_contiguous_and_direct[] = "<contiguous and direct>";
 static const char __pyx_k_MemoryView_of_r_object[] = "<MemoryView of %r object>";
@@ -2321,7 +2319,7 @@ static const char __pyx_k_unable_to_allocate_array_data[] = "unable to allocate 
 static const char __pyx_k_strided_and_direct_or_indirect[] = "<strided and direct or indirect>";
 static const char __pyx_k_Buffer_length_is_not_compatible[] = "Buffer length is not compatible with a 24 bit buffer";
 static const char __pyx_k_Incompatible_image_pixel_format[] = "\nIncompatible image pixel format.";
-static const char __pyx_k_MIT_License_Copyright_c_2019_Yo[] = "\nMIT License\n\nCopyright (c) 2019 Yoann Berenguer\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n\nPROJECT:\nThis library contains necessary tools for scrolling texture (pygame.Surface)\nvertically and/or horizontally to the desirable speed.\nFor each functionality ROLL/SCROLL, STACKING, TRANSPOSE) two methods have been\nimplemented to provide a solution for each data structure available at the time\nof the functions calls.\nIf you are more efficient with numpy.ndarray in you program (using pygame.surfarray.pixels3d,\narray3d, pixel_alpha, array_alpha...), prefer the methods using numpy.ndarray as argument.\nIf you are fond of C-buffer structure (using pygame.method get_view()), prefer the methods\nusing buffers as argument). \n\nMETHODS:\n1) Use of C-buffer data structure that provides the fastest algorithms and also the easiest\nto understand (single loop). e.g. buffer[index] pointing to a specific pixel RGB or RGBA model\nNote that we are using prange to increase algorithm speed.""\n\n2) Numpy arrays or memoryviewslice (memory buffer types) are also providing good performances and\nan easy access to the pixel as it is very simple to refer to a specific pixel choosing row and\ncolumn indexing. eg buffer[row, column, 0] pointing to a pixel RGB or RGBA model\n\nOther methods such as TRANSPOSE and STACKING are not essential but could be very useful \nin certain circumstances when doing image processing.\n\nAll the algorithms have been coded for the model RGB or RGBA and for 24-bit and 32-bit\npygame texture. 8-bit format image will failed to load and an error message will be thrown\nto your screen, other pixel model such as BGR and BGRA have not been tested but this should not\nbe a great deal to adjust.\n\nREQUIRMENT:\n- python > 3.0\n- numpy\n- pygame with SDL version 1.2 (SDL version 2 untested)\n  Cython\n- A compiler such visual studio, MSVC, cgywin setup correctly\n  on your system\n\nBUILDING PROJECT:\nUse the following command:\nC:\\>python setup_build.py build_ext --inplace\n\nPYGAME SCROLL METHOD VS CYTHON:\nscroll(dx=0, dy=0) -> None\nMove the image by dx pixels right and dy pixels down.\ndx and dy may be negative for left and up scrolls respectively.\nAreas of the surface that are not overwritten retain their original pixel values.\nScrolling is contained by the Surface clip area.\nIt is safe to have dx and dy values that exceed the surface size.\n\npygame.Surface.scroll will push all the pixels outside the boundaries.\nThe Cython method push pixels outside the boundaries and create a loop effect by inserting\npixels on the opposite edges. As the result the animation will be smooth and continuous.\n\n# TODO some functions can be twicked by passing empty array/buffer same size than original\nbuffer/array (when using the method in the loop). This will increase performance as\nthe function will not create a numpy.empty array each time.\n\n\n";
+static const char __pyx_k_MIT_License_Copyright_c_2019_Yo[] = "\nMIT License\n\nCopyright (c) 2019 Yoann Berenguer\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n\nPROJECT:\nThis library contains methods for scrolling pygame.Surface vertically and horizontally.\nFor each functionality ROLL/SCROLL, STACKING, TRANSPOSE) two solutions have been implemented\nin order to access different data structure (buffer and array type).\nMETHODS:\n1) Use of C-buffer data structure that provides the fastest algorithms and also the easiest\nto understand (single loop). e.g. buffer[index] pointing to a specific pixel RGB or RGBA model\nNote that we are using prange to increase algorithm speed.\n\n2) Numpy arrays or memoryviewslice (memory buffer types) are also providing good performances and\ngives easy access to the texture's pixels (with row and column indexing).\neg buffer[row, column, 0] pointing to a red pixel.\n\nOther methods such as TRANSPOSE and STACKING are not essential but could be very useful\nin certain circumstances for image processing.\n\nAll the ""algorithms have been coded for the model RGB or RGBA and for 24-bit and 32-bit\npygame texture. 8-bit format image will failed to load and an error message will be thrown\nto your screen.\nOther pixel model such as BGR and BGRA have not been tested but this, should not\nbe a great deal to adjust.\n\n\nREQUIRMENT:\n- python > 3.0\n- numpy\n- pygame with SDL version 1.2 (SDL version 2 untested)\n  Cython\n- A compiler such visual studio, MSVC, cgywin setup correctly\n  on your system\n\n\nBUILDING PROJECT:\nUse the following command:\nC:\\>python setup_scroll.py build_ext --inplace\n\n\nPYGAME SCROLL METHOD VS CYTHON:\nscroll(dx=0, dy=0) -> None\nMove the image by dx pixels right and dy pixels down.\ndx and dy may be negative for left and up scrolls respectively.\nAreas of the surface that are not overwritten retain their original pixel values.\nScrolling is contained by the Surface clip area.\nIt is safe to have dx and dy values that exceed the surface size.\n\npygame.Surface.scroll will push all the pixels outside the boundaries.\nThe Cython method push pixels outside the boundaries and create a loop effect by inserting\npixels on the opposite edges. As the result the animation will be smooth and continuous.\n\n# TODO some functions can be twicked by passing empty array/buffer same size than original\nbuffer/array (when using the method in the loop). This will increase performance as\nthe function will not create a numpy.empty array each call.\n";
 static const char __pyx_k_Pygame_library_is_missing_on_yo[] = "\n<Pygame> library is missing on your system.\nTry: \n   C:\\pip install pygame on a window command prompt.";
 static const char __pyx_k_numpy_core_multiarray_failed_to[] = "numpy.core.multiarray failed to import";
 static const char __pyx_k_numpy_library_is_missing_on_you[] = "\n<numpy> library is missing on your system.\nTry: \n   C:\\pip install numpy on a window command prompt.";
@@ -2441,7 +2439,6 @@ static PyObject *__pyx_n_s_get_size;
 static PyObject *__pyx_n_s_getstate;
 static PyObject *__pyx_kp_s_got_differing_extents_in_dimensi;
 static PyObject *__pyx_n_s_h;
-static PyObject *__pyx_n_s_height;
 static PyObject *__pyx_n_s_id;
 static PyObject *__pyx_n_s_image;
 static PyObject *__pyx_n_s_import;
@@ -2501,11 +2498,11 @@ static PyObject *__pyx_n_s_scroll_buffer24;
 static PyObject *__pyx_n_s_scroll_buffer32;
 static PyObject *__pyx_n_s_scroll_surface24;
 static PyObject *__pyx_n_s_scroll_surface32;
+static PyObject *__pyx_n_s_scroll_transparency;
 static PyObject *__pyx_n_s_setstate;
 static PyObject *__pyx_n_s_setstate_cython;
 static PyObject *__pyx_n_s_shape;
 static PyObject *__pyx_n_s_size;
-static PyObject *__pyx_n_s_source;
 static PyObject *__pyx_n_s_stack_buffer;
 static PyObject *__pyx_n_s_stack_mem;
 static PyObject *__pyx_n_s_stack_object;
@@ -2522,7 +2519,6 @@ static PyObject *__pyx_n_s_surface_2;
 static PyObject *__pyx_kp_s_surface_a_pygame_Surface_is_requ;
 static PyObject *__pyx_kp_s_surface_a_pygame_surface_is_requ;
 static PyObject *__pyx_n_s_surfarray;
-static PyObject *__pyx_n_s_target;
 static PyObject *__pyx_n_s_test;
 static PyObject *__pyx_n_s_transpose;
 static PyObject *__pyx_n_s_transpose24;
@@ -2535,29 +2531,26 @@ static PyObject *__pyx_n_s_unpack;
 static PyObject *__pyx_n_s_unstack_buffer;
 static PyObject *__pyx_n_s_unstack_object;
 static PyObject *__pyx_n_s_update;
-static PyObject *__pyx_n_s_vfb24;
-static PyObject *__pyx_n_s_vfb32;
+static PyObject *__pyx_n_s_version;
 static PyObject *__pyx_n_s_w;
-static PyObject *__pyx_n_s_width;
 static PyObject *__pyx_n_s_zeros;
 static PyObject *__pyx_pf_6Scroll_scroll_buffer24(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_buffer_, PyObject *__pyx_v_w, PyObject *__pyx_v_h, PyObject *__pyx_v_dx, PyObject *__pyx_v_dy); /* proto */
 static PyObject *__pyx_pf_6Scroll_2scroll_buffer32(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_buffer_, PyObject *__pyx_v_w, PyObject *__pyx_v_h, PyObject *__pyx_v_dx, PyObject *__pyx_v_dy); /* proto */
 static PyObject *__pyx_pf_6Scroll_4scroll_array24(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_array_, PyObject *__pyx_v_dy, PyObject *__pyx_v_dx); /* proto */
 static PyObject *__pyx_pf_6Scroll_6scroll_array32(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_array_, PyObject *__pyx_v_dy, PyObject *__pyx_v_dx); /* proto */
 static PyObject *__pyx_pf_6Scroll_8scroll_array32m(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_array_, PyObject *__pyx_v_alpha_, PyObject *__pyx_v_dy, PyObject *__pyx_v_dx); /* proto */
-static PyObject *__pyx_pf_6Scroll_10roll_surface(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_surface_, PyObject *__pyx_v_dx, PyObject *__pyx_v_dy); /* proto */
-static PyObject *__pyx_pf_6Scroll_12roll_array(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_array_, PyObject *__pyx_v_dx, PyObject *__pyx_v_dy); /* proto */
-static PyObject *__pyx_pf_6Scroll_14scroll_surface24(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_surface, PyObject *__pyx_v_dy, PyObject *__pyx_v_dx); /* proto */
-static PyObject *__pyx_pf_6Scroll_16scroll_surface32(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_surface, PyObject *__pyx_v_dy, PyObject *__pyx_v_dx); /* proto */
-static PyObject *__pyx_pf_6Scroll_18stack_object(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_rgb_array_, PyObject *__pyx_v_alpha_, PyObject *__pyx_v_transpose); /* proto */
-static PyObject *__pyx_pf_6Scroll_20stack_mem(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_rgb_array_, PyObject *__pyx_v_alpha_, PyObject *__pyx_v_transpose); /* proto */
-static PyObject *__pyx_pf_6Scroll_22unstack_object(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_rgba_array); /* proto */
-static PyObject *__pyx_pf_6Scroll_24stack_buffer(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_rgb_array_, PyObject *__pyx_v_alpha_, PyObject *__pyx_v_w, PyObject *__pyx_v_h, PyObject *__pyx_v_transpose); /* proto */
-static PyObject *__pyx_pf_6Scroll_26unstack_buffer(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_rgba_buffer_, PyObject *__pyx_v_w, PyObject *__pyx_v_h); /* proto */
-static PyObject *__pyx_pf_6Scroll_28transpose24(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_rgb_array_); /* proto */
-static PyObject *__pyx_pf_6Scroll_30transpose32(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_rgb_array_); /* proto */
-static PyObject *__pyx_pf_6Scroll_32vfb24(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_source, PyObject *__pyx_v_target, PyObject *__pyx_v_width, PyObject *__pyx_v_height); /* proto */
-static PyObject *__pyx_pf_6Scroll_34vfb32(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_source, PyObject *__pyx_v_target, PyObject *__pyx_v_width, PyObject *__pyx_v_height); /* proto */
+static PyObject *__pyx_pf_6Scroll_10scroll_transparency(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_surface, PyObject *__pyx_v_dy, PyObject *__pyx_v_dx); /* proto */
+static PyObject *__pyx_pf_6Scroll_12scroll_surface24(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_surface, PyObject *__pyx_v_dy, PyObject *__pyx_v_dx); /* proto */
+static PyObject *__pyx_pf_6Scroll_14scroll_surface32(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_surface, PyObject *__pyx_v_dy, PyObject *__pyx_v_dx); /* proto */
+static PyObject *__pyx_pf_6Scroll_16roll_surface(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_surface_, PyObject *__pyx_v_dx, PyObject *__pyx_v_dy); /* proto */
+static PyObject *__pyx_pf_6Scroll_18roll_array(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_array_, PyObject *__pyx_v_dx, PyObject *__pyx_v_dy); /* proto */
+static PyObject *__pyx_pf_6Scroll_20stack_object(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_rgb_array_, PyObject *__pyx_v_alpha_, PyObject *__pyx_v_transpose); /* proto */
+static PyObject *__pyx_pf_6Scroll_22stack_mem(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_rgb_array_, PyObject *__pyx_v_alpha_, PyObject *__pyx_v_transpose); /* proto */
+static PyObject *__pyx_pf_6Scroll_24unstack_object(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_rgba_array); /* proto */
+static PyObject *__pyx_pf_6Scroll_26stack_buffer(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_rgb_array_, PyObject *__pyx_v_alpha_, PyObject *__pyx_v_w, PyObject *__pyx_v_h, PyObject *__pyx_v_transpose); /* proto */
+static PyObject *__pyx_pf_6Scroll_28unstack_buffer(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_rgba_buffer_, PyObject *__pyx_v_w, PyObject *__pyx_v_h); /* proto */
+static PyObject *__pyx_pf_6Scroll_30transpose24(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_rgb_array_); /* proto */
+static PyObject *__pyx_pf_6Scroll_32transpose32(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_rgb_array_); /* proto */
 static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, Py_buffer *__pyx_v_info, int __pyx_v_flags); /* proto */
 static void __pyx_pf_5numpy_7ndarray_2__releasebuffer__(PyArrayObject *__pyx_v_self, Py_buffer *__pyx_v_info); /* proto */
 static int __pyx_array___pyx_pf_15View_dot_MemoryView_5array___cinit__(struct __pyx_array_obj *__pyx_v_self, PyObject *__pyx_v_shape, Py_ssize_t __pyx_v_itemsize, PyObject *__pyx_v_format, PyObject *__pyx_v_mode, int __pyx_v_allocate_buffer); /* proto */
@@ -2606,6 +2599,7 @@ static PyObject *__pyx_tp_new_array(PyTypeObject *t, PyObject *a, PyObject *k); 
 static PyObject *__pyx_tp_new_Enum(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static PyObject *__pyx_tp_new_memoryview(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static PyObject *__pyx_tp_new__memoryviewslice(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+static PyObject *__pyx_float_1_01;
 static PyObject *__pyx_int_0;
 static PyObject *__pyx_int_1;
 static PyObject *__pyx_int_2;
@@ -2628,9 +2622,10 @@ static PyObject *__pyx_slice__18;
 static PyObject *__pyx_slice__20;
 static PyObject *__pyx_slice__26;
 static PyObject *__pyx_slice__29;
-static PyObject *__pyx_slice__53;
-static PyObject *__pyx_slice__54;
-static PyObject *__pyx_slice__55;
+static PyObject *__pyx_slice__32;
+static PyObject *__pyx_slice__56;
+static PyObject *__pyx_slice__57;
+static PyObject *__pyx_slice__58;
 static PyObject *__pyx_tuple__10;
 static PyObject *__pyx_tuple__11;
 static PyObject *__pyx_tuple__12;
@@ -2647,7 +2642,6 @@ static PyObject *__pyx_tuple__27;
 static PyObject *__pyx_tuple__28;
 static PyObject *__pyx_tuple__30;
 static PyObject *__pyx_tuple__31;
-static PyObject *__pyx_tuple__32;
 static PyObject *__pyx_tuple__33;
 static PyObject *__pyx_tuple__34;
 static PyObject *__pyx_tuple__35;
@@ -2668,56 +2662,57 @@ static PyObject *__pyx_tuple__49;
 static PyObject *__pyx_tuple__50;
 static PyObject *__pyx_tuple__51;
 static PyObject *__pyx_tuple__52;
-static PyObject *__pyx_tuple__56;
-static PyObject *__pyx_tuple__57;
-static PyObject *__pyx_tuple__58;
+static PyObject *__pyx_tuple__53;
+static PyObject *__pyx_tuple__54;
+static PyObject *__pyx_tuple__55;
 static PyObject *__pyx_tuple__59;
+static PyObject *__pyx_tuple__60;
 static PyObject *__pyx_tuple__61;
-static PyObject *__pyx_tuple__63;
-static PyObject *__pyx_tuple__65;
-static PyObject *__pyx_tuple__67;
-static PyObject *__pyx_tuple__69;
-static PyObject *__pyx_tuple__71;
-static PyObject *__pyx_tuple__73;
-static PyObject *__pyx_tuple__75;
-static PyObject *__pyx_tuple__77;
-static PyObject *__pyx_tuple__79;
-static PyObject *__pyx_tuple__81;
-static PyObject *__pyx_tuple__83;
-static PyObject *__pyx_tuple__85;
-static PyObject *__pyx_tuple__87;
-static PyObject *__pyx_tuple__89;
-static PyObject *__pyx_tuple__91;
-static PyObject *__pyx_tuple__93;
-static PyObject *__pyx_tuple__95;
+static PyObject *__pyx_tuple__62;
+static PyObject *__pyx_tuple__64;
+static PyObject *__pyx_tuple__66;
+static PyObject *__pyx_tuple__68;
+static PyObject *__pyx_tuple__70;
+static PyObject *__pyx_tuple__72;
+static PyObject *__pyx_tuple__74;
+static PyObject *__pyx_tuple__76;
+static PyObject *__pyx_tuple__78;
+static PyObject *__pyx_tuple__80;
+static PyObject *__pyx_tuple__82;
+static PyObject *__pyx_tuple__84;
+static PyObject *__pyx_tuple__86;
+static PyObject *__pyx_tuple__88;
+static PyObject *__pyx_tuple__90;
+static PyObject *__pyx_tuple__92;
+static PyObject *__pyx_tuple__94;
 static PyObject *__pyx_tuple__96;
 static PyObject *__pyx_tuple__97;
 static PyObject *__pyx_tuple__98;
 static PyObject *__pyx_tuple__99;
 static PyObject *__pyx_tuple__100;
-static PyObject *__pyx_codeobj__60;
-static PyObject *__pyx_codeobj__62;
-static PyObject *__pyx_codeobj__64;
-static PyObject *__pyx_codeobj__66;
-static PyObject *__pyx_codeobj__68;
-static PyObject *__pyx_codeobj__70;
-static PyObject *__pyx_codeobj__72;
-static PyObject *__pyx_codeobj__74;
-static PyObject *__pyx_codeobj__76;
-static PyObject *__pyx_codeobj__78;
-static PyObject *__pyx_codeobj__80;
-static PyObject *__pyx_codeobj__82;
-static PyObject *__pyx_codeobj__84;
-static PyObject *__pyx_codeobj__86;
-static PyObject *__pyx_codeobj__88;
-static PyObject *__pyx_codeobj__90;
-static PyObject *__pyx_codeobj__92;
-static PyObject *__pyx_codeobj__94;
-static PyObject *__pyx_codeobj__101;
+static PyObject *__pyx_tuple__101;
+static PyObject *__pyx_codeobj__63;
+static PyObject *__pyx_codeobj__65;
+static PyObject *__pyx_codeobj__67;
+static PyObject *__pyx_codeobj__69;
+static PyObject *__pyx_codeobj__71;
+static PyObject *__pyx_codeobj__73;
+static PyObject *__pyx_codeobj__75;
+static PyObject *__pyx_codeobj__77;
+static PyObject *__pyx_codeobj__79;
+static PyObject *__pyx_codeobj__81;
+static PyObject *__pyx_codeobj__83;
+static PyObject *__pyx_codeobj__85;
+static PyObject *__pyx_codeobj__87;
+static PyObject *__pyx_codeobj__89;
+static PyObject *__pyx_codeobj__91;
+static PyObject *__pyx_codeobj__93;
+static PyObject *__pyx_codeobj__95;
+static PyObject *__pyx_codeobj__102;
 
-/* "Scroll.pyx":186
- * 
- * # ROLL BUFFER COMPATIBLE 24-BIT TEXTURE
+/* "Scroll.pyx":194
+ * # Refer to pygame doc in order to extract
+ * # a buffer from an image get_view()
  * def scroll_buffer24(buffer_, w, h, dx=0, dy=0):             # <<<<<<<<<<<<<<
  *     return scroll_buffer24_c(buffer_, w, h, dx, dy)
  * 
@@ -2766,13 +2761,13 @@ static PyObject *__pyx_pw_6Scroll_1scroll_buffer24(PyObject *__pyx_self, PyObjec
         case  1:
         if (likely((values[1] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_w)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("scroll_buffer24", 0, 3, 5, 1); __PYX_ERR(0, 186, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("scroll_buffer24", 0, 3, 5, 1); __PYX_ERR(0, 194, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_h)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("scroll_buffer24", 0, 3, 5, 2); __PYX_ERR(0, 186, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("scroll_buffer24", 0, 3, 5, 2); __PYX_ERR(0, 194, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
@@ -2788,7 +2783,7 @@ static PyObject *__pyx_pw_6Scroll_1scroll_buffer24(PyObject *__pyx_self, PyObjec
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "scroll_buffer24") < 0)) __PYX_ERR(0, 186, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "scroll_buffer24") < 0)) __PYX_ERR(0, 194, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -2811,7 +2806,7 @@ static PyObject *__pyx_pw_6Scroll_1scroll_buffer24(PyObject *__pyx_self, PyObjec
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("scroll_buffer24", 0, 3, 5, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 186, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("scroll_buffer24", 0, 3, 5, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 194, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("Scroll.scroll_buffer24", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -2835,8 +2830,8 @@ static PyObject *__pyx_pf_6Scroll_scroll_buffer24(CYTHON_UNUSED PyObject *__pyx_
   PyObject *__pyx_t_6 = NULL;
   __Pyx_RefNannySetupContext("scroll_buffer24", 0);
 
-  /* "Scroll.pyx":187
- * # ROLL BUFFER COMPATIBLE 24-BIT TEXTURE
+  /* "Scroll.pyx":195
+ * # a buffer from an image get_view()
  * def scroll_buffer24(buffer_, w, h, dx=0, dy=0):
  *     return scroll_buffer24_c(buffer_, w, h, dx, dy)             # <<<<<<<<<<<<<<
  * 
@@ -2844,12 +2839,12 @@ static PyObject *__pyx_pf_6Scroll_scroll_buffer24(CYTHON_UNUSED PyObject *__pyx_
  */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_1 = __Pyx_PyObject_to_MemoryviewSlice_ds_unsigned_char(__pyx_v_buffer_);
-  if (unlikely(!__pyx_t_1.memview)) __PYX_ERR(0, 187, __pyx_L1_error)
-  __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_v_w); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 187, __pyx_L1_error)
-  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_v_h); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 187, __pyx_L1_error)
-  __pyx_t_4 = __Pyx_PyInt_As_int(__pyx_v_dx); if (unlikely((__pyx_t_4 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 187, __pyx_L1_error)
-  __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_v_dy); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 187, __pyx_L1_error)
-  __pyx_t_6 = __pyx_f_6Scroll_scroll_buffer24_c(__pyx_t_1, __pyx_t_2, __pyx_t_3, __pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 187, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1.memview)) __PYX_ERR(0, 195, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_v_w); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 195, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_v_h); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 195, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyInt_As_int(__pyx_v_dx); if (unlikely((__pyx_t_4 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 195, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_v_dy); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 195, __pyx_L1_error)
+  __pyx_t_6 = __pyx_f_6Scroll_scroll_buffer24_c(__pyx_t_1, __pyx_t_2, __pyx_t_3, __pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 195, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __PYX_XDEC_MEMVIEW(&__pyx_t_1, 1);
   __pyx_t_1.memview = NULL;
@@ -2858,9 +2853,9 @@ static PyObject *__pyx_pf_6Scroll_scroll_buffer24(CYTHON_UNUSED PyObject *__pyx_
   __pyx_t_6 = 0;
   goto __pyx_L0;
 
-  /* "Scroll.pyx":186
- * 
- * # ROLL BUFFER COMPATIBLE 24-BIT TEXTURE
+  /* "Scroll.pyx":194
+ * # Refer to pygame doc in order to extract
+ * # a buffer from an image get_view()
  * def scroll_buffer24(buffer_, w, h, dx=0, dy=0):             # <<<<<<<<<<<<<<
  *     return scroll_buffer24_c(buffer_, w, h, dx, dy)
  * 
@@ -2878,9 +2873,9 @@ static PyObject *__pyx_pf_6Scroll_scroll_buffer24(CYTHON_UNUSED PyObject *__pyx_
   return __pyx_r;
 }
 
-/* "Scroll.pyx":190
- * 
- * # ROLL BUFFER COMPATIBLE 32-BIT TEXTURE
+/* "Scroll.pyx":200
+ * # Refer to pygame doc to extract
+ * # a buffer from an image get_view()
  * def scroll_buffer32(buffer_, w, h, dx=0, dy=0):             # <<<<<<<<<<<<<<
  *     return scroll_buffer32_c(buffer_, w, h, dx, dy)
  * 
@@ -2929,13 +2924,13 @@ static PyObject *__pyx_pw_6Scroll_3scroll_buffer32(PyObject *__pyx_self, PyObjec
         case  1:
         if (likely((values[1] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_w)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("scroll_buffer32", 0, 3, 5, 1); __PYX_ERR(0, 190, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("scroll_buffer32", 0, 3, 5, 1); __PYX_ERR(0, 200, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_h)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("scroll_buffer32", 0, 3, 5, 2); __PYX_ERR(0, 190, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("scroll_buffer32", 0, 3, 5, 2); __PYX_ERR(0, 200, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
@@ -2951,7 +2946,7 @@ static PyObject *__pyx_pw_6Scroll_3scroll_buffer32(PyObject *__pyx_self, PyObjec
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "scroll_buffer32") < 0)) __PYX_ERR(0, 190, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "scroll_buffer32") < 0)) __PYX_ERR(0, 200, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -2974,7 +2969,7 @@ static PyObject *__pyx_pw_6Scroll_3scroll_buffer32(PyObject *__pyx_self, PyObjec
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("scroll_buffer32", 0, 3, 5, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 190, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("scroll_buffer32", 0, 3, 5, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 200, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("Scroll.scroll_buffer32", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -2998,8 +2993,8 @@ static PyObject *__pyx_pf_6Scroll_2scroll_buffer32(CYTHON_UNUSED PyObject *__pyx
   PyObject *__pyx_t_6 = NULL;
   __Pyx_RefNannySetupContext("scroll_buffer32", 0);
 
-  /* "Scroll.pyx":191
- * # ROLL BUFFER COMPATIBLE 32-BIT TEXTURE
+  /* "Scroll.pyx":201
+ * # a buffer from an image get_view()
  * def scroll_buffer32(buffer_, w, h, dx=0, dy=0):
  *     return scroll_buffer32_c(buffer_, w, h, dx, dy)             # <<<<<<<<<<<<<<
  * 
@@ -3007,12 +3002,12 @@ static PyObject *__pyx_pf_6Scroll_2scroll_buffer32(CYTHON_UNUSED PyObject *__pyx
  */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_1 = __Pyx_PyObject_to_MemoryviewSlice_ds_unsigned_char(__pyx_v_buffer_);
-  if (unlikely(!__pyx_t_1.memview)) __PYX_ERR(0, 191, __pyx_L1_error)
-  __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_v_w); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 191, __pyx_L1_error)
-  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_v_h); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 191, __pyx_L1_error)
-  __pyx_t_4 = __Pyx_PyInt_As_int(__pyx_v_dx); if (unlikely((__pyx_t_4 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 191, __pyx_L1_error)
-  __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_v_dy); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 191, __pyx_L1_error)
-  __pyx_t_6 = __pyx_f_6Scroll_scroll_buffer32_c(__pyx_t_1, __pyx_t_2, __pyx_t_3, __pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 191, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1.memview)) __PYX_ERR(0, 201, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_v_w); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 201, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_v_h); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 201, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyInt_As_int(__pyx_v_dx); if (unlikely((__pyx_t_4 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 201, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_v_dy); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 201, __pyx_L1_error)
+  __pyx_t_6 = __pyx_f_6Scroll_scroll_buffer32_c(__pyx_t_1, __pyx_t_2, __pyx_t_3, __pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 201, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __PYX_XDEC_MEMVIEW(&__pyx_t_1, 1);
   __pyx_t_1.memview = NULL;
@@ -3021,9 +3016,9 @@ static PyObject *__pyx_pf_6Scroll_2scroll_buffer32(CYTHON_UNUSED PyObject *__pyx
   __pyx_t_6 = 0;
   goto __pyx_L0;
 
-  /* "Scroll.pyx":190
- * 
- * # ROLL BUFFER COMPATIBLE 32-BIT TEXTURE
+  /* "Scroll.pyx":200
+ * # Refer to pygame doc to extract
+ * # a buffer from an image get_view()
  * def scroll_buffer32(buffer_, w, h, dx=0, dy=0):             # <<<<<<<<<<<<<<
  *     return scroll_buffer32_c(buffer_, w, h, dx, dy)
  * 
@@ -3041,9 +3036,9 @@ static PyObject *__pyx_pf_6Scroll_2scroll_buffer32(CYTHON_UNUSED PyObject *__pyx
   return __pyx_r;
 }
 
-/* "Scroll.pyx":194
- * 
- * # ROLL ARRAY 3D TYPE (W, H, 3) NUMPY.UINT8
+/* "Scroll.pyx":206
+ * # Refer to pygame doc surfarray methods
+ * # to get a 3d array from an image (pixels3d, array3d)
  * def scroll_array24(array_, dy=0, dx=0):             # <<<<<<<<<<<<<<
  *     return scroll_array24_c(array_, dy, dx)
  * 
@@ -3096,7 +3091,7 @@ static PyObject *__pyx_pw_6Scroll_5scroll_array24(PyObject *__pyx_self, PyObject
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "scroll_array24") < 0)) __PYX_ERR(0, 194, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "scroll_array24") < 0)) __PYX_ERR(0, 206, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -3115,7 +3110,7 @@ static PyObject *__pyx_pw_6Scroll_5scroll_array24(PyObject *__pyx_self, PyObject
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("scroll_array24", 0, 1, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 194, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("scroll_array24", 0, 1, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 206, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("Scroll.scroll_array24", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -3138,8 +3133,8 @@ static PyObject *__pyx_pf_6Scroll_4scroll_array24(CYTHON_UNUSED PyObject *__pyx_
   PyObject *__pyx_t_5 = NULL;
   __Pyx_RefNannySetupContext("scroll_array24", 0);
 
-  /* "Scroll.pyx":195
- * # ROLL ARRAY 3D TYPE (W, H, 3) NUMPY.UINT8
+  /* "Scroll.pyx":207
+ * # to get a 3d array from an image (pixels3d, array3d)
  * def scroll_array24(array_, dy=0, dx=0):
  *     return scroll_array24_c(array_, dy, dx)             # <<<<<<<<<<<<<<
  * 
@@ -3147,14 +3142,14 @@ static PyObject *__pyx_pf_6Scroll_4scroll_array24(CYTHON_UNUSED PyObject *__pyx_
  */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_1 = __Pyx_PyObject_to_MemoryviewSlice_dsdsds_unsigned_char(__pyx_v_array_);
-  if (unlikely(!__pyx_t_1.memview)) __PYX_ERR(0, 195, __pyx_L1_error)
-  __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_v_dy); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 195, __pyx_L1_error)
-  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_v_dx); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 195, __pyx_L1_error)
-  __pyx_t_4 = __pyx_f_6Scroll_scroll_array24_c(__pyx_t_1, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_4.memview)) __PYX_ERR(0, 195, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1.memview)) __PYX_ERR(0, 207, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_v_dy); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 207, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_v_dx); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 207, __pyx_L1_error)
+  __pyx_t_4 = __pyx_f_6Scroll_scroll_array24_c(__pyx_t_1, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_4.memview)) __PYX_ERR(0, 207, __pyx_L1_error)
   __PYX_XDEC_MEMVIEW(&__pyx_t_1, 1);
   __pyx_t_1.memview = NULL;
   __pyx_t_1.data = NULL;
-  __pyx_t_5 = __pyx_memoryview_fromslice(__pyx_t_4, 3, (PyObject *(*)(char *)) __pyx_memview_get_unsigned_char, (int (*)(char *, PyObject *)) __pyx_memview_set_unsigned_char, 0);; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 195, __pyx_L1_error)
+  __pyx_t_5 = __pyx_memoryview_fromslice(__pyx_t_4, 3, (PyObject *(*)(char *)) __pyx_memview_get_unsigned_char, (int (*)(char *, PyObject *)) __pyx_memview_set_unsigned_char, 0);; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 207, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __PYX_XDEC_MEMVIEW(&__pyx_t_4, 1);
   __pyx_t_4.memview = NULL;
@@ -3163,9 +3158,9 @@ static PyObject *__pyx_pf_6Scroll_4scroll_array24(CYTHON_UNUSED PyObject *__pyx_
   __pyx_t_5 = 0;
   goto __pyx_L0;
 
-  /* "Scroll.pyx":194
- * 
- * # ROLL ARRAY 3D TYPE (W, H, 3) NUMPY.UINT8
+  /* "Scroll.pyx":206
+ * # Refer to pygame doc surfarray methods
+ * # to get a 3d array from an image (pixels3d, array3d)
  * def scroll_array24(array_, dy=0, dx=0):             # <<<<<<<<<<<<<<
  *     return scroll_array24_c(array_, dy, dx)
  * 
@@ -3184,9 +3179,9 @@ static PyObject *__pyx_pf_6Scroll_4scroll_array24(CYTHON_UNUSED PyObject *__pyx_
   return __pyx_r;
 }
 
-/* "Scroll.pyx":198
- * 
- * # ROLL ARRAY 3D TYPE (W, H, 4) NUMPY.UINT8
+/* "Scroll.pyx":212
+ * # Refer to pygame doc surfarray methods
+ * # to get a 3d array from an image (pixels3d, array3d)
  * def scroll_array32(array_, dy=0, dx=0):             # <<<<<<<<<<<<<<
  *     return scroll_array32_c(array_, dy, dx)
  * 
@@ -3239,7 +3234,7 @@ static PyObject *__pyx_pw_6Scroll_7scroll_array32(PyObject *__pyx_self, PyObject
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "scroll_array32") < 0)) __PYX_ERR(0, 198, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "scroll_array32") < 0)) __PYX_ERR(0, 212, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -3258,7 +3253,7 @@ static PyObject *__pyx_pw_6Scroll_7scroll_array32(PyObject *__pyx_self, PyObject
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("scroll_array32", 0, 1, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 198, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("scroll_array32", 0, 1, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 212, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("Scroll.scroll_array32", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -3281,8 +3276,8 @@ static PyObject *__pyx_pf_6Scroll_6scroll_array32(CYTHON_UNUSED PyObject *__pyx_
   PyObject *__pyx_t_5 = NULL;
   __Pyx_RefNannySetupContext("scroll_array32", 0);
 
-  /* "Scroll.pyx":199
- * # ROLL ARRAY 3D TYPE (W, H, 4) NUMPY.UINT8
+  /* "Scroll.pyx":213
+ * # to get a 3d array from an image (pixels3d, array3d)
  * def scroll_array32(array_, dy=0, dx=0):
  *     return scroll_array32_c(array_, dy, dx)             # <<<<<<<<<<<<<<
  * 
@@ -3290,14 +3285,14 @@ static PyObject *__pyx_pf_6Scroll_6scroll_array32(CYTHON_UNUSED PyObject *__pyx_
  */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_1 = __Pyx_PyObject_to_MemoryviewSlice_dsdsds_unsigned_char(__pyx_v_array_);
-  if (unlikely(!__pyx_t_1.memview)) __PYX_ERR(0, 199, __pyx_L1_error)
-  __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_v_dy); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 199, __pyx_L1_error)
-  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_v_dx); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 199, __pyx_L1_error)
-  __pyx_t_4 = __pyx_f_6Scroll_scroll_array32_c(__pyx_t_1, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_4.memview)) __PYX_ERR(0, 199, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1.memview)) __PYX_ERR(0, 213, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_v_dy); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 213, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_v_dx); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 213, __pyx_L1_error)
+  __pyx_t_4 = __pyx_f_6Scroll_scroll_array32_c(__pyx_t_1, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_4.memview)) __PYX_ERR(0, 213, __pyx_L1_error)
   __PYX_XDEC_MEMVIEW(&__pyx_t_1, 1);
   __pyx_t_1.memview = NULL;
   __pyx_t_1.data = NULL;
-  __pyx_t_5 = __pyx_memoryview_fromslice(__pyx_t_4, 3, (PyObject *(*)(char *)) __pyx_memview_get_unsigned_char, (int (*)(char *, PyObject *)) __pyx_memview_set_unsigned_char, 0);; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 199, __pyx_L1_error)
+  __pyx_t_5 = __pyx_memoryview_fromslice(__pyx_t_4, 3, (PyObject *(*)(char *)) __pyx_memview_get_unsigned_char, (int (*)(char *, PyObject *)) __pyx_memview_set_unsigned_char, 0);; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 213, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __PYX_XDEC_MEMVIEW(&__pyx_t_4, 1);
   __pyx_t_4.memview = NULL;
@@ -3306,9 +3301,9 @@ static PyObject *__pyx_pf_6Scroll_6scroll_array32(CYTHON_UNUSED PyObject *__pyx_
   __pyx_t_5 = 0;
   goto __pyx_L0;
 
-  /* "Scroll.pyx":198
- * 
- * # ROLL ARRAY 3D TYPE (W, H, 4) NUMPY.UINT8
+  /* "Scroll.pyx":212
+ * # Refer to pygame doc surfarray methods
+ * # to get a 3d array from an image (pixels3d, array3d)
  * def scroll_array32(array_, dy=0, dx=0):             # <<<<<<<<<<<<<<
  *     return scroll_array32_c(array_, dy, dx)
  * 
@@ -3327,9 +3322,9 @@ static PyObject *__pyx_pf_6Scroll_6scroll_array32(CYTHON_UNUSED PyObject *__pyx_
   return __pyx_r;
 }
 
-/* "Scroll.pyx":204
- * # Return a 3d array type (w, h, 4)
- * # inputs : 3d array (w, h, 3) and alpha (w, h)
+/* "Scroll.pyx":220
+ * # Refer to pygame doc surfarray methods
+ * # to get a 3d array from an image (pixels3d, array3d)
  * def scroll_array32m(array_, alpha_, dy=0, dx=0):             # <<<<<<<<<<<<<<
  *     return scroll_array32m_c(array_, alpha_, dy, dx)
  * 
@@ -3375,7 +3370,7 @@ static PyObject *__pyx_pw_6Scroll_9scroll_array32m(PyObject *__pyx_self, PyObjec
         case  1:
         if (likely((values[1] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_alpha)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("scroll_array32m", 0, 2, 4, 1); __PYX_ERR(0, 204, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("scroll_array32m", 0, 2, 4, 1); __PYX_ERR(0, 220, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
@@ -3391,7 +3386,7 @@ static PyObject *__pyx_pw_6Scroll_9scroll_array32m(PyObject *__pyx_self, PyObjec
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "scroll_array32m") < 0)) __PYX_ERR(0, 204, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "scroll_array32m") < 0)) __PYX_ERR(0, 220, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -3412,7 +3407,7 @@ static PyObject *__pyx_pw_6Scroll_9scroll_array32m(PyObject *__pyx_self, PyObjec
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("scroll_array32m", 0, 2, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 204, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("scroll_array32m", 0, 2, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 220, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("Scroll.scroll_array32m", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -3435,21 +3430,21 @@ static PyObject *__pyx_pf_6Scroll_8scroll_array32m(CYTHON_UNUSED PyObject *__pyx
   PyObject *__pyx_t_5 = NULL;
   __Pyx_RefNannySetupContext("scroll_array32m", 0);
 
-  /* "Scroll.pyx":205
- * # inputs : 3d array (w, h, 3) and alpha (w, h)
+  /* "Scroll.pyx":221
+ * # to get a 3d array from an image (pixels3d, array3d)
  * def scroll_array32m(array_, alpha_, dy=0, dx=0):
  *     return scroll_array32m_c(array_, alpha_, dy, dx)             # <<<<<<<<<<<<<<
  * 
- * # USE NUMPY LIBRARY (NUMPY.ROLL METHOD)
+ * # ROLL TRANSPARENCY ONLY
  */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_1 = __Pyx_PyObject_to_MemoryviewSlice_dsdsds_unsigned_char(__pyx_v_array_);
-  if (unlikely(!__pyx_t_1.memview)) __PYX_ERR(0, 205, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1.memview)) __PYX_ERR(0, 221, __pyx_L1_error)
   __pyx_t_2 = __Pyx_PyObject_to_MemoryviewSlice_dsds_unsigned_char(__pyx_v_alpha_);
-  if (unlikely(!__pyx_t_2.memview)) __PYX_ERR(0, 205, __pyx_L1_error)
-  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_v_dy); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 205, __pyx_L1_error)
-  __pyx_t_4 = __Pyx_PyInt_As_int(__pyx_v_dx); if (unlikely((__pyx_t_4 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 205, __pyx_L1_error)
-  __pyx_t_5 = __pyx_f_6Scroll_scroll_array32m_c(__pyx_t_1, __pyx_t_2, __pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 205, __pyx_L1_error)
+  if (unlikely(!__pyx_t_2.memview)) __PYX_ERR(0, 221, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_v_dy); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 221, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyInt_As_int(__pyx_v_dx); if (unlikely((__pyx_t_4 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 221, __pyx_L1_error)
+  __pyx_t_5 = __pyx_f_6Scroll_scroll_array32m_c(__pyx_t_1, __pyx_t_2, __pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 221, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __PYX_XDEC_MEMVIEW(&__pyx_t_1, 1);
   __pyx_t_1.memview = NULL;
@@ -3461,9 +3456,9 @@ static PyObject *__pyx_pf_6Scroll_8scroll_array32m(CYTHON_UNUSED PyObject *__pyx
   __pyx_t_5 = 0;
   goto __pyx_L0;
 
-  /* "Scroll.pyx":204
- * # Return a 3d array type (w, h, 4)
- * # inputs : 3d array (w, h, 3) and alpha (w, h)
+  /* "Scroll.pyx":220
+ * # Refer to pygame doc surfarray methods
+ * # to get a 3d array from an image (pixels3d, array3d)
  * def scroll_array32m(array_, alpha_, dy=0, dx=0):             # <<<<<<<<<<<<<<
  *     return scroll_array32m_c(array_, alpha_, dy, dx)
  * 
@@ -3482,26 +3477,26 @@ static PyObject *__pyx_pf_6Scroll_8scroll_array32m(CYTHON_UNUSED PyObject *__pyx
   return __pyx_r;
 }
 
-/* "Scroll.pyx":208
+/* "Scroll.pyx":224
  * 
- * # USE NUMPY LIBRARY (NUMPY.ROLL METHOD)
- * def roll_surface(surface_, dx=0, dy=0):             # <<<<<<<<<<<<<<
- *     return roll_surface_c(surface_, dx, dy)
+ * # ROLL TRANSPARENCY ONLY
+ * def scroll_transparency(surface, dy=0, dx=0):             # <<<<<<<<<<<<<<
+ *     return scroll_transparency_c(surface, dy, dx)
  * 
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6Scroll_11roll_surface(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_6Scroll_11roll_surface = {"roll_surface", (PyCFunction)__pyx_pw_6Scroll_11roll_surface, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_6Scroll_11roll_surface(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
-  PyObject *__pyx_v_surface_ = 0;
-  PyObject *__pyx_v_dx = 0;
+static PyObject *__pyx_pw_6Scroll_11scroll_transparency(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_6Scroll_11scroll_transparency = {"scroll_transparency", (PyCFunction)__pyx_pw_6Scroll_11scroll_transparency, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_6Scroll_11scroll_transparency(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+  PyObject *__pyx_v_surface = 0;
   PyObject *__pyx_v_dy = 0;
+  PyObject *__pyx_v_dx = 0;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("roll_surface (wrapper)", 0);
+  __Pyx_RefNannySetupContext("scroll_transparency (wrapper)", 0);
   {
-    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_surface,&__pyx_n_s_dx,&__pyx_n_s_dy,0};
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_surface,&__pyx_n_s_dy,&__pyx_n_s_dx,0};
     PyObject* values[3] = {0,0,0};
     values[1] = ((PyObject *)__pyx_int_0);
     values[2] = ((PyObject *)__pyx_int_0);
@@ -3526,6 +3521,396 @@ static PyObject *__pyx_pw_6Scroll_11roll_surface(PyObject *__pyx_self, PyObject 
         CYTHON_FALLTHROUGH;
         case  1:
         if (kw_args > 0) {
+          PyObject* value = PyDict_GetItem(__pyx_kwds, __pyx_n_s_dy);
+          if (value) { values[1] = value; kw_args--; }
+        }
+        CYTHON_FALLTHROUGH;
+        case  2:
+        if (kw_args > 0) {
+          PyObject* value = PyDict_GetItem(__pyx_kwds, __pyx_n_s_dx);
+          if (value) { values[2] = value; kw_args--; }
+        }
+      }
+      if (unlikely(kw_args > 0)) {
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "scroll_transparency") < 0)) __PYX_ERR(0, 224, __pyx_L3_error)
+      }
+    } else {
+      switch (PyTuple_GET_SIZE(__pyx_args)) {
+        case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
+        CYTHON_FALLTHROUGH;
+        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        CYTHON_FALLTHROUGH;
+        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+    }
+    __pyx_v_surface = values[0];
+    __pyx_v_dy = values[1];
+    __pyx_v_dx = values[2];
+  }
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("scroll_transparency", 0, 1, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 224, __pyx_L3_error)
+  __pyx_L3_error:;
+  __Pyx_AddTraceback("Scroll.scroll_transparency", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_6Scroll_10scroll_transparency(__pyx_self, __pyx_v_surface, __pyx_v_dy, __pyx_v_dx);
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6Scroll_10scroll_transparency(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_surface, PyObject *__pyx_v_dy, PyObject *__pyx_v_dx) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  int __pyx_t_1;
+  int __pyx_t_2;
+  PyObject *__pyx_t_3 = NULL;
+  __Pyx_RefNannySetupContext("scroll_transparency", 0);
+
+  /* "Scroll.pyx":225
+ * # ROLL TRANSPARENCY ONLY
+ * def scroll_transparency(surface, dy=0, dx=0):
+ *     return scroll_transparency_c(surface, dy, dx)             # <<<<<<<<<<<<<<
+ * 
+ * # ROLL ARRAY (lateral and vertical)
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_dy); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 225, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_v_dx); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 225, __pyx_L1_error)
+  __pyx_t_3 = __pyx_f_6Scroll_scroll_transparency_c(__pyx_v_surface, __pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 225, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_r = __pyx_t_3;
+  __pyx_t_3 = 0;
+  goto __pyx_L0;
+
+  /* "Scroll.pyx":224
+ * 
+ * # ROLL TRANSPARENCY ONLY
+ * def scroll_transparency(surface, dy=0, dx=0):             # <<<<<<<<<<<<<<
+ *     return scroll_transparency_c(surface, dy, dx)
+ * 
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_AddTraceback("Scroll.scroll_transparency", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "Scroll.pyx":231
+ * # returns a tuple (surface, array)
+ * # See pygame.Surface for more details
+ * def scroll_surface24(surface, dy=0, dx=0):             # <<<<<<<<<<<<<<
+ *     return scroll_surface24_c(surface, dy, dx)
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6Scroll_13scroll_surface24(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_6Scroll_13scroll_surface24 = {"scroll_surface24", (PyCFunction)__pyx_pw_6Scroll_13scroll_surface24, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_6Scroll_13scroll_surface24(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+  PyObject *__pyx_v_surface = 0;
+  PyObject *__pyx_v_dy = 0;
+  PyObject *__pyx_v_dx = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("scroll_surface24 (wrapper)", 0);
+  {
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_surface,&__pyx_n_s_dy,&__pyx_n_s_dx,0};
+    PyObject* values[3] = {0,0,0};
+    values[1] = ((PyObject *)__pyx_int_0);
+    values[2] = ((PyObject *)__pyx_int_0);
+    if (unlikely(__pyx_kwds)) {
+      Py_ssize_t kw_args;
+      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
+      switch (pos_args) {
+        case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
+        CYTHON_FALLTHROUGH;
+        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        CYTHON_FALLTHROUGH;
+        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      kw_args = PyDict_Size(__pyx_kwds);
+      switch (pos_args) {
+        case  0:
+        if (likely((values[0] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_surface)) != 0)) kw_args--;
+        else goto __pyx_L5_argtuple_error;
+        CYTHON_FALLTHROUGH;
+        case  1:
+        if (kw_args > 0) {
+          PyObject* value = PyDict_GetItem(__pyx_kwds, __pyx_n_s_dy);
+          if (value) { values[1] = value; kw_args--; }
+        }
+        CYTHON_FALLTHROUGH;
+        case  2:
+        if (kw_args > 0) {
+          PyObject* value = PyDict_GetItem(__pyx_kwds, __pyx_n_s_dx);
+          if (value) { values[2] = value; kw_args--; }
+        }
+      }
+      if (unlikely(kw_args > 0)) {
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "scroll_surface24") < 0)) __PYX_ERR(0, 231, __pyx_L3_error)
+      }
+    } else {
+      switch (PyTuple_GET_SIZE(__pyx_args)) {
+        case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
+        CYTHON_FALLTHROUGH;
+        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        CYTHON_FALLTHROUGH;
+        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+    }
+    __pyx_v_surface = values[0];
+    __pyx_v_dy = values[1];
+    __pyx_v_dx = values[2];
+  }
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("scroll_surface24", 0, 1, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 231, __pyx_L3_error)
+  __pyx_L3_error:;
+  __Pyx_AddTraceback("Scroll.scroll_surface24", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_6Scroll_12scroll_surface24(__pyx_self, __pyx_v_surface, __pyx_v_dy, __pyx_v_dx);
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6Scroll_12scroll_surface24(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_surface, PyObject *__pyx_v_dy, PyObject *__pyx_v_dx) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  int __pyx_t_1;
+  int __pyx_t_2;
+  PyObject *__pyx_t_3 = NULL;
+  __Pyx_RefNannySetupContext("scroll_surface24", 0);
+
+  /* "Scroll.pyx":232
+ * # See pygame.Surface for more details
+ * def scroll_surface24(surface, dy=0, dx=0):
+ *     return scroll_surface24_c(surface, dy, dx)             # <<<<<<<<<<<<<<
+ * 
+ * # ROLL IMAGE 32-bit
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_dy); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 232, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_v_dx); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 232, __pyx_L1_error)
+  __pyx_t_3 = __pyx_f_6Scroll_scroll_surface24_c(__pyx_v_surface, __pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 232, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_r = __pyx_t_3;
+  __pyx_t_3 = 0;
+  goto __pyx_L0;
+
+  /* "Scroll.pyx":231
+ * # returns a tuple (surface, array)
+ * # See pygame.Surface for more details
+ * def scroll_surface24(surface, dy=0, dx=0):             # <<<<<<<<<<<<<<
+ *     return scroll_surface24_c(surface, dy, dx)
+ * 
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_AddTraceback("Scroll.scroll_surface24", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "Scroll.pyx":236
+ * # ROLL IMAGE 32-bit
+ * # See pygame.Surface for more details
+ * def scroll_surface32(surface, dy=0, dx=0):             # <<<<<<<<<<<<<<
+ *     return scroll_surface32_c(surface, dy, dx)
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6Scroll_15scroll_surface32(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_6Scroll_15scroll_surface32 = {"scroll_surface32", (PyCFunction)__pyx_pw_6Scroll_15scroll_surface32, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_6Scroll_15scroll_surface32(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+  PyObject *__pyx_v_surface = 0;
+  PyObject *__pyx_v_dy = 0;
+  PyObject *__pyx_v_dx = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("scroll_surface32 (wrapper)", 0);
+  {
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_surface,&__pyx_n_s_dy,&__pyx_n_s_dx,0};
+    PyObject* values[3] = {0,0,0};
+    values[1] = ((PyObject *)__pyx_int_0);
+    values[2] = ((PyObject *)__pyx_int_0);
+    if (unlikely(__pyx_kwds)) {
+      Py_ssize_t kw_args;
+      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
+      switch (pos_args) {
+        case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
+        CYTHON_FALLTHROUGH;
+        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        CYTHON_FALLTHROUGH;
+        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      kw_args = PyDict_Size(__pyx_kwds);
+      switch (pos_args) {
+        case  0:
+        if (likely((values[0] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_surface)) != 0)) kw_args--;
+        else goto __pyx_L5_argtuple_error;
+        CYTHON_FALLTHROUGH;
+        case  1:
+        if (kw_args > 0) {
+          PyObject* value = PyDict_GetItem(__pyx_kwds, __pyx_n_s_dy);
+          if (value) { values[1] = value; kw_args--; }
+        }
+        CYTHON_FALLTHROUGH;
+        case  2:
+        if (kw_args > 0) {
+          PyObject* value = PyDict_GetItem(__pyx_kwds, __pyx_n_s_dx);
+          if (value) { values[2] = value; kw_args--; }
+        }
+      }
+      if (unlikely(kw_args > 0)) {
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "scroll_surface32") < 0)) __PYX_ERR(0, 236, __pyx_L3_error)
+      }
+    } else {
+      switch (PyTuple_GET_SIZE(__pyx_args)) {
+        case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
+        CYTHON_FALLTHROUGH;
+        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        CYTHON_FALLTHROUGH;
+        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+    }
+    __pyx_v_surface = values[0];
+    __pyx_v_dy = values[1];
+    __pyx_v_dx = values[2];
+  }
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("scroll_surface32", 0, 1, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 236, __pyx_L3_error)
+  __pyx_L3_error:;
+  __Pyx_AddTraceback("Scroll.scroll_surface32", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_6Scroll_14scroll_surface32(__pyx_self, __pyx_v_surface, __pyx_v_dy, __pyx_v_dx);
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6Scroll_14scroll_surface32(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_surface, PyObject *__pyx_v_dy, PyObject *__pyx_v_dx) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  int __pyx_t_1;
+  int __pyx_t_2;
+  PyObject *__pyx_t_3 = NULL;
+  __Pyx_RefNannySetupContext("scroll_surface32", 0);
+
+  /* "Scroll.pyx":237
+ * # See pygame.Surface for more details
+ * def scroll_surface32(surface, dy=0, dx=0):
+ *     return scroll_surface32_c(surface, dy, dx)             # <<<<<<<<<<<<<<
+ * 
+ * # ---------- NUMPY
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_dy); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 237, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_v_dx); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 237, __pyx_L1_error)
+  __pyx_t_3 = __pyx_f_6Scroll_scroll_surface32_c(__pyx_v_surface, __pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 237, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_r = __pyx_t_3;
+  __pyx_t_3 = 0;
+  goto __pyx_L0;
+
+  /* "Scroll.pyx":236
+ * # ROLL IMAGE 32-bit
+ * # See pygame.Surface for more details
+ * def scroll_surface32(surface, dy=0, dx=0):             # <<<<<<<<<<<<<<
+ *     return scroll_surface32_c(surface, dy, dx)
+ * 
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_AddTraceback("Scroll.scroll_surface32", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "Scroll.pyx":242
+ * # USE NUMPY LIBRARY (NUMPY.ROLL METHOD)
+ * # See pygame.Surface for more details
+ * def roll_surface(surface_, dx=0, dy=0):             # <<<<<<<<<<<<<<
+ *     return roll_surface_c(surface_, dx, dy)
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6Scroll_17roll_surface(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_6Scroll_17roll_surface = {"roll_surface", (PyCFunction)__pyx_pw_6Scroll_17roll_surface, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_6Scroll_17roll_surface(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+  PyObject *__pyx_v_surface_ = 0;
+  PyObject *__pyx_v_dx = 0;
+  PyObject *__pyx_v_dy = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("roll_surface (wrapper)", 0);
+  {
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_surface_2,&__pyx_n_s_dx,&__pyx_n_s_dy,0};
+    PyObject* values[3] = {0,0,0};
+    values[1] = ((PyObject *)__pyx_int_0);
+    values[2] = ((PyObject *)__pyx_int_0);
+    if (unlikely(__pyx_kwds)) {
+      Py_ssize_t kw_args;
+      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
+      switch (pos_args) {
+        case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
+        CYTHON_FALLTHROUGH;
+        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        CYTHON_FALLTHROUGH;
+        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      kw_args = PyDict_Size(__pyx_kwds);
+      switch (pos_args) {
+        case  0:
+        if (likely((values[0] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_surface_2)) != 0)) kw_args--;
+        else goto __pyx_L5_argtuple_error;
+        CYTHON_FALLTHROUGH;
+        case  1:
+        if (kw_args > 0) {
           PyObject* value = PyDict_GetItem(__pyx_kwds, __pyx_n_s_dx);
           if (value) { values[1] = value; kw_args--; }
         }
@@ -3537,7 +3922,7 @@ static PyObject *__pyx_pw_6Scroll_11roll_surface(PyObject *__pyx_self, PyObject 
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "roll_surface") < 0)) __PYX_ERR(0, 208, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "roll_surface") < 0)) __PYX_ERR(0, 242, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -3556,28 +3941,28 @@ static PyObject *__pyx_pw_6Scroll_11roll_surface(PyObject *__pyx_self, PyObject 
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("roll_surface", 0, 1, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 208, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("roll_surface", 0, 1, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 242, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("Scroll.roll_surface", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_6Scroll_10roll_surface(__pyx_self, __pyx_v_surface_, __pyx_v_dx, __pyx_v_dy);
+  __pyx_r = __pyx_pf_6Scroll_16roll_surface(__pyx_self, __pyx_v_surface_, __pyx_v_dx, __pyx_v_dy);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6Scroll_10roll_surface(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_surface_, PyObject *__pyx_v_dx, PyObject *__pyx_v_dy) {
+static PyObject *__pyx_pf_6Scroll_16roll_surface(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_surface_, PyObject *__pyx_v_dx, PyObject *__pyx_v_dy) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   struct __pyx_opt_args_6Scroll_roll_surface_c __pyx_t_2;
   __Pyx_RefNannySetupContext("roll_surface", 0);
 
-  /* "Scroll.pyx":209
- * # USE NUMPY LIBRARY (NUMPY.ROLL METHOD)
+  /* "Scroll.pyx":243
+ * # See pygame.Surface for more details
  * def roll_surface(surface_, dx=0, dy=0):
  *     return roll_surface_c(surface_, dx, dy)             # <<<<<<<<<<<<<<
  * 
@@ -3587,15 +3972,15 @@ static PyObject *__pyx_pf_6Scroll_10roll_surface(CYTHON_UNUSED PyObject *__pyx_s
   __pyx_t_2.__pyx_n = 2;
   __pyx_t_2.dx = __pyx_v_dx;
   __pyx_t_2.dy = __pyx_v_dy;
-  __pyx_t_1 = __pyx_f_6Scroll_roll_surface_c(__pyx_v_surface_, &__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 209, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_6Scroll_roll_surface_c(__pyx_v_surface_, &__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 243, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "Scroll.pyx":208
- * 
+  /* "Scroll.pyx":242
  * # USE NUMPY LIBRARY (NUMPY.ROLL METHOD)
+ * # See pygame.Surface for more details
  * def roll_surface(surface_, dx=0, dy=0):             # <<<<<<<<<<<<<<
  *     return roll_surface_c(surface_, dx, dy)
  * 
@@ -3612,18 +3997,18 @@ static PyObject *__pyx_pf_6Scroll_10roll_surface(CYTHON_UNUSED PyObject *__pyx_s
   return __pyx_r;
 }
 
-/* "Scroll.pyx":211
+/* "Scroll.pyx":245
  *     return roll_surface_c(surface_, dx, dy)
  * 
  * def roll_array(array_, dx=0, dy=0):             # <<<<<<<<<<<<<<
  *     return roll_array_c(array_, dx, dy)
- * 
+ * # ----------------
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6Scroll_13roll_array(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_6Scroll_13roll_array = {"roll_array", (PyCFunction)__pyx_pw_6Scroll_13roll_array, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_6Scroll_13roll_array(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_6Scroll_19roll_array(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_6Scroll_19roll_array = {"roll_array", (PyCFunction)__pyx_pw_6Scroll_19roll_array, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_6Scroll_19roll_array(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_array_ = 0;
   PyObject *__pyx_v_dx = 0;
   PyObject *__pyx_v_dy = 0;
@@ -3667,7 +4052,7 @@ static PyObject *__pyx_pw_6Scroll_13roll_array(PyObject *__pyx_self, PyObject *_
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "roll_array") < 0)) __PYX_ERR(0, 211, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "roll_array") < 0)) __PYX_ERR(0, 245, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -3686,49 +4071,49 @@ static PyObject *__pyx_pw_6Scroll_13roll_array(PyObject *__pyx_self, PyObject *_
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("roll_array", 0, 1, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 211, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("roll_array", 0, 1, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 245, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("Scroll.roll_array", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_6Scroll_12roll_array(__pyx_self, __pyx_v_array_, __pyx_v_dx, __pyx_v_dy);
+  __pyx_r = __pyx_pf_6Scroll_18roll_array(__pyx_self, __pyx_v_array_, __pyx_v_dx, __pyx_v_dy);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6Scroll_12roll_array(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_array_, PyObject *__pyx_v_dx, PyObject *__pyx_v_dy) {
+static PyObject *__pyx_pf_6Scroll_18roll_array(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_array_, PyObject *__pyx_v_dx, PyObject *__pyx_v_dy) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   struct __pyx_opt_args_6Scroll_roll_array_c __pyx_t_2;
   __Pyx_RefNannySetupContext("roll_array", 0);
 
-  /* "Scroll.pyx":212
+  /* "Scroll.pyx":246
  * 
  * def roll_array(array_, dx=0, dy=0):
  *     return roll_array_c(array_, dx, dy)             # <<<<<<<<<<<<<<
+ * # ----------------
  * 
- * # ROLL ARRAY (lateral and vertical)
  */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_2.__pyx_n = 2;
   __pyx_t_2.dx = __pyx_v_dx;
   __pyx_t_2.dy = __pyx_v_dy;
-  __pyx_t_1 = __pyx_f_6Scroll_roll_array_c(__pyx_v_array_, &__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 212, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_6Scroll_roll_array_c(__pyx_v_array_, &__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 246, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "Scroll.pyx":211
+  /* "Scroll.pyx":245
  *     return roll_surface_c(surface_, dx, dy)
  * 
  * def roll_array(array_, dx=0, dy=0):             # <<<<<<<<<<<<<<
  *     return roll_array_c(array_, dx, dy)
- * 
+ * # ----------------
  */
 
   /* function exit code */
@@ -3742,267 +4127,7 @@ static PyObject *__pyx_pf_6Scroll_12roll_array(CYTHON_UNUSED PyObject *__pyx_sel
   return __pyx_r;
 }
 
-/* "Scroll.pyx":216
- * # ROLL ARRAY (lateral and vertical)
- * # Identical algorithm (scroll_array) but returns a tuple (surface, array)
- * def scroll_surface24(surface, dy=0, dx=0):             # <<<<<<<<<<<<<<
- *     return scroll_surface24_c(surface, dy, dx)
- * 
- */
-
-/* Python wrapper */
-static PyObject *__pyx_pw_6Scroll_15scroll_surface24(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_6Scroll_15scroll_surface24 = {"scroll_surface24", (PyCFunction)__pyx_pw_6Scroll_15scroll_surface24, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_6Scroll_15scroll_surface24(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
-  PyObject *__pyx_v_surface = 0;
-  PyObject *__pyx_v_dy = 0;
-  PyObject *__pyx_v_dx = 0;
-  PyObject *__pyx_r = 0;
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("scroll_surface24 (wrapper)", 0);
-  {
-    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_surface_2,&__pyx_n_s_dy,&__pyx_n_s_dx,0};
-    PyObject* values[3] = {0,0,0};
-    values[1] = ((PyObject *)__pyx_int_0);
-    values[2] = ((PyObject *)__pyx_int_0);
-    if (unlikely(__pyx_kwds)) {
-      Py_ssize_t kw_args;
-      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
-      switch (pos_args) {
-        case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
-        CYTHON_FALLTHROUGH;
-        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
-        CYTHON_FALLTHROUGH;
-        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
-        CYTHON_FALLTHROUGH;
-        case  0: break;
-        default: goto __pyx_L5_argtuple_error;
-      }
-      kw_args = PyDict_Size(__pyx_kwds);
-      switch (pos_args) {
-        case  0:
-        if (likely((values[0] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_surface_2)) != 0)) kw_args--;
-        else goto __pyx_L5_argtuple_error;
-        CYTHON_FALLTHROUGH;
-        case  1:
-        if (kw_args > 0) {
-          PyObject* value = PyDict_GetItem(__pyx_kwds, __pyx_n_s_dy);
-          if (value) { values[1] = value; kw_args--; }
-        }
-        CYTHON_FALLTHROUGH;
-        case  2:
-        if (kw_args > 0) {
-          PyObject* value = PyDict_GetItem(__pyx_kwds, __pyx_n_s_dx);
-          if (value) { values[2] = value; kw_args--; }
-        }
-      }
-      if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "scroll_surface24") < 0)) __PYX_ERR(0, 216, __pyx_L3_error)
-      }
-    } else {
-      switch (PyTuple_GET_SIZE(__pyx_args)) {
-        case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
-        CYTHON_FALLTHROUGH;
-        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
-        CYTHON_FALLTHROUGH;
-        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
-        break;
-        default: goto __pyx_L5_argtuple_error;
-      }
-    }
-    __pyx_v_surface = values[0];
-    __pyx_v_dy = values[1];
-    __pyx_v_dx = values[2];
-  }
-  goto __pyx_L4_argument_unpacking_done;
-  __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("scroll_surface24", 0, 1, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 216, __pyx_L3_error)
-  __pyx_L3_error:;
-  __Pyx_AddTraceback("Scroll.scroll_surface24", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __Pyx_RefNannyFinishContext();
-  return NULL;
-  __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_6Scroll_14scroll_surface24(__pyx_self, __pyx_v_surface, __pyx_v_dy, __pyx_v_dx);
-
-  /* function exit code */
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-static PyObject *__pyx_pf_6Scroll_14scroll_surface24(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_surface, PyObject *__pyx_v_dy, PyObject *__pyx_v_dx) {
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  int __pyx_t_1;
-  int __pyx_t_2;
-  PyObject *__pyx_t_3 = NULL;
-  __Pyx_RefNannySetupContext("scroll_surface24", 0);
-
-  /* "Scroll.pyx":217
- * # Identical algorithm (scroll_array) but returns a tuple (surface, array)
- * def scroll_surface24(surface, dy=0, dx=0):
- *     return scroll_surface24_c(surface, dy, dx)             # <<<<<<<<<<<<<<
- * 
- * # ROLL IMAGE 32-bit
- */
-  __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_dy); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 217, __pyx_L1_error)
-  __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_v_dx); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 217, __pyx_L1_error)
-  __pyx_t_3 = __pyx_f_6Scroll_scroll_surface24_c(__pyx_v_surface, __pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 217, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __pyx_r = __pyx_t_3;
-  __pyx_t_3 = 0;
-  goto __pyx_L0;
-
-  /* "Scroll.pyx":216
- * # ROLL ARRAY (lateral and vertical)
- * # Identical algorithm (scroll_array) but returns a tuple (surface, array)
- * def scroll_surface24(surface, dy=0, dx=0):             # <<<<<<<<<<<<<<
- *     return scroll_surface24_c(surface, dy, dx)
- * 
- */
-
-  /* function exit code */
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_AddTraceback("Scroll.scroll_surface24", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = NULL;
-  __pyx_L0:;
-  __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* "Scroll.pyx":220
- * 
- * # ROLL IMAGE 32-bit
- * def scroll_surface32(surface, dy=0, dx=0):             # <<<<<<<<<<<<<<
- *     return scroll_surface32_c(surface, dy, dx)
- * 
- */
-
-/* Python wrapper */
-static PyObject *__pyx_pw_6Scroll_17scroll_surface32(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_6Scroll_17scroll_surface32 = {"scroll_surface32", (PyCFunction)__pyx_pw_6Scroll_17scroll_surface32, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_6Scroll_17scroll_surface32(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
-  PyObject *__pyx_v_surface = 0;
-  PyObject *__pyx_v_dy = 0;
-  PyObject *__pyx_v_dx = 0;
-  PyObject *__pyx_r = 0;
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("scroll_surface32 (wrapper)", 0);
-  {
-    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_surface_2,&__pyx_n_s_dy,&__pyx_n_s_dx,0};
-    PyObject* values[3] = {0,0,0};
-    values[1] = ((PyObject *)__pyx_int_0);
-    values[2] = ((PyObject *)__pyx_int_0);
-    if (unlikely(__pyx_kwds)) {
-      Py_ssize_t kw_args;
-      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
-      switch (pos_args) {
-        case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
-        CYTHON_FALLTHROUGH;
-        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
-        CYTHON_FALLTHROUGH;
-        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
-        CYTHON_FALLTHROUGH;
-        case  0: break;
-        default: goto __pyx_L5_argtuple_error;
-      }
-      kw_args = PyDict_Size(__pyx_kwds);
-      switch (pos_args) {
-        case  0:
-        if (likely((values[0] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_surface_2)) != 0)) kw_args--;
-        else goto __pyx_L5_argtuple_error;
-        CYTHON_FALLTHROUGH;
-        case  1:
-        if (kw_args > 0) {
-          PyObject* value = PyDict_GetItem(__pyx_kwds, __pyx_n_s_dy);
-          if (value) { values[1] = value; kw_args--; }
-        }
-        CYTHON_FALLTHROUGH;
-        case  2:
-        if (kw_args > 0) {
-          PyObject* value = PyDict_GetItem(__pyx_kwds, __pyx_n_s_dx);
-          if (value) { values[2] = value; kw_args--; }
-        }
-      }
-      if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "scroll_surface32") < 0)) __PYX_ERR(0, 220, __pyx_L3_error)
-      }
-    } else {
-      switch (PyTuple_GET_SIZE(__pyx_args)) {
-        case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
-        CYTHON_FALLTHROUGH;
-        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
-        CYTHON_FALLTHROUGH;
-        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
-        break;
-        default: goto __pyx_L5_argtuple_error;
-      }
-    }
-    __pyx_v_surface = values[0];
-    __pyx_v_dy = values[1];
-    __pyx_v_dx = values[2];
-  }
-  goto __pyx_L4_argument_unpacking_done;
-  __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("scroll_surface32", 0, 1, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 220, __pyx_L3_error)
-  __pyx_L3_error:;
-  __Pyx_AddTraceback("Scroll.scroll_surface32", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __Pyx_RefNannyFinishContext();
-  return NULL;
-  __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_6Scroll_16scroll_surface32(__pyx_self, __pyx_v_surface, __pyx_v_dy, __pyx_v_dx);
-
-  /* function exit code */
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-static PyObject *__pyx_pf_6Scroll_16scroll_surface32(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_surface, PyObject *__pyx_v_dy, PyObject *__pyx_v_dx) {
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  int __pyx_t_1;
-  int __pyx_t_2;
-  PyObject *__pyx_t_3 = NULL;
-  __Pyx_RefNannySetupContext("scroll_surface32", 0);
-
-  /* "Scroll.pyx":221
- * # ROLL IMAGE 32-bit
- * def scroll_surface32(surface, dy=0, dx=0):
- *     return scroll_surface32_c(surface, dy, dx)             # <<<<<<<<<<<<<<
- * 
- * #*********************************************
- */
-  __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_dy); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 221, __pyx_L1_error)
-  __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_v_dx); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 221, __pyx_L1_error)
-  __pyx_t_3 = __pyx_f_6Scroll_scroll_surface32_c(__pyx_v_surface, __pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 221, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __pyx_r = __pyx_t_3;
-  __pyx_t_3 = 0;
-  goto __pyx_L0;
-
-  /* "Scroll.pyx":220
- * 
- * # ROLL IMAGE 32-bit
- * def scroll_surface32(surface, dy=0, dx=0):             # <<<<<<<<<<<<<<
- *     return scroll_surface32_c(surface, dy, dx)
- * 
- */
-
-  /* function exit code */
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_AddTraceback("Scroll.scroll_surface32", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = NULL;
-  __pyx_L0:;
-  __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* "Scroll.pyx":232
+/* "Scroll.pyx":258
  * # RETURN A PYTHON OBJECT
  * # Twice faster than numpy.dstack
  * def stack_object(rgb_array_, alpha_, transpose):             # <<<<<<<<<<<<<<
@@ -4011,9 +4136,9 @@ static PyObject *__pyx_pf_6Scroll_16scroll_surface32(CYTHON_UNUSED PyObject *__p
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6Scroll_19stack_object(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_6Scroll_19stack_object = {"stack_object", (PyCFunction)__pyx_pw_6Scroll_19stack_object, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_6Scroll_19stack_object(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_6Scroll_21stack_object(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_6Scroll_21stack_object = {"stack_object", (PyCFunction)__pyx_pw_6Scroll_21stack_object, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_6Scroll_21stack_object(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_rgb_array_ = 0;
   PyObject *__pyx_v_alpha_ = 0;
   PyObject *__pyx_v_transpose = 0;
@@ -4045,17 +4170,17 @@ static PyObject *__pyx_pw_6Scroll_19stack_object(PyObject *__pyx_self, PyObject 
         case  1:
         if (likely((values[1] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_alpha)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("stack_object", 1, 3, 3, 1); __PYX_ERR(0, 232, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("stack_object", 1, 3, 3, 1); __PYX_ERR(0, 258, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_transpose)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("stack_object", 1, 3, 3, 2); __PYX_ERR(0, 232, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("stack_object", 1, 3, 3, 2); __PYX_ERR(0, 258, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "stack_object") < 0)) __PYX_ERR(0, 232, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "stack_object") < 0)) __PYX_ERR(0, 258, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 3) {
       goto __pyx_L5_argtuple_error;
@@ -4070,20 +4195,20 @@ static PyObject *__pyx_pw_6Scroll_19stack_object(PyObject *__pyx_self, PyObject 
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("stack_object", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 232, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("stack_object", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 258, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("Scroll.stack_object", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_6Scroll_18stack_object(__pyx_self, __pyx_v_rgb_array_, __pyx_v_alpha_, __pyx_v_transpose);
+  __pyx_r = __pyx_pf_6Scroll_20stack_object(__pyx_self, __pyx_v_rgb_array_, __pyx_v_alpha_, __pyx_v_transpose);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6Scroll_18stack_object(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_rgb_array_, PyObject *__pyx_v_alpha_, PyObject *__pyx_v_transpose) {
+static PyObject *__pyx_pf_6Scroll_20stack_object(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_rgb_array_, PyObject *__pyx_v_alpha_, PyObject *__pyx_v_transpose) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   __Pyx_memviewslice __pyx_t_1 = { 0, 0, { 0 }, { 0 }, { 0 } };
@@ -4093,7 +4218,7 @@ static PyObject *__pyx_pf_6Scroll_18stack_object(CYTHON_UNUSED PyObject *__pyx_s
   struct __pyx_opt_args_6Scroll_stack_object_c __pyx_t_5;
   __Pyx_RefNannySetupContext("stack_object", 0);
 
-  /* "Scroll.pyx":233
+  /* "Scroll.pyx":259
  * # Twice faster than numpy.dstack
  * def stack_object(rgb_array_, alpha_, transpose):
  *     return stack_object_c(rgb_array_, alpha_, transpose)             # <<<<<<<<<<<<<<
@@ -4102,13 +4227,13 @@ static PyObject *__pyx_pf_6Scroll_18stack_object(CYTHON_UNUSED PyObject *__pyx_s
  */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_1 = __Pyx_PyObject_to_MemoryviewSlice_dsdsds_unsigned_char(__pyx_v_rgb_array_);
-  if (unlikely(!__pyx_t_1.memview)) __PYX_ERR(0, 233, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1.memview)) __PYX_ERR(0, 259, __pyx_L1_error)
   __pyx_t_2 = __Pyx_PyObject_to_MemoryviewSlice_dsds_unsigned_char(__pyx_v_alpha_);
-  if (unlikely(!__pyx_t_2.memview)) __PYX_ERR(0, 233, __pyx_L1_error)
-  __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_v_transpose); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 233, __pyx_L1_error)
+  if (unlikely(!__pyx_t_2.memview)) __PYX_ERR(0, 259, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_v_transpose); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 259, __pyx_L1_error)
   __pyx_t_5.__pyx_n = 1;
   __pyx_t_5.transpose = __pyx_t_3;
-  __pyx_t_4 = __pyx_f_6Scroll_stack_object_c(__pyx_t_1, __pyx_t_2, &__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 233, __pyx_L1_error)
+  __pyx_t_4 = __pyx_f_6Scroll_stack_object_c(__pyx_t_1, __pyx_t_2, &__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 259, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __PYX_XDEC_MEMVIEW(&__pyx_t_1, 1);
   __pyx_t_1.memview = NULL;
@@ -4120,7 +4245,7 @@ static PyObject *__pyx_pf_6Scroll_18stack_object(CYTHON_UNUSED PyObject *__pyx_s
   __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "Scroll.pyx":232
+  /* "Scroll.pyx":258
  * # RETURN A PYTHON OBJECT
  * # Twice faster than numpy.dstack
  * def stack_object(rgb_array_, alpha_, transpose):             # <<<<<<<<<<<<<<
@@ -4141,7 +4266,7 @@ static PyObject *__pyx_pf_6Scroll_18stack_object(CYTHON_UNUSED PyObject *__pyx_s
   return __pyx_r;
 }
 
-/* "Scroll.pyx":238
+/* "Scroll.pyx":264
  * # RETURN A MEMORYVIEW (slightly faster than stack_object)
  * # Twice faster than numpy.dstack
  * def stack_mem(rgb_array_, alpha_, transpose):             # <<<<<<<<<<<<<<
@@ -4150,9 +4275,9 @@ static PyObject *__pyx_pf_6Scroll_18stack_object(CYTHON_UNUSED PyObject *__pyx_s
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6Scroll_21stack_mem(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_6Scroll_21stack_mem = {"stack_mem", (PyCFunction)__pyx_pw_6Scroll_21stack_mem, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_6Scroll_21stack_mem(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_6Scroll_23stack_mem(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_6Scroll_23stack_mem = {"stack_mem", (PyCFunction)__pyx_pw_6Scroll_23stack_mem, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_6Scroll_23stack_mem(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_rgb_array_ = 0;
   PyObject *__pyx_v_alpha_ = 0;
   PyObject *__pyx_v_transpose = 0;
@@ -4184,17 +4309,17 @@ static PyObject *__pyx_pw_6Scroll_21stack_mem(PyObject *__pyx_self, PyObject *__
         case  1:
         if (likely((values[1] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_alpha)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("stack_mem", 1, 3, 3, 1); __PYX_ERR(0, 238, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("stack_mem", 1, 3, 3, 1); __PYX_ERR(0, 264, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_transpose)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("stack_mem", 1, 3, 3, 2); __PYX_ERR(0, 238, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("stack_mem", 1, 3, 3, 2); __PYX_ERR(0, 264, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "stack_mem") < 0)) __PYX_ERR(0, 238, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "stack_mem") < 0)) __PYX_ERR(0, 264, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 3) {
       goto __pyx_L5_argtuple_error;
@@ -4209,20 +4334,20 @@ static PyObject *__pyx_pw_6Scroll_21stack_mem(PyObject *__pyx_self, PyObject *__
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("stack_mem", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 238, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("stack_mem", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 264, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("Scroll.stack_mem", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_6Scroll_20stack_mem(__pyx_self, __pyx_v_rgb_array_, __pyx_v_alpha_, __pyx_v_transpose);
+  __pyx_r = __pyx_pf_6Scroll_22stack_mem(__pyx_self, __pyx_v_rgb_array_, __pyx_v_alpha_, __pyx_v_transpose);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6Scroll_20stack_mem(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_rgb_array_, PyObject *__pyx_v_alpha_, PyObject *__pyx_v_transpose) {
+static PyObject *__pyx_pf_6Scroll_22stack_mem(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_rgb_array_, PyObject *__pyx_v_alpha_, PyObject *__pyx_v_transpose) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   __Pyx_memviewslice __pyx_t_1 = { 0, 0, { 0 }, { 0 }, { 0 } };
@@ -4233,7 +4358,7 @@ static PyObject *__pyx_pf_6Scroll_20stack_mem(CYTHON_UNUSED PyObject *__pyx_self
   PyObject *__pyx_t_6 = NULL;
   __Pyx_RefNannySetupContext("stack_mem", 0);
 
-  /* "Scroll.pyx":239
+  /* "Scroll.pyx":265
  * # Twice faster than numpy.dstack
  * def stack_mem(rgb_array_, alpha_, transpose):
  *     return stack_mem_c(rgb_array_, alpha_, transpose)             # <<<<<<<<<<<<<<
@@ -4242,20 +4367,20 @@ static PyObject *__pyx_pf_6Scroll_20stack_mem(CYTHON_UNUSED PyObject *__pyx_self
  */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_1 = __Pyx_PyObject_to_MemoryviewSlice_dsdsds_unsigned_char(__pyx_v_rgb_array_);
-  if (unlikely(!__pyx_t_1.memview)) __PYX_ERR(0, 239, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1.memview)) __PYX_ERR(0, 265, __pyx_L1_error)
   __pyx_t_2 = __Pyx_PyObject_to_MemoryviewSlice_dsds_unsigned_char(__pyx_v_alpha_);
-  if (unlikely(!__pyx_t_2.memview)) __PYX_ERR(0, 239, __pyx_L1_error)
-  __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_v_transpose); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 239, __pyx_L1_error)
+  if (unlikely(!__pyx_t_2.memview)) __PYX_ERR(0, 265, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_v_transpose); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 265, __pyx_L1_error)
   __pyx_t_5.__pyx_n = 1;
   __pyx_t_5.transpose = __pyx_t_3;
-  __pyx_t_4 = __pyx_f_6Scroll_stack_mem_c(__pyx_t_1, __pyx_t_2, &__pyx_t_5); if (unlikely(!__pyx_t_4.memview)) __PYX_ERR(0, 239, __pyx_L1_error)
+  __pyx_t_4 = __pyx_f_6Scroll_stack_mem_c(__pyx_t_1, __pyx_t_2, &__pyx_t_5); if (unlikely(!__pyx_t_4.memview)) __PYX_ERR(0, 265, __pyx_L1_error)
   __PYX_XDEC_MEMVIEW(&__pyx_t_1, 1);
   __pyx_t_1.memview = NULL;
   __pyx_t_1.data = NULL;
   __PYX_XDEC_MEMVIEW(&__pyx_t_2, 1);
   __pyx_t_2.memview = NULL;
   __pyx_t_2.data = NULL;
-  __pyx_t_6 = __pyx_memoryview_fromslice(__pyx_t_4, 3, (PyObject *(*)(char *)) __pyx_memview_get_unsigned_char, (int (*)(char *, PyObject *)) __pyx_memview_set_unsigned_char, 0);; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 239, __pyx_L1_error)
+  __pyx_t_6 = __pyx_memoryview_fromslice(__pyx_t_4, 3, (PyObject *(*)(char *)) __pyx_memview_get_unsigned_char, (int (*)(char *, PyObject *)) __pyx_memview_set_unsigned_char, 0);; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 265, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __PYX_XDEC_MEMVIEW(&__pyx_t_4, 1);
   __pyx_t_4.memview = NULL;
@@ -4264,7 +4389,7 @@ static PyObject *__pyx_pf_6Scroll_20stack_mem(CYTHON_UNUSED PyObject *__pyx_self
   __pyx_t_6 = 0;
   goto __pyx_L0;
 
-  /* "Scroll.pyx":238
+  /* "Scroll.pyx":264
  * # RETURN A MEMORYVIEW (slightly faster than stack_object)
  * # Twice faster than numpy.dstack
  * def stack_mem(rgb_array_, alpha_, transpose):             # <<<<<<<<<<<<<<
@@ -4286,7 +4411,7 @@ static PyObject *__pyx_pf_6Scroll_20stack_mem(CYTHON_UNUSED PyObject *__pyx_self
   return __pyx_r;
 }
 
-/* "Scroll.pyx":242
+/* "Scroll.pyx":268
  * 
  * # UN-STACK RGBA ARRAY VALUES
  * def unstack_object(rgba_array):             # <<<<<<<<<<<<<<
@@ -4295,27 +4420,27 @@ static PyObject *__pyx_pf_6Scroll_20stack_mem(CYTHON_UNUSED PyObject *__pyx_self
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6Scroll_23unstack_object(PyObject *__pyx_self, PyObject *__pyx_v_rgba_array); /*proto*/
-static PyMethodDef __pyx_mdef_6Scroll_23unstack_object = {"unstack_object", (PyCFunction)__pyx_pw_6Scroll_23unstack_object, METH_O, 0};
-static PyObject *__pyx_pw_6Scroll_23unstack_object(PyObject *__pyx_self, PyObject *__pyx_v_rgba_array) {
+static PyObject *__pyx_pw_6Scroll_25unstack_object(PyObject *__pyx_self, PyObject *__pyx_v_rgba_array); /*proto*/
+static PyMethodDef __pyx_mdef_6Scroll_25unstack_object = {"unstack_object", (PyCFunction)__pyx_pw_6Scroll_25unstack_object, METH_O, 0};
+static PyObject *__pyx_pw_6Scroll_25unstack_object(PyObject *__pyx_self, PyObject *__pyx_v_rgba_array) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("unstack_object (wrapper)", 0);
-  __pyx_r = __pyx_pf_6Scroll_22unstack_object(__pyx_self, ((PyObject *)__pyx_v_rgba_array));
+  __pyx_r = __pyx_pf_6Scroll_24unstack_object(__pyx_self, ((PyObject *)__pyx_v_rgba_array));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6Scroll_22unstack_object(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_rgba_array) {
+static PyObject *__pyx_pf_6Scroll_24unstack_object(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_rgba_array) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   __Pyx_memviewslice __pyx_t_1 = { 0, 0, { 0 }, { 0 }, { 0 } };
   PyObject *__pyx_t_2 = NULL;
   __Pyx_RefNannySetupContext("unstack_object", 0);
 
-  /* "Scroll.pyx":243
+  /* "Scroll.pyx":269
  * # UN-STACK RGBA ARRAY VALUES
  * def unstack_object(rgba_array):
  *     return unstack_object_c(rgba_array)             # <<<<<<<<<<<<<<
@@ -4324,8 +4449,8 @@ static PyObject *__pyx_pf_6Scroll_22unstack_object(CYTHON_UNUSED PyObject *__pyx
  */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_1 = __Pyx_PyObject_to_MemoryviewSlice_dsdsds_unsigned_char(__pyx_v_rgba_array);
-  if (unlikely(!__pyx_t_1.memview)) __PYX_ERR(0, 243, __pyx_L1_error)
-  __pyx_t_2 = __pyx_f_6Scroll_unstack_object_c(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 243, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1.memview)) __PYX_ERR(0, 269, __pyx_L1_error)
+  __pyx_t_2 = __pyx_f_6Scroll_unstack_object_c(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 269, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __PYX_XDEC_MEMVIEW(&__pyx_t_1, 1);
   __pyx_t_1.memview = NULL;
@@ -4334,7 +4459,7 @@ static PyObject *__pyx_pf_6Scroll_22unstack_object(CYTHON_UNUSED PyObject *__pyx
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "Scroll.pyx":242
+  /* "Scroll.pyx":268
  * 
  * # UN-STACK RGBA ARRAY VALUES
  * def unstack_object(rgba_array):             # <<<<<<<<<<<<<<
@@ -4354,7 +4479,7 @@ static PyObject *__pyx_pf_6Scroll_22unstack_object(CYTHON_UNUSED PyObject *__pyx
   return __pyx_r;
 }
 
-/* "Scroll.pyx":249
+/* "Scroll.pyx":275
  * 
  * # STACK RGB AND ALPHA BUFFERS
  * def stack_buffer(rgb_array_, alpha_, w, h, transpose):             # <<<<<<<<<<<<<<
@@ -4363,9 +4488,9 @@ static PyObject *__pyx_pf_6Scroll_22unstack_object(CYTHON_UNUSED PyObject *__pyx
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6Scroll_25stack_buffer(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_6Scroll_25stack_buffer = {"stack_buffer", (PyCFunction)__pyx_pw_6Scroll_25stack_buffer, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_6Scroll_25stack_buffer(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_6Scroll_27stack_buffer(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_6Scroll_27stack_buffer = {"stack_buffer", (PyCFunction)__pyx_pw_6Scroll_27stack_buffer, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_6Scroll_27stack_buffer(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_rgb_array_ = 0;
   PyObject *__pyx_v_alpha_ = 0;
   PyObject *__pyx_v_w = 0;
@@ -4403,29 +4528,29 @@ static PyObject *__pyx_pw_6Scroll_25stack_buffer(PyObject *__pyx_self, PyObject 
         case  1:
         if (likely((values[1] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_alpha)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("stack_buffer", 1, 5, 5, 1); __PYX_ERR(0, 249, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("stack_buffer", 1, 5, 5, 1); __PYX_ERR(0, 275, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_w)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("stack_buffer", 1, 5, 5, 2); __PYX_ERR(0, 249, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("stack_buffer", 1, 5, 5, 2); __PYX_ERR(0, 275, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
         if (likely((values[3] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_h)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("stack_buffer", 1, 5, 5, 3); __PYX_ERR(0, 249, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("stack_buffer", 1, 5, 5, 3); __PYX_ERR(0, 275, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  4:
         if (likely((values[4] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_transpose)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("stack_buffer", 1, 5, 5, 4); __PYX_ERR(0, 249, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("stack_buffer", 1, 5, 5, 4); __PYX_ERR(0, 275, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "stack_buffer") < 0)) __PYX_ERR(0, 249, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "stack_buffer") < 0)) __PYX_ERR(0, 275, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 5) {
       goto __pyx_L5_argtuple_error;
@@ -4444,20 +4569,20 @@ static PyObject *__pyx_pw_6Scroll_25stack_buffer(PyObject *__pyx_self, PyObject 
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("stack_buffer", 1, 5, 5, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 249, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("stack_buffer", 1, 5, 5, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 275, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("Scroll.stack_buffer", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_6Scroll_24stack_buffer(__pyx_self, __pyx_v_rgb_array_, __pyx_v_alpha_, __pyx_v_w, __pyx_v_h, __pyx_v_transpose);
+  __pyx_r = __pyx_pf_6Scroll_26stack_buffer(__pyx_self, __pyx_v_rgb_array_, __pyx_v_alpha_, __pyx_v_w, __pyx_v_h, __pyx_v_transpose);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6Scroll_24stack_buffer(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_rgb_array_, PyObject *__pyx_v_alpha_, PyObject *__pyx_v_w, PyObject *__pyx_v_h, PyObject *__pyx_v_transpose) {
+static PyObject *__pyx_pf_6Scroll_26stack_buffer(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_rgb_array_, PyObject *__pyx_v_alpha_, PyObject *__pyx_v_w, PyObject *__pyx_v_h, PyObject *__pyx_v_transpose) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
@@ -4468,7 +4593,7 @@ static PyObject *__pyx_pf_6Scroll_24stack_buffer(CYTHON_UNUSED PyObject *__pyx_s
   PyObject *__pyx_t_6 = NULL;
   __Pyx_RefNannySetupContext("stack_buffer", 0);
 
-  /* "Scroll.pyx":250
+  /* "Scroll.pyx":276
  * # STACK RGB AND ALPHA BUFFERS
  * def stack_buffer(rgb_array_, alpha_, w, h, transpose):
  *     return stack_buffer_c(rgb_array_, alpha_, w, h, transpose)             # <<<<<<<<<<<<<<
@@ -4476,13 +4601,13 @@ static PyObject *__pyx_pf_6Scroll_24stack_buffer(CYTHON_UNUSED PyObject *__pyx_s
  * # UN-STACK/SPLIT RGBA BUFFER WITH RGBA INTO
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_w); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 250, __pyx_L1_error)
-  __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_v_h); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 250, __pyx_L1_error)
-  __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_v_transpose); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 250, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_w); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 276, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_v_h); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 276, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_v_transpose); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 276, __pyx_L1_error)
   __pyx_t_5.__pyx_n = 1;
   __pyx_t_5.transpose = __pyx_t_3;
-  __pyx_t_4 = __pyx_f_6Scroll_stack_buffer_c(__pyx_v_rgb_array_, __pyx_v_alpha_, __pyx_t_1, __pyx_t_2, &__pyx_t_5); if (unlikely(!__pyx_t_4.memview)) __PYX_ERR(0, 250, __pyx_L1_error)
-  __pyx_t_6 = __pyx_memoryview_fromslice(__pyx_t_4, 1, (PyObject *(*)(char *)) __pyx_memview_get_unsigned_char, (int (*)(char *, PyObject *)) __pyx_memview_set_unsigned_char, 0);; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 250, __pyx_L1_error)
+  __pyx_t_4 = __pyx_f_6Scroll_stack_buffer_c(__pyx_v_rgb_array_, __pyx_v_alpha_, __pyx_t_1, __pyx_t_2, &__pyx_t_5); if (unlikely(!__pyx_t_4.memview)) __PYX_ERR(0, 276, __pyx_L1_error)
+  __pyx_t_6 = __pyx_memoryview_fromslice(__pyx_t_4, 1, (PyObject *(*)(char *)) __pyx_memview_get_unsigned_char, (int (*)(char *, PyObject *)) __pyx_memview_set_unsigned_char, 0);; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 276, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __PYX_XDEC_MEMVIEW(&__pyx_t_4, 1);
   __pyx_t_4.memview = NULL;
@@ -4491,7 +4616,7 @@ static PyObject *__pyx_pf_6Scroll_24stack_buffer(CYTHON_UNUSED PyObject *__pyx_s
   __pyx_t_6 = 0;
   goto __pyx_L0;
 
-  /* "Scroll.pyx":249
+  /* "Scroll.pyx":275
  * 
  * # STACK RGB AND ALPHA BUFFERS
  * def stack_buffer(rgb_array_, alpha_, w, h, transpose):             # <<<<<<<<<<<<<<
@@ -4511,7 +4636,7 @@ static PyObject *__pyx_pf_6Scroll_24stack_buffer(CYTHON_UNUSED PyObject *__pyx_s
   return __pyx_r;
 }
 
-/* "Scroll.pyx":254
+/* "Scroll.pyx":280
  * # UN-STACK/SPLIT RGBA BUFFER WITH RGBA INTO
  * # (RGB BUFFER & ALPHA_BUFFER)
  * def unstack_buffer(rgba_buffer_, w, h):             # <<<<<<<<<<<<<<
@@ -4520,9 +4645,9 @@ static PyObject *__pyx_pf_6Scroll_24stack_buffer(CYTHON_UNUSED PyObject *__pyx_s
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6Scroll_27unstack_buffer(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_6Scroll_27unstack_buffer = {"unstack_buffer", (PyCFunction)__pyx_pw_6Scroll_27unstack_buffer, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_6Scroll_27unstack_buffer(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_6Scroll_29unstack_buffer(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_6Scroll_29unstack_buffer = {"unstack_buffer", (PyCFunction)__pyx_pw_6Scroll_29unstack_buffer, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_6Scroll_29unstack_buffer(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_rgba_buffer_ = 0;
   PyObject *__pyx_v_w = 0;
   PyObject *__pyx_v_h = 0;
@@ -4554,17 +4679,17 @@ static PyObject *__pyx_pw_6Scroll_27unstack_buffer(PyObject *__pyx_self, PyObjec
         case  1:
         if (likely((values[1] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_w)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("unstack_buffer", 1, 3, 3, 1); __PYX_ERR(0, 254, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("unstack_buffer", 1, 3, 3, 1); __PYX_ERR(0, 280, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_h)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("unstack_buffer", 1, 3, 3, 2); __PYX_ERR(0, 254, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("unstack_buffer", 1, 3, 3, 2); __PYX_ERR(0, 280, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "unstack_buffer") < 0)) __PYX_ERR(0, 254, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "unstack_buffer") < 0)) __PYX_ERR(0, 280, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 3) {
       goto __pyx_L5_argtuple_error;
@@ -4579,20 +4704,20 @@ static PyObject *__pyx_pw_6Scroll_27unstack_buffer(PyObject *__pyx_self, PyObjec
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("unstack_buffer", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 254, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("unstack_buffer", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 280, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("Scroll.unstack_buffer", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_6Scroll_26unstack_buffer(__pyx_self, __pyx_v_rgba_buffer_, __pyx_v_w, __pyx_v_h);
+  __pyx_r = __pyx_pf_6Scroll_28unstack_buffer(__pyx_self, __pyx_v_rgba_buffer_, __pyx_v_w, __pyx_v_h);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6Scroll_26unstack_buffer(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_rgba_buffer_, PyObject *__pyx_v_w, PyObject *__pyx_v_h) {
+static PyObject *__pyx_pf_6Scroll_28unstack_buffer(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_rgba_buffer_, PyObject *__pyx_v_w, PyObject *__pyx_v_h) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   __Pyx_memviewslice __pyx_t_1 = { 0, 0, { 0 }, { 0 }, { 0 } };
@@ -4601,7 +4726,7 @@ static PyObject *__pyx_pf_6Scroll_26unstack_buffer(CYTHON_UNUSED PyObject *__pyx
   PyObject *__pyx_t_4 = NULL;
   __Pyx_RefNannySetupContext("unstack_buffer", 0);
 
-  /* "Scroll.pyx":255
+  /* "Scroll.pyx":281
  * # (RGB BUFFER & ALPHA_BUFFER)
  * def unstack_buffer(rgba_buffer_, w, h):
  *     return unstack_buffer_c(rgba_buffer_, w, h)             # <<<<<<<<<<<<<<
@@ -4610,10 +4735,10 @@ static PyObject *__pyx_pf_6Scroll_26unstack_buffer(CYTHON_UNUSED PyObject *__pyx
  */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_1 = __Pyx_PyObject_to_MemoryviewSlice_ds_unsigned_char(__pyx_v_rgba_buffer_);
-  if (unlikely(!__pyx_t_1.memview)) __PYX_ERR(0, 255, __pyx_L1_error)
-  __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_v_w); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 255, __pyx_L1_error)
-  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_v_h); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 255, __pyx_L1_error)
-  __pyx_t_4 = __pyx_f_6Scroll_unstack_buffer_c(__pyx_t_1, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 255, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1.memview)) __PYX_ERR(0, 281, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_v_w); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 281, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_v_h); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 281, __pyx_L1_error)
+  __pyx_t_4 = __pyx_f_6Scroll_unstack_buffer_c(__pyx_t_1, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 281, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __PYX_XDEC_MEMVIEW(&__pyx_t_1, 1);
   __pyx_t_1.memview = NULL;
@@ -4622,7 +4747,7 @@ static PyObject *__pyx_pf_6Scroll_26unstack_buffer(CYTHON_UNUSED PyObject *__pyx
   __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "Scroll.pyx":254
+  /* "Scroll.pyx":280
  * # UN-STACK/SPLIT RGBA BUFFER WITH RGBA INTO
  * # (RGB BUFFER & ALPHA_BUFFER)
  * def unstack_buffer(rgba_buffer_, w, h):             # <<<<<<<<<<<<<<
@@ -4642,29 +4767,29 @@ static PyObject *__pyx_pf_6Scroll_26unstack_buffer(CYTHON_UNUSED PyObject *__pyx
   return __pyx_r;
 }
 
-/* "Scroll.pyx":264
- * # TRANSPOSE ROWS AND COLUMNS ARRAY (W, H, 3)
+/* "Scroll.pyx":291
  * # !! Method slower than numpy.transpose(1, 0, 2)
+ * # Use it if you don't want to import numpy
  * def transpose24(rgb_array_):             # <<<<<<<<<<<<<<
  *     return transpose24_c(rgb_array_)
  * 
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6Scroll_29transpose24(PyObject *__pyx_self, PyObject *__pyx_v_rgb_array_); /*proto*/
-static PyMethodDef __pyx_mdef_6Scroll_29transpose24 = {"transpose24", (PyCFunction)__pyx_pw_6Scroll_29transpose24, METH_O, 0};
-static PyObject *__pyx_pw_6Scroll_29transpose24(PyObject *__pyx_self, PyObject *__pyx_v_rgb_array_) {
+static PyObject *__pyx_pw_6Scroll_31transpose24(PyObject *__pyx_self, PyObject *__pyx_v_rgb_array_); /*proto*/
+static PyMethodDef __pyx_mdef_6Scroll_31transpose24 = {"transpose24", (PyCFunction)__pyx_pw_6Scroll_31transpose24, METH_O, 0};
+static PyObject *__pyx_pw_6Scroll_31transpose24(PyObject *__pyx_self, PyObject *__pyx_v_rgb_array_) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("transpose24 (wrapper)", 0);
-  __pyx_r = __pyx_pf_6Scroll_28transpose24(__pyx_self, ((PyObject *)__pyx_v_rgb_array_));
+  __pyx_r = __pyx_pf_6Scroll_30transpose24(__pyx_self, ((PyObject *)__pyx_v_rgb_array_));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6Scroll_28transpose24(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_rgb_array_) {
+static PyObject *__pyx_pf_6Scroll_30transpose24(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_rgb_array_) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   __Pyx_memviewslice __pyx_t_1 = { 0, 0, { 0 }, { 0 }, { 0 } };
@@ -4672,8 +4797,8 @@ static PyObject *__pyx_pf_6Scroll_28transpose24(CYTHON_UNUSED PyObject *__pyx_se
   PyObject *__pyx_t_3 = NULL;
   __Pyx_RefNannySetupContext("transpose24", 0);
 
-  /* "Scroll.pyx":265
- * # !! Method slower than numpy.transpose(1, 0, 2)
+  /* "Scroll.pyx":292
+ * # Use it if you don't want to import numpy
  * def transpose24(rgb_array_):
  *     return transpose24_c(rgb_array_)             # <<<<<<<<<<<<<<
  * 
@@ -4681,12 +4806,12 @@ static PyObject *__pyx_pf_6Scroll_28transpose24(CYTHON_UNUSED PyObject *__pyx_se
  */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_1 = __Pyx_PyObject_to_MemoryviewSlice_dsdsds_unsigned_char(__pyx_v_rgb_array_);
-  if (unlikely(!__pyx_t_1.memview)) __PYX_ERR(0, 265, __pyx_L1_error)
-  __pyx_t_2 = __pyx_f_6Scroll_transpose24_c(__pyx_t_1); if (unlikely(!__pyx_t_2.memview)) __PYX_ERR(0, 265, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1.memview)) __PYX_ERR(0, 292, __pyx_L1_error)
+  __pyx_t_2 = __pyx_f_6Scroll_transpose24_c(__pyx_t_1); if (unlikely(!__pyx_t_2.memview)) __PYX_ERR(0, 292, __pyx_L1_error)
   __PYX_XDEC_MEMVIEW(&__pyx_t_1, 1);
   __pyx_t_1.memview = NULL;
   __pyx_t_1.data = NULL;
-  __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_2, 3, (PyObject *(*)(char *)) __pyx_memview_get_unsigned_char, (int (*)(char *, PyObject *)) __pyx_memview_set_unsigned_char, 0);; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 265, __pyx_L1_error)
+  __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_2, 3, (PyObject *(*)(char *)) __pyx_memview_get_unsigned_char, (int (*)(char *, PyObject *)) __pyx_memview_set_unsigned_char, 0);; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 292, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __PYX_XDEC_MEMVIEW(&__pyx_t_2, 1);
   __pyx_t_2.memview = NULL;
@@ -4695,9 +4820,9 @@ static PyObject *__pyx_pf_6Scroll_28transpose24(CYTHON_UNUSED PyObject *__pyx_se
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
-  /* "Scroll.pyx":264
- * # TRANSPOSE ROWS AND COLUMNS ARRAY (W, H, 3)
+  /* "Scroll.pyx":291
  * # !! Method slower than numpy.transpose(1, 0, 2)
+ * # Use it if you don't want to import numpy
  * def transpose24(rgb_array_):             # <<<<<<<<<<<<<<
  *     return transpose24_c(rgb_array_)
  * 
@@ -4716,29 +4841,29 @@ static PyObject *__pyx_pf_6Scroll_28transpose24(CYTHON_UNUSED PyObject *__pyx_se
   return __pyx_r;
 }
 
-/* "Scroll.pyx":269
- * # TRANSPOSE ROWS AND COLUMNS ARRAY (W, H, 4)
+/* "Scroll.pyx":297
  * # !! Method slower than numpy.transpose(1, 0, 2)
+ * # Use it if you don't want to import numpy
  * def transpose32(rgb_array_):             # <<<<<<<<<<<<<<
  *     return transpose32_c(rgb_array_)
  * 
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6Scroll_31transpose32(PyObject *__pyx_self, PyObject *__pyx_v_rgb_array_); /*proto*/
-static PyMethodDef __pyx_mdef_6Scroll_31transpose32 = {"transpose32", (PyCFunction)__pyx_pw_6Scroll_31transpose32, METH_O, 0};
-static PyObject *__pyx_pw_6Scroll_31transpose32(PyObject *__pyx_self, PyObject *__pyx_v_rgb_array_) {
+static PyObject *__pyx_pw_6Scroll_33transpose32(PyObject *__pyx_self, PyObject *__pyx_v_rgb_array_); /*proto*/
+static PyMethodDef __pyx_mdef_6Scroll_33transpose32 = {"transpose32", (PyCFunction)__pyx_pw_6Scroll_33transpose32, METH_O, 0};
+static PyObject *__pyx_pw_6Scroll_33transpose32(PyObject *__pyx_self, PyObject *__pyx_v_rgb_array_) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("transpose32 (wrapper)", 0);
-  __pyx_r = __pyx_pf_6Scroll_30transpose32(__pyx_self, ((PyObject *)__pyx_v_rgb_array_));
+  __pyx_r = __pyx_pf_6Scroll_32transpose32(__pyx_self, ((PyObject *)__pyx_v_rgb_array_));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6Scroll_30transpose32(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_rgb_array_) {
+static PyObject *__pyx_pf_6Scroll_32transpose32(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_rgb_array_) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   __Pyx_memviewslice __pyx_t_1 = { 0, 0, { 0 }, { 0 }, { 0 } };
@@ -4746,21 +4871,21 @@ static PyObject *__pyx_pf_6Scroll_30transpose32(CYTHON_UNUSED PyObject *__pyx_se
   PyObject *__pyx_t_3 = NULL;
   __Pyx_RefNannySetupContext("transpose32", 0);
 
-  /* "Scroll.pyx":270
- * # !! Method slower than numpy.transpose(1, 0, 2)
+  /* "Scroll.pyx":298
+ * # Use it if you don't want to import numpy
  * def transpose32(rgb_array_):
  *     return transpose32_c(rgb_array_)             # <<<<<<<<<<<<<<
  * 
- * # TRANSPOSE/ FLIP BUFFER (compatible 24-bit)
+ * # ----------------END INTERFACE -----------------
  */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_1 = __Pyx_PyObject_to_MemoryviewSlice_dsdsds_unsigned_char(__pyx_v_rgb_array_);
-  if (unlikely(!__pyx_t_1.memview)) __PYX_ERR(0, 270, __pyx_L1_error)
-  __pyx_t_2 = __pyx_f_6Scroll_transpose32_c(__pyx_t_1); if (unlikely(!__pyx_t_2.memview)) __PYX_ERR(0, 270, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1.memview)) __PYX_ERR(0, 298, __pyx_L1_error)
+  __pyx_t_2 = __pyx_f_6Scroll_transpose32_c(__pyx_t_1); if (unlikely(!__pyx_t_2.memview)) __PYX_ERR(0, 298, __pyx_L1_error)
   __PYX_XDEC_MEMVIEW(&__pyx_t_1, 1);
   __pyx_t_1.memview = NULL;
   __pyx_t_1.data = NULL;
-  __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_2, 3, (PyObject *(*)(char *)) __pyx_memview_get_unsigned_char, (int (*)(char *, PyObject *)) __pyx_memview_set_unsigned_char, 0);; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 270, __pyx_L1_error)
+  __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_2, 3, (PyObject *(*)(char *)) __pyx_memview_get_unsigned_char, (int (*)(char *, PyObject *)) __pyx_memview_set_unsigned_char, 0);; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 298, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __PYX_XDEC_MEMVIEW(&__pyx_t_2, 1);
   __pyx_t_2.memview = NULL;
@@ -4769,9 +4894,9 @@ static PyObject *__pyx_pf_6Scroll_30transpose32(CYTHON_UNUSED PyObject *__pyx_se
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
-  /* "Scroll.pyx":269
- * # TRANSPOSE ROWS AND COLUMNS ARRAY (W, H, 4)
+  /* "Scroll.pyx":297
  * # !! Method slower than numpy.transpose(1, 0, 2)
+ * # Use it if you don't want to import numpy
  * def transpose32(rgb_array_):             # <<<<<<<<<<<<<<
  *     return transpose32_c(rgb_array_)
  * 
@@ -4790,317 +4915,7 @@ static PyObject *__pyx_pf_6Scroll_30transpose32(CYTHON_UNUSED PyObject *__pyx_se
   return __pyx_r;
 }
 
-/* "Scroll.pyx":273
- * 
- * # TRANSPOSE/ FLIP BUFFER (compatible 24-bit)
- * def vfb24(source, target, width, height):             # <<<<<<<<<<<<<<
- *     return vfb24_c(source, target, width, height)
- * 
- */
-
-/* Python wrapper */
-static PyObject *__pyx_pw_6Scroll_33vfb24(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_6Scroll_33vfb24 = {"vfb24", (PyCFunction)__pyx_pw_6Scroll_33vfb24, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_6Scroll_33vfb24(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
-  PyObject *__pyx_v_source = 0;
-  PyObject *__pyx_v_target = 0;
-  PyObject *__pyx_v_width = 0;
-  PyObject *__pyx_v_height = 0;
-  PyObject *__pyx_r = 0;
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("vfb24 (wrapper)", 0);
-  {
-    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_source,&__pyx_n_s_target,&__pyx_n_s_width,&__pyx_n_s_height,0};
-    PyObject* values[4] = {0,0,0,0};
-    if (unlikely(__pyx_kwds)) {
-      Py_ssize_t kw_args;
-      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
-      switch (pos_args) {
-        case  4: values[3] = PyTuple_GET_ITEM(__pyx_args, 3);
-        CYTHON_FALLTHROUGH;
-        case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
-        CYTHON_FALLTHROUGH;
-        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
-        CYTHON_FALLTHROUGH;
-        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
-        CYTHON_FALLTHROUGH;
-        case  0: break;
-        default: goto __pyx_L5_argtuple_error;
-      }
-      kw_args = PyDict_Size(__pyx_kwds);
-      switch (pos_args) {
-        case  0:
-        if (likely((values[0] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_source)) != 0)) kw_args--;
-        else goto __pyx_L5_argtuple_error;
-        CYTHON_FALLTHROUGH;
-        case  1:
-        if (likely((values[1] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_target)) != 0)) kw_args--;
-        else {
-          __Pyx_RaiseArgtupleInvalid("vfb24", 1, 4, 4, 1); __PYX_ERR(0, 273, __pyx_L3_error)
-        }
-        CYTHON_FALLTHROUGH;
-        case  2:
-        if (likely((values[2] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_width)) != 0)) kw_args--;
-        else {
-          __Pyx_RaiseArgtupleInvalid("vfb24", 1, 4, 4, 2); __PYX_ERR(0, 273, __pyx_L3_error)
-        }
-        CYTHON_FALLTHROUGH;
-        case  3:
-        if (likely((values[3] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_height)) != 0)) kw_args--;
-        else {
-          __Pyx_RaiseArgtupleInvalid("vfb24", 1, 4, 4, 3); __PYX_ERR(0, 273, __pyx_L3_error)
-        }
-      }
-      if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "vfb24") < 0)) __PYX_ERR(0, 273, __pyx_L3_error)
-      }
-    } else if (PyTuple_GET_SIZE(__pyx_args) != 4) {
-      goto __pyx_L5_argtuple_error;
-    } else {
-      values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
-      values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
-      values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
-      values[3] = PyTuple_GET_ITEM(__pyx_args, 3);
-    }
-    __pyx_v_source = values[0];
-    __pyx_v_target = values[1];
-    __pyx_v_width = values[2];
-    __pyx_v_height = values[3];
-  }
-  goto __pyx_L4_argument_unpacking_done;
-  __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("vfb24", 1, 4, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 273, __pyx_L3_error)
-  __pyx_L3_error:;
-  __Pyx_AddTraceback("Scroll.vfb24", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __Pyx_RefNannyFinishContext();
-  return NULL;
-  __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_6Scroll_32vfb24(__pyx_self, __pyx_v_source, __pyx_v_target, __pyx_v_width, __pyx_v_height);
-
-  /* function exit code */
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-static PyObject *__pyx_pf_6Scroll_32vfb24(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_source, PyObject *__pyx_v_target, PyObject *__pyx_v_width, PyObject *__pyx_v_height) {
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  __Pyx_memviewslice __pyx_t_1 = { 0, 0, { 0 }, { 0 }, { 0 } };
-  __Pyx_memviewslice __pyx_t_2 = { 0, 0, { 0 }, { 0 }, { 0 } };
-  int __pyx_t_3;
-  int __pyx_t_4;
-  __Pyx_memviewslice __pyx_t_5 = { 0, 0, { 0 }, { 0 }, { 0 } };
-  PyObject *__pyx_t_6 = NULL;
-  __Pyx_RefNannySetupContext("vfb24", 0);
-
-  /* "Scroll.pyx":274
- * # TRANSPOSE/ FLIP BUFFER (compatible 24-bit)
- * def vfb24(source, target, width, height):
- *     return vfb24_c(source, target, width, height)             # <<<<<<<<<<<<<<
- * 
- * # TRANSPOSE / FLIP BUFFER (compatible 32-bit)
- */
-  __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_to_MemoryviewSlice_ds_unsigned_char(__pyx_v_source);
-  if (unlikely(!__pyx_t_1.memview)) __PYX_ERR(0, 274, __pyx_L1_error)
-  __pyx_t_2 = __Pyx_PyObject_to_MemoryviewSlice_ds_unsigned_char(__pyx_v_target);
-  if (unlikely(!__pyx_t_2.memview)) __PYX_ERR(0, 274, __pyx_L1_error)
-  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_v_width); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 274, __pyx_L1_error)
-  __pyx_t_4 = __Pyx_PyInt_As_int(__pyx_v_height); if (unlikely((__pyx_t_4 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 274, __pyx_L1_error)
-  __pyx_t_5 = __pyx_f_6Scroll_vfb24_c(__pyx_t_1, __pyx_t_2, __pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_5.memview)) __PYX_ERR(0, 274, __pyx_L1_error)
-  __PYX_XDEC_MEMVIEW(&__pyx_t_1, 1);
-  __pyx_t_1.memview = NULL;
-  __pyx_t_1.data = NULL;
-  __PYX_XDEC_MEMVIEW(&__pyx_t_2, 1);
-  __pyx_t_2.memview = NULL;
-  __pyx_t_2.data = NULL;
-  __pyx_t_6 = __pyx_memoryview_fromslice(__pyx_t_5, 1, (PyObject *(*)(char *)) __pyx_memview_get_unsigned_char, (int (*)(char *, PyObject *)) __pyx_memview_set_unsigned_char, 0);; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 274, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_6);
-  __PYX_XDEC_MEMVIEW(&__pyx_t_5, 1);
-  __pyx_t_5.memview = NULL;
-  __pyx_t_5.data = NULL;
-  __pyx_r = __pyx_t_6;
-  __pyx_t_6 = 0;
-  goto __pyx_L0;
-
-  /* "Scroll.pyx":273
- * 
- * # TRANSPOSE/ FLIP BUFFER (compatible 24-bit)
- * def vfb24(source, target, width, height):             # <<<<<<<<<<<<<<
- *     return vfb24_c(source, target, width, height)
- * 
- */
-
-  /* function exit code */
-  __pyx_L1_error:;
-  __PYX_XDEC_MEMVIEW(&__pyx_t_1, 1);
-  __PYX_XDEC_MEMVIEW(&__pyx_t_2, 1);
-  __PYX_XDEC_MEMVIEW(&__pyx_t_5, 1);
-  __Pyx_XDECREF(__pyx_t_6);
-  __Pyx_AddTraceback("Scroll.vfb24", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = NULL;
-  __pyx_L0:;
-  __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* "Scroll.pyx":277
- * 
- * # TRANSPOSE / FLIP BUFFER (compatible 32-bit)
- * def vfb32(source, target, width, height):             # <<<<<<<<<<<<<<
- *     return vfb32_c(source, target, width, height)
- * 
- */
-
-/* Python wrapper */
-static PyObject *__pyx_pw_6Scroll_35vfb32(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_6Scroll_35vfb32 = {"vfb32", (PyCFunction)__pyx_pw_6Scroll_35vfb32, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_6Scroll_35vfb32(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
-  PyObject *__pyx_v_source = 0;
-  PyObject *__pyx_v_target = 0;
-  PyObject *__pyx_v_width = 0;
-  PyObject *__pyx_v_height = 0;
-  PyObject *__pyx_r = 0;
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("vfb32 (wrapper)", 0);
-  {
-    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_source,&__pyx_n_s_target,&__pyx_n_s_width,&__pyx_n_s_height,0};
-    PyObject* values[4] = {0,0,0,0};
-    if (unlikely(__pyx_kwds)) {
-      Py_ssize_t kw_args;
-      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
-      switch (pos_args) {
-        case  4: values[3] = PyTuple_GET_ITEM(__pyx_args, 3);
-        CYTHON_FALLTHROUGH;
-        case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
-        CYTHON_FALLTHROUGH;
-        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
-        CYTHON_FALLTHROUGH;
-        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
-        CYTHON_FALLTHROUGH;
-        case  0: break;
-        default: goto __pyx_L5_argtuple_error;
-      }
-      kw_args = PyDict_Size(__pyx_kwds);
-      switch (pos_args) {
-        case  0:
-        if (likely((values[0] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_source)) != 0)) kw_args--;
-        else goto __pyx_L5_argtuple_error;
-        CYTHON_FALLTHROUGH;
-        case  1:
-        if (likely((values[1] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_target)) != 0)) kw_args--;
-        else {
-          __Pyx_RaiseArgtupleInvalid("vfb32", 1, 4, 4, 1); __PYX_ERR(0, 277, __pyx_L3_error)
-        }
-        CYTHON_FALLTHROUGH;
-        case  2:
-        if (likely((values[2] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_width)) != 0)) kw_args--;
-        else {
-          __Pyx_RaiseArgtupleInvalid("vfb32", 1, 4, 4, 2); __PYX_ERR(0, 277, __pyx_L3_error)
-        }
-        CYTHON_FALLTHROUGH;
-        case  3:
-        if (likely((values[3] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_height)) != 0)) kw_args--;
-        else {
-          __Pyx_RaiseArgtupleInvalid("vfb32", 1, 4, 4, 3); __PYX_ERR(0, 277, __pyx_L3_error)
-        }
-      }
-      if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "vfb32") < 0)) __PYX_ERR(0, 277, __pyx_L3_error)
-      }
-    } else if (PyTuple_GET_SIZE(__pyx_args) != 4) {
-      goto __pyx_L5_argtuple_error;
-    } else {
-      values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
-      values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
-      values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
-      values[3] = PyTuple_GET_ITEM(__pyx_args, 3);
-    }
-    __pyx_v_source = values[0];
-    __pyx_v_target = values[1];
-    __pyx_v_width = values[2];
-    __pyx_v_height = values[3];
-  }
-  goto __pyx_L4_argument_unpacking_done;
-  __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("vfb32", 1, 4, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 277, __pyx_L3_error)
-  __pyx_L3_error:;
-  __Pyx_AddTraceback("Scroll.vfb32", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __Pyx_RefNannyFinishContext();
-  return NULL;
-  __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_6Scroll_34vfb32(__pyx_self, __pyx_v_source, __pyx_v_target, __pyx_v_width, __pyx_v_height);
-
-  /* function exit code */
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-static PyObject *__pyx_pf_6Scroll_34vfb32(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_source, PyObject *__pyx_v_target, PyObject *__pyx_v_width, PyObject *__pyx_v_height) {
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  __Pyx_memviewslice __pyx_t_1 = { 0, 0, { 0 }, { 0 }, { 0 } };
-  __Pyx_memviewslice __pyx_t_2 = { 0, 0, { 0 }, { 0 }, { 0 } };
-  int __pyx_t_3;
-  int __pyx_t_4;
-  __Pyx_memviewslice __pyx_t_5 = { 0, 0, { 0 }, { 0 }, { 0 } };
-  PyObject *__pyx_t_6 = NULL;
-  __Pyx_RefNannySetupContext("vfb32", 0);
-
-  /* "Scroll.pyx":278
- * # TRANSPOSE / FLIP BUFFER (compatible 32-bit)
- * def vfb32(source, target, width, height):
- *     return vfb32_c(source, target, width, height)             # <<<<<<<<<<<<<<
- * 
- * # ----------------END INTERFACE -----------------
- */
-  __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_to_MemoryviewSlice_ds_unsigned_char(__pyx_v_source);
-  if (unlikely(!__pyx_t_1.memview)) __PYX_ERR(0, 278, __pyx_L1_error)
-  __pyx_t_2 = __Pyx_PyObject_to_MemoryviewSlice_dc_unsigned_char(__pyx_v_target);
-  if (unlikely(!__pyx_t_2.memview)) __PYX_ERR(0, 278, __pyx_L1_error)
-  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_v_width); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 278, __pyx_L1_error)
-  __pyx_t_4 = __Pyx_PyInt_As_int(__pyx_v_height); if (unlikely((__pyx_t_4 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 278, __pyx_L1_error)
-  __pyx_t_5 = __pyx_f_6Scroll_vfb32_c(__pyx_t_1, __pyx_t_2, __pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_5.memview)) __PYX_ERR(0, 278, __pyx_L1_error)
-  __PYX_XDEC_MEMVIEW(&__pyx_t_1, 1);
-  __pyx_t_1.memview = NULL;
-  __pyx_t_1.data = NULL;
-  __PYX_XDEC_MEMVIEW(&__pyx_t_2, 1);
-  __pyx_t_2.memview = NULL;
-  __pyx_t_2.data = NULL;
-  __pyx_t_6 = __pyx_memoryview_fromslice(__pyx_t_5, 1, (PyObject *(*)(char *)) __pyx_memview_get_unsigned_char, (int (*)(char *, PyObject *)) __pyx_memview_set_unsigned_char, 0);; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 278, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_6);
-  __PYX_XDEC_MEMVIEW(&__pyx_t_5, 1);
-  __pyx_t_5.memview = NULL;
-  __pyx_t_5.data = NULL;
-  __pyx_r = __pyx_t_6;
-  __pyx_t_6 = 0;
-  goto __pyx_L0;
-
-  /* "Scroll.pyx":277
- * 
- * # TRANSPOSE / FLIP BUFFER (compatible 32-bit)
- * def vfb32(source, target, width, height):             # <<<<<<<<<<<<<<
- *     return vfb32_c(source, target, width, height)
- * 
- */
-
-  /* function exit code */
-  __pyx_L1_error:;
-  __PYX_XDEC_MEMVIEW(&__pyx_t_1, 1);
-  __PYX_XDEC_MEMVIEW(&__pyx_t_2, 1);
-  __PYX_XDEC_MEMVIEW(&__pyx_t_5, 1);
-  __Pyx_XDECREF(__pyx_t_6);
-  __Pyx_AddTraceback("Scroll.vfb32", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = NULL;
-  __pyx_L0:;
-  __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* "Scroll.pyx":292
+/* "Scroll.pyx":312
  * @cython.nonecheck(False)
  * @cython.cdivision(True)
  * cdef unsigned char[:, :, ::1] transpose24_c(unsigned char[:, :, :] rgb_array_):             # <<<<<<<<<<<<<<
@@ -5151,7 +4966,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_transpose24_c(__Pyx_memviewslice __pyx
   Py_ssize_t __pyx_t_32;
   __Pyx_RefNannySetupContext("transpose24_c", 0);
 
-  /* "Scroll.pyx":301
+  /* "Scroll.pyx":321
  *     """
  *     cdef int w, h
  *     try:             # <<<<<<<<<<<<<<
@@ -5167,19 +4982,19 @@ static __Pyx_memviewslice __pyx_f_6Scroll_transpose24_c(__Pyx_memviewslice __pyx
     __Pyx_XGOTREF(__pyx_t_3);
     /*try:*/ {
 
-      /* "Scroll.pyx":302
+      /* "Scroll.pyx":322
  *     cdef int w, h
  *     try:
  *         w, h = (<object> rgb_array_).shape[:2]             # <<<<<<<<<<<<<<
  *     except (ValueError, pygame.error) as e:
  *         raise ValueError('\nArray shape not understood.')
  */
-      __pyx_t_4 = __pyx_memoryview_fromslice(__pyx_v_rgb_array_, 3, (PyObject *(*)(char *)) __pyx_memview_get_unsigned_char, (int (*)(char *, PyObject *)) __pyx_memview_set_unsigned_char, 0);; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 302, __pyx_L3_error)
+      __pyx_t_4 = __pyx_memoryview_fromslice(__pyx_v_rgb_array_, 3, (PyObject *(*)(char *)) __pyx_memview_get_unsigned_char, (int (*)(char *, PyObject *)) __pyx_memview_set_unsigned_char, 0);; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 322, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_shape); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 302, __pyx_L3_error)
+      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_shape); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 322, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __pyx_t_4 = __Pyx_PyObject_GetSlice(__pyx_t_5, 0, 2, NULL, NULL, &__pyx_slice_, 0, 1, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 302, __pyx_L3_error)
+      __pyx_t_4 = __Pyx_PyObject_GetSlice(__pyx_t_5, 0, 2, NULL, NULL, &__pyx_slice_, 0, 1, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 322, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       if ((likely(PyTuple_CheckExact(__pyx_t_4))) || (PyList_CheckExact(__pyx_t_4))) {
@@ -5192,7 +5007,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_transpose24_c(__Pyx_memviewslice __pyx
         if (unlikely(size != 2)) {
           if (size > 2) __Pyx_RaiseTooManyValuesError(2);
           else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-          __PYX_ERR(0, 302, __pyx_L3_error)
+          __PYX_ERR(0, 322, __pyx_L3_error)
         }
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
         if (likely(PyTuple_CheckExact(sequence))) {
@@ -5205,15 +5020,15 @@ static __Pyx_memviewslice __pyx_f_6Scroll_transpose24_c(__Pyx_memviewslice __pyx
         __Pyx_INCREF(__pyx_t_5);
         __Pyx_INCREF(__pyx_t_6);
         #else
-        __pyx_t_5 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 302, __pyx_L3_error)
+        __pyx_t_5 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 322, __pyx_L3_error)
         __Pyx_GOTREF(__pyx_t_5);
-        __pyx_t_6 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 302, __pyx_L3_error)
+        __pyx_t_6 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 322, __pyx_L3_error)
         __Pyx_GOTREF(__pyx_t_6);
         #endif
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       } else {
         Py_ssize_t index = -1;
-        __pyx_t_7 = PyObject_GetIter(__pyx_t_4); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 302, __pyx_L3_error)
+        __pyx_t_7 = PyObject_GetIter(__pyx_t_4); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 322, __pyx_L3_error)
         __Pyx_GOTREF(__pyx_t_7);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
         __pyx_t_8 = Py_TYPE(__pyx_t_7)->tp_iternext;
@@ -5221,7 +5036,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_transpose24_c(__Pyx_memviewslice __pyx
         __Pyx_GOTREF(__pyx_t_5);
         index = 1; __pyx_t_6 = __pyx_t_8(__pyx_t_7); if (unlikely(!__pyx_t_6)) goto __pyx_L9_unpacking_failed;
         __Pyx_GOTREF(__pyx_t_6);
-        if (__Pyx_IternextUnpackEndCheck(__pyx_t_8(__pyx_t_7), 2) < 0) __PYX_ERR(0, 302, __pyx_L3_error)
+        if (__Pyx_IternextUnpackEndCheck(__pyx_t_8(__pyx_t_7), 2) < 0) __PYX_ERR(0, 322, __pyx_L3_error)
         __pyx_t_8 = NULL;
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
         goto __pyx_L10_unpacking_done;
@@ -5229,17 +5044,17 @@ static __Pyx_memviewslice __pyx_f_6Scroll_transpose24_c(__Pyx_memviewslice __pyx
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
         __pyx_t_8 = NULL;
         if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-        __PYX_ERR(0, 302, __pyx_L3_error)
+        __PYX_ERR(0, 322, __pyx_L3_error)
         __pyx_L10_unpacking_done:;
       }
-      __pyx_t_9 = __Pyx_PyInt_As_int(__pyx_t_5); if (unlikely((__pyx_t_9 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 302, __pyx_L3_error)
+      __pyx_t_9 = __Pyx_PyInt_As_int(__pyx_t_5); if (unlikely((__pyx_t_9 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 322, __pyx_L3_error)
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __pyx_t_10 = __Pyx_PyInt_As_int(__pyx_t_6); if (unlikely((__pyx_t_10 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 302, __pyx_L3_error)
+      __pyx_t_10 = __Pyx_PyInt_As_int(__pyx_t_6); if (unlikely((__pyx_t_10 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 322, __pyx_L3_error)
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       __pyx_v_w = __pyx_t_9;
       __pyx_v_h = __pyx_t_10;
 
-      /* "Scroll.pyx":301
+      /* "Scroll.pyx":321
  *     """
  *     cdef int w, h
  *     try:             # <<<<<<<<<<<<<<
@@ -5257,46 +5072,46 @@ static __Pyx_memviewslice __pyx_f_6Scroll_transpose24_c(__Pyx_memviewslice __pyx
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-    /* "Scroll.pyx":303
+    /* "Scroll.pyx":323
  *     try:
  *         w, h = (<object> rgb_array_).shape[:2]
  *     except (ValueError, pygame.error) as e:             # <<<<<<<<<<<<<<
  *         raise ValueError('\nArray shape not understood.')
  * 
  */
-    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_pygame); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 303, __pyx_L5_except_error)
+    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_pygame); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 323, __pyx_L5_except_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_error); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 303, __pyx_L5_except_error)
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_error); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 323, __pyx_L5_except_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_t_10 = __Pyx_PyErr_ExceptionMatches(__pyx_builtin_ValueError) || __Pyx_PyErr_ExceptionMatches(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     if (__pyx_t_10) {
       __Pyx_AddTraceback("Scroll.transpose24_c", __pyx_clineno, __pyx_lineno, __pyx_filename);
-      if (__Pyx_GetException(&__pyx_t_6, &__pyx_t_4, &__pyx_t_5) < 0) __PYX_ERR(0, 303, __pyx_L5_except_error)
+      if (__Pyx_GetException(&__pyx_t_6, &__pyx_t_4, &__pyx_t_5) < 0) __PYX_ERR(0, 323, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_INCREF(__pyx_t_4);
       __pyx_v_e = __pyx_t_4;
 
-      /* "Scroll.pyx":304
+      /* "Scroll.pyx":324
  *         w, h = (<object> rgb_array_).shape[:2]
  *     except (ValueError, pygame.error) as e:
  *         raise ValueError('\nArray shape not understood.')             # <<<<<<<<<<<<<<
  * 
  *     cdef:
  */
-      __pyx_t_7 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__2, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 304, __pyx_L5_except_error)
+      __pyx_t_7 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__2, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 324, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_Raise(__pyx_t_7, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-      __PYX_ERR(0, 304, __pyx_L5_except_error)
+      __PYX_ERR(0, 324, __pyx_L5_except_error)
     }
     goto __pyx_L5_except_error;
     __pyx_L5_except_error:;
 
-    /* "Scroll.pyx":301
+    /* "Scroll.pyx":321
  *     """
  *     cdef int w, h
  *     try:             # <<<<<<<<<<<<<<
@@ -5311,20 +5126,20 @@ static __Pyx_memviewslice __pyx_f_6Scroll_transpose24_c(__Pyx_memviewslice __pyx
     __pyx_L8_try_end:;
   }
 
-  /* "Scroll.pyx":307
+  /* "Scroll.pyx":327
  * 
  *     cdef:
  *         unsigned char[:, :, ::1] new_array =  empty((h, w, 3), dtype=uint8)             # <<<<<<<<<<<<<<
  *         int i=0, j=0
  * 
  */
-  __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_empty); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 307, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_empty); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 327, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_h); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 307, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_h); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 327, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_6 = __Pyx_PyInt_From_int(__pyx_v_w); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 307, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyInt_From_int(__pyx_v_w); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 327, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_7 = PyTuple_New(3); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 307, __pyx_L1_error)
+  __pyx_t_7 = PyTuple_New(3); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 327, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_GIVEREF(__pyx_t_4);
   PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_4);
@@ -5335,30 +5150,30 @@ static __Pyx_memviewslice __pyx_f_6Scroll_transpose24_c(__Pyx_memviewslice __pyx
   PyTuple_SET_ITEM(__pyx_t_7, 2, __pyx_int_3);
   __pyx_t_4 = 0;
   __pyx_t_6 = 0;
-  __pyx_t_6 = PyTuple_New(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 307, __pyx_L1_error)
+  __pyx_t_6 = PyTuple_New(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 327, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_GIVEREF(__pyx_t_7);
   PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_7);
   __pyx_t_7 = 0;
-  __pyx_t_7 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 307, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 327, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_uint8); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 307, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_uint8); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 327, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_dtype, __pyx_t_4) < 0) __PYX_ERR(0, 307, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_dtype, __pyx_t_4) < 0) __PYX_ERR(0, 327, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_6, __pyx_t_7); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 307, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_6, __pyx_t_7); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 327, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   __pyx_t_11 = __Pyx_PyObject_to_MemoryviewSlice_d_d_dc_unsigned_char(__pyx_t_4);
-  if (unlikely(!__pyx_t_11.memview)) __PYX_ERR(0, 307, __pyx_L1_error)
+  if (unlikely(!__pyx_t_11.memview)) __PYX_ERR(0, 327, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_v_new_array = __pyx_t_11;
   __pyx_t_11.memview = NULL;
   __pyx_t_11.data = NULL;
 
-  /* "Scroll.pyx":308
+  /* "Scroll.pyx":328
  *     cdef:
  *         unsigned char[:, :, ::1] new_array =  empty((h, w, 3), dtype=uint8)
  *         int i=0, j=0             # <<<<<<<<<<<<<<
@@ -5368,7 +5183,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_transpose24_c(__Pyx_memviewslice __pyx
   __pyx_v_i = 0;
   __pyx_v_j = 0;
 
-  /* "Scroll.pyx":310
+  /* "Scroll.pyx":330
  *         int i=0, j=0
  * 
  *     with nogil:             # <<<<<<<<<<<<<<
@@ -5383,7 +5198,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_transpose24_c(__Pyx_memviewslice __pyx
       #endif
       /*try:*/ {
 
-        /* "Scroll.pyx":311
+        /* "Scroll.pyx":331
  * 
  *     with nogil:
  *         for i in prange(w, schedule=SCHEDULE, num_threads=THREAD_NUMBER):             # <<<<<<<<<<<<<<
@@ -5415,7 +5230,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_transpose24_c(__Pyx_memviewslice __pyx
                             /* Initialize private variables to invalid values */
                             __pyx_v_j = ((int)0xbad0bad0);
 
-                            /* "Scroll.pyx":312
+                            /* "Scroll.pyx":332
  *     with nogil:
  *         for i in prange(w, schedule=SCHEDULE, num_threads=THREAD_NUMBER):
  *             for j in range(h):             # <<<<<<<<<<<<<<
@@ -5426,7 +5241,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_transpose24_c(__Pyx_memviewslice __pyx
                             for (__pyx_t_14 = 0; __pyx_t_14 < __pyx_t_13; __pyx_t_14+=1) {
                               __pyx_v_j = __pyx_t_14;
 
-                              /* "Scroll.pyx":313
+                              /* "Scroll.pyx":333
  *         for i in prange(w, schedule=SCHEDULE, num_threads=THREAD_NUMBER):
  *             for j in range(h):
  *                 new_array[j, i, 0] = rgb_array_[i, j, 0]             # <<<<<<<<<<<<<<
@@ -5441,7 +5256,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_transpose24_c(__Pyx_memviewslice __pyx
                               __pyx_t_20 = 0;
                               *((unsigned char *) ( /* dim=2 */ ((char *) (((unsigned char *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_new_array.data + __pyx_t_18 * __pyx_v_new_array.strides[0]) ) + __pyx_t_19 * __pyx_v_new_array.strides[1]) )) + __pyx_t_20)) )) = (*((unsigned char *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rgb_array_.data + __pyx_t_15 * __pyx_v_rgb_array_.strides[0]) ) + __pyx_t_16 * __pyx_v_rgb_array_.strides[1]) ) + __pyx_t_17 * __pyx_v_rgb_array_.strides[2]) )));
 
-                              /* "Scroll.pyx":314
+                              /* "Scroll.pyx":334
  *             for j in range(h):
  *                 new_array[j, i, 0] = rgb_array_[i, j, 0]
  *                 new_array[j, i, 1] = rgb_array_[i, j, 1]             # <<<<<<<<<<<<<<
@@ -5456,7 +5271,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_transpose24_c(__Pyx_memviewslice __pyx
                               __pyx_t_26 = 1;
                               *((unsigned char *) ( /* dim=2 */ ((char *) (((unsigned char *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_new_array.data + __pyx_t_24 * __pyx_v_new_array.strides[0]) ) + __pyx_t_25 * __pyx_v_new_array.strides[1]) )) + __pyx_t_26)) )) = (*((unsigned char *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rgb_array_.data + __pyx_t_21 * __pyx_v_rgb_array_.strides[0]) ) + __pyx_t_22 * __pyx_v_rgb_array_.strides[1]) ) + __pyx_t_23 * __pyx_v_rgb_array_.strides[2]) )));
 
-                              /* "Scroll.pyx":315
+                              /* "Scroll.pyx":335
  *                 new_array[j, i, 0] = rgb_array_[i, j, 0]
  *                 new_array[j, i, 1] = rgb_array_[i, j, 1]
  *                 new_array[j, i, 2] = rgb_array_[i, j, 2]             # <<<<<<<<<<<<<<
@@ -5484,7 +5299,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_transpose24_c(__Pyx_memviewslice __pyx
         #endif
       }
 
-      /* "Scroll.pyx":310
+      /* "Scroll.pyx":330
  *         int i=0, j=0
  * 
  *     with nogil:             # <<<<<<<<<<<<<<
@@ -5503,7 +5318,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_transpose24_c(__Pyx_memviewslice __pyx
       }
   }
 
-  /* "Scroll.pyx":316
+  /* "Scroll.pyx":336
  *                 new_array[j, i, 1] = rgb_array_[i, j, 1]
  *                 new_array[j, i, 2] = rgb_array_[i, j, 2]
  *     return new_array             # <<<<<<<<<<<<<<
@@ -5514,7 +5329,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_transpose24_c(__Pyx_memviewslice __pyx
   __pyx_r = __pyx_v_new_array;
   goto __pyx_L0;
 
-  /* "Scroll.pyx":292
+  /* "Scroll.pyx":312
  * @cython.nonecheck(False)
  * @cython.cdivision(True)
  * cdef unsigned char[:, :, ::1] transpose24_c(unsigned char[:, :, :] rgb_array_):             # <<<<<<<<<<<<<<
@@ -5545,7 +5360,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_transpose24_c(__Pyx_memviewslice __pyx
   return __pyx_r;
 }
 
-/* "Scroll.pyx":322
+/* "Scroll.pyx":342
  * @cython.nonecheck(False)
  * @cython.cdivision(True)
  * cdef unsigned char[:, :, ::1] transpose32_c(unsigned char[:, :, :] rgb_array_):             # <<<<<<<<<<<<<<
@@ -5602,7 +5417,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_transpose32_c(__Pyx_memviewslice __pyx
   Py_ssize_t __pyx_t_38;
   __Pyx_RefNannySetupContext("transpose32_c", 0);
 
-  /* "Scroll.pyx":331
+  /* "Scroll.pyx":351
  *     """
  *     cdef int w, h
  *     try:             # <<<<<<<<<<<<<<
@@ -5618,19 +5433,19 @@ static __Pyx_memviewslice __pyx_f_6Scroll_transpose32_c(__Pyx_memviewslice __pyx
     __Pyx_XGOTREF(__pyx_t_3);
     /*try:*/ {
 
-      /* "Scroll.pyx":332
+      /* "Scroll.pyx":352
  *     cdef int w, h
  *     try:
  *         w, h = (<object> rgb_array_).shape[:2]             # <<<<<<<<<<<<<<
  *     except (ValueError, pygame.error) as e:
  *         raise ValueError('\nArray shape not understood.')
  */
-      __pyx_t_4 = __pyx_memoryview_fromslice(__pyx_v_rgb_array_, 3, (PyObject *(*)(char *)) __pyx_memview_get_unsigned_char, (int (*)(char *, PyObject *)) __pyx_memview_set_unsigned_char, 0);; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 332, __pyx_L3_error)
+      __pyx_t_4 = __pyx_memoryview_fromslice(__pyx_v_rgb_array_, 3, (PyObject *(*)(char *)) __pyx_memview_get_unsigned_char, (int (*)(char *, PyObject *)) __pyx_memview_set_unsigned_char, 0);; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 352, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_shape); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 332, __pyx_L3_error)
+      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_shape); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 352, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __pyx_t_4 = __Pyx_PyObject_GetSlice(__pyx_t_5, 0, 2, NULL, NULL, &__pyx_slice__3, 0, 1, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 332, __pyx_L3_error)
+      __pyx_t_4 = __Pyx_PyObject_GetSlice(__pyx_t_5, 0, 2, NULL, NULL, &__pyx_slice__3, 0, 1, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 352, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       if ((likely(PyTuple_CheckExact(__pyx_t_4))) || (PyList_CheckExact(__pyx_t_4))) {
@@ -5643,7 +5458,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_transpose32_c(__Pyx_memviewslice __pyx
         if (unlikely(size != 2)) {
           if (size > 2) __Pyx_RaiseTooManyValuesError(2);
           else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-          __PYX_ERR(0, 332, __pyx_L3_error)
+          __PYX_ERR(0, 352, __pyx_L3_error)
         }
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
         if (likely(PyTuple_CheckExact(sequence))) {
@@ -5656,15 +5471,15 @@ static __Pyx_memviewslice __pyx_f_6Scroll_transpose32_c(__Pyx_memviewslice __pyx
         __Pyx_INCREF(__pyx_t_5);
         __Pyx_INCREF(__pyx_t_6);
         #else
-        __pyx_t_5 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 332, __pyx_L3_error)
+        __pyx_t_5 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 352, __pyx_L3_error)
         __Pyx_GOTREF(__pyx_t_5);
-        __pyx_t_6 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 332, __pyx_L3_error)
+        __pyx_t_6 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 352, __pyx_L3_error)
         __Pyx_GOTREF(__pyx_t_6);
         #endif
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       } else {
         Py_ssize_t index = -1;
-        __pyx_t_7 = PyObject_GetIter(__pyx_t_4); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 332, __pyx_L3_error)
+        __pyx_t_7 = PyObject_GetIter(__pyx_t_4); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 352, __pyx_L3_error)
         __Pyx_GOTREF(__pyx_t_7);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
         __pyx_t_8 = Py_TYPE(__pyx_t_7)->tp_iternext;
@@ -5672,7 +5487,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_transpose32_c(__Pyx_memviewslice __pyx
         __Pyx_GOTREF(__pyx_t_5);
         index = 1; __pyx_t_6 = __pyx_t_8(__pyx_t_7); if (unlikely(!__pyx_t_6)) goto __pyx_L9_unpacking_failed;
         __Pyx_GOTREF(__pyx_t_6);
-        if (__Pyx_IternextUnpackEndCheck(__pyx_t_8(__pyx_t_7), 2) < 0) __PYX_ERR(0, 332, __pyx_L3_error)
+        if (__Pyx_IternextUnpackEndCheck(__pyx_t_8(__pyx_t_7), 2) < 0) __PYX_ERR(0, 352, __pyx_L3_error)
         __pyx_t_8 = NULL;
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
         goto __pyx_L10_unpacking_done;
@@ -5680,17 +5495,17 @@ static __Pyx_memviewslice __pyx_f_6Scroll_transpose32_c(__Pyx_memviewslice __pyx
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
         __pyx_t_8 = NULL;
         if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-        __PYX_ERR(0, 332, __pyx_L3_error)
+        __PYX_ERR(0, 352, __pyx_L3_error)
         __pyx_L10_unpacking_done:;
       }
-      __pyx_t_9 = __Pyx_PyInt_As_int(__pyx_t_5); if (unlikely((__pyx_t_9 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 332, __pyx_L3_error)
+      __pyx_t_9 = __Pyx_PyInt_As_int(__pyx_t_5); if (unlikely((__pyx_t_9 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 352, __pyx_L3_error)
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __pyx_t_10 = __Pyx_PyInt_As_int(__pyx_t_6); if (unlikely((__pyx_t_10 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 332, __pyx_L3_error)
+      __pyx_t_10 = __Pyx_PyInt_As_int(__pyx_t_6); if (unlikely((__pyx_t_10 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 352, __pyx_L3_error)
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       __pyx_v_w = __pyx_t_9;
       __pyx_v_h = __pyx_t_10;
 
-      /* "Scroll.pyx":331
+      /* "Scroll.pyx":351
  *     """
  *     cdef int w, h
  *     try:             # <<<<<<<<<<<<<<
@@ -5708,46 +5523,46 @@ static __Pyx_memviewslice __pyx_f_6Scroll_transpose32_c(__Pyx_memviewslice __pyx
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-    /* "Scroll.pyx":333
+    /* "Scroll.pyx":353
  *     try:
  *         w, h = (<object> rgb_array_).shape[:2]
  *     except (ValueError, pygame.error) as e:             # <<<<<<<<<<<<<<
  *         raise ValueError('\nArray shape not understood.')
  * 
  */
-    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_pygame); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 333, __pyx_L5_except_error)
+    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_pygame); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 353, __pyx_L5_except_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_error); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 333, __pyx_L5_except_error)
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_error); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 353, __pyx_L5_except_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_t_10 = __Pyx_PyErr_ExceptionMatches(__pyx_builtin_ValueError) || __Pyx_PyErr_ExceptionMatches(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     if (__pyx_t_10) {
       __Pyx_AddTraceback("Scroll.transpose32_c", __pyx_clineno, __pyx_lineno, __pyx_filename);
-      if (__Pyx_GetException(&__pyx_t_6, &__pyx_t_4, &__pyx_t_5) < 0) __PYX_ERR(0, 333, __pyx_L5_except_error)
+      if (__Pyx_GetException(&__pyx_t_6, &__pyx_t_4, &__pyx_t_5) < 0) __PYX_ERR(0, 353, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_INCREF(__pyx_t_4);
       __pyx_v_e = __pyx_t_4;
 
-      /* "Scroll.pyx":334
+      /* "Scroll.pyx":354
  *         w, h = (<object> rgb_array_).shape[:2]
  *     except (ValueError, pygame.error) as e:
  *         raise ValueError('\nArray shape not understood.')             # <<<<<<<<<<<<<<
  * 
  *     cdef:
  */
-      __pyx_t_7 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__4, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 334, __pyx_L5_except_error)
+      __pyx_t_7 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__4, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 354, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_Raise(__pyx_t_7, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-      __PYX_ERR(0, 334, __pyx_L5_except_error)
+      __PYX_ERR(0, 354, __pyx_L5_except_error)
     }
     goto __pyx_L5_except_error;
     __pyx_L5_except_error:;
 
-    /* "Scroll.pyx":331
+    /* "Scroll.pyx":351
  *     """
  *     cdef int w, h
  *     try:             # <<<<<<<<<<<<<<
@@ -5762,20 +5577,20 @@ static __Pyx_memviewslice __pyx_f_6Scroll_transpose32_c(__Pyx_memviewslice __pyx
     __pyx_L8_try_end:;
   }
 
-  /* "Scroll.pyx":337
+  /* "Scroll.pyx":357
  * 
  *     cdef:
  *         unsigned char[:, :, ::1] new_array =  empty((h, w, 4), dtype=uint8)             # <<<<<<<<<<<<<<
  *         int i=0, j=0
  * 
  */
-  __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_empty); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 337, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_empty); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 357, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_h); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 337, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_h); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 357, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_6 = __Pyx_PyInt_From_int(__pyx_v_w); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 337, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyInt_From_int(__pyx_v_w); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 357, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_7 = PyTuple_New(3); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 337, __pyx_L1_error)
+  __pyx_t_7 = PyTuple_New(3); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 357, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_GIVEREF(__pyx_t_4);
   PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_4);
@@ -5786,30 +5601,30 @@ static __Pyx_memviewslice __pyx_f_6Scroll_transpose32_c(__Pyx_memviewslice __pyx
   PyTuple_SET_ITEM(__pyx_t_7, 2, __pyx_int_4);
   __pyx_t_4 = 0;
   __pyx_t_6 = 0;
-  __pyx_t_6 = PyTuple_New(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 337, __pyx_L1_error)
+  __pyx_t_6 = PyTuple_New(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 357, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_GIVEREF(__pyx_t_7);
   PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_7);
   __pyx_t_7 = 0;
-  __pyx_t_7 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 337, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 357, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_uint8); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 337, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_uint8); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 357, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_dtype, __pyx_t_4) < 0) __PYX_ERR(0, 337, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_dtype, __pyx_t_4) < 0) __PYX_ERR(0, 357, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_6, __pyx_t_7); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 337, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_6, __pyx_t_7); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 357, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   __pyx_t_11 = __Pyx_PyObject_to_MemoryviewSlice_d_d_dc_unsigned_char(__pyx_t_4);
-  if (unlikely(!__pyx_t_11.memview)) __PYX_ERR(0, 337, __pyx_L1_error)
+  if (unlikely(!__pyx_t_11.memview)) __PYX_ERR(0, 357, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_v_new_array = __pyx_t_11;
   __pyx_t_11.memview = NULL;
   __pyx_t_11.data = NULL;
 
-  /* "Scroll.pyx":338
+  /* "Scroll.pyx":358
  *     cdef:
  *         unsigned char[:, :, ::1] new_array =  empty((h, w, 4), dtype=uint8)
  *         int i=0, j=0             # <<<<<<<<<<<<<<
@@ -5819,7 +5634,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_transpose32_c(__Pyx_memviewslice __pyx
   __pyx_v_i = 0;
   __pyx_v_j = 0;
 
-  /* "Scroll.pyx":340
+  /* "Scroll.pyx":360
  *         int i=0, j=0
  * 
  *     with nogil:             # <<<<<<<<<<<<<<
@@ -5834,7 +5649,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_transpose32_c(__Pyx_memviewslice __pyx
       #endif
       /*try:*/ {
 
-        /* "Scroll.pyx":341
+        /* "Scroll.pyx":361
  * 
  *     with nogil:
  *         for i in prange(w, schedule=SCHEDULE, num_threads=THREAD_NUMBER):             # <<<<<<<<<<<<<<
@@ -5866,7 +5681,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_transpose32_c(__Pyx_memviewslice __pyx
                             /* Initialize private variables to invalid values */
                             __pyx_v_j = ((int)0xbad0bad0);
 
-                            /* "Scroll.pyx":342
+                            /* "Scroll.pyx":362
  *     with nogil:
  *         for i in prange(w, schedule=SCHEDULE, num_threads=THREAD_NUMBER):
  *             for j in range(h):             # <<<<<<<<<<<<<<
@@ -5877,7 +5692,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_transpose32_c(__Pyx_memviewslice __pyx
                             for (__pyx_t_14 = 0; __pyx_t_14 < __pyx_t_13; __pyx_t_14+=1) {
                               __pyx_v_j = __pyx_t_14;
 
-                              /* "Scroll.pyx":343
+                              /* "Scroll.pyx":363
  *         for i in prange(w, schedule=SCHEDULE, num_threads=THREAD_NUMBER):
  *             for j in range(h):
  *                 new_array[j, i, 0] = rgb_array_[i, j, 0]             # <<<<<<<<<<<<<<
@@ -5892,7 +5707,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_transpose32_c(__Pyx_memviewslice __pyx
                               __pyx_t_20 = 0;
                               *((unsigned char *) ( /* dim=2 */ ((char *) (((unsigned char *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_new_array.data + __pyx_t_18 * __pyx_v_new_array.strides[0]) ) + __pyx_t_19 * __pyx_v_new_array.strides[1]) )) + __pyx_t_20)) )) = (*((unsigned char *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rgb_array_.data + __pyx_t_15 * __pyx_v_rgb_array_.strides[0]) ) + __pyx_t_16 * __pyx_v_rgb_array_.strides[1]) ) + __pyx_t_17 * __pyx_v_rgb_array_.strides[2]) )));
 
-                              /* "Scroll.pyx":344
+                              /* "Scroll.pyx":364
  *             for j in range(h):
  *                 new_array[j, i, 0] = rgb_array_[i, j, 0]
  *                 new_array[j, i, 1] = rgb_array_[i, j, 1]             # <<<<<<<<<<<<<<
@@ -5907,7 +5722,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_transpose32_c(__Pyx_memviewslice __pyx
                               __pyx_t_26 = 1;
                               *((unsigned char *) ( /* dim=2 */ ((char *) (((unsigned char *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_new_array.data + __pyx_t_24 * __pyx_v_new_array.strides[0]) ) + __pyx_t_25 * __pyx_v_new_array.strides[1]) )) + __pyx_t_26)) )) = (*((unsigned char *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rgb_array_.data + __pyx_t_21 * __pyx_v_rgb_array_.strides[0]) ) + __pyx_t_22 * __pyx_v_rgb_array_.strides[1]) ) + __pyx_t_23 * __pyx_v_rgb_array_.strides[2]) )));
 
-                              /* "Scroll.pyx":345
+                              /* "Scroll.pyx":365
  *                 new_array[j, i, 0] = rgb_array_[i, j, 0]
  *                 new_array[j, i, 1] = rgb_array_[i, j, 1]
  *                 new_array[j, i, 2] = rgb_array_[i, j, 2]             # <<<<<<<<<<<<<<
@@ -5922,7 +5737,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_transpose32_c(__Pyx_memviewslice __pyx
                               __pyx_t_32 = 2;
                               *((unsigned char *) ( /* dim=2 */ ((char *) (((unsigned char *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_new_array.data + __pyx_t_30 * __pyx_v_new_array.strides[0]) ) + __pyx_t_31 * __pyx_v_new_array.strides[1]) )) + __pyx_t_32)) )) = (*((unsigned char *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rgb_array_.data + __pyx_t_27 * __pyx_v_rgb_array_.strides[0]) ) + __pyx_t_28 * __pyx_v_rgb_array_.strides[1]) ) + __pyx_t_29 * __pyx_v_rgb_array_.strides[2]) )));
 
-                              /* "Scroll.pyx":346
+                              /* "Scroll.pyx":366
  *                 new_array[j, i, 1] = rgb_array_[i, j, 1]
  *                 new_array[j, i, 2] = rgb_array_[i, j, 2]
  *                 new_array[j, i, 3] = rgb_array_[i, j, 3]             # <<<<<<<<<<<<<<
@@ -5950,7 +5765,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_transpose32_c(__Pyx_memviewslice __pyx
         #endif
       }
 
-      /* "Scroll.pyx":340
+      /* "Scroll.pyx":360
  *         int i=0, j=0
  * 
  *     with nogil:             # <<<<<<<<<<<<<<
@@ -5969,7 +5784,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_transpose32_c(__Pyx_memviewslice __pyx
       }
   }
 
-  /* "Scroll.pyx":347
+  /* "Scroll.pyx":367
  *                 new_array[j, i, 2] = rgb_array_[i, j, 2]
  *                 new_array[j, i, 3] = rgb_array_[i, j, 3]
  *     return new_array             # <<<<<<<<<<<<<<
@@ -5980,7 +5795,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_transpose32_c(__Pyx_memviewslice __pyx
   __pyx_r = __pyx_v_new_array;
   goto __pyx_L0;
 
-  /* "Scroll.pyx":322
+  /* "Scroll.pyx":342
  * @cython.nonecheck(False)
  * @cython.cdivision(True)
  * cdef unsigned char[:, :, ::1] transpose32_c(unsigned char[:, :, :] rgb_array_):             # <<<<<<<<<<<<<<
@@ -6011,7 +5826,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_transpose32_c(__Pyx_memviewslice __pyx
   return __pyx_r;
 }
 
-/* "Scroll.pyx":354
+/* "Scroll.pyx":374
  * @cython.nonecheck(False)
  * @cython.cdivision(True)
  * cdef stack_object_c(unsigned char[:, :, :] rgb_array_,             # <<<<<<<<<<<<<<
@@ -6021,7 +5836,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_transpose32_c(__Pyx_memviewslice __pyx
 
 static PyObject *__pyx_f_6Scroll_stack_object_c(__Pyx_memviewslice __pyx_v_rgb_array_, __Pyx_memviewslice __pyx_v_alpha_, struct __pyx_opt_args_6Scroll_stack_object_c *__pyx_optional_args) {
 
-  /* "Scroll.pyx":355
+  /* "Scroll.pyx":375
  * @cython.cdivision(True)
  * cdef stack_object_c(unsigned char[:, :, :] rgb_array_,
  *                     unsigned char[:, :] alpha_, bint transpose=False):             # <<<<<<<<<<<<<<
@@ -6108,7 +5923,7 @@ static PyObject *__pyx_f_6Scroll_stack_object_c(__Pyx_memviewslice __pyx_v_rgb_a
     }
   }
 
-  /* "Scroll.pyx":368
+  /* "Scroll.pyx":388
  *     """
  *     cdef int width, height
  *     try:             # <<<<<<<<<<<<<<
@@ -6124,19 +5939,19 @@ static PyObject *__pyx_f_6Scroll_stack_object_c(__Pyx_memviewslice __pyx_v_rgb_a
     __Pyx_XGOTREF(__pyx_t_3);
     /*try:*/ {
 
-      /* "Scroll.pyx":369
+      /* "Scroll.pyx":389
  *     cdef int width, height
  *     try:
  *         width, height = (<object> rgb_array_).shape[:2]             # <<<<<<<<<<<<<<
  *     except (ValueError, pygame.error) as e:
  *         raise ValueError('\nArray shape not understood.')
  */
-      __pyx_t_4 = __pyx_memoryview_fromslice(__pyx_v_rgb_array_, 3, (PyObject *(*)(char *)) __pyx_memview_get_unsigned_char, (int (*)(char *, PyObject *)) __pyx_memview_set_unsigned_char, 0);; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 369, __pyx_L3_error)
+      __pyx_t_4 = __pyx_memoryview_fromslice(__pyx_v_rgb_array_, 3, (PyObject *(*)(char *)) __pyx_memview_get_unsigned_char, (int (*)(char *, PyObject *)) __pyx_memview_set_unsigned_char, 0);; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 389, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_shape); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 369, __pyx_L3_error)
+      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_shape); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 389, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __pyx_t_4 = __Pyx_PyObject_GetSlice(__pyx_t_5, 0, 2, NULL, NULL, &__pyx_slice__5, 0, 1, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 369, __pyx_L3_error)
+      __pyx_t_4 = __Pyx_PyObject_GetSlice(__pyx_t_5, 0, 2, NULL, NULL, &__pyx_slice__5, 0, 1, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 389, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       if ((likely(PyTuple_CheckExact(__pyx_t_4))) || (PyList_CheckExact(__pyx_t_4))) {
@@ -6149,7 +5964,7 @@ static PyObject *__pyx_f_6Scroll_stack_object_c(__Pyx_memviewslice __pyx_v_rgb_a
         if (unlikely(size != 2)) {
           if (size > 2) __Pyx_RaiseTooManyValuesError(2);
           else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-          __PYX_ERR(0, 369, __pyx_L3_error)
+          __PYX_ERR(0, 389, __pyx_L3_error)
         }
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
         if (likely(PyTuple_CheckExact(sequence))) {
@@ -6162,15 +5977,15 @@ static PyObject *__pyx_f_6Scroll_stack_object_c(__Pyx_memviewslice __pyx_v_rgb_a
         __Pyx_INCREF(__pyx_t_5);
         __Pyx_INCREF(__pyx_t_6);
         #else
-        __pyx_t_5 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 369, __pyx_L3_error)
+        __pyx_t_5 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 389, __pyx_L3_error)
         __Pyx_GOTREF(__pyx_t_5);
-        __pyx_t_6 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 369, __pyx_L3_error)
+        __pyx_t_6 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 389, __pyx_L3_error)
         __Pyx_GOTREF(__pyx_t_6);
         #endif
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       } else {
         Py_ssize_t index = -1;
-        __pyx_t_7 = PyObject_GetIter(__pyx_t_4); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 369, __pyx_L3_error)
+        __pyx_t_7 = PyObject_GetIter(__pyx_t_4); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 389, __pyx_L3_error)
         __Pyx_GOTREF(__pyx_t_7);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
         __pyx_t_8 = Py_TYPE(__pyx_t_7)->tp_iternext;
@@ -6178,7 +5993,7 @@ static PyObject *__pyx_f_6Scroll_stack_object_c(__Pyx_memviewslice __pyx_v_rgb_a
         __Pyx_GOTREF(__pyx_t_5);
         index = 1; __pyx_t_6 = __pyx_t_8(__pyx_t_7); if (unlikely(!__pyx_t_6)) goto __pyx_L9_unpacking_failed;
         __Pyx_GOTREF(__pyx_t_6);
-        if (__Pyx_IternextUnpackEndCheck(__pyx_t_8(__pyx_t_7), 2) < 0) __PYX_ERR(0, 369, __pyx_L3_error)
+        if (__Pyx_IternextUnpackEndCheck(__pyx_t_8(__pyx_t_7), 2) < 0) __PYX_ERR(0, 389, __pyx_L3_error)
         __pyx_t_8 = NULL;
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
         goto __pyx_L10_unpacking_done;
@@ -6186,17 +6001,17 @@ static PyObject *__pyx_f_6Scroll_stack_object_c(__Pyx_memviewslice __pyx_v_rgb_a
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
         __pyx_t_8 = NULL;
         if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-        __PYX_ERR(0, 369, __pyx_L3_error)
+        __PYX_ERR(0, 389, __pyx_L3_error)
         __pyx_L10_unpacking_done:;
       }
-      __pyx_t_9 = __Pyx_PyInt_As_int(__pyx_t_5); if (unlikely((__pyx_t_9 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 369, __pyx_L3_error)
+      __pyx_t_9 = __Pyx_PyInt_As_int(__pyx_t_5); if (unlikely((__pyx_t_9 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 389, __pyx_L3_error)
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __pyx_t_10 = __Pyx_PyInt_As_int(__pyx_t_6); if (unlikely((__pyx_t_10 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 369, __pyx_L3_error)
+      __pyx_t_10 = __Pyx_PyInt_As_int(__pyx_t_6); if (unlikely((__pyx_t_10 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 389, __pyx_L3_error)
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       __pyx_v_width = __pyx_t_9;
       __pyx_v_height = __pyx_t_10;
 
-      /* "Scroll.pyx":368
+      /* "Scroll.pyx":388
  *     """
  *     cdef int width, height
  *     try:             # <<<<<<<<<<<<<<
@@ -6214,46 +6029,46 @@ static PyObject *__pyx_f_6Scroll_stack_object_c(__Pyx_memviewslice __pyx_v_rgb_a
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-    /* "Scroll.pyx":370
+    /* "Scroll.pyx":390
  *     try:
  *         width, height = (<object> rgb_array_).shape[:2]
  *     except (ValueError, pygame.error) as e:             # <<<<<<<<<<<<<<
  *         raise ValueError('\nArray shape not understood.')
  * 
  */
-    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_pygame); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 370, __pyx_L5_except_error)
+    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_pygame); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 390, __pyx_L5_except_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_error); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 370, __pyx_L5_except_error)
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_error); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 390, __pyx_L5_except_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_t_10 = __Pyx_PyErr_ExceptionMatches(__pyx_builtin_ValueError) || __Pyx_PyErr_ExceptionMatches(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     if (__pyx_t_10) {
       __Pyx_AddTraceback("Scroll.stack_object_c", __pyx_clineno, __pyx_lineno, __pyx_filename);
-      if (__Pyx_GetException(&__pyx_t_6, &__pyx_t_4, &__pyx_t_5) < 0) __PYX_ERR(0, 370, __pyx_L5_except_error)
+      if (__Pyx_GetException(&__pyx_t_6, &__pyx_t_4, &__pyx_t_5) < 0) __PYX_ERR(0, 390, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_INCREF(__pyx_t_4);
       __pyx_v_e = __pyx_t_4;
 
-      /* "Scroll.pyx":371
+      /* "Scroll.pyx":391
  *         width, height = (<object> rgb_array_).shape[:2]
  *     except (ValueError, pygame.error) as e:
  *         raise ValueError('\nArray shape not understood.')             # <<<<<<<<<<<<<<
  * 
  *     cdef:
  */
-      __pyx_t_7 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__6, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 371, __pyx_L5_except_error)
+      __pyx_t_7 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__6, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 391, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_Raise(__pyx_t_7, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-      __PYX_ERR(0, 371, __pyx_L5_except_error)
+      __PYX_ERR(0, 391, __pyx_L5_except_error)
     }
     goto __pyx_L5_except_error;
     __pyx_L5_except_error:;
 
-    /* "Scroll.pyx":368
+    /* "Scroll.pyx":388
  *     """
  *     cdef int width, height
  *     try:             # <<<<<<<<<<<<<<
@@ -6268,23 +6083,23 @@ static PyObject *__pyx_f_6Scroll_stack_object_c(__Pyx_memviewslice __pyx_v_rgb_a
     __pyx_L8_try_end:;
   }
 
-  /* "Scroll.pyx":374
+  /* "Scroll.pyx":394
  * 
  *     cdef:
  *         unsigned char[:, :, ::1] new_array =  numpy.empty((width, height, 4), dtype=uint8)             # <<<<<<<<<<<<<<
  *         unsigned char[:, :, ::1] new_array_t =  numpy.empty((height, width, 4), dtype=uint8)
  *         int i=0, j=0
  */
-  __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 374, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 394, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_empty); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 374, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_empty); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 394, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_width); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 374, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_width); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 394, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = __Pyx_PyInt_From_int(__pyx_v_height); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 374, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyInt_From_int(__pyx_v_height); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 394, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_7 = PyTuple_New(3); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 374, __pyx_L1_error)
+  __pyx_t_7 = PyTuple_New(3); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 394, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_GIVEREF(__pyx_t_5);
   PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_5);
@@ -6295,46 +6110,46 @@ static PyObject *__pyx_f_6Scroll_stack_object_c(__Pyx_memviewslice __pyx_v_rgb_a
   PyTuple_SET_ITEM(__pyx_t_7, 2, __pyx_int_4);
   __pyx_t_5 = 0;
   __pyx_t_6 = 0;
-  __pyx_t_6 = PyTuple_New(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 374, __pyx_L1_error)
+  __pyx_t_6 = PyTuple_New(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 394, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_GIVEREF(__pyx_t_7);
   PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_7);
   __pyx_t_7 = 0;
-  __pyx_t_7 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 374, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 394, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_uint8); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 374, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_uint8); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 394, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_dtype, __pyx_t_5) < 0) __PYX_ERR(0, 374, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_dtype, __pyx_t_5) < 0) __PYX_ERR(0, 394, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_6, __pyx_t_7); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 374, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_6, __pyx_t_7); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 394, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   __pyx_t_11 = __Pyx_PyObject_to_MemoryviewSlice_d_d_dc_unsigned_char(__pyx_t_5);
-  if (unlikely(!__pyx_t_11.memview)) __PYX_ERR(0, 374, __pyx_L1_error)
+  if (unlikely(!__pyx_t_11.memview)) __PYX_ERR(0, 394, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_v_new_array = __pyx_t_11;
   __pyx_t_11.memview = NULL;
   __pyx_t_11.data = NULL;
 
-  /* "Scroll.pyx":375
+  /* "Scroll.pyx":395
  *     cdef:
  *         unsigned char[:, :, ::1] new_array =  numpy.empty((width, height, 4), dtype=uint8)
  *         unsigned char[:, :, ::1] new_array_t =  numpy.empty((height, width, 4), dtype=uint8)             # <<<<<<<<<<<<<<
  *         int i=0, j=0
  *     # Equivalent to a numpy.dstack
  */
-  __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 375, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 395, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_empty); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 375, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_empty); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 395, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_height); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 375, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_height); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 395, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = __Pyx_PyInt_From_int(__pyx_v_width); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 375, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyInt_From_int(__pyx_v_width); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 395, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_4 = PyTuple_New(3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 375, __pyx_L1_error)
+  __pyx_t_4 = PyTuple_New(3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 395, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_GIVEREF(__pyx_t_5);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_5);
@@ -6345,30 +6160,30 @@ static PyObject *__pyx_f_6Scroll_stack_object_c(__Pyx_memviewslice __pyx_v_rgb_a
   PyTuple_SET_ITEM(__pyx_t_4, 2, __pyx_int_4);
   __pyx_t_5 = 0;
   __pyx_t_6 = 0;
-  __pyx_t_6 = PyTuple_New(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 375, __pyx_L1_error)
+  __pyx_t_6 = PyTuple_New(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 395, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_GIVEREF(__pyx_t_4);
   PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_4);
   __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 375, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 395, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_uint8); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 375, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_uint8); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 395, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_dtype, __pyx_t_5) < 0) __PYX_ERR(0, 375, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_dtype, __pyx_t_5) < 0) __PYX_ERR(0, 395, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_6, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 375, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_6, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 395, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_11 = __Pyx_PyObject_to_MemoryviewSlice_d_d_dc_unsigned_char(__pyx_t_5);
-  if (unlikely(!__pyx_t_11.memview)) __PYX_ERR(0, 375, __pyx_L1_error)
+  if (unlikely(!__pyx_t_11.memview)) __PYX_ERR(0, 395, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_v_new_array_t = __pyx_t_11;
   __pyx_t_11.memview = NULL;
   __pyx_t_11.data = NULL;
 
-  /* "Scroll.pyx":376
+  /* "Scroll.pyx":396
  *         unsigned char[:, :, ::1] new_array =  numpy.empty((width, height, 4), dtype=uint8)
  *         unsigned char[:, :, ::1] new_array_t =  numpy.empty((height, width, 4), dtype=uint8)
  *         int i=0, j=0             # <<<<<<<<<<<<<<
@@ -6378,7 +6193,7 @@ static PyObject *__pyx_f_6Scroll_stack_object_c(__Pyx_memviewslice __pyx_v_rgb_a
   __pyx_v_i = 0;
   __pyx_v_j = 0;
 
-  /* "Scroll.pyx":378
+  /* "Scroll.pyx":398
  *         int i=0, j=0
  *     # Equivalent to a numpy.dstack
  *     with nogil:             # <<<<<<<<<<<<<<
@@ -6393,7 +6208,7 @@ static PyObject *__pyx_f_6Scroll_stack_object_c(__Pyx_memviewslice __pyx_v_rgb_a
       #endif
       /*try:*/ {
 
-        /* "Scroll.pyx":380
+        /* "Scroll.pyx":400
  *     with nogil:
  *         # Transpose rows and columns
  *         if transpose:             # <<<<<<<<<<<<<<
@@ -6403,7 +6218,7 @@ static PyObject *__pyx_f_6Scroll_stack_object_c(__Pyx_memviewslice __pyx_v_rgb_a
         __pyx_t_12 = (__pyx_v_transpose != 0);
         if (__pyx_t_12) {
 
-          /* "Scroll.pyx":381
+          /* "Scroll.pyx":401
  *         # Transpose rows and columns
  *         if transpose:
  *             for j in prange(0, height, schedule=SCHEDULE, num_threads=THREAD_NUMBER):             # <<<<<<<<<<<<<<
@@ -6435,7 +6250,7 @@ static PyObject *__pyx_f_6Scroll_stack_object_c(__Pyx_memviewslice __pyx_v_rgb_a
                               /* Initialize private variables to invalid values */
                               __pyx_v_i = ((int)0xbad0bad0);
 
-                              /* "Scroll.pyx":382
+                              /* "Scroll.pyx":402
  *         if transpose:
  *             for j in prange(0, height, schedule=SCHEDULE, num_threads=THREAD_NUMBER):
  *                 for i in range(0, width):             # <<<<<<<<<<<<<<
@@ -6446,7 +6261,7 @@ static PyObject *__pyx_f_6Scroll_stack_object_c(__Pyx_memviewslice __pyx_v_rgb_a
                               for (__pyx_t_15 = 0; __pyx_t_15 < __pyx_t_9; __pyx_t_15+=1) {
                                 __pyx_v_i = __pyx_t_15;
 
-                                /* "Scroll.pyx":383
+                                /* "Scroll.pyx":403
  *             for j in prange(0, height, schedule=SCHEDULE, num_threads=THREAD_NUMBER):
  *                 for i in range(0, width):
  *                     new_array_t[j, i, 0] = rgb_array_[i, j, 0]             # <<<<<<<<<<<<<<
@@ -6461,7 +6276,7 @@ static PyObject *__pyx_f_6Scroll_stack_object_c(__Pyx_memviewslice __pyx_v_rgb_a
                                 __pyx_t_21 = 0;
                                 *((unsigned char *) ( /* dim=2 */ ((char *) (((unsigned char *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_new_array_t.data + __pyx_t_19 * __pyx_v_new_array_t.strides[0]) ) + __pyx_t_20 * __pyx_v_new_array_t.strides[1]) )) + __pyx_t_21)) )) = (*((unsigned char *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rgb_array_.data + __pyx_t_16 * __pyx_v_rgb_array_.strides[0]) ) + __pyx_t_17 * __pyx_v_rgb_array_.strides[1]) ) + __pyx_t_18 * __pyx_v_rgb_array_.strides[2]) )));
 
-                                /* "Scroll.pyx":384
+                                /* "Scroll.pyx":404
  *                 for i in range(0, width):
  *                     new_array_t[j, i, 0] = rgb_array_[i, j, 0]
  *                     new_array_t[j, i, 1] = rgb_array_[i, j, 1]             # <<<<<<<<<<<<<<
@@ -6476,7 +6291,7 @@ static PyObject *__pyx_f_6Scroll_stack_object_c(__Pyx_memviewslice __pyx_v_rgb_a
                                 __pyx_t_27 = 1;
                                 *((unsigned char *) ( /* dim=2 */ ((char *) (((unsigned char *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_new_array_t.data + __pyx_t_25 * __pyx_v_new_array_t.strides[0]) ) + __pyx_t_26 * __pyx_v_new_array_t.strides[1]) )) + __pyx_t_27)) )) = (*((unsigned char *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rgb_array_.data + __pyx_t_22 * __pyx_v_rgb_array_.strides[0]) ) + __pyx_t_23 * __pyx_v_rgb_array_.strides[1]) ) + __pyx_t_24 * __pyx_v_rgb_array_.strides[2]) )));
 
-                                /* "Scroll.pyx":385
+                                /* "Scroll.pyx":405
  *                     new_array_t[j, i, 0] = rgb_array_[i, j, 0]
  *                     new_array_t[j, i, 1] = rgb_array_[i, j, 1]
  *                     new_array_t[j, i, 2] = rgb_array_[i, j, 2]             # <<<<<<<<<<<<<<
@@ -6491,7 +6306,7 @@ static PyObject *__pyx_f_6Scroll_stack_object_c(__Pyx_memviewslice __pyx_v_rgb_a
                                 __pyx_t_33 = 2;
                                 *((unsigned char *) ( /* dim=2 */ ((char *) (((unsigned char *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_new_array_t.data + __pyx_t_31 * __pyx_v_new_array_t.strides[0]) ) + __pyx_t_32 * __pyx_v_new_array_t.strides[1]) )) + __pyx_t_33)) )) = (*((unsigned char *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rgb_array_.data + __pyx_t_28 * __pyx_v_rgb_array_.strides[0]) ) + __pyx_t_29 * __pyx_v_rgb_array_.strides[1]) ) + __pyx_t_30 * __pyx_v_rgb_array_.strides[2]) )));
 
-                                /* "Scroll.pyx":386
+                                /* "Scroll.pyx":406
  *                     new_array_t[j, i, 1] = rgb_array_[i, j, 1]
  *                     new_array_t[j, i, 2] = rgb_array_[i, j, 2]
  *                     new_array_t[j, i, 3] =  alpha_[i, j]             # <<<<<<<<<<<<<<
@@ -6517,7 +6332,7 @@ static PyObject *__pyx_f_6Scroll_stack_object_c(__Pyx_memviewslice __pyx_v_rgb_a
               #define unlikely(x) __builtin_expect(!!(x), 0)
           #endif
 
-          /* "Scroll.pyx":380
+          /* "Scroll.pyx":400
  *     with nogil:
  *         # Transpose rows and columns
  *         if transpose:             # <<<<<<<<<<<<<<
@@ -6527,7 +6342,7 @@ static PyObject *__pyx_f_6Scroll_stack_object_c(__Pyx_memviewslice __pyx_v_rgb_a
           goto __pyx_L16;
         }
 
-        /* "Scroll.pyx":389
+        /* "Scroll.pyx":409
  * 
  *         else:
  *             for i in prange(0, width, schedule=SCHEDULE, num_threads=THREAD_NUMBER):             # <<<<<<<<<<<<<<
@@ -6560,7 +6375,7 @@ static PyObject *__pyx_f_6Scroll_stack_object_c(__Pyx_memviewslice __pyx_v_rgb_a
                               /* Initialize private variables to invalid values */
                               __pyx_v_j = ((int)0xbad0bad0);
 
-                              /* "Scroll.pyx":390
+                              /* "Scroll.pyx":410
  *         else:
  *             for i in prange(0, width, schedule=SCHEDULE, num_threads=THREAD_NUMBER):
  *                 for j in range(0, height):             # <<<<<<<<<<<<<<
@@ -6571,7 +6386,7 @@ static PyObject *__pyx_f_6Scroll_stack_object_c(__Pyx_memviewslice __pyx_v_rgb_a
                               for (__pyx_t_15 = 0; __pyx_t_15 < __pyx_t_9; __pyx_t_15+=1) {
                                 __pyx_v_j = __pyx_t_15;
 
-                                /* "Scroll.pyx":391
+                                /* "Scroll.pyx":411
  *             for i in prange(0, width, schedule=SCHEDULE, num_threads=THREAD_NUMBER):
  *                 for j in range(0, height):
  *                     new_array[i, j, 0] = rgb_array_[i, j, 0]             # <<<<<<<<<<<<<<
@@ -6586,7 +6401,7 @@ static PyObject *__pyx_f_6Scroll_stack_object_c(__Pyx_memviewslice __pyx_v_rgb_a
                                 __pyx_t_44 = 0;
                                 *((unsigned char *) ( /* dim=2 */ ((char *) (((unsigned char *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_new_array.data + __pyx_t_42 * __pyx_v_new_array.strides[0]) ) + __pyx_t_43 * __pyx_v_new_array.strides[1]) )) + __pyx_t_44)) )) = (*((unsigned char *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rgb_array_.data + __pyx_t_39 * __pyx_v_rgb_array_.strides[0]) ) + __pyx_t_40 * __pyx_v_rgb_array_.strides[1]) ) + __pyx_t_41 * __pyx_v_rgb_array_.strides[2]) )));
 
-                                /* "Scroll.pyx":392
+                                /* "Scroll.pyx":412
  *                 for j in range(0, height):
  *                     new_array[i, j, 0] = rgb_array_[i, j, 0]
  *                     new_array[i, j, 1] = rgb_array_[i, j, 1]             # <<<<<<<<<<<<<<
@@ -6601,7 +6416,7 @@ static PyObject *__pyx_f_6Scroll_stack_object_c(__Pyx_memviewslice __pyx_v_rgb_a
                                 __pyx_t_50 = 1;
                                 *((unsigned char *) ( /* dim=2 */ ((char *) (((unsigned char *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_new_array.data + __pyx_t_48 * __pyx_v_new_array.strides[0]) ) + __pyx_t_49 * __pyx_v_new_array.strides[1]) )) + __pyx_t_50)) )) = (*((unsigned char *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rgb_array_.data + __pyx_t_45 * __pyx_v_rgb_array_.strides[0]) ) + __pyx_t_46 * __pyx_v_rgb_array_.strides[1]) ) + __pyx_t_47 * __pyx_v_rgb_array_.strides[2]) )));
 
-                                /* "Scroll.pyx":393
+                                /* "Scroll.pyx":413
  *                     new_array[i, j, 0] = rgb_array_[i, j, 0]
  *                     new_array[i, j, 1] = rgb_array_[i, j, 1]
  *                     new_array[i, j, 2] = rgb_array_[i, j, 2]             # <<<<<<<<<<<<<<
@@ -6616,7 +6431,7 @@ static PyObject *__pyx_f_6Scroll_stack_object_c(__Pyx_memviewslice __pyx_v_rgb_a
                                 __pyx_t_56 = 2;
                                 *((unsigned char *) ( /* dim=2 */ ((char *) (((unsigned char *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_new_array.data + __pyx_t_54 * __pyx_v_new_array.strides[0]) ) + __pyx_t_55 * __pyx_v_new_array.strides[1]) )) + __pyx_t_56)) )) = (*((unsigned char *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rgb_array_.data + __pyx_t_51 * __pyx_v_rgb_array_.strides[0]) ) + __pyx_t_52 * __pyx_v_rgb_array_.strides[1]) ) + __pyx_t_53 * __pyx_v_rgb_array_.strides[2]) )));
 
-                                /* "Scroll.pyx":394
+                                /* "Scroll.pyx":414
  *                     new_array[i, j, 1] = rgb_array_[i, j, 1]
  *                     new_array[i, j, 2] = rgb_array_[i, j, 2]
  *                     new_array[i, j, 3] =  alpha_[i, j]             # <<<<<<<<<<<<<<
@@ -6645,7 +6460,7 @@ static PyObject *__pyx_f_6Scroll_stack_object_c(__Pyx_memviewslice __pyx_v_rgb_a
         __pyx_L16:;
       }
 
-      /* "Scroll.pyx":378
+      /* "Scroll.pyx":398
  *         int i=0, j=0
  *     # Equivalent to a numpy.dstack
  *     with nogil:             # <<<<<<<<<<<<<<
@@ -6664,7 +6479,7 @@ static PyObject *__pyx_f_6Scroll_stack_object_c(__Pyx_memviewslice __pyx_v_rgb_a
       }
   }
 
-  /* "Scroll.pyx":396
+  /* "Scroll.pyx":416
  *                     new_array[i, j, 3] =  alpha_[i, j]
  * 
  *     return asarray(new_array) if transpose == False else asarray(new_array_t)             # <<<<<<<<<<<<<<
@@ -6673,9 +6488,9 @@ static PyObject *__pyx_f_6Scroll_stack_object_c(__Pyx_memviewslice __pyx_v_rgb_a
  */
   __Pyx_XDECREF(__pyx_r);
   if (((__pyx_v_transpose == 0) != 0)) {
-    __pyx_t_6 = __Pyx_GetModuleGlobalName(__pyx_n_s_asarray); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 396, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_GetModuleGlobalName(__pyx_n_s_asarray); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 416, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_7 = __pyx_memoryview_fromslice(__pyx_v_new_array, 3, (PyObject *(*)(char *)) __pyx_memview_get_unsigned_char, (int (*)(char *, PyObject *)) __pyx_memview_set_unsigned_char, 0);; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 396, __pyx_L1_error)
+    __pyx_t_7 = __pyx_memoryview_fromslice(__pyx_v_new_array, 3, (PyObject *(*)(char *)) __pyx_memview_get_unsigned_char, (int (*)(char *, PyObject *)) __pyx_memview_set_unsigned_char, 0);; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 416, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __pyx_t_62 = NULL;
     if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_6))) {
@@ -6688,14 +6503,14 @@ static PyObject *__pyx_f_6Scroll_stack_object_c(__Pyx_memviewslice __pyx_v_rgb_a
       }
     }
     if (!__pyx_t_62) {
-      __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_7); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 396, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_7); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 416, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_GOTREF(__pyx_t_4);
     } else {
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_6)) {
         PyObject *__pyx_temp[2] = {__pyx_t_62, __pyx_t_7};
-        __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_6, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 396, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_6, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 416, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_62); __pyx_t_62 = 0;
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
@@ -6704,20 +6519,20 @@ static PyObject *__pyx_f_6Scroll_stack_object_c(__Pyx_memviewslice __pyx_v_rgb_a
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_6)) {
         PyObject *__pyx_temp[2] = {__pyx_t_62, __pyx_t_7};
-        __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_6, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 396, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_6, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 416, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_62); __pyx_t_62 = 0;
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       } else
       #endif
       {
-        __pyx_t_63 = PyTuple_New(1+1); if (unlikely(!__pyx_t_63)) __PYX_ERR(0, 396, __pyx_L1_error)
+        __pyx_t_63 = PyTuple_New(1+1); if (unlikely(!__pyx_t_63)) __PYX_ERR(0, 416, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_63);
         __Pyx_GIVEREF(__pyx_t_62); PyTuple_SET_ITEM(__pyx_t_63, 0, __pyx_t_62); __pyx_t_62 = NULL;
         __Pyx_GIVEREF(__pyx_t_7);
         PyTuple_SET_ITEM(__pyx_t_63, 0+1, __pyx_t_7);
         __pyx_t_7 = 0;
-        __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_63, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 396, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_63, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 416, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_DECREF(__pyx_t_63); __pyx_t_63 = 0;
       }
@@ -6726,9 +6541,9 @@ static PyObject *__pyx_f_6Scroll_stack_object_c(__Pyx_memviewslice __pyx_v_rgb_a
     __pyx_t_5 = __pyx_t_4;
     __pyx_t_4 = 0;
   } else {
-    __pyx_t_6 = __Pyx_GetModuleGlobalName(__pyx_n_s_asarray); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 396, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_GetModuleGlobalName(__pyx_n_s_asarray); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 416, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_63 = __pyx_memoryview_fromslice(__pyx_v_new_array_t, 3, (PyObject *(*)(char *)) __pyx_memview_get_unsigned_char, (int (*)(char *, PyObject *)) __pyx_memview_set_unsigned_char, 0);; if (unlikely(!__pyx_t_63)) __PYX_ERR(0, 396, __pyx_L1_error)
+    __pyx_t_63 = __pyx_memoryview_fromslice(__pyx_v_new_array_t, 3, (PyObject *(*)(char *)) __pyx_memview_get_unsigned_char, (int (*)(char *, PyObject *)) __pyx_memview_set_unsigned_char, 0);; if (unlikely(!__pyx_t_63)) __PYX_ERR(0, 416, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_63);
     __pyx_t_7 = NULL;
     if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_6))) {
@@ -6741,14 +6556,14 @@ static PyObject *__pyx_f_6Scroll_stack_object_c(__Pyx_memviewslice __pyx_v_rgb_a
       }
     }
     if (!__pyx_t_7) {
-      __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_63); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 396, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_63); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 416, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_63); __pyx_t_63 = 0;
       __Pyx_GOTREF(__pyx_t_4);
     } else {
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_6)) {
         PyObject *__pyx_temp[2] = {__pyx_t_7, __pyx_t_63};
-        __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_6, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 396, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_6, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 416, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_DECREF(__pyx_t_63); __pyx_t_63 = 0;
@@ -6757,20 +6572,20 @@ static PyObject *__pyx_f_6Scroll_stack_object_c(__Pyx_memviewslice __pyx_v_rgb_a
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_6)) {
         PyObject *__pyx_temp[2] = {__pyx_t_7, __pyx_t_63};
-        __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_6, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 396, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_6, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 416, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_DECREF(__pyx_t_63); __pyx_t_63 = 0;
       } else
       #endif
       {
-        __pyx_t_62 = PyTuple_New(1+1); if (unlikely(!__pyx_t_62)) __PYX_ERR(0, 396, __pyx_L1_error)
+        __pyx_t_62 = PyTuple_New(1+1); if (unlikely(!__pyx_t_62)) __PYX_ERR(0, 416, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_62);
         __Pyx_GIVEREF(__pyx_t_7); PyTuple_SET_ITEM(__pyx_t_62, 0, __pyx_t_7); __pyx_t_7 = NULL;
         __Pyx_GIVEREF(__pyx_t_63);
         PyTuple_SET_ITEM(__pyx_t_62, 0+1, __pyx_t_63);
         __pyx_t_63 = 0;
-        __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_62, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 396, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_62, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 416, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_DECREF(__pyx_t_62); __pyx_t_62 = 0;
       }
@@ -6783,7 +6598,7 @@ static PyObject *__pyx_f_6Scroll_stack_object_c(__Pyx_memviewslice __pyx_v_rgb_a
   __pyx_t_5 = 0;
   goto __pyx_L0;
 
-  /* "Scroll.pyx":354
+  /* "Scroll.pyx":374
  * @cython.nonecheck(False)
  * @cython.cdivision(True)
  * cdef stack_object_c(unsigned char[:, :, :] rgb_array_,             # <<<<<<<<<<<<<<
@@ -6811,7 +6626,7 @@ static PyObject *__pyx_f_6Scroll_stack_object_c(__Pyx_memviewslice __pyx_v_rgb_a
   return __pyx_r;
 }
 
-/* "Scroll.pyx":407
+/* "Scroll.pyx":427
  * # TODO try to declare rgb_array_ and alpha as memoryviewslice instead
  * 
  * cdef unsigned char[::1] stack_buffer_c(rgb_array_, alpha_, int w, int h, bint transpose=False):             # <<<<<<<<<<<<<<
@@ -6872,7 +6687,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_stack_buffer_c(PyObject *__pyx_v_rgb_a
     }
   }
 
-  /* "Scroll.pyx":423
+  /* "Scroll.pyx":443
  * 
  *     cdef:
  *         int b_length = w * h * 3             # <<<<<<<<<<<<<<
@@ -6881,7 +6696,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_stack_buffer_c(PyObject *__pyx_v_rgb_a
  */
   __pyx_v_b_length = ((__pyx_v_w * __pyx_v_h) * 3);
 
-  /* "Scroll.pyx":424
+  /* "Scroll.pyx":444
  *     cdef:
  *         int b_length = w * h * 3
  *         int new_length = w * h * 4             # <<<<<<<<<<<<<<
@@ -6890,7 +6705,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_stack_buffer_c(PyObject *__pyx_v_rgb_a
  */
   __pyx_v_new_length = ((__pyx_v_w * __pyx_v_h) * 4);
 
-  /* "Scroll.pyx":425
+  /* "Scroll.pyx":445
  *         int b_length = w * h * 3
  *         int new_length = w * h * 4
  *         unsigned char [:] rgb_array = rgb_array_             # <<<<<<<<<<<<<<
@@ -6898,12 +6713,12 @@ static __Pyx_memviewslice __pyx_f_6Scroll_stack_buffer_c(PyObject *__pyx_v_rgb_a
  *         unsigned char [::1] new_buffer =  numpy.empty(new_length, dtype=numpy.uint8)
  */
   __pyx_t_1 = __Pyx_PyObject_to_MemoryviewSlice_ds_unsigned_char(__pyx_v_rgb_array_);
-  if (unlikely(!__pyx_t_1.memview)) __PYX_ERR(0, 425, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1.memview)) __PYX_ERR(0, 445, __pyx_L1_error)
   __pyx_v_rgb_array = __pyx_t_1;
   __pyx_t_1.memview = NULL;
   __pyx_t_1.data = NULL;
 
-  /* "Scroll.pyx":426
+  /* "Scroll.pyx":446
  *         int new_length = w * h * 4
  *         unsigned char [:] rgb_array = rgb_array_
  *         unsigned char [:] alpha = alpha_             # <<<<<<<<<<<<<<
@@ -6911,92 +6726,92 @@ static __Pyx_memviewslice __pyx_f_6Scroll_stack_buffer_c(PyObject *__pyx_v_rgb_a
  *         unsigned char [::1] flipped_array = numpy.empty(new_length, dtype=numpy.uint8)
  */
   __pyx_t_1 = __Pyx_PyObject_to_MemoryviewSlice_ds_unsigned_char(__pyx_v_alpha_);
-  if (unlikely(!__pyx_t_1.memview)) __PYX_ERR(0, 426, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1.memview)) __PYX_ERR(0, 446, __pyx_L1_error)
   __pyx_v_alpha = __pyx_t_1;
   __pyx_t_1.memview = NULL;
   __pyx_t_1.data = NULL;
 
-  /* "Scroll.pyx":427
+  /* "Scroll.pyx":447
  *         unsigned char [:] rgb_array = rgb_array_
  *         unsigned char [:] alpha = alpha_
  *         unsigned char [::1] new_buffer =  numpy.empty(new_length, dtype=numpy.uint8)             # <<<<<<<<<<<<<<
  *         unsigned char [::1] flipped_array = numpy.empty(new_length, dtype=numpy.uint8)
  *         int i=0, j=0, ii, jj, index, k
  */
-  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 427, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 447, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_empty); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 427, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_empty); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 447, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_new_length); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 427, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_new_length); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 447, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 427, __pyx_L1_error)
+  __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 447, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_GIVEREF(__pyx_t_2);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_2);
   __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 427, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 447, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 427, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 447, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_uint8); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 427, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_uint8); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 447, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_dtype, __pyx_t_6) < 0) __PYX_ERR(0, 427, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_dtype, __pyx_t_6) < 0) __PYX_ERR(0, 447, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_4, __pyx_t_2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 427, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_4, __pyx_t_2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 447, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_7 = __Pyx_PyObject_to_MemoryviewSlice_dc_unsigned_char(__pyx_t_6);
-  if (unlikely(!__pyx_t_7.memview)) __PYX_ERR(0, 427, __pyx_L1_error)
+  if (unlikely(!__pyx_t_7.memview)) __PYX_ERR(0, 447, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __pyx_v_new_buffer = __pyx_t_7;
   __pyx_t_7.memview = NULL;
   __pyx_t_7.data = NULL;
 
-  /* "Scroll.pyx":428
+  /* "Scroll.pyx":448
  *         unsigned char [:] alpha = alpha_
  *         unsigned char [::1] new_buffer =  numpy.empty(new_length, dtype=numpy.uint8)
  *         unsigned char [::1] flipped_array = numpy.empty(new_length, dtype=numpy.uint8)             # <<<<<<<<<<<<<<
  *         int i=0, j=0, ii, jj, index, k
  *         int w4 = w * 4
  */
-  __pyx_t_6 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 428, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 448, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_empty); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 428, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_empty); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 448, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = __Pyx_PyInt_From_int(__pyx_v_new_length); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 428, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyInt_From_int(__pyx_v_new_length); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 448, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 428, __pyx_L1_error)
+  __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 448, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_GIVEREF(__pyx_t_6);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_6);
   __pyx_t_6 = 0;
-  __pyx_t_6 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 428, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 448, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 428, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 448, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_uint8); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 428, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_uint8); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 448, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (PyDict_SetItem(__pyx_t_6, __pyx_n_s_dtype, __pyx_t_5) < 0) __PYX_ERR(0, 428, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_6, __pyx_n_s_dtype, __pyx_t_5) < 0) __PYX_ERR(0, 448, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, __pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 428, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, __pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 448, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __pyx_t_7 = __Pyx_PyObject_to_MemoryviewSlice_dc_unsigned_char(__pyx_t_5);
-  if (unlikely(!__pyx_t_7.memview)) __PYX_ERR(0, 428, __pyx_L1_error)
+  if (unlikely(!__pyx_t_7.memview)) __PYX_ERR(0, 448, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_v_flipped_array = __pyx_t_7;
   __pyx_t_7.memview = NULL;
   __pyx_t_7.data = NULL;
 
-  /* "Scroll.pyx":429
+  /* "Scroll.pyx":449
  *         unsigned char [::1] new_buffer =  numpy.empty(new_length, dtype=numpy.uint8)
  *         unsigned char [::1] flipped_array = numpy.empty(new_length, dtype=numpy.uint8)
  *         int i=0, j=0, ii, jj, index, k             # <<<<<<<<<<<<<<
@@ -7006,7 +6821,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_stack_buffer_c(PyObject *__pyx_v_rgb_a
   __pyx_v_i = 0;
   __pyx_v_j = 0;
 
-  /* "Scroll.pyx":430
+  /* "Scroll.pyx":450
  *         unsigned char [::1] flipped_array = numpy.empty(new_length, dtype=numpy.uint8)
  *         int i=0, j=0, ii, jj, index, k
  *         int w4 = w * 4             # <<<<<<<<<<<<<<
@@ -7015,7 +6830,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_stack_buffer_c(PyObject *__pyx_v_rgb_a
  */
   __pyx_v_w4 = (__pyx_v_w * 4);
 
-  /* "Scroll.pyx":432
+  /* "Scroll.pyx":452
  *         int w4 = w * 4
  * 
  *     with nogil:             # <<<<<<<<<<<<<<
@@ -7030,7 +6845,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_stack_buffer_c(PyObject *__pyx_v_rgb_a
       #endif
       /*try:*/ {
 
-        /* "Scroll.pyx":434
+        /* "Scroll.pyx":454
  *     with nogil:
  * 
  *         for i in prange(0, b_length, 3, schedule=SCHEDULE, num_threads=THREAD_NUMBER):             # <<<<<<<<<<<<<<
@@ -7063,7 +6878,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_stack_buffer_c(PyObject *__pyx_v_rgb_a
                             __pyx_v_ii = ((int)0xbad0bad0);
                             __pyx_v_jj = ((int)0xbad0bad0);
 
-                            /* "Scroll.pyx":435
+                            /* "Scroll.pyx":455
  * 
  *         for i in prange(0, b_length, 3, schedule=SCHEDULE, num_threads=THREAD_NUMBER):
  *                 ii = i // 3             # <<<<<<<<<<<<<<
@@ -7072,7 +6887,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_stack_buffer_c(PyObject *__pyx_v_rgb_a
  */
                             __pyx_v_ii = (__pyx_v_i / 3);
 
-                            /* "Scroll.pyx":436
+                            /* "Scroll.pyx":456
  *         for i in prange(0, b_length, 3, schedule=SCHEDULE, num_threads=THREAD_NUMBER):
  *                 ii = i // 3
  *                 jj = ii * 4             # <<<<<<<<<<<<<<
@@ -7081,7 +6896,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_stack_buffer_c(PyObject *__pyx_v_rgb_a
  */
                             __pyx_v_jj = (__pyx_v_ii * 4);
 
-                            /* "Scroll.pyx":437
+                            /* "Scroll.pyx":457
  *                 ii = i // 3
  *                 jj = ii * 4
  *                 new_buffer[jj]   = rgb_array[i]             # <<<<<<<<<<<<<<
@@ -7092,7 +6907,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_stack_buffer_c(PyObject *__pyx_v_rgb_a
                             __pyx_t_12 = __pyx_v_jj;
                             *((unsigned char *) ( /* dim=0 */ ((char *) (((unsigned char *) __pyx_v_new_buffer.data) + __pyx_t_12)) )) = (*((unsigned char *) ( /* dim=0 */ (__pyx_v_rgb_array.data + __pyx_t_11 * __pyx_v_rgb_array.strides[0]) )));
 
-                            /* "Scroll.pyx":438
+                            /* "Scroll.pyx":458
  *                 jj = ii * 4
  *                 new_buffer[jj]   = rgb_array[i]
  *                 new_buffer[jj+1] = rgb_array[i+1]             # <<<<<<<<<<<<<<
@@ -7103,7 +6918,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_stack_buffer_c(PyObject *__pyx_v_rgb_a
                             __pyx_t_14 = (__pyx_v_jj + 1);
                             *((unsigned char *) ( /* dim=0 */ ((char *) (((unsigned char *) __pyx_v_new_buffer.data) + __pyx_t_14)) )) = (*((unsigned char *) ( /* dim=0 */ (__pyx_v_rgb_array.data + __pyx_t_13 * __pyx_v_rgb_array.strides[0]) )));
 
-                            /* "Scroll.pyx":439
+                            /* "Scroll.pyx":459
  *                 new_buffer[jj]   = rgb_array[i]
  *                 new_buffer[jj+1] = rgb_array[i+1]
  *                 new_buffer[jj+2] = rgb_array[i+2]             # <<<<<<<<<<<<<<
@@ -7114,7 +6929,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_stack_buffer_c(PyObject *__pyx_v_rgb_a
                             __pyx_t_16 = (__pyx_v_jj + 2);
                             *((unsigned char *) ( /* dim=0 */ ((char *) (((unsigned char *) __pyx_v_new_buffer.data) + __pyx_t_16)) )) = (*((unsigned char *) ( /* dim=0 */ (__pyx_v_rgb_array.data + __pyx_t_15 * __pyx_v_rgb_array.strides[0]) )));
 
-                            /* "Scroll.pyx":440
+                            /* "Scroll.pyx":460
  *                 new_buffer[jj+1] = rgb_array[i+1]
  *                 new_buffer[jj+2] = rgb_array[i+2]
  *                 new_buffer[jj+3] = alpha[ii]             # <<<<<<<<<<<<<<
@@ -7136,7 +6951,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_stack_buffer_c(PyObject *__pyx_v_rgb_a
             #define unlikely(x) __builtin_expect(!!(x), 0)
         #endif
 
-        /* "Scroll.pyx":442
+        /* "Scroll.pyx":462
  *                 new_buffer[jj+3] = alpha[ii]
  * 
  *         if transpose:             # <<<<<<<<<<<<<<
@@ -7146,7 +6961,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_stack_buffer_c(PyObject *__pyx_v_rgb_a
         __pyx_t_19 = (__pyx_v_transpose != 0);
         if (__pyx_t_19) {
 
-          /* "Scroll.pyx":443
+          /* "Scroll.pyx":463
  * 
  *         if transpose:
  *             for i in prange(0, w4, 4, schedule=SCHEDULE, num_threads=THREAD_NUMBER):             # <<<<<<<<<<<<<<
@@ -7180,7 +6995,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_stack_buffer_c(PyObject *__pyx_v_rgb_a
                               __pyx_v_j = ((int)0xbad0bad0);
                               __pyx_v_k = ((int)0xbad0bad0);
 
-                              /* "Scroll.pyx":444
+                              /* "Scroll.pyx":464
  *         if transpose:
  *             for i in prange(0, w4, 4, schedule=SCHEDULE, num_threads=THREAD_NUMBER):
  *                 for j in range(0, h):             # <<<<<<<<<<<<<<
@@ -7191,7 +7006,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_stack_buffer_c(PyObject *__pyx_v_rgb_a
                               for (__pyx_t_21 = 0; __pyx_t_21 < __pyx_t_20; __pyx_t_21+=1) {
                                 __pyx_v_j = __pyx_t_21;
 
-                                /* "Scroll.pyx":445
+                                /* "Scroll.pyx":465
  *             for i in prange(0, w4, 4, schedule=SCHEDULE, num_threads=THREAD_NUMBER):
  *                 for j in range(0, h):
  *                     index = i + (w4 * j)             # <<<<<<<<<<<<<<
@@ -7200,7 +7015,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_stack_buffer_c(PyObject *__pyx_v_rgb_a
  */
                                 __pyx_v_index = (__pyx_v_i + (__pyx_v_w4 * __pyx_v_j));
 
-                                /* "Scroll.pyx":446
+                                /* "Scroll.pyx":466
  *                 for j in range(0, h):
  *                     index = i + (w4 * j)
  *                     k = (j * 4) + (i * h)             # <<<<<<<<<<<<<<
@@ -7209,7 +7024,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_stack_buffer_c(PyObject *__pyx_v_rgb_a
  */
                                 __pyx_v_k = ((__pyx_v_j * 4) + (__pyx_v_i * __pyx_v_h));
 
-                                /* "Scroll.pyx":447
+                                /* "Scroll.pyx":467
  *                     index = i + (w4 * j)
  *                     k = (j * 4) + (i * h)
  *                     flipped_array[k    ] = new_buffer[index    ]             # <<<<<<<<<<<<<<
@@ -7220,7 +7035,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_stack_buffer_c(PyObject *__pyx_v_rgb_a
                                 __pyx_t_23 = __pyx_v_k;
                                 *((unsigned char *) ( /* dim=0 */ ((char *) (((unsigned char *) __pyx_v_flipped_array.data) + __pyx_t_23)) )) = (*((unsigned char *) ( /* dim=0 */ ((char *) (((unsigned char *) __pyx_v_new_buffer.data) + __pyx_t_22)) )));
 
-                                /* "Scroll.pyx":448
+                                /* "Scroll.pyx":468
  *                     k = (j * 4) + (i * h)
  *                     flipped_array[k    ] = new_buffer[index    ]
  *                     flipped_array[k + 1] = new_buffer[index + 1]             # <<<<<<<<<<<<<<
@@ -7231,7 +7046,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_stack_buffer_c(PyObject *__pyx_v_rgb_a
                                 __pyx_t_25 = (__pyx_v_k + 1);
                                 *((unsigned char *) ( /* dim=0 */ ((char *) (((unsigned char *) __pyx_v_flipped_array.data) + __pyx_t_25)) )) = (*((unsigned char *) ( /* dim=0 */ ((char *) (((unsigned char *) __pyx_v_new_buffer.data) + __pyx_t_24)) )));
 
-                                /* "Scroll.pyx":449
+                                /* "Scroll.pyx":469
  *                     flipped_array[k    ] = new_buffer[index    ]
  *                     flipped_array[k + 1] = new_buffer[index + 1]
  *                     flipped_array[k + 2] = new_buffer[index + 2]             # <<<<<<<<<<<<<<
@@ -7242,7 +7057,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_stack_buffer_c(PyObject *__pyx_v_rgb_a
                                 __pyx_t_27 = (__pyx_v_k + 2);
                                 *((unsigned char *) ( /* dim=0 */ ((char *) (((unsigned char *) __pyx_v_flipped_array.data) + __pyx_t_27)) )) = (*((unsigned char *) ( /* dim=0 */ ((char *) (((unsigned char *) __pyx_v_new_buffer.data) + __pyx_t_26)) )));
 
-                                /* "Scroll.pyx":450
+                                /* "Scroll.pyx":470
  *                     flipped_array[k + 1] = new_buffer[index + 1]
  *                     flipped_array[k + 2] = new_buffer[index + 2]
  *                     flipped_array[k + 3] = new_buffer[index + 3]             # <<<<<<<<<<<<<<
@@ -7265,7 +7080,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_stack_buffer_c(PyObject *__pyx_v_rgb_a
               #define unlikely(x) __builtin_expect(!!(x), 0)
           #endif
 
-          /* "Scroll.pyx":451
+          /* "Scroll.pyx":471
  *                     flipped_array[k + 2] = new_buffer[index + 2]
  *                     flipped_array[k + 3] = new_buffer[index + 3]
  *             return flipped_array             # <<<<<<<<<<<<<<
@@ -7276,7 +7091,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_stack_buffer_c(PyObject *__pyx_v_rgb_a
           __pyx_r = __pyx_v_flipped_array;
           goto __pyx_L3_return;
 
-          /* "Scroll.pyx":442
+          /* "Scroll.pyx":462
  *                 new_buffer[jj+3] = alpha[ii]
  * 
  *         if transpose:             # <<<<<<<<<<<<<<
@@ -7286,7 +7101,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_stack_buffer_c(PyObject *__pyx_v_rgb_a
         }
       }
 
-      /* "Scroll.pyx":432
+      /* "Scroll.pyx":452
  *         int w4 = w * 4
  * 
  *     with nogil:             # <<<<<<<<<<<<<<
@@ -7312,7 +7127,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_stack_buffer_c(PyObject *__pyx_v_rgb_a
       }
   }
 
-  /* "Scroll.pyx":453
+  /* "Scroll.pyx":473
  *             return flipped_array
  * 
  *     return new_buffer             # <<<<<<<<<<<<<<
@@ -7323,7 +7138,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_stack_buffer_c(PyObject *__pyx_v_rgb_a
   __pyx_r = __pyx_v_new_buffer;
   goto __pyx_L0;
 
-  /* "Scroll.pyx":407
+  /* "Scroll.pyx":427
  * # TODO try to declare rgb_array_ and alpha as memoryviewslice instead
  * 
  * cdef unsigned char[::1] stack_buffer_c(rgb_array_, alpha_, int w, int h, bint transpose=False):             # <<<<<<<<<<<<<<
@@ -7358,7 +7173,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_stack_buffer_c(PyObject *__pyx_v_rgb_a
   return __pyx_r;
 }
 
-/* "Scroll.pyx":461
+/* "Scroll.pyx":481
  * @cython.nonecheck(False)
  * @cython.cdivision(True)
  * cdef unsigned char[:, :,::1] stack_mem_c(unsigned char[:, :, :] rgb_array_,             # <<<<<<<<<<<<<<
@@ -7368,7 +7183,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_stack_buffer_c(PyObject *__pyx_v_rgb_a
 
 static __Pyx_memviewslice __pyx_f_6Scroll_stack_mem_c(__Pyx_memviewslice __pyx_v_rgb_array_, __Pyx_memviewslice __pyx_v_alpha_, struct __pyx_opt_args_6Scroll_stack_mem_c *__pyx_optional_args) {
 
-  /* "Scroll.pyx":462
+  /* "Scroll.pyx":482
  * @cython.cdivision(True)
  * cdef unsigned char[:, :,::1] stack_mem_c(unsigned char[:, :, :] rgb_array_,
  *                                          unsigned char[:, :] alpha_, bint transpose=False):             # <<<<<<<<<<<<<<
@@ -7455,7 +7270,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_stack_mem_c(__Pyx_memviewslice __pyx_v
     }
   }
 
-  /* "Scroll.pyx":475
+  /* "Scroll.pyx":495
  *     """
  *     cdef int width, height
  *     try:             # <<<<<<<<<<<<<<
@@ -7471,19 +7286,19 @@ static __Pyx_memviewslice __pyx_f_6Scroll_stack_mem_c(__Pyx_memviewslice __pyx_v
     __Pyx_XGOTREF(__pyx_t_3);
     /*try:*/ {
 
-      /* "Scroll.pyx":476
+      /* "Scroll.pyx":496
  *     cdef int width, height
  *     try:
  *         width, height = (<object> rgb_array_).shape[:2]             # <<<<<<<<<<<<<<
  *     except (ValueError, pygame.error) as e:
  *         raise ValueError('\nArray shape not understood.')
  */
-      __pyx_t_4 = __pyx_memoryview_fromslice(__pyx_v_rgb_array_, 3, (PyObject *(*)(char *)) __pyx_memview_get_unsigned_char, (int (*)(char *, PyObject *)) __pyx_memview_set_unsigned_char, 0);; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 476, __pyx_L3_error)
+      __pyx_t_4 = __pyx_memoryview_fromslice(__pyx_v_rgb_array_, 3, (PyObject *(*)(char *)) __pyx_memview_get_unsigned_char, (int (*)(char *, PyObject *)) __pyx_memview_set_unsigned_char, 0);; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 496, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_shape); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 476, __pyx_L3_error)
+      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_shape); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 496, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __pyx_t_4 = __Pyx_PyObject_GetSlice(__pyx_t_5, 0, 2, NULL, NULL, &__pyx_slice__7, 0, 1, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 476, __pyx_L3_error)
+      __pyx_t_4 = __Pyx_PyObject_GetSlice(__pyx_t_5, 0, 2, NULL, NULL, &__pyx_slice__7, 0, 1, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 496, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       if ((likely(PyTuple_CheckExact(__pyx_t_4))) || (PyList_CheckExact(__pyx_t_4))) {
@@ -7496,7 +7311,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_stack_mem_c(__Pyx_memviewslice __pyx_v
         if (unlikely(size != 2)) {
           if (size > 2) __Pyx_RaiseTooManyValuesError(2);
           else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-          __PYX_ERR(0, 476, __pyx_L3_error)
+          __PYX_ERR(0, 496, __pyx_L3_error)
         }
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
         if (likely(PyTuple_CheckExact(sequence))) {
@@ -7509,15 +7324,15 @@ static __Pyx_memviewslice __pyx_f_6Scroll_stack_mem_c(__Pyx_memviewslice __pyx_v
         __Pyx_INCREF(__pyx_t_5);
         __Pyx_INCREF(__pyx_t_6);
         #else
-        __pyx_t_5 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 476, __pyx_L3_error)
+        __pyx_t_5 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 496, __pyx_L3_error)
         __Pyx_GOTREF(__pyx_t_5);
-        __pyx_t_6 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 476, __pyx_L3_error)
+        __pyx_t_6 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 496, __pyx_L3_error)
         __Pyx_GOTREF(__pyx_t_6);
         #endif
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       } else {
         Py_ssize_t index = -1;
-        __pyx_t_7 = PyObject_GetIter(__pyx_t_4); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 476, __pyx_L3_error)
+        __pyx_t_7 = PyObject_GetIter(__pyx_t_4); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 496, __pyx_L3_error)
         __Pyx_GOTREF(__pyx_t_7);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
         __pyx_t_8 = Py_TYPE(__pyx_t_7)->tp_iternext;
@@ -7525,7 +7340,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_stack_mem_c(__Pyx_memviewslice __pyx_v
         __Pyx_GOTREF(__pyx_t_5);
         index = 1; __pyx_t_6 = __pyx_t_8(__pyx_t_7); if (unlikely(!__pyx_t_6)) goto __pyx_L9_unpacking_failed;
         __Pyx_GOTREF(__pyx_t_6);
-        if (__Pyx_IternextUnpackEndCheck(__pyx_t_8(__pyx_t_7), 2) < 0) __PYX_ERR(0, 476, __pyx_L3_error)
+        if (__Pyx_IternextUnpackEndCheck(__pyx_t_8(__pyx_t_7), 2) < 0) __PYX_ERR(0, 496, __pyx_L3_error)
         __pyx_t_8 = NULL;
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
         goto __pyx_L10_unpacking_done;
@@ -7533,17 +7348,17 @@ static __Pyx_memviewslice __pyx_f_6Scroll_stack_mem_c(__Pyx_memviewslice __pyx_v
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
         __pyx_t_8 = NULL;
         if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-        __PYX_ERR(0, 476, __pyx_L3_error)
+        __PYX_ERR(0, 496, __pyx_L3_error)
         __pyx_L10_unpacking_done:;
       }
-      __pyx_t_9 = __Pyx_PyInt_As_int(__pyx_t_5); if (unlikely((__pyx_t_9 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 476, __pyx_L3_error)
+      __pyx_t_9 = __Pyx_PyInt_As_int(__pyx_t_5); if (unlikely((__pyx_t_9 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 496, __pyx_L3_error)
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __pyx_t_10 = __Pyx_PyInt_As_int(__pyx_t_6); if (unlikely((__pyx_t_10 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 476, __pyx_L3_error)
+      __pyx_t_10 = __Pyx_PyInt_As_int(__pyx_t_6); if (unlikely((__pyx_t_10 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 496, __pyx_L3_error)
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       __pyx_v_width = __pyx_t_9;
       __pyx_v_height = __pyx_t_10;
 
-      /* "Scroll.pyx":475
+      /* "Scroll.pyx":495
  *     """
  *     cdef int width, height
  *     try:             # <<<<<<<<<<<<<<
@@ -7561,46 +7376,46 @@ static __Pyx_memviewslice __pyx_f_6Scroll_stack_mem_c(__Pyx_memviewslice __pyx_v
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-    /* "Scroll.pyx":477
+    /* "Scroll.pyx":497
  *     try:
  *         width, height = (<object> rgb_array_).shape[:2]
  *     except (ValueError, pygame.error) as e:             # <<<<<<<<<<<<<<
  *         raise ValueError('\nArray shape not understood.')
  * 
  */
-    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_pygame); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 477, __pyx_L5_except_error)
+    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_pygame); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 497, __pyx_L5_except_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_error); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 477, __pyx_L5_except_error)
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_error); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 497, __pyx_L5_except_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_t_10 = __Pyx_PyErr_ExceptionMatches(__pyx_builtin_ValueError) || __Pyx_PyErr_ExceptionMatches(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     if (__pyx_t_10) {
       __Pyx_AddTraceback("Scroll.stack_mem_c", __pyx_clineno, __pyx_lineno, __pyx_filename);
-      if (__Pyx_GetException(&__pyx_t_6, &__pyx_t_4, &__pyx_t_5) < 0) __PYX_ERR(0, 477, __pyx_L5_except_error)
+      if (__Pyx_GetException(&__pyx_t_6, &__pyx_t_4, &__pyx_t_5) < 0) __PYX_ERR(0, 497, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_INCREF(__pyx_t_4);
       __pyx_v_e = __pyx_t_4;
 
-      /* "Scroll.pyx":478
+      /* "Scroll.pyx":498
  *         width, height = (<object> rgb_array_).shape[:2]
  *     except (ValueError, pygame.error) as e:
  *         raise ValueError('\nArray shape not understood.')             # <<<<<<<<<<<<<<
  * 
  *     cdef:
  */
-      __pyx_t_7 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__8, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 478, __pyx_L5_except_error)
+      __pyx_t_7 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__8, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 498, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_Raise(__pyx_t_7, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-      __PYX_ERR(0, 478, __pyx_L5_except_error)
+      __PYX_ERR(0, 498, __pyx_L5_except_error)
     }
     goto __pyx_L5_except_error;
     __pyx_L5_except_error:;
 
-    /* "Scroll.pyx":475
+    /* "Scroll.pyx":495
  *     """
  *     cdef int width, height
  *     try:             # <<<<<<<<<<<<<<
@@ -7615,23 +7430,23 @@ static __Pyx_memviewslice __pyx_f_6Scroll_stack_mem_c(__Pyx_memviewslice __pyx_v
     __pyx_L8_try_end:;
   }
 
-  /* "Scroll.pyx":481
+  /* "Scroll.pyx":501
  * 
  *     cdef:
  *         unsigned char[:, :, ::1] new_array =  numpy.empty((width, height, 4), dtype=uint8)             # <<<<<<<<<<<<<<
  *         unsigned char[:, :, ::1] new_array_t =  numpy.empty((height, width, 4), dtype=uint8)
  *         int i=0, j=0
  */
-  __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 481, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 501, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_empty); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 481, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_empty); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 501, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_width); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 481, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_width); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 501, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = __Pyx_PyInt_From_int(__pyx_v_height); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 481, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyInt_From_int(__pyx_v_height); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 501, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_7 = PyTuple_New(3); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 481, __pyx_L1_error)
+  __pyx_t_7 = PyTuple_New(3); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 501, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_GIVEREF(__pyx_t_5);
   PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_5);
@@ -7642,46 +7457,46 @@ static __Pyx_memviewslice __pyx_f_6Scroll_stack_mem_c(__Pyx_memviewslice __pyx_v
   PyTuple_SET_ITEM(__pyx_t_7, 2, __pyx_int_4);
   __pyx_t_5 = 0;
   __pyx_t_6 = 0;
-  __pyx_t_6 = PyTuple_New(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 481, __pyx_L1_error)
+  __pyx_t_6 = PyTuple_New(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 501, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_GIVEREF(__pyx_t_7);
   PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_7);
   __pyx_t_7 = 0;
-  __pyx_t_7 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 481, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 501, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_uint8); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 481, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_uint8); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 501, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_dtype, __pyx_t_5) < 0) __PYX_ERR(0, 481, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_dtype, __pyx_t_5) < 0) __PYX_ERR(0, 501, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_6, __pyx_t_7); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 481, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_6, __pyx_t_7); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 501, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   __pyx_t_11 = __Pyx_PyObject_to_MemoryviewSlice_d_d_dc_unsigned_char(__pyx_t_5);
-  if (unlikely(!__pyx_t_11.memview)) __PYX_ERR(0, 481, __pyx_L1_error)
+  if (unlikely(!__pyx_t_11.memview)) __PYX_ERR(0, 501, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_v_new_array = __pyx_t_11;
   __pyx_t_11.memview = NULL;
   __pyx_t_11.data = NULL;
 
-  /* "Scroll.pyx":482
+  /* "Scroll.pyx":502
  *     cdef:
  *         unsigned char[:, :, ::1] new_array =  numpy.empty((width, height, 4), dtype=uint8)
  *         unsigned char[:, :, ::1] new_array_t =  numpy.empty((height, width, 4), dtype=uint8)             # <<<<<<<<<<<<<<
  *         int i=0, j=0
  *     # Equivalent to a numpy.dstack
  */
-  __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 482, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 502, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_empty); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 482, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_empty); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 502, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_height); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 482, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_height); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 502, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = __Pyx_PyInt_From_int(__pyx_v_width); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 482, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyInt_From_int(__pyx_v_width); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 502, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_4 = PyTuple_New(3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 482, __pyx_L1_error)
+  __pyx_t_4 = PyTuple_New(3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 502, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_GIVEREF(__pyx_t_5);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_5);
@@ -7692,30 +7507,30 @@ static __Pyx_memviewslice __pyx_f_6Scroll_stack_mem_c(__Pyx_memviewslice __pyx_v
   PyTuple_SET_ITEM(__pyx_t_4, 2, __pyx_int_4);
   __pyx_t_5 = 0;
   __pyx_t_6 = 0;
-  __pyx_t_6 = PyTuple_New(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 482, __pyx_L1_error)
+  __pyx_t_6 = PyTuple_New(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 502, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_GIVEREF(__pyx_t_4);
   PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_4);
   __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 482, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 502, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_uint8); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 482, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_uint8); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 502, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_dtype, __pyx_t_5) < 0) __PYX_ERR(0, 482, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_dtype, __pyx_t_5) < 0) __PYX_ERR(0, 502, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_6, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 482, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_6, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 502, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_11 = __Pyx_PyObject_to_MemoryviewSlice_d_d_dc_unsigned_char(__pyx_t_5);
-  if (unlikely(!__pyx_t_11.memview)) __PYX_ERR(0, 482, __pyx_L1_error)
+  if (unlikely(!__pyx_t_11.memview)) __PYX_ERR(0, 502, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_v_new_array_t = __pyx_t_11;
   __pyx_t_11.memview = NULL;
   __pyx_t_11.data = NULL;
 
-  /* "Scroll.pyx":483
+  /* "Scroll.pyx":503
  *         unsigned char[:, :, ::1] new_array =  numpy.empty((width, height, 4), dtype=uint8)
  *         unsigned char[:, :, ::1] new_array_t =  numpy.empty((height, width, 4), dtype=uint8)
  *         int i=0, j=0             # <<<<<<<<<<<<<<
@@ -7725,7 +7540,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_stack_mem_c(__Pyx_memviewslice __pyx_v
   __pyx_v_i = 0;
   __pyx_v_j = 0;
 
-  /* "Scroll.pyx":485
+  /* "Scroll.pyx":505
  *         int i=0, j=0
  *     # Equivalent to a numpy.dstack
  *     with nogil:             # <<<<<<<<<<<<<<
@@ -7740,7 +7555,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_stack_mem_c(__Pyx_memviewslice __pyx_v
       #endif
       /*try:*/ {
 
-        /* "Scroll.pyx":486
+        /* "Scroll.pyx":506
  *     # Equivalent to a numpy.dstack
  *     with nogil:
  *         if transpose:             # <<<<<<<<<<<<<<
@@ -7750,7 +7565,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_stack_mem_c(__Pyx_memviewslice __pyx_v
         __pyx_t_12 = (__pyx_v_transpose != 0);
         if (__pyx_t_12) {
 
-          /* "Scroll.pyx":487
+          /* "Scroll.pyx":507
  *     with nogil:
  *         if transpose:
  *             for j in prange(0, height, schedule=SCHEDULE, num_threads=THREAD_NUMBER):             # <<<<<<<<<<<<<<
@@ -7782,7 +7597,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_stack_mem_c(__Pyx_memviewslice __pyx_v
                               /* Initialize private variables to invalid values */
                               __pyx_v_i = ((int)0xbad0bad0);
 
-                              /* "Scroll.pyx":488
+                              /* "Scroll.pyx":508
  *         if transpose:
  *             for j in prange(0, height, schedule=SCHEDULE, num_threads=THREAD_NUMBER):
  *                 for i in range(0, width):             # <<<<<<<<<<<<<<
@@ -7793,7 +7608,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_stack_mem_c(__Pyx_memviewslice __pyx_v
                               for (__pyx_t_15 = 0; __pyx_t_15 < __pyx_t_9; __pyx_t_15+=1) {
                                 __pyx_v_i = __pyx_t_15;
 
-                                /* "Scroll.pyx":489
+                                /* "Scroll.pyx":509
  *             for j in prange(0, height, schedule=SCHEDULE, num_threads=THREAD_NUMBER):
  *                 for i in range(0, width):
  *                     new_array_t[j, i, 0] = rgb_array_[i, j, 0]             # <<<<<<<<<<<<<<
@@ -7808,7 +7623,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_stack_mem_c(__Pyx_memviewslice __pyx_v
                                 __pyx_t_21 = 0;
                                 *((unsigned char *) ( /* dim=2 */ ((char *) (((unsigned char *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_new_array_t.data + __pyx_t_19 * __pyx_v_new_array_t.strides[0]) ) + __pyx_t_20 * __pyx_v_new_array_t.strides[1]) )) + __pyx_t_21)) )) = (*((unsigned char *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rgb_array_.data + __pyx_t_16 * __pyx_v_rgb_array_.strides[0]) ) + __pyx_t_17 * __pyx_v_rgb_array_.strides[1]) ) + __pyx_t_18 * __pyx_v_rgb_array_.strides[2]) )));
 
-                                /* "Scroll.pyx":490
+                                /* "Scroll.pyx":510
  *                 for i in range(0, width):
  *                     new_array_t[j, i, 0] = rgb_array_[i, j, 0]
  *                     new_array_t[j, i, 1] = rgb_array_[i, j, 1]             # <<<<<<<<<<<<<<
@@ -7823,7 +7638,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_stack_mem_c(__Pyx_memviewslice __pyx_v
                                 __pyx_t_27 = 1;
                                 *((unsigned char *) ( /* dim=2 */ ((char *) (((unsigned char *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_new_array_t.data + __pyx_t_25 * __pyx_v_new_array_t.strides[0]) ) + __pyx_t_26 * __pyx_v_new_array_t.strides[1]) )) + __pyx_t_27)) )) = (*((unsigned char *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rgb_array_.data + __pyx_t_22 * __pyx_v_rgb_array_.strides[0]) ) + __pyx_t_23 * __pyx_v_rgb_array_.strides[1]) ) + __pyx_t_24 * __pyx_v_rgb_array_.strides[2]) )));
 
-                                /* "Scroll.pyx":491
+                                /* "Scroll.pyx":511
  *                     new_array_t[j, i, 0] = rgb_array_[i, j, 0]
  *                     new_array_t[j, i, 1] = rgb_array_[i, j, 1]
  *                     new_array_t[j, i, 2] = rgb_array_[i, j, 2]             # <<<<<<<<<<<<<<
@@ -7838,7 +7653,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_stack_mem_c(__Pyx_memviewslice __pyx_v
                                 __pyx_t_33 = 2;
                                 *((unsigned char *) ( /* dim=2 */ ((char *) (((unsigned char *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_new_array_t.data + __pyx_t_31 * __pyx_v_new_array_t.strides[0]) ) + __pyx_t_32 * __pyx_v_new_array_t.strides[1]) )) + __pyx_t_33)) )) = (*((unsigned char *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rgb_array_.data + __pyx_t_28 * __pyx_v_rgb_array_.strides[0]) ) + __pyx_t_29 * __pyx_v_rgb_array_.strides[1]) ) + __pyx_t_30 * __pyx_v_rgb_array_.strides[2]) )));
 
-                                /* "Scroll.pyx":492
+                                /* "Scroll.pyx":512
  *                     new_array_t[j, i, 1] = rgb_array_[i, j, 1]
  *                     new_array_t[j, i, 2] = rgb_array_[i, j, 2]
  *                     new_array_t[j, i, 3] =  alpha_[i, j]             # <<<<<<<<<<<<<<
@@ -7864,7 +7679,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_stack_mem_c(__Pyx_memviewslice __pyx_v
               #define unlikely(x) __builtin_expect(!!(x), 0)
           #endif
 
-          /* "Scroll.pyx":486
+          /* "Scroll.pyx":506
  *     # Equivalent to a numpy.dstack
  *     with nogil:
  *         if transpose:             # <<<<<<<<<<<<<<
@@ -7874,7 +7689,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_stack_mem_c(__Pyx_memviewslice __pyx_v
           goto __pyx_L16;
         }
 
-        /* "Scroll.pyx":495
+        /* "Scroll.pyx":515
  * 
  *         else:
  *             for i in prange(0, width, schedule=SCHEDULE, num_threads=THREAD_NUMBER):             # <<<<<<<<<<<<<<
@@ -7907,7 +7722,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_stack_mem_c(__Pyx_memviewslice __pyx_v
                               /* Initialize private variables to invalid values */
                               __pyx_v_j = ((int)0xbad0bad0);
 
-                              /* "Scroll.pyx":496
+                              /* "Scroll.pyx":516
  *         else:
  *             for i in prange(0, width, schedule=SCHEDULE, num_threads=THREAD_NUMBER):
  *                 for j in range(0, height):             # <<<<<<<<<<<<<<
@@ -7918,7 +7733,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_stack_mem_c(__Pyx_memviewslice __pyx_v
                               for (__pyx_t_15 = 0; __pyx_t_15 < __pyx_t_9; __pyx_t_15+=1) {
                                 __pyx_v_j = __pyx_t_15;
 
-                                /* "Scroll.pyx":497
+                                /* "Scroll.pyx":517
  *             for i in prange(0, width, schedule=SCHEDULE, num_threads=THREAD_NUMBER):
  *                 for j in range(0, height):
  *                     new_array[i, j, 0] = rgb_array_[i, j, 0]             # <<<<<<<<<<<<<<
@@ -7933,7 +7748,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_stack_mem_c(__Pyx_memviewslice __pyx_v
                                 __pyx_t_44 = 0;
                                 *((unsigned char *) ( /* dim=2 */ ((char *) (((unsigned char *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_new_array.data + __pyx_t_42 * __pyx_v_new_array.strides[0]) ) + __pyx_t_43 * __pyx_v_new_array.strides[1]) )) + __pyx_t_44)) )) = (*((unsigned char *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rgb_array_.data + __pyx_t_39 * __pyx_v_rgb_array_.strides[0]) ) + __pyx_t_40 * __pyx_v_rgb_array_.strides[1]) ) + __pyx_t_41 * __pyx_v_rgb_array_.strides[2]) )));
 
-                                /* "Scroll.pyx":498
+                                /* "Scroll.pyx":518
  *                 for j in range(0, height):
  *                     new_array[i, j, 0] = rgb_array_[i, j, 0]
  *                     new_array[i, j, 1] = rgb_array_[i, j, 1]             # <<<<<<<<<<<<<<
@@ -7948,7 +7763,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_stack_mem_c(__Pyx_memviewslice __pyx_v
                                 __pyx_t_50 = 1;
                                 *((unsigned char *) ( /* dim=2 */ ((char *) (((unsigned char *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_new_array.data + __pyx_t_48 * __pyx_v_new_array.strides[0]) ) + __pyx_t_49 * __pyx_v_new_array.strides[1]) )) + __pyx_t_50)) )) = (*((unsigned char *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rgb_array_.data + __pyx_t_45 * __pyx_v_rgb_array_.strides[0]) ) + __pyx_t_46 * __pyx_v_rgb_array_.strides[1]) ) + __pyx_t_47 * __pyx_v_rgb_array_.strides[2]) )));
 
-                                /* "Scroll.pyx":499
+                                /* "Scroll.pyx":519
  *                     new_array[i, j, 0] = rgb_array_[i, j, 0]
  *                     new_array[i, j, 1] = rgb_array_[i, j, 1]
  *                     new_array[i, j, 2] = rgb_array_[i, j, 2]             # <<<<<<<<<<<<<<
@@ -7963,7 +7778,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_stack_mem_c(__Pyx_memviewslice __pyx_v
                                 __pyx_t_56 = 2;
                                 *((unsigned char *) ( /* dim=2 */ ((char *) (((unsigned char *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_new_array.data + __pyx_t_54 * __pyx_v_new_array.strides[0]) ) + __pyx_t_55 * __pyx_v_new_array.strides[1]) )) + __pyx_t_56)) )) = (*((unsigned char *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rgb_array_.data + __pyx_t_51 * __pyx_v_rgb_array_.strides[0]) ) + __pyx_t_52 * __pyx_v_rgb_array_.strides[1]) ) + __pyx_t_53 * __pyx_v_rgb_array_.strides[2]) )));
 
-                                /* "Scroll.pyx":500
+                                /* "Scroll.pyx":520
  *                     new_array[i, j, 1] = rgb_array_[i, j, 1]
  *                     new_array[i, j, 2] = rgb_array_[i, j, 2]
  *                     new_array[i, j, 3] =  alpha_[i, j]             # <<<<<<<<<<<<<<
@@ -7992,7 +7807,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_stack_mem_c(__Pyx_memviewslice __pyx_v
         __pyx_L16:;
       }
 
-      /* "Scroll.pyx":485
+      /* "Scroll.pyx":505
  *         int i=0, j=0
  *     # Equivalent to a numpy.dstack
  *     with nogil:             # <<<<<<<<<<<<<<
@@ -8011,7 +7826,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_stack_mem_c(__Pyx_memviewslice __pyx_v
       }
   }
 
-  /* "Scroll.pyx":502
+  /* "Scroll.pyx":522
  *                     new_array[i, j, 3] =  alpha_[i, j]
  * 
  *     return asarray(new_array) if transpose == False else asarray(new_array_t)             # <<<<<<<<<<<<<<
@@ -8019,9 +7834,9 @@ static __Pyx_memviewslice __pyx_f_6Scroll_stack_mem_c(__Pyx_memviewslice __pyx_v
  * 
  */
   if (((__pyx_v_transpose == 0) != 0)) {
-    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_asarray); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 502, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_asarray); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 522, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_6 = __pyx_memoryview_fromslice(__pyx_v_new_array, 3, (PyObject *(*)(char *)) __pyx_memview_get_unsigned_char, (int (*)(char *, PyObject *)) __pyx_memview_set_unsigned_char, 0);; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 502, __pyx_L1_error)
+    __pyx_t_6 = __pyx_memoryview_fromslice(__pyx_v_new_array, 3, (PyObject *(*)(char *)) __pyx_memview_get_unsigned_char, (int (*)(char *, PyObject *)) __pyx_memview_set_unsigned_char, 0);; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 522, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __pyx_t_7 = NULL;
     if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_4))) {
@@ -8034,14 +7849,14 @@ static __Pyx_memviewslice __pyx_f_6Scroll_stack_mem_c(__Pyx_memviewslice __pyx_v
       }
     }
     if (!__pyx_t_7) {
-      __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 502, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 522, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_GOTREF(__pyx_t_5);
     } else {
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_4)) {
         PyObject *__pyx_temp[2] = {__pyx_t_7, __pyx_t_6};
-        __pyx_t_5 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 502, __pyx_L1_error)
+        __pyx_t_5 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 522, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
         __Pyx_GOTREF(__pyx_t_5);
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -8050,35 +7865,35 @@ static __Pyx_memviewslice __pyx_f_6Scroll_stack_mem_c(__Pyx_memviewslice __pyx_v
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
         PyObject *__pyx_temp[2] = {__pyx_t_7, __pyx_t_6};
-        __pyx_t_5 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 502, __pyx_L1_error)
+        __pyx_t_5 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 522, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
         __Pyx_GOTREF(__pyx_t_5);
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       } else
       #endif
       {
-        __pyx_t_62 = PyTuple_New(1+1); if (unlikely(!__pyx_t_62)) __PYX_ERR(0, 502, __pyx_L1_error)
+        __pyx_t_62 = PyTuple_New(1+1); if (unlikely(!__pyx_t_62)) __PYX_ERR(0, 522, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_62);
         __Pyx_GIVEREF(__pyx_t_7); PyTuple_SET_ITEM(__pyx_t_62, 0, __pyx_t_7); __pyx_t_7 = NULL;
         __Pyx_GIVEREF(__pyx_t_6);
         PyTuple_SET_ITEM(__pyx_t_62, 0+1, __pyx_t_6);
         __pyx_t_6 = 0;
-        __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_62, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 502, __pyx_L1_error)
+        __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_62, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 522, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
         __Pyx_DECREF(__pyx_t_62); __pyx_t_62 = 0;
       }
     }
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_t_63 = __Pyx_PyObject_to_MemoryviewSlice_d_d_dc_unsigned_char(__pyx_t_5);
-    if (unlikely(!__pyx_t_63.memview)) __PYX_ERR(0, 502, __pyx_L1_error)
+    if (unlikely(!__pyx_t_63.memview)) __PYX_ERR(0, 522, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __pyx_t_11 = __pyx_t_63;
     __pyx_t_63.memview = NULL;
     __pyx_t_63.data = NULL;
   } else {
-    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_asarray); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 502, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_asarray); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 522, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_62 = __pyx_memoryview_fromslice(__pyx_v_new_array_t, 3, (PyObject *(*)(char *)) __pyx_memview_get_unsigned_char, (int (*)(char *, PyObject *)) __pyx_memview_set_unsigned_char, 0);; if (unlikely(!__pyx_t_62)) __PYX_ERR(0, 502, __pyx_L1_error)
+    __pyx_t_62 = __pyx_memoryview_fromslice(__pyx_v_new_array_t, 3, (PyObject *(*)(char *)) __pyx_memview_get_unsigned_char, (int (*)(char *, PyObject *)) __pyx_memview_set_unsigned_char, 0);; if (unlikely(!__pyx_t_62)) __PYX_ERR(0, 522, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_62);
     __pyx_t_6 = NULL;
     if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_4))) {
@@ -8091,14 +7906,14 @@ static __Pyx_memviewslice __pyx_f_6Scroll_stack_mem_c(__Pyx_memviewslice __pyx_v
       }
     }
     if (!__pyx_t_6) {
-      __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_62); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 502, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_62); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 522, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_62); __pyx_t_62 = 0;
       __Pyx_GOTREF(__pyx_t_5);
     } else {
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_4)) {
         PyObject *__pyx_temp[2] = {__pyx_t_6, __pyx_t_62};
-        __pyx_t_5 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 502, __pyx_L1_error)
+        __pyx_t_5 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 522, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
         __Pyx_GOTREF(__pyx_t_5);
         __Pyx_DECREF(__pyx_t_62); __pyx_t_62 = 0;
@@ -8107,27 +7922,27 @@ static __Pyx_memviewslice __pyx_f_6Scroll_stack_mem_c(__Pyx_memviewslice __pyx_v
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
         PyObject *__pyx_temp[2] = {__pyx_t_6, __pyx_t_62};
-        __pyx_t_5 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 502, __pyx_L1_error)
+        __pyx_t_5 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 522, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
         __Pyx_GOTREF(__pyx_t_5);
         __Pyx_DECREF(__pyx_t_62); __pyx_t_62 = 0;
       } else
       #endif
       {
-        __pyx_t_7 = PyTuple_New(1+1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 502, __pyx_L1_error)
+        __pyx_t_7 = PyTuple_New(1+1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 522, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
         __Pyx_GIVEREF(__pyx_t_6); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_6); __pyx_t_6 = NULL;
         __Pyx_GIVEREF(__pyx_t_62);
         PyTuple_SET_ITEM(__pyx_t_7, 0+1, __pyx_t_62);
         __pyx_t_62 = 0;
-        __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_7, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 502, __pyx_L1_error)
+        __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_7, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 522, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       }
     }
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_t_63 = __Pyx_PyObject_to_MemoryviewSlice_d_d_dc_unsigned_char(__pyx_t_5);
-    if (unlikely(!__pyx_t_63.memview)) __PYX_ERR(0, 502, __pyx_L1_error)
+    if (unlikely(!__pyx_t_63.memview)) __PYX_ERR(0, 522, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __pyx_t_11 = __pyx_t_63;
     __pyx_t_63.memview = NULL;
@@ -8138,7 +7953,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_stack_mem_c(__Pyx_memviewslice __pyx_v
   __pyx_t_11.data = NULL;
   goto __pyx_L0;
 
-  /* "Scroll.pyx":461
+  /* "Scroll.pyx":481
  * @cython.nonecheck(False)
  * @cython.cdivision(True)
  * cdef unsigned char[:, :,::1] stack_mem_c(unsigned char[:, :, :] rgb_array_,             # <<<<<<<<<<<<<<
@@ -8172,7 +7987,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_stack_mem_c(__Pyx_memviewslice __pyx_v
   return __pyx_r;
 }
 
-/* "Scroll.pyx":510
+/* "Scroll.pyx":530
  * @cython.nonecheck(False)
  * @cython.cdivision(True)
  * cdef unstack_object_c(unsigned char[:, :, :] rgba_array_):             # <<<<<<<<<<<<<<
@@ -8233,7 +8048,7 @@ static PyObject *__pyx_f_6Scroll_unstack_object_c(__Pyx_memviewslice __pyx_v_rgb
   Py_ssize_t __pyx_t_40;
   __Pyx_RefNannySetupContext("unstack_object_c", 0);
 
-  /* "Scroll.pyx":519
+  /* "Scroll.pyx":539
  *     """
  *     cdef int w, h, d
  *     try:             # <<<<<<<<<<<<<<
@@ -8249,19 +8064,19 @@ static PyObject *__pyx_f_6Scroll_unstack_object_c(__Pyx_memviewslice __pyx_v_rgb
     __Pyx_XGOTREF(__pyx_t_3);
     /*try:*/ {
 
-      /* "Scroll.pyx":520
+      /* "Scroll.pyx":540
  *     cdef int w, h, d
  *     try:
  *         w, h, d = (<object> rgba_array_).shape[:3]             # <<<<<<<<<<<<<<
  *     except (ValueError, pygame.error) as e:
  *         raise ValueError('\nArray shape not understood.')
  */
-      __pyx_t_4 = __pyx_memoryview_fromslice(__pyx_v_rgba_array_, 3, (PyObject *(*)(char *)) __pyx_memview_get_unsigned_char, (int (*)(char *, PyObject *)) __pyx_memview_set_unsigned_char, 0);; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 520, __pyx_L3_error)
+      __pyx_t_4 = __pyx_memoryview_fromslice(__pyx_v_rgba_array_, 3, (PyObject *(*)(char *)) __pyx_memview_get_unsigned_char, (int (*)(char *, PyObject *)) __pyx_memview_set_unsigned_char, 0);; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 540, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_shape); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 520, __pyx_L3_error)
+      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_shape); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 540, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __pyx_t_4 = __Pyx_PyObject_GetSlice(__pyx_t_5, 0, 3, NULL, NULL, &__pyx_slice__9, 0, 1, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 520, __pyx_L3_error)
+      __pyx_t_4 = __Pyx_PyObject_GetSlice(__pyx_t_5, 0, 3, NULL, NULL, &__pyx_slice__9, 0, 1, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 540, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       if ((likely(PyTuple_CheckExact(__pyx_t_4))) || (PyList_CheckExact(__pyx_t_4))) {
@@ -8274,7 +8089,7 @@ static PyObject *__pyx_f_6Scroll_unstack_object_c(__Pyx_memviewslice __pyx_v_rgb
         if (unlikely(size != 3)) {
           if (size > 3) __Pyx_RaiseTooManyValuesError(3);
           else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-          __PYX_ERR(0, 520, __pyx_L3_error)
+          __PYX_ERR(0, 540, __pyx_L3_error)
         }
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
         if (likely(PyTuple_CheckExact(sequence))) {
@@ -8290,17 +8105,17 @@ static PyObject *__pyx_f_6Scroll_unstack_object_c(__Pyx_memviewslice __pyx_v_rgb
         __Pyx_INCREF(__pyx_t_6);
         __Pyx_INCREF(__pyx_t_7);
         #else
-        __pyx_t_5 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 520, __pyx_L3_error)
+        __pyx_t_5 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 540, __pyx_L3_error)
         __Pyx_GOTREF(__pyx_t_5);
-        __pyx_t_6 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 520, __pyx_L3_error)
+        __pyx_t_6 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 540, __pyx_L3_error)
         __Pyx_GOTREF(__pyx_t_6);
-        __pyx_t_7 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 520, __pyx_L3_error)
+        __pyx_t_7 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 540, __pyx_L3_error)
         __Pyx_GOTREF(__pyx_t_7);
         #endif
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       } else {
         Py_ssize_t index = -1;
-        __pyx_t_8 = PyObject_GetIter(__pyx_t_4); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 520, __pyx_L3_error)
+        __pyx_t_8 = PyObject_GetIter(__pyx_t_4); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 540, __pyx_L3_error)
         __Pyx_GOTREF(__pyx_t_8);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
         __pyx_t_9 = Py_TYPE(__pyx_t_8)->tp_iternext;
@@ -8310,7 +8125,7 @@ static PyObject *__pyx_f_6Scroll_unstack_object_c(__Pyx_memviewslice __pyx_v_rgb
         __Pyx_GOTREF(__pyx_t_6);
         index = 2; __pyx_t_7 = __pyx_t_9(__pyx_t_8); if (unlikely(!__pyx_t_7)) goto __pyx_L9_unpacking_failed;
         __Pyx_GOTREF(__pyx_t_7);
-        if (__Pyx_IternextUnpackEndCheck(__pyx_t_9(__pyx_t_8), 3) < 0) __PYX_ERR(0, 520, __pyx_L3_error)
+        if (__Pyx_IternextUnpackEndCheck(__pyx_t_9(__pyx_t_8), 3) < 0) __PYX_ERR(0, 540, __pyx_L3_error)
         __pyx_t_9 = NULL;
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
         goto __pyx_L10_unpacking_done;
@@ -8318,20 +8133,20 @@ static PyObject *__pyx_f_6Scroll_unstack_object_c(__Pyx_memviewslice __pyx_v_rgb
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
         __pyx_t_9 = NULL;
         if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-        __PYX_ERR(0, 520, __pyx_L3_error)
+        __PYX_ERR(0, 540, __pyx_L3_error)
         __pyx_L10_unpacking_done:;
       }
-      __pyx_t_10 = __Pyx_PyInt_As_int(__pyx_t_5); if (unlikely((__pyx_t_10 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 520, __pyx_L3_error)
+      __pyx_t_10 = __Pyx_PyInt_As_int(__pyx_t_5); if (unlikely((__pyx_t_10 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 540, __pyx_L3_error)
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __pyx_t_11 = __Pyx_PyInt_As_int(__pyx_t_6); if (unlikely((__pyx_t_11 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 520, __pyx_L3_error)
+      __pyx_t_11 = __Pyx_PyInt_As_int(__pyx_t_6); if (unlikely((__pyx_t_11 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 540, __pyx_L3_error)
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-      __pyx_t_12 = __Pyx_PyInt_As_int(__pyx_t_7); if (unlikely((__pyx_t_12 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 520, __pyx_L3_error)
+      __pyx_t_12 = __Pyx_PyInt_As_int(__pyx_t_7); if (unlikely((__pyx_t_12 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 540, __pyx_L3_error)
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       __pyx_v_w = __pyx_t_10;
       __pyx_v_h = __pyx_t_11;
       __pyx_v_d = __pyx_t_12;
 
-      /* "Scroll.pyx":519
+      /* "Scroll.pyx":539
  *     """
  *     cdef int w, h, d
  *     try:             # <<<<<<<<<<<<<<
@@ -8350,46 +8165,46 @@ static PyObject *__pyx_f_6Scroll_unstack_object_c(__Pyx_memviewslice __pyx_v_rgb
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-    /* "Scroll.pyx":521
+    /* "Scroll.pyx":541
  *     try:
  *         w, h, d = (<object> rgba_array_).shape[:3]
  *     except (ValueError, pygame.error) as e:             # <<<<<<<<<<<<<<
  *         raise ValueError('\nArray shape not understood.')
  * 
  */
-    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_pygame); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 521, __pyx_L5_except_error)
+    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_pygame); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 541, __pyx_L5_except_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_error); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 521, __pyx_L5_except_error)
+    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_error); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 541, __pyx_L5_except_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_t_12 = __Pyx_PyErr_ExceptionMatches(__pyx_builtin_ValueError) || __Pyx_PyErr_ExceptionMatches(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     if (__pyx_t_12) {
       __Pyx_AddTraceback("Scroll.unstack_object_c", __pyx_clineno, __pyx_lineno, __pyx_filename);
-      if (__Pyx_GetException(&__pyx_t_7, &__pyx_t_4, &__pyx_t_6) < 0) __PYX_ERR(0, 521, __pyx_L5_except_error)
+      if (__Pyx_GetException(&__pyx_t_7, &__pyx_t_4, &__pyx_t_6) < 0) __PYX_ERR(0, 541, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_INCREF(__pyx_t_4);
       __pyx_v_e = __pyx_t_4;
 
-      /* "Scroll.pyx":522
+      /* "Scroll.pyx":542
  *         w, h, d = (<object> rgba_array_).shape[:3]
  *     except (ValueError, pygame.error) as e:
  *         raise ValueError('\nArray shape not understood.')             # <<<<<<<<<<<<<<
  * 
  *     assert d==4, 'Invalid depth for arguement rgba_array_, must be 4 got %s ' % d
  */
-      __pyx_t_5 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__10, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 522, __pyx_L5_except_error)
+      __pyx_t_5 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__10, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 542, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_Raise(__pyx_t_5, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __PYX_ERR(0, 522, __pyx_L5_except_error)
+      __PYX_ERR(0, 542, __pyx_L5_except_error)
     }
     goto __pyx_L5_except_error;
     __pyx_L5_except_error:;
 
-    /* "Scroll.pyx":519
+    /* "Scroll.pyx":539
  *     """
  *     cdef int w, h, d
  *     try:             # <<<<<<<<<<<<<<
@@ -8404,7 +8219,7 @@ static PyObject *__pyx_f_6Scroll_unstack_object_c(__Pyx_memviewslice __pyx_v_rgb
     __pyx_L8_try_end:;
   }
 
-  /* "Scroll.pyx":524
+  /* "Scroll.pyx":544
  *         raise ValueError('\nArray shape not understood.')
  * 
  *     assert d==4, 'Invalid depth for arguement rgba_array_, must be 4 got %s ' % d             # <<<<<<<<<<<<<<
@@ -8414,35 +8229,35 @@ static PyObject *__pyx_f_6Scroll_unstack_object_c(__Pyx_memviewslice __pyx_v_rgb
   #ifndef CYTHON_WITHOUT_ASSERTIONS
   if (unlikely(!Py_OptimizeFlag)) {
     if (unlikely(!((__pyx_v_d == 4) != 0))) {
-      __pyx_t_6 = __Pyx_PyInt_From_int(__pyx_v_d); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 524, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyInt_From_int(__pyx_v_d); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 544, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
-      __pyx_t_4 = __Pyx_PyString_Format(__pyx_kp_s_Invalid_depth_for_arguement_rgba, __pyx_t_6); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 524, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyString_Format(__pyx_kp_s_Invalid_depth_for_arguement_rgba, __pyx_t_6); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 544, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       PyErr_SetObject(PyExc_AssertionError, __pyx_t_4);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __PYX_ERR(0, 524, __pyx_L1_error)
+      __PYX_ERR(0, 544, __pyx_L1_error)
     }
   }
   #endif
 
-  /* "Scroll.pyx":527
+  /* "Scroll.pyx":547
  * 
  *     cdef:
  *         unsigned char[:, :, ::1] rgb_array = numpy.empty((w, h, 3), numpy.uint8)             # <<<<<<<<<<<<<<
  *         unsigned char[:, ::1] alpha_array =  numpy.empty((w, h), dtype=uint8)
  *         int i=0, j=0
  */
-  __pyx_t_6 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 527, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 547, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_empty); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 527, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_empty); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 547, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = __Pyx_PyInt_From_int(__pyx_v_w); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 527, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyInt_From_int(__pyx_v_w); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 547, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_h); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 527, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_h); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 547, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_8 = PyTuple_New(3); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 527, __pyx_L1_error)
+  __pyx_t_8 = PyTuple_New(3); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 547, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __Pyx_GIVEREF(__pyx_t_6);
   PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_6);
@@ -8453,9 +8268,9 @@ static PyObject *__pyx_f_6Scroll_unstack_object_c(__Pyx_memviewslice __pyx_v_rgb
   PyTuple_SET_ITEM(__pyx_t_8, 2, __pyx_int_3);
   __pyx_t_6 = 0;
   __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 527, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 547, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_uint8); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 527, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_uint8); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 547, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_t_5 = NULL;
@@ -8473,7 +8288,7 @@ static PyObject *__pyx_f_6Scroll_unstack_object_c(__Pyx_memviewslice __pyx_v_rgb
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_7)) {
     PyObject *__pyx_temp[3] = {__pyx_t_5, __pyx_t_8, __pyx_t_6};
-    __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_12, 2+__pyx_t_12); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 527, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_12, 2+__pyx_t_12); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 547, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
@@ -8483,7 +8298,7 @@ static PyObject *__pyx_f_6Scroll_unstack_object_c(__Pyx_memviewslice __pyx_v_rgb
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_7)) {
     PyObject *__pyx_temp[3] = {__pyx_t_5, __pyx_t_8, __pyx_t_6};
-    __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_12, 2+__pyx_t_12); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 527, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_12, 2+__pyx_t_12); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 547, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
@@ -8491,7 +8306,7 @@ static PyObject *__pyx_f_6Scroll_unstack_object_c(__Pyx_memviewslice __pyx_v_rgb
   } else
   #endif
   {
-    __pyx_t_13 = PyTuple_New(2+__pyx_t_12); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 527, __pyx_L1_error)
+    __pyx_t_13 = PyTuple_New(2+__pyx_t_12); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 547, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_13);
     if (__pyx_t_5) {
       __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_13, 0, __pyx_t_5); __pyx_t_5 = NULL;
@@ -8502,35 +8317,35 @@ static PyObject *__pyx_f_6Scroll_unstack_object_c(__Pyx_memviewslice __pyx_v_rgb
     PyTuple_SET_ITEM(__pyx_t_13, 1+__pyx_t_12, __pyx_t_6);
     __pyx_t_8 = 0;
     __pyx_t_6 = 0;
-    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_13, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 527, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_13, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 547, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
   }
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   __pyx_t_14 = __Pyx_PyObject_to_MemoryviewSlice_d_d_dc_unsigned_char(__pyx_t_4);
-  if (unlikely(!__pyx_t_14.memview)) __PYX_ERR(0, 527, __pyx_L1_error)
+  if (unlikely(!__pyx_t_14.memview)) __PYX_ERR(0, 547, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_v_rgb_array = __pyx_t_14;
   __pyx_t_14.memview = NULL;
   __pyx_t_14.data = NULL;
 
-  /* "Scroll.pyx":528
+  /* "Scroll.pyx":548
  *     cdef:
  *         unsigned char[:, :, ::1] rgb_array = numpy.empty((w, h, 3), numpy.uint8)
  *         unsigned char[:, ::1] alpha_array =  numpy.empty((w, h), dtype=uint8)             # <<<<<<<<<<<<<<
  *         int i=0, j=0
  * 
  */
-  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 528, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 548, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_empty); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 528, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_empty); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 548, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_w); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 528, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_w); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 548, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_13 = __Pyx_PyInt_From_int(__pyx_v_h); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 528, __pyx_L1_error)
+  __pyx_t_13 = __Pyx_PyInt_From_int(__pyx_v_h); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 548, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_13);
-  __pyx_t_6 = PyTuple_New(2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 528, __pyx_L1_error)
+  __pyx_t_6 = PyTuple_New(2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 548, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_GIVEREF(__pyx_t_4);
   PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_4);
@@ -8538,30 +8353,30 @@ static PyObject *__pyx_f_6Scroll_unstack_object_c(__Pyx_memviewslice __pyx_v_rgb
   PyTuple_SET_ITEM(__pyx_t_6, 1, __pyx_t_13);
   __pyx_t_4 = 0;
   __pyx_t_13 = 0;
-  __pyx_t_13 = PyTuple_New(1); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 528, __pyx_L1_error)
+  __pyx_t_13 = PyTuple_New(1); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 548, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_13);
   __Pyx_GIVEREF(__pyx_t_6);
   PyTuple_SET_ITEM(__pyx_t_13, 0, __pyx_t_6);
   __pyx_t_6 = 0;
-  __pyx_t_6 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 528, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 548, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_uint8); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 528, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_uint8); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 548, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  if (PyDict_SetItem(__pyx_t_6, __pyx_n_s_dtype, __pyx_t_4) < 0) __PYX_ERR(0, 528, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_6, __pyx_n_s_dtype, __pyx_t_4) < 0) __PYX_ERR(0, 548, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_13, __pyx_t_6); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 528, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_13, __pyx_t_6); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 548, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __pyx_t_15 = __Pyx_PyObject_to_MemoryviewSlice_d_dc_unsigned_char(__pyx_t_4);
-  if (unlikely(!__pyx_t_15.memview)) __PYX_ERR(0, 528, __pyx_L1_error)
+  if (unlikely(!__pyx_t_15.memview)) __PYX_ERR(0, 548, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_v_alpha_array = __pyx_t_15;
   __pyx_t_15.memview = NULL;
   __pyx_t_15.data = NULL;
 
-  /* "Scroll.pyx":529
+  /* "Scroll.pyx":549
  *         unsigned char[:, :, ::1] rgb_array = numpy.empty((w, h, 3), numpy.uint8)
  *         unsigned char[:, ::1] alpha_array =  numpy.empty((w, h), dtype=uint8)
  *         int i=0, j=0             # <<<<<<<<<<<<<<
@@ -8571,7 +8386,7 @@ static PyObject *__pyx_f_6Scroll_unstack_object_c(__Pyx_memviewslice __pyx_v_rgb
   __pyx_v_i = 0;
   __pyx_v_j = 0;
 
-  /* "Scroll.pyx":531
+  /* "Scroll.pyx":551
  *         int i=0, j=0
  * 
  *     with nogil:             # <<<<<<<<<<<<<<
@@ -8586,7 +8401,7 @@ static PyObject *__pyx_f_6Scroll_unstack_object_c(__Pyx_memviewslice __pyx_v_rgb
       #endif
       /*try:*/ {
 
-        /* "Scroll.pyx":532
+        /* "Scroll.pyx":552
  * 
  *     with nogil:
  *         for i in prange(0, w, schedule=SCHEDULE, num_threads=THREAD_NUMBER):             # <<<<<<<<<<<<<<
@@ -8618,7 +8433,7 @@ static PyObject *__pyx_f_6Scroll_unstack_object_c(__Pyx_memviewslice __pyx_v_rgb
                             /* Initialize private variables to invalid values */
                             __pyx_v_j = ((int)0xbad0bad0);
 
-                            /* "Scroll.pyx":533
+                            /* "Scroll.pyx":553
  *     with nogil:
  *         for i in prange(0, w, schedule=SCHEDULE, num_threads=THREAD_NUMBER):
  *             for j in range(0, h):             # <<<<<<<<<<<<<<
@@ -8629,7 +8444,7 @@ static PyObject *__pyx_f_6Scroll_unstack_object_c(__Pyx_memviewslice __pyx_v_rgb
                             for (__pyx_t_10 = 0; __pyx_t_10 < __pyx_t_11; __pyx_t_10+=1) {
                               __pyx_v_j = __pyx_t_10;
 
-                              /* "Scroll.pyx":534
+                              /* "Scroll.pyx":554
  *         for i in prange(0, w, schedule=SCHEDULE, num_threads=THREAD_NUMBER):
  *             for j in range(0, h):
  *                 rgb_array[i, j, 0] = rgba_array_[i, j, 0]             # <<<<<<<<<<<<<<
@@ -8644,7 +8459,7 @@ static PyObject *__pyx_f_6Scroll_unstack_object_c(__Pyx_memviewslice __pyx_v_rgb
                               __pyx_t_23 = 0;
                               *((unsigned char *) ( /* dim=2 */ ((char *) (((unsigned char *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rgb_array.data + __pyx_t_21 * __pyx_v_rgb_array.strides[0]) ) + __pyx_t_22 * __pyx_v_rgb_array.strides[1]) )) + __pyx_t_23)) )) = (*((unsigned char *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rgba_array_.data + __pyx_t_18 * __pyx_v_rgba_array_.strides[0]) ) + __pyx_t_19 * __pyx_v_rgba_array_.strides[1]) ) + __pyx_t_20 * __pyx_v_rgba_array_.strides[2]) )));
 
-                              /* "Scroll.pyx":535
+                              /* "Scroll.pyx":555
  *             for j in range(0, h):
  *                 rgb_array[i, j, 0] = rgba_array_[i, j, 0]
  *                 rgb_array[i, j, 1] = rgba_array_[i, j, 1]             # <<<<<<<<<<<<<<
@@ -8659,7 +8474,7 @@ static PyObject *__pyx_f_6Scroll_unstack_object_c(__Pyx_memviewslice __pyx_v_rgb
                               __pyx_t_29 = 1;
                               *((unsigned char *) ( /* dim=2 */ ((char *) (((unsigned char *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rgb_array.data + __pyx_t_27 * __pyx_v_rgb_array.strides[0]) ) + __pyx_t_28 * __pyx_v_rgb_array.strides[1]) )) + __pyx_t_29)) )) = (*((unsigned char *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rgba_array_.data + __pyx_t_24 * __pyx_v_rgba_array_.strides[0]) ) + __pyx_t_25 * __pyx_v_rgba_array_.strides[1]) ) + __pyx_t_26 * __pyx_v_rgba_array_.strides[2]) )));
 
-                              /* "Scroll.pyx":536
+                              /* "Scroll.pyx":556
  *                 rgb_array[i, j, 0] = rgba_array_[i, j, 0]
  *                 rgb_array[i, j, 1] = rgba_array_[i, j, 1]
  *                 rgb_array[i, j, 2] = rgba_array_[i, j, 2]             # <<<<<<<<<<<<<<
@@ -8674,7 +8489,7 @@ static PyObject *__pyx_f_6Scroll_unstack_object_c(__Pyx_memviewslice __pyx_v_rgb
                               __pyx_t_35 = 2;
                               *((unsigned char *) ( /* dim=2 */ ((char *) (((unsigned char *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rgb_array.data + __pyx_t_33 * __pyx_v_rgb_array.strides[0]) ) + __pyx_t_34 * __pyx_v_rgb_array.strides[1]) )) + __pyx_t_35)) )) = (*((unsigned char *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rgba_array_.data + __pyx_t_30 * __pyx_v_rgba_array_.strides[0]) ) + __pyx_t_31 * __pyx_v_rgba_array_.strides[1]) ) + __pyx_t_32 * __pyx_v_rgba_array_.strides[2]) )));
 
-                              /* "Scroll.pyx":537
+                              /* "Scroll.pyx":557
  *                 rgb_array[i, j, 1] = rgba_array_[i, j, 1]
  *                 rgb_array[i, j, 2] = rgba_array_[i, j, 2]
  *                 alpha_array[i, j] =  rgba_array_[i, j, 3]             # <<<<<<<<<<<<<<
@@ -8701,7 +8516,7 @@ static PyObject *__pyx_f_6Scroll_unstack_object_c(__Pyx_memviewslice __pyx_v_rgb
         #endif
       }
 
-      /* "Scroll.pyx":531
+      /* "Scroll.pyx":551
  *         int i=0, j=0
  * 
  *     with nogil:             # <<<<<<<<<<<<<<
@@ -8720,7 +8535,7 @@ static PyObject *__pyx_f_6Scroll_unstack_object_c(__Pyx_memviewslice __pyx_v_rgb
       }
   }
 
-  /* "Scroll.pyx":539
+  /* "Scroll.pyx":559
  *                 alpha_array[i, j] =  rgba_array_[i, j, 3]
  * 
  *     return numpy.asarray(rgb_array), numpy.asarray(alpha_array)             # <<<<<<<<<<<<<<
@@ -8728,12 +8543,12 @@ static PyObject *__pyx_f_6Scroll_unstack_object_c(__Pyx_memviewslice __pyx_v_rgb
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_6 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 539, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 559, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_13 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_asarray); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 539, __pyx_L1_error)
+  __pyx_t_13 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_asarray); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 559, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_13);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = __pyx_memoryview_fromslice(__pyx_v_rgb_array, 3, (PyObject *(*)(char *)) __pyx_memview_get_unsigned_char, (int (*)(char *, PyObject *)) __pyx_memview_set_unsigned_char, 0);; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 539, __pyx_L1_error)
+  __pyx_t_6 = __pyx_memoryview_fromslice(__pyx_v_rgb_array, 3, (PyObject *(*)(char *)) __pyx_memview_get_unsigned_char, (int (*)(char *, PyObject *)) __pyx_memview_set_unsigned_char, 0);; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 559, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __pyx_t_7 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_13))) {
@@ -8746,14 +8561,14 @@ static PyObject *__pyx_f_6Scroll_unstack_object_c(__Pyx_memviewslice __pyx_v_rgb
     }
   }
   if (!__pyx_t_7) {
-    __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_13, __pyx_t_6); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 539, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_13, __pyx_t_6); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 559, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_GOTREF(__pyx_t_4);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_13)) {
       PyObject *__pyx_temp[2] = {__pyx_t_7, __pyx_t_6};
-      __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_13, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 539, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_13, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 559, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -8762,31 +8577,31 @@ static PyObject *__pyx_f_6Scroll_unstack_object_c(__Pyx_memviewslice __pyx_v_rgb
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_13)) {
       PyObject *__pyx_temp[2] = {__pyx_t_7, __pyx_t_6};
-      __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_13, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 539, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_13, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 559, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     } else
     #endif
     {
-      __pyx_t_8 = PyTuple_New(1+1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 539, __pyx_L1_error)
+      __pyx_t_8 = PyTuple_New(1+1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 559, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_GIVEREF(__pyx_t_7); PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_7); __pyx_t_7 = NULL;
       __Pyx_GIVEREF(__pyx_t_6);
       PyTuple_SET_ITEM(__pyx_t_8, 0+1, __pyx_t_6);
       __pyx_t_6 = 0;
-      __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_13, __pyx_t_8, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 539, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_13, __pyx_t_8, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 559, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     }
   }
   __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-  __pyx_t_8 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 539, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 559, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_asarray); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 539, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_asarray); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 559, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-  __pyx_t_8 = __pyx_memoryview_fromslice(__pyx_v_alpha_array, 2, (PyObject *(*)(char *)) __pyx_memview_get_unsigned_char, (int (*)(char *, PyObject *)) __pyx_memview_set_unsigned_char, 0);; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 539, __pyx_L1_error)
+  __pyx_t_8 = __pyx_memoryview_fromslice(__pyx_v_alpha_array, 2, (PyObject *(*)(char *)) __pyx_memview_get_unsigned_char, (int (*)(char *, PyObject *)) __pyx_memview_set_unsigned_char, 0);; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 559, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __pyx_t_7 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_6))) {
@@ -8799,14 +8614,14 @@ static PyObject *__pyx_f_6Scroll_unstack_object_c(__Pyx_memviewslice __pyx_v_rgb
     }
   }
   if (!__pyx_t_7) {
-    __pyx_t_13 = __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_8); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 539, __pyx_L1_error)
+    __pyx_t_13 = __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_8); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 559, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_GOTREF(__pyx_t_13);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_6)) {
       PyObject *__pyx_temp[2] = {__pyx_t_7, __pyx_t_8};
-      __pyx_t_13 = __Pyx_PyFunction_FastCall(__pyx_t_6, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 539, __pyx_L1_error)
+      __pyx_t_13 = __Pyx_PyFunction_FastCall(__pyx_t_6, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 559, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_GOTREF(__pyx_t_13);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
@@ -8815,26 +8630,26 @@ static PyObject *__pyx_f_6Scroll_unstack_object_c(__Pyx_memviewslice __pyx_v_rgb
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_6)) {
       PyObject *__pyx_temp[2] = {__pyx_t_7, __pyx_t_8};
-      __pyx_t_13 = __Pyx_PyCFunction_FastCall(__pyx_t_6, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 539, __pyx_L1_error)
+      __pyx_t_13 = __Pyx_PyCFunction_FastCall(__pyx_t_6, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 559, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_GOTREF(__pyx_t_13);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     } else
     #endif
     {
-      __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 539, __pyx_L1_error)
+      __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 559, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_GIVEREF(__pyx_t_7); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_7); __pyx_t_7 = NULL;
       __Pyx_GIVEREF(__pyx_t_8);
       PyTuple_SET_ITEM(__pyx_t_5, 0+1, __pyx_t_8);
       __pyx_t_8 = 0;
-      __pyx_t_13 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_5, NULL); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 539, __pyx_L1_error)
+      __pyx_t_13 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_5, NULL); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 559, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_13);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     }
   }
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = PyTuple_New(2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 539, __pyx_L1_error)
+  __pyx_t_6 = PyTuple_New(2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 559, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_GIVEREF(__pyx_t_4);
   PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_4);
@@ -8846,7 +8661,7 @@ static PyObject *__pyx_f_6Scroll_unstack_object_c(__Pyx_memviewslice __pyx_v_rgb
   __pyx_t_6 = 0;
   goto __pyx_L0;
 
-  /* "Scroll.pyx":510
+  /* "Scroll.pyx":530
  * @cython.nonecheck(False)
  * @cython.cdivision(True)
  * cdef unstack_object_c(unsigned char[:, :, :] rgba_array_):             # <<<<<<<<<<<<<<
@@ -8875,7 +8690,7 @@ static PyObject *__pyx_f_6Scroll_unstack_object_c(__Pyx_memviewslice __pyx_v_rgb
   return __pyx_r;
 }
 
-/* "Scroll.pyx":547
+/* "Scroll.pyx":567
  * @cython.nonecheck(False)
  * @cython.cdivision(True)
  * cdef unstack_buffer_c(unsigned char [:] rgba_buffer_, int w, int h):             # <<<<<<<<<<<<<<
@@ -8919,7 +8734,7 @@ static PyObject *__pyx_f_6Scroll_unstack_buffer_c(__Pyx_memviewslice __pyx_v_rgb
   Py_ssize_t __pyx_t_23;
   __Pyx_RefNannySetupContext("unstack_buffer_c", 0);
 
-  /* "Scroll.pyx":567
+  /* "Scroll.pyx":587
  * 
  *     cdef int b_length
  *     try:             # <<<<<<<<<<<<<<
@@ -8930,7 +8745,7 @@ static PyObject *__pyx_f_6Scroll_unstack_buffer_c(__Pyx_memviewslice __pyx_v_rgb
     (void)__pyx_t_1; (void)__pyx_t_2; (void)__pyx_t_3; /* mark used */
     /*try:*/ {
 
-      /* "Scroll.pyx":568
+      /* "Scroll.pyx":588
  *     cdef int b_length
  *     try:
  *         b_length = len(rgba_buffer_)             # <<<<<<<<<<<<<<
@@ -8940,7 +8755,7 @@ static PyObject *__pyx_f_6Scroll_unstack_buffer_c(__Pyx_memviewslice __pyx_v_rgb
       __pyx_t_4 = __Pyx_MemoryView_Len(__pyx_v_rgba_buffer_); 
       __pyx_v_b_length = __pyx_t_4;
 
-      /* "Scroll.pyx":567
+      /* "Scroll.pyx":587
  * 
  *     cdef int b_length
  *     try:             # <<<<<<<<<<<<<<
@@ -8950,7 +8765,7 @@ static PyObject *__pyx_f_6Scroll_unstack_buffer_c(__Pyx_memviewslice __pyx_v_rgb
     }
   }
 
-  /* "Scroll.pyx":572
+  /* "Scroll.pyx":592
  *         raise ValueError('\Buffer not understood.')
  * 
  *     if b_length != w * h * 4:             # <<<<<<<<<<<<<<
@@ -8960,20 +8775,20 @@ static PyObject *__pyx_f_6Scroll_unstack_buffer_c(__Pyx_memviewslice __pyx_v_rgb
   __pyx_t_5 = ((__pyx_v_b_length != ((__pyx_v_w * __pyx_v_h) * 4)) != 0);
   if (__pyx_t_5) {
 
-    /* "Scroll.pyx":573
+    /* "Scroll.pyx":593
  * 
  *     if b_length != w * h * 4:
  *         raise ValueError("Buffer length does not match image dimensions.")             # <<<<<<<<<<<<<<
  * 
  *     cdef:
  */
-    __pyx_t_6 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__11, NULL); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 573, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__11, NULL); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 593, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_Raise(__pyx_t_6, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __PYX_ERR(0, 573, __pyx_L1_error)
+    __PYX_ERR(0, 593, __pyx_L1_error)
 
-    /* "Scroll.pyx":572
+    /* "Scroll.pyx":592
  *         raise ValueError('\Buffer not understood.')
  * 
  *     if b_length != w * h * 4:             # <<<<<<<<<<<<<<
@@ -8982,23 +8797,23 @@ static PyObject *__pyx_f_6Scroll_unstack_buffer_c(__Pyx_memviewslice __pyx_v_rgb
  */
   }
 
-  /* "Scroll.pyx":577
+  /* "Scroll.pyx":597
  *     cdef:
  *         int i, ii, jj
  *         unsigned char [::1] rgb_buffer = numpy.empty(w * h * 3, numpy.uint8)             # <<<<<<<<<<<<<<
  *         unsigned char [::1] alpha_buffer = numpy.empty(w * h, numpy.uint8)
  *         unsigned char [:] rgba_buffer = rgba_buffer_# numpy.frombuffer(rgba_buffer_, numpy.uint8)
  */
-  __pyx_t_7 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 577, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 597, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_empty); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 577, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_empty); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 597, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  __pyx_t_7 = __Pyx_PyInt_From_long(((__pyx_v_w * __pyx_v_h) * 3)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 577, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyInt_From_long(((__pyx_v_w * __pyx_v_h) * 3)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 597, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_9 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 577, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 597, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
-  __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_uint8); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 577, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_uint8); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 597, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
   __pyx_t_9 = NULL;
@@ -9016,7 +8831,7 @@ static PyObject *__pyx_f_6Scroll_unstack_buffer_c(__Pyx_memviewslice __pyx_v_rgb
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_8)) {
     PyObject *__pyx_temp[3] = {__pyx_t_9, __pyx_t_7, __pyx_t_10};
-    __pyx_t_6 = __Pyx_PyFunction_FastCall(__pyx_t_8, __pyx_temp+1-__pyx_t_11, 2+__pyx_t_11); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 577, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyFunction_FastCall(__pyx_t_8, __pyx_temp+1-__pyx_t_11, 2+__pyx_t_11); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 597, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
@@ -9026,7 +8841,7 @@ static PyObject *__pyx_f_6Scroll_unstack_buffer_c(__Pyx_memviewslice __pyx_v_rgb
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_8)) {
     PyObject *__pyx_temp[3] = {__pyx_t_9, __pyx_t_7, __pyx_t_10};
-    __pyx_t_6 = __Pyx_PyCFunction_FastCall(__pyx_t_8, __pyx_temp+1-__pyx_t_11, 2+__pyx_t_11); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 577, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyCFunction_FastCall(__pyx_t_8, __pyx_temp+1-__pyx_t_11, 2+__pyx_t_11); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 597, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
@@ -9034,7 +8849,7 @@ static PyObject *__pyx_f_6Scroll_unstack_buffer_c(__Pyx_memviewslice __pyx_v_rgb
   } else
   #endif
   {
-    __pyx_t_12 = PyTuple_New(2+__pyx_t_11); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 577, __pyx_L1_error)
+    __pyx_t_12 = PyTuple_New(2+__pyx_t_11); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 597, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_12);
     if (__pyx_t_9) {
       __Pyx_GIVEREF(__pyx_t_9); PyTuple_SET_ITEM(__pyx_t_12, 0, __pyx_t_9); __pyx_t_9 = NULL;
@@ -9045,35 +8860,35 @@ static PyObject *__pyx_f_6Scroll_unstack_buffer_c(__Pyx_memviewslice __pyx_v_rgb
     PyTuple_SET_ITEM(__pyx_t_12, 1+__pyx_t_11, __pyx_t_10);
     __pyx_t_7 = 0;
     __pyx_t_10 = 0;
-    __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_12, NULL); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 577, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_12, NULL); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 597, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
   }
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   __pyx_t_13 = __Pyx_PyObject_to_MemoryviewSlice_dc_unsigned_char(__pyx_t_6);
-  if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 577, __pyx_L1_error)
+  if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 597, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __pyx_v_rgb_buffer = __pyx_t_13;
   __pyx_t_13.memview = NULL;
   __pyx_t_13.data = NULL;
 
-  /* "Scroll.pyx":578
+  /* "Scroll.pyx":598
  *         int i, ii, jj
  *         unsigned char [::1] rgb_buffer = numpy.empty(w * h * 3, numpy.uint8)
  *         unsigned char [::1] alpha_buffer = numpy.empty(w * h, numpy.uint8)             # <<<<<<<<<<<<<<
  *         unsigned char [:] rgba_buffer = rgba_buffer_# numpy.frombuffer(rgba_buffer_, numpy.uint8)
  * 
  */
-  __pyx_t_8 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 578, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 598, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
-  __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_empty); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 578, __pyx_L1_error)
+  __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_empty); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 598, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_12);
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-  __pyx_t_8 = __Pyx_PyInt_From_int((__pyx_v_w * __pyx_v_h)); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 578, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyInt_From_int((__pyx_v_w * __pyx_v_h)); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 598, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
-  __pyx_t_10 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 578, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 598, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_uint8); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 578, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_uint8); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 598, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
   __pyx_t_10 = NULL;
@@ -9091,7 +8906,7 @@ static PyObject *__pyx_f_6Scroll_unstack_buffer_c(__Pyx_memviewslice __pyx_v_rgb
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_12)) {
     PyObject *__pyx_temp[3] = {__pyx_t_10, __pyx_t_8, __pyx_t_7};
-    __pyx_t_6 = __Pyx_PyFunction_FastCall(__pyx_t_12, __pyx_temp+1-__pyx_t_11, 2+__pyx_t_11); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 578, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyFunction_FastCall(__pyx_t_12, __pyx_temp+1-__pyx_t_11, 2+__pyx_t_11); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 598, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
@@ -9101,7 +8916,7 @@ static PyObject *__pyx_f_6Scroll_unstack_buffer_c(__Pyx_memviewslice __pyx_v_rgb
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_12)) {
     PyObject *__pyx_temp[3] = {__pyx_t_10, __pyx_t_8, __pyx_t_7};
-    __pyx_t_6 = __Pyx_PyCFunction_FastCall(__pyx_t_12, __pyx_temp+1-__pyx_t_11, 2+__pyx_t_11); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 578, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyCFunction_FastCall(__pyx_t_12, __pyx_temp+1-__pyx_t_11, 2+__pyx_t_11); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 598, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
@@ -9109,7 +8924,7 @@ static PyObject *__pyx_f_6Scroll_unstack_buffer_c(__Pyx_memviewslice __pyx_v_rgb
   } else
   #endif
   {
-    __pyx_t_9 = PyTuple_New(2+__pyx_t_11); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 578, __pyx_L1_error)
+    __pyx_t_9 = PyTuple_New(2+__pyx_t_11); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 598, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
     if (__pyx_t_10) {
       __Pyx_GIVEREF(__pyx_t_10); PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_10); __pyx_t_10 = NULL;
@@ -9120,19 +8935,19 @@ static PyObject *__pyx_f_6Scroll_unstack_buffer_c(__Pyx_memviewslice __pyx_v_rgb
     PyTuple_SET_ITEM(__pyx_t_9, 1+__pyx_t_11, __pyx_t_7);
     __pyx_t_8 = 0;
     __pyx_t_7 = 0;
-    __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_12, __pyx_t_9, NULL); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 578, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_12, __pyx_t_9, NULL); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 598, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
   }
   __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
   __pyx_t_13 = __Pyx_PyObject_to_MemoryviewSlice_dc_unsigned_char(__pyx_t_6);
-  if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 578, __pyx_L1_error)
+  if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 598, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __pyx_v_alpha_buffer = __pyx_t_13;
   __pyx_t_13.memview = NULL;
   __pyx_t_13.data = NULL;
 
-  /* "Scroll.pyx":579
+  /* "Scroll.pyx":599
  *         unsigned char [::1] rgb_buffer = numpy.empty(w * h * 3, numpy.uint8)
  *         unsigned char [::1] alpha_buffer = numpy.empty(w * h, numpy.uint8)
  *         unsigned char [:] rgba_buffer = rgba_buffer_# numpy.frombuffer(rgba_buffer_, numpy.uint8)             # <<<<<<<<<<<<<<
@@ -9142,7 +8957,7 @@ static PyObject *__pyx_f_6Scroll_unstack_buffer_c(__Pyx_memviewslice __pyx_v_rgb
   __PYX_INC_MEMVIEW(&__pyx_v_rgba_buffer_, 0);
   __pyx_v_rgba_buffer = __pyx_v_rgba_buffer_;
 
-  /* "Scroll.pyx":581
+  /* "Scroll.pyx":601
  *         unsigned char [:] rgba_buffer = rgba_buffer_# numpy.frombuffer(rgba_buffer_, numpy.uint8)
  * 
  *     with nogil:             # <<<<<<<<<<<<<<
@@ -9157,7 +8972,7 @@ static PyObject *__pyx_f_6Scroll_unstack_buffer_c(__Pyx_memviewslice __pyx_v_rgb
       #endif
       /*try:*/ {
 
-        /* "Scroll.pyx":582
+        /* "Scroll.pyx":602
  * 
  *     with nogil:
  *         for i in prange(0, b_length, 4, schedule=SCHEDULE, num_threads=THREAD_NUMBER):             # <<<<<<<<<<<<<<
@@ -9190,7 +9005,7 @@ static PyObject *__pyx_f_6Scroll_unstack_buffer_c(__Pyx_memviewslice __pyx_v_rgb
                             __pyx_v_ii = ((int)0xbad0bad0);
                             __pyx_v_jj = ((int)0xbad0bad0);
 
-                            /* "Scroll.pyx":583
+                            /* "Scroll.pyx":603
  *     with nogil:
  *         for i in prange(0, b_length, 4, schedule=SCHEDULE, num_threads=THREAD_NUMBER):
  *             jj = (i >> 2)             # <<<<<<<<<<<<<<
@@ -9199,7 +9014,7 @@ static PyObject *__pyx_f_6Scroll_unstack_buffer_c(__Pyx_memviewslice __pyx_v_rgb
  */
                             __pyx_v_jj = (__pyx_v_i >> 2);
 
-                            /* "Scroll.pyx":584
+                            /* "Scroll.pyx":604
  *         for i in prange(0, b_length, 4, schedule=SCHEDULE, num_threads=THREAD_NUMBER):
  *             jj = (i >> 2)
  *             ii = jj * 3             # <<<<<<<<<<<<<<
@@ -9208,7 +9023,7 @@ static PyObject *__pyx_f_6Scroll_unstack_buffer_c(__Pyx_memviewslice __pyx_v_rgb
  */
                             __pyx_v_ii = (__pyx_v_jj * 3);
 
-                            /* "Scroll.pyx":585
+                            /* "Scroll.pyx":605
  *             jj = (i >> 2)
  *             ii = jj * 3
  *             rgb_buffer[ii  ] = rgba_buffer[i]      # Red             # <<<<<<<<<<<<<<
@@ -9219,7 +9034,7 @@ static PyObject *__pyx_f_6Scroll_unstack_buffer_c(__Pyx_memviewslice __pyx_v_rgb
                             __pyx_t_17 = __pyx_v_ii;
                             *((unsigned char *) ( /* dim=0 */ ((char *) (((unsigned char *) __pyx_v_rgb_buffer.data) + __pyx_t_17)) )) = (*((unsigned char *) ( /* dim=0 */ (__pyx_v_rgba_buffer.data + __pyx_t_16 * __pyx_v_rgba_buffer.strides[0]) )));
 
-                            /* "Scroll.pyx":586
+                            /* "Scroll.pyx":606
  *             ii = jj * 3
  *             rgb_buffer[ii  ] = rgba_buffer[i]      # Red
  *             rgb_buffer[ii+1] = rgba_buffer[i+1]    # Green             # <<<<<<<<<<<<<<
@@ -9230,7 +9045,7 @@ static PyObject *__pyx_f_6Scroll_unstack_buffer_c(__Pyx_memviewslice __pyx_v_rgb
                             __pyx_t_19 = (__pyx_v_ii + 1);
                             *((unsigned char *) ( /* dim=0 */ ((char *) (((unsigned char *) __pyx_v_rgb_buffer.data) + __pyx_t_19)) )) = (*((unsigned char *) ( /* dim=0 */ (__pyx_v_rgba_buffer.data + __pyx_t_18 * __pyx_v_rgba_buffer.strides[0]) )));
 
-                            /* "Scroll.pyx":587
+                            /* "Scroll.pyx":607
  *             rgb_buffer[ii  ] = rgba_buffer[i]      # Red
  *             rgb_buffer[ii+1] = rgba_buffer[i+1]    # Green
  *             rgb_buffer[ii+2] = rgba_buffer[i+2]    # Blue             # <<<<<<<<<<<<<<
@@ -9241,7 +9056,7 @@ static PyObject *__pyx_f_6Scroll_unstack_buffer_c(__Pyx_memviewslice __pyx_v_rgb
                             __pyx_t_21 = (__pyx_v_ii + 2);
                             *((unsigned char *) ( /* dim=0 */ ((char *) (((unsigned char *) __pyx_v_rgb_buffer.data) + __pyx_t_21)) )) = (*((unsigned char *) ( /* dim=0 */ (__pyx_v_rgba_buffer.data + __pyx_t_20 * __pyx_v_rgba_buffer.strides[0]) )));
 
-                            /* "Scroll.pyx":588
+                            /* "Scroll.pyx":608
  *             rgb_buffer[ii+1] = rgba_buffer[i+1]    # Green
  *             rgb_buffer[ii+2] = rgba_buffer[i+2]    # Blue
  *             alpha_buffer[jj] = rgba_buffer[i+3]    # Alpha             # <<<<<<<<<<<<<<
@@ -9264,7 +9079,7 @@ static PyObject *__pyx_f_6Scroll_unstack_buffer_c(__Pyx_memviewslice __pyx_v_rgb
         #endif
       }
 
-      /* "Scroll.pyx":581
+      /* "Scroll.pyx":601
  *         unsigned char [:] rgba_buffer = rgba_buffer_# numpy.frombuffer(rgba_buffer_, numpy.uint8)
  * 
  *     with nogil:             # <<<<<<<<<<<<<<
@@ -9283,7 +9098,7 @@ static PyObject *__pyx_f_6Scroll_unstack_buffer_c(__Pyx_memviewslice __pyx_v_rgb
       }
   }
 
-  /* "Scroll.pyx":590
+  /* "Scroll.pyx":610
  *             alpha_buffer[jj] = rgba_buffer[i+3]    # Alpha
  * 
  *     return rgb_buffer, alpha_buffer             # <<<<<<<<<<<<<<
@@ -9291,11 +9106,11 @@ static PyObject *__pyx_f_6Scroll_unstack_buffer_c(__Pyx_memviewslice __pyx_v_rgb
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_6 = __pyx_memoryview_fromslice(__pyx_v_rgb_buffer, 1, (PyObject *(*)(char *)) __pyx_memview_get_unsigned_char, (int (*)(char *, PyObject *)) __pyx_memview_set_unsigned_char, 0);; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 590, __pyx_L1_error)
+  __pyx_t_6 = __pyx_memoryview_fromslice(__pyx_v_rgb_buffer, 1, (PyObject *(*)(char *)) __pyx_memview_get_unsigned_char, (int (*)(char *, PyObject *)) __pyx_memview_set_unsigned_char, 0);; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 610, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_12 = __pyx_memoryview_fromslice(__pyx_v_alpha_buffer, 1, (PyObject *(*)(char *)) __pyx_memview_get_unsigned_char, (int (*)(char *, PyObject *)) __pyx_memview_set_unsigned_char, 0);; if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 590, __pyx_L1_error)
+  __pyx_t_12 = __pyx_memoryview_fromslice(__pyx_v_alpha_buffer, 1, (PyObject *(*)(char *)) __pyx_memview_get_unsigned_char, (int (*)(char *, PyObject *)) __pyx_memview_set_unsigned_char, 0);; if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 610, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_12);
-  __pyx_t_9 = PyTuple_New(2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 590, __pyx_L1_error)
+  __pyx_t_9 = PyTuple_New(2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 610, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_GIVEREF(__pyx_t_6);
   PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_6);
@@ -9307,7 +9122,7 @@ static PyObject *__pyx_f_6Scroll_unstack_buffer_c(__Pyx_memviewslice __pyx_v_rgb
   __pyx_t_9 = 0;
   goto __pyx_L0;
 
-  /* "Scroll.pyx":547
+  /* "Scroll.pyx":567
  * @cython.nonecheck(False)
  * @cython.cdivision(True)
  * cdef unstack_buffer_c(unsigned char [:] rgba_buffer_, int w, int h):             # <<<<<<<<<<<<<<
@@ -9336,7 +9151,7 @@ static PyObject *__pyx_f_6Scroll_unstack_buffer_c(__Pyx_memviewslice __pyx_v_rgb
   return __pyx_r;
 }
 
-/* "Scroll.pyx":597
+/* "Scroll.pyx":617
  * @cython.nonecheck(False)
  * @cython.cdivision(True)
  * cdef scroll_buffer24_c(unsigned char [:] buffer_, int w, int h, int dy, int dx):             # <<<<<<<<<<<<<<
@@ -9390,7 +9205,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer24_c(__Pyx_memviewslice __pyx_v_bu
   Py_ssize_t __pyx_t_34;
   __Pyx_RefNannySetupContext("scroll_buffer24_c", 0);
 
-  /* "Scroll.pyx":612
+  /* "Scroll.pyx":632
  *     cdef:
  *         int i, ii, x, y
  *         int b_length, dx3 = dx * 3, dyw3= dy * w * 3             # <<<<<<<<<<<<<<
@@ -9400,7 +9215,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer24_c(__Pyx_memviewslice __pyx_v_bu
   __pyx_v_dx3 = (__pyx_v_dx * 3);
   __pyx_v_dyw3 = ((__pyx_v_dy * __pyx_v_w) * 3);
 
-  /* "Scroll.pyx":613
+  /* "Scroll.pyx":633
  *         int i, ii, x, y
  *         int b_length, dx3 = dx * 3, dyw3= dy * w * 3
  *         int w3 = w * 3             # <<<<<<<<<<<<<<
@@ -9409,7 +9224,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer24_c(__Pyx_memviewslice __pyx_v_bu
  */
   __pyx_v_w3 = (__pyx_v_w * 3);
 
-  /* "Scroll.pyx":615
+  /* "Scroll.pyx":635
  *         int w3 = w * 3
  * 
  *     try:             # <<<<<<<<<<<<<<
@@ -9425,20 +9240,20 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer24_c(__Pyx_memviewslice __pyx_v_bu
     __Pyx_XGOTREF(__pyx_t_3);
     /*try:*/ {
 
-      /* "Scroll.pyx":616
+      /* "Scroll.pyx":636
  * 
  *     try:
  *         b_length = len(<object>buffer_)             # <<<<<<<<<<<<<<
  *     except:
  *         raise ValueError("Possibly wrong type for argument buffer_")
  */
-      __pyx_t_4 = __pyx_memoryview_fromslice(__pyx_v_buffer_, 1, (PyObject *(*)(char *)) __pyx_memview_get_unsigned_char, (int (*)(char *, PyObject *)) __pyx_memview_set_unsigned_char, 0);; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 616, __pyx_L3_error)
+      __pyx_t_4 = __pyx_memoryview_fromslice(__pyx_v_buffer_, 1, (PyObject *(*)(char *)) __pyx_memview_get_unsigned_char, (int (*)(char *, PyObject *)) __pyx_memview_set_unsigned_char, 0);; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 636, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_5 = PyObject_Length(__pyx_t_4); if (unlikely(__pyx_t_5 == ((Py_ssize_t)-1))) __PYX_ERR(0, 616, __pyx_L3_error)
+      __pyx_t_5 = PyObject_Length(__pyx_t_4); if (unlikely(__pyx_t_5 == ((Py_ssize_t)-1))) __PYX_ERR(0, 636, __pyx_L3_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __pyx_v_b_length = __pyx_t_5;
 
-      /* "Scroll.pyx":615
+      /* "Scroll.pyx":635
  *         int w3 = w * 3
  * 
  *     try:             # <<<<<<<<<<<<<<
@@ -9453,7 +9268,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer24_c(__Pyx_memviewslice __pyx_v_bu
     __pyx_L3_error:;
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-    /* "Scroll.pyx":617
+    /* "Scroll.pyx":637
  *     try:
  *         b_length = len(<object>buffer_)
  *     except:             # <<<<<<<<<<<<<<
@@ -9462,27 +9277,27 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer24_c(__Pyx_memviewslice __pyx_v_bu
  */
     /*except:*/ {
       __Pyx_AddTraceback("Scroll.scroll_buffer24_c", __pyx_clineno, __pyx_lineno, __pyx_filename);
-      if (__Pyx_GetException(&__pyx_t_4, &__pyx_t_6, &__pyx_t_7) < 0) __PYX_ERR(0, 617, __pyx_L5_except_error)
+      if (__Pyx_GetException(&__pyx_t_4, &__pyx_t_6, &__pyx_t_7) < 0) __PYX_ERR(0, 637, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_GOTREF(__pyx_t_7);
 
-      /* "Scroll.pyx":618
+      /* "Scroll.pyx":638
  *         b_length = len(<object>buffer_)
  *     except:
  *         raise ValueError("Possibly wrong type for argument buffer_")             # <<<<<<<<<<<<<<
  * 
  *     assert b_length == w * h * 3, \
  */
-      __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__12, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 618, __pyx_L5_except_error)
+      __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__12, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 638, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_Raise(__pyx_t_8, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-      __PYX_ERR(0, 618, __pyx_L5_except_error)
+      __PYX_ERR(0, 638, __pyx_L5_except_error)
     }
     __pyx_L5_except_error:;
 
-    /* "Scroll.pyx":615
+    /* "Scroll.pyx":635
  *         int w3 = w * 3
  * 
  *     try:             # <<<<<<<<<<<<<<
@@ -9497,7 +9312,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer24_c(__Pyx_memviewslice __pyx_v_bu
     __pyx_L8_try_end:;
   }
 
-  /* "Scroll.pyx":620
+  /* "Scroll.pyx":640
  *         raise ValueError("Possibly wrong type for argument buffer_")
  * 
  *     assert b_length == w * h * 3, \             # <<<<<<<<<<<<<<
@@ -9508,28 +9323,28 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer24_c(__Pyx_memviewslice __pyx_v_bu
   if (unlikely(!Py_OptimizeFlag)) {
     if (unlikely(!((__pyx_v_b_length == ((__pyx_v_w * __pyx_v_h) * 3)) != 0))) {
       PyErr_SetObject(PyExc_AssertionError, __pyx_kp_s_Buffer_length_is_not_compatible);
-      __PYX_ERR(0, 620, __pyx_L1_error)
+      __PYX_ERR(0, 640, __pyx_L1_error)
     }
   }
   #endif
 
-  /* "Scroll.pyx":623
+  /* "Scroll.pyx":643
  *         "Buffer length is not compatible with a 24 bit buffer"
  *     cdef:
  *         unsigned char [::1] new_buffer = numpy.empty(b_length, numpy.uint8)             # <<<<<<<<<<<<<<
  * 
  *     if dx == 0 and dy==0:
  */
-  __pyx_t_6 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 623, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 643, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_empty); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 623, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_empty); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 643, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = __Pyx_PyInt_From_int(__pyx_v_b_length); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 623, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyInt_From_int(__pyx_v_b_length); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 643, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_8 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 623, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 643, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
-  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_uint8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 623, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_uint8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 643, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   __pyx_t_8 = NULL;
@@ -9547,7 +9362,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer24_c(__Pyx_memviewslice __pyx_v_bu
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_4)) {
     PyObject *__pyx_temp[3] = {__pyx_t_8, __pyx_t_6, __pyx_t_9};
-    __pyx_t_7 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_10, 2+__pyx_t_10); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 623, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_10, 2+__pyx_t_10); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 643, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -9557,7 +9372,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer24_c(__Pyx_memviewslice __pyx_v_bu
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
     PyObject *__pyx_temp[3] = {__pyx_t_8, __pyx_t_6, __pyx_t_9};
-    __pyx_t_7 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_10, 2+__pyx_t_10); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 623, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_10, 2+__pyx_t_10); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 643, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -9565,7 +9380,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer24_c(__Pyx_memviewslice __pyx_v_bu
   } else
   #endif
   {
-    __pyx_t_11 = PyTuple_New(2+__pyx_t_10); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 623, __pyx_L1_error)
+    __pyx_t_11 = PyTuple_New(2+__pyx_t_10); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 643, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_11);
     if (__pyx_t_8) {
       __Pyx_GIVEREF(__pyx_t_8); PyTuple_SET_ITEM(__pyx_t_11, 0, __pyx_t_8); __pyx_t_8 = NULL;
@@ -9576,19 +9391,19 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer24_c(__Pyx_memviewslice __pyx_v_bu
     PyTuple_SET_ITEM(__pyx_t_11, 1+__pyx_t_10, __pyx_t_9);
     __pyx_t_6 = 0;
     __pyx_t_9 = 0;
-    __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_11, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 623, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_11, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 643, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
   }
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_12 = __Pyx_PyObject_to_MemoryviewSlice_dc_unsigned_char(__pyx_t_7);
-  if (unlikely(!__pyx_t_12.memview)) __PYX_ERR(0, 623, __pyx_L1_error)
+  if (unlikely(!__pyx_t_12.memview)) __PYX_ERR(0, 643, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   __pyx_v_new_buffer = __pyx_t_12;
   __pyx_t_12.memview = NULL;
   __pyx_t_12.data = NULL;
 
-  /* "Scroll.pyx":625
+  /* "Scroll.pyx":645
  *         unsigned char [::1] new_buffer = numpy.empty(b_length, numpy.uint8)
  * 
  *     if dx == 0 and dy==0:             # <<<<<<<<<<<<<<
@@ -9606,7 +9421,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer24_c(__Pyx_memviewslice __pyx_v_bu
   __pyx_L12_bool_binop_done:;
   if (__pyx_t_13) {
 
-    /* "Scroll.pyx":626
+    /* "Scroll.pyx":646
  * 
  *     if dx == 0 and dy==0:
  *         return buffer_             # <<<<<<<<<<<<<<
@@ -9614,13 +9429,13 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer24_c(__Pyx_memviewslice __pyx_v_bu
  *     with nogil:
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_7 = __pyx_memoryview_fromslice(__pyx_v_buffer_, 1, (PyObject *(*)(char *)) __pyx_memview_get_unsigned_char, (int (*)(char *, PyObject *)) __pyx_memview_set_unsigned_char, 0);; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 626, __pyx_L1_error)
+    __pyx_t_7 = __pyx_memoryview_fromslice(__pyx_v_buffer_, 1, (PyObject *(*)(char *)) __pyx_memview_get_unsigned_char, (int (*)(char *, PyObject *)) __pyx_memview_set_unsigned_char, 0);; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 646, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __pyx_r = __pyx_t_7;
     __pyx_t_7 = 0;
     goto __pyx_L0;
 
-    /* "Scroll.pyx":625
+    /* "Scroll.pyx":645
  *         unsigned char [::1] new_buffer = numpy.empty(b_length, numpy.uint8)
  * 
  *     if dx == 0 and dy==0:             # <<<<<<<<<<<<<<
@@ -9629,7 +9444,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer24_c(__Pyx_memviewslice __pyx_v_bu
  */
   }
 
-  /* "Scroll.pyx":628
+  /* "Scroll.pyx":648
  *         return buffer_
  * 
  *     with nogil:             # <<<<<<<<<<<<<<
@@ -9644,7 +9459,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer24_c(__Pyx_memviewslice __pyx_v_bu
       #endif
       /*try:*/ {
 
-        /* "Scroll.pyx":629
+        /* "Scroll.pyx":649
  * 
  *     with nogil:
  *         if dx != 0 and dy != 0:             # <<<<<<<<<<<<<<
@@ -9662,7 +9477,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer24_c(__Pyx_memviewslice __pyx_v_bu
         __pyx_L18_bool_binop_done:;
         if (__pyx_t_13) {
 
-          /* "Scroll.pyx":630
+          /* "Scroll.pyx":650
  *     with nogil:
  *         if dx != 0 and dy != 0:
  *             for i in prange(0, b_length, 3, schedule=SCHEDULE, num_threads=THREAD_NUMBER):             # <<<<<<<<<<<<<<
@@ -9694,7 +9509,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer24_c(__Pyx_memviewslice __pyx_v_bu
                               /* Initialize private variables to invalid values */
                               __pyx_v_ii = ((int)0xbad0bad0);
 
-                              /* "Scroll.pyx":631
+                              /* "Scroll.pyx":651
  *         if dx != 0 and dy != 0:
  *             for i in prange(0, b_length, 3, schedule=SCHEDULE, num_threads=THREAD_NUMBER):
  *                     ii = (i + dx3) % b_length             # <<<<<<<<<<<<<<
@@ -9703,7 +9518,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer24_c(__Pyx_memviewslice __pyx_v_bu
  */
                               __pyx_v_ii = ((__pyx_v_i + __pyx_v_dx3) % __pyx_v_b_length);
 
-                              /* "Scroll.pyx":632
+                              /* "Scroll.pyx":652
  *             for i in prange(0, b_length, 3, schedule=SCHEDULE, num_threads=THREAD_NUMBER):
  *                     ii = (i + dx3) % b_length
  *                     ii = (ii + dyw3) % b_length             # <<<<<<<<<<<<<<
@@ -9712,7 +9527,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer24_c(__Pyx_memviewslice __pyx_v_bu
  */
                               __pyx_v_ii = ((__pyx_v_ii + __pyx_v_dyw3) % __pyx_v_b_length);
 
-                              /* "Scroll.pyx":633
+                              /* "Scroll.pyx":653
  *                     ii = (i + dx3) % b_length
  *                     ii = (ii + dyw3) % b_length
  *                     if ii < 0:             # <<<<<<<<<<<<<<
@@ -9722,7 +9537,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer24_c(__Pyx_memviewslice __pyx_v_bu
                               __pyx_t_13 = ((__pyx_v_ii < 0) != 0);
                               if (__pyx_t_13) {
 
-                                /* "Scroll.pyx":634
+                                /* "Scroll.pyx":654
  *                     ii = (ii + dyw3) % b_length
  *                     if ii < 0:
  *                         ii = b_length + ii             # <<<<<<<<<<<<<<
@@ -9731,7 +9546,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer24_c(__Pyx_memviewslice __pyx_v_bu
  */
                                 __pyx_v_ii = (__pyx_v_b_length + __pyx_v_ii);
 
-                                /* "Scroll.pyx":633
+                                /* "Scroll.pyx":653
  *                     ii = (i + dx3) % b_length
  *                     ii = (ii + dyw3) % b_length
  *                     if ii < 0:             # <<<<<<<<<<<<<<
@@ -9740,7 +9555,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer24_c(__Pyx_memviewslice __pyx_v_bu
  */
                               }
 
-                              /* "Scroll.pyx":635
+                              /* "Scroll.pyx":655
  *                     if ii < 0:
  *                         ii = b_length + ii
  *                     new_buffer[ii]   = buffer_[i]             # <<<<<<<<<<<<<<
@@ -9751,7 +9566,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer24_c(__Pyx_memviewslice __pyx_v_bu
                               __pyx_t_18 = __pyx_v_ii;
                               *((unsigned char *) ( /* dim=0 */ ((char *) (((unsigned char *) __pyx_v_new_buffer.data) + __pyx_t_18)) )) = (*((unsigned char *) ( /* dim=0 */ (__pyx_v_buffer_.data + __pyx_t_17 * __pyx_v_buffer_.strides[0]) )));
 
-                              /* "Scroll.pyx":636
+                              /* "Scroll.pyx":656
  *                         ii = b_length + ii
  *                     new_buffer[ii]   = buffer_[i]
  *                     new_buffer[ii+1] = buffer_[i+1]             # <<<<<<<<<<<<<<
@@ -9762,7 +9577,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer24_c(__Pyx_memviewslice __pyx_v_bu
                               __pyx_t_20 = (__pyx_v_ii + 1);
                               *((unsigned char *) ( /* dim=0 */ ((char *) (((unsigned char *) __pyx_v_new_buffer.data) + __pyx_t_20)) )) = (*((unsigned char *) ( /* dim=0 */ (__pyx_v_buffer_.data + __pyx_t_19 * __pyx_v_buffer_.strides[0]) )));
 
-                              /* "Scroll.pyx":637
+                              /* "Scroll.pyx":657
  *                     new_buffer[ii]   = buffer_[i]
  *                     new_buffer[ii+1] = buffer_[i+1]
  *                     new_buffer[ii+2] = buffer_[i+2]             # <<<<<<<<<<<<<<
@@ -9784,7 +9599,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer24_c(__Pyx_memviewslice __pyx_v_bu
               #define unlikely(x) __builtin_expect(!!(x), 0)
           #endif
 
-          /* "Scroll.pyx":629
+          /* "Scroll.pyx":649
  * 
  *     with nogil:
  *         if dx != 0 and dy != 0:             # <<<<<<<<<<<<<<
@@ -9794,7 +9609,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer24_c(__Pyx_memviewslice __pyx_v_bu
           goto __pyx_L17;
         }
 
-        /* "Scroll.pyx":639
+        /* "Scroll.pyx":659
  *                     new_buffer[ii+2] = buffer_[i+2]
  *         else:
  *             if dx !=0:             # <<<<<<<<<<<<<<
@@ -9805,7 +9620,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer24_c(__Pyx_memviewslice __pyx_v_bu
           __pyx_t_13 = ((__pyx_v_dx != 0) != 0);
           if (__pyx_t_13) {
 
-            /* "Scroll.pyx":640
+            /* "Scroll.pyx":660
  *         else:
  *             if dx !=0:
  *                 for i in prange(0, b_length, 3, schedule=SCHEDULE, num_threads=THREAD_NUMBER):             # <<<<<<<<<<<<<<
@@ -9837,7 +9652,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer24_c(__Pyx_memviewslice __pyx_v_bu
                                 /* Initialize private variables to invalid values */
                                 __pyx_v_ii = ((int)0xbad0bad0);
 
-                                /* "Scroll.pyx":641
+                                /* "Scroll.pyx":661
  *             if dx !=0:
  *                 for i in prange(0, b_length, 3, schedule=SCHEDULE, num_threads=THREAD_NUMBER):
  *                     ii = (i + dx3) % b_length             # <<<<<<<<<<<<<<
@@ -9846,7 +9661,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer24_c(__Pyx_memviewslice __pyx_v_bu
  */
                                 __pyx_v_ii = ((__pyx_v_i + __pyx_v_dx3) % __pyx_v_b_length);
 
-                                /* "Scroll.pyx":642
+                                /* "Scroll.pyx":662
  *                 for i in prange(0, b_length, 3, schedule=SCHEDULE, num_threads=THREAD_NUMBER):
  *                     ii = (i + dx3) % b_length
  *                     if ii < 0:             # <<<<<<<<<<<<<<
@@ -9856,7 +9671,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer24_c(__Pyx_memviewslice __pyx_v_bu
                                 __pyx_t_13 = ((__pyx_v_ii < 0) != 0);
                                 if (__pyx_t_13) {
 
-                                  /* "Scroll.pyx":643
+                                  /* "Scroll.pyx":663
  *                     ii = (i + dx3) % b_length
  *                     if ii < 0:
  *                         ii = ii + w3             # <<<<<<<<<<<<<<
@@ -9865,7 +9680,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer24_c(__Pyx_memviewslice __pyx_v_bu
  */
                                   __pyx_v_ii = (__pyx_v_ii + __pyx_v_w3);
 
-                                  /* "Scroll.pyx":642
+                                  /* "Scroll.pyx":662
  *                 for i in prange(0, b_length, 3, schedule=SCHEDULE, num_threads=THREAD_NUMBER):
  *                     ii = (i + dx3) % b_length
  *                     if ii < 0:             # <<<<<<<<<<<<<<
@@ -9874,7 +9689,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer24_c(__Pyx_memviewslice __pyx_v_bu
  */
                                 }
 
-                                /* "Scroll.pyx":644
+                                /* "Scroll.pyx":664
  *                     if ii < 0:
  *                         ii = ii + w3
  *                     new_buffer[ii]   = buffer_[i]             # <<<<<<<<<<<<<<
@@ -9885,7 +9700,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer24_c(__Pyx_memviewslice __pyx_v_bu
                                 __pyx_t_24 = __pyx_v_ii;
                                 *((unsigned char *) ( /* dim=0 */ ((char *) (((unsigned char *) __pyx_v_new_buffer.data) + __pyx_t_24)) )) = (*((unsigned char *) ( /* dim=0 */ (__pyx_v_buffer_.data + __pyx_t_23 * __pyx_v_buffer_.strides[0]) )));
 
-                                /* "Scroll.pyx":645
+                                /* "Scroll.pyx":665
  *                         ii = ii + w3
  *                     new_buffer[ii]   = buffer_[i]
  *                     new_buffer[ii+1] = buffer_[i+1]             # <<<<<<<<<<<<<<
@@ -9896,7 +9711,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer24_c(__Pyx_memviewslice __pyx_v_bu
                                 __pyx_t_26 = (__pyx_v_ii + 1);
                                 *((unsigned char *) ( /* dim=0 */ ((char *) (((unsigned char *) __pyx_v_new_buffer.data) + __pyx_t_26)) )) = (*((unsigned char *) ( /* dim=0 */ (__pyx_v_buffer_.data + __pyx_t_25 * __pyx_v_buffer_.strides[0]) )));
 
-                                /* "Scroll.pyx":646
+                                /* "Scroll.pyx":666
  *                     new_buffer[ii]   = buffer_[i]
  *                     new_buffer[ii+1] = buffer_[i+1]
  *                     new_buffer[ii+2] = buffer_[i+2]             # <<<<<<<<<<<<<<
@@ -9918,7 +9733,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer24_c(__Pyx_memviewslice __pyx_v_bu
                 #define unlikely(x) __builtin_expect(!!(x), 0)
             #endif
 
-            /* "Scroll.pyx":639
+            /* "Scroll.pyx":659
  *                     new_buffer[ii+2] = buffer_[i+2]
  *         else:
  *             if dx !=0:             # <<<<<<<<<<<<<<
@@ -9928,7 +9743,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer24_c(__Pyx_memviewslice __pyx_v_bu
             goto __pyx_L27;
           }
 
-          /* "Scroll.pyx":647
+          /* "Scroll.pyx":667
  *                     new_buffer[ii+1] = buffer_[i+1]
  *                     new_buffer[ii+2] = buffer_[i+2]
  *             elif dy !=0:             # <<<<<<<<<<<<<<
@@ -9938,7 +9753,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer24_c(__Pyx_memviewslice __pyx_v_bu
           __pyx_t_13 = ((__pyx_v_dy != 0) != 0);
           if (__pyx_t_13) {
 
-            /* "Scroll.pyx":648
+            /* "Scroll.pyx":668
  *                     new_buffer[ii+2] = buffer_[i+2]
  *             elif dy !=0:
  *                 for i in prange(0, b_length, 3, schedule=SCHEDULE, num_threads=THREAD_NUMBER):             # <<<<<<<<<<<<<<
@@ -9970,7 +9785,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer24_c(__Pyx_memviewslice __pyx_v_bu
                                 /* Initialize private variables to invalid values */
                                 __pyx_v_ii = ((int)0xbad0bad0);
 
-                                /* "Scroll.pyx":649
+                                /* "Scroll.pyx":669
  *             elif dy !=0:
  *                 for i in prange(0, b_length, 3, schedule=SCHEDULE, num_threads=THREAD_NUMBER):
  *                     ii = (i + dyw3) % b_length             # <<<<<<<<<<<<<<
@@ -9979,7 +9794,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer24_c(__Pyx_memviewslice __pyx_v_bu
  */
                                 __pyx_v_ii = ((__pyx_v_i + __pyx_v_dyw3) % __pyx_v_b_length);
 
-                                /* "Scroll.pyx":650
+                                /* "Scroll.pyx":670
  *                 for i in prange(0, b_length, 3, schedule=SCHEDULE, num_threads=THREAD_NUMBER):
  *                     ii = (i + dyw3) % b_length
  *                     if ii < 0:             # <<<<<<<<<<<<<<
@@ -9989,7 +9804,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer24_c(__Pyx_memviewslice __pyx_v_bu
                                 __pyx_t_13 = ((__pyx_v_ii < 0) != 0);
                                 if (__pyx_t_13) {
 
-                                  /* "Scroll.pyx":651
+                                  /* "Scroll.pyx":671
  *                     ii = (i + dyw3) % b_length
  *                     if ii < 0:
  *                         ii = ii + b_length             # <<<<<<<<<<<<<<
@@ -9998,7 +9813,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer24_c(__Pyx_memviewslice __pyx_v_bu
  */
                                   __pyx_v_ii = (__pyx_v_ii + __pyx_v_b_length);
 
-                                  /* "Scroll.pyx":650
+                                  /* "Scroll.pyx":670
  *                 for i in prange(0, b_length, 3, schedule=SCHEDULE, num_threads=THREAD_NUMBER):
  *                     ii = (i + dyw3) % b_length
  *                     if ii < 0:             # <<<<<<<<<<<<<<
@@ -10007,7 +9822,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer24_c(__Pyx_memviewslice __pyx_v_bu
  */
                                 }
 
-                                /* "Scroll.pyx":652
+                                /* "Scroll.pyx":672
  *                     if ii < 0:
  *                         ii = ii + b_length
  *                     new_buffer[ii]   = buffer_[i]             # <<<<<<<<<<<<<<
@@ -10018,7 +9833,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer24_c(__Pyx_memviewslice __pyx_v_bu
                                 __pyx_t_30 = __pyx_v_ii;
                                 *((unsigned char *) ( /* dim=0 */ ((char *) (((unsigned char *) __pyx_v_new_buffer.data) + __pyx_t_30)) )) = (*((unsigned char *) ( /* dim=0 */ (__pyx_v_buffer_.data + __pyx_t_29 * __pyx_v_buffer_.strides[0]) )));
 
-                                /* "Scroll.pyx":653
+                                /* "Scroll.pyx":673
  *                         ii = ii + b_length
  *                     new_buffer[ii]   = buffer_[i]
  *                     new_buffer[ii+1] = buffer_[i+1]             # <<<<<<<<<<<<<<
@@ -10029,7 +9844,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer24_c(__Pyx_memviewslice __pyx_v_bu
                                 __pyx_t_32 = (__pyx_v_ii + 1);
                                 *((unsigned char *) ( /* dim=0 */ ((char *) (((unsigned char *) __pyx_v_new_buffer.data) + __pyx_t_32)) )) = (*((unsigned char *) ( /* dim=0 */ (__pyx_v_buffer_.data + __pyx_t_31 * __pyx_v_buffer_.strides[0]) )));
 
-                                /* "Scroll.pyx":654
+                                /* "Scroll.pyx":674
  *                     new_buffer[ii]   = buffer_[i]
  *                     new_buffer[ii+1] = buffer_[i+1]
  *                     new_buffer[ii+2] = buffer_[i+2]             # <<<<<<<<<<<<<<
@@ -10051,7 +9866,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer24_c(__Pyx_memviewslice __pyx_v_bu
                 #define unlikely(x) __builtin_expect(!!(x), 0)
             #endif
 
-            /* "Scroll.pyx":647
+            /* "Scroll.pyx":667
  *                     new_buffer[ii+1] = buffer_[i+1]
  *                     new_buffer[ii+2] = buffer_[i+2]
  *             elif dy !=0:             # <<<<<<<<<<<<<<
@@ -10064,7 +9879,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer24_c(__Pyx_memviewslice __pyx_v_bu
         __pyx_L17:;
       }
 
-      /* "Scroll.pyx":628
+      /* "Scroll.pyx":648
  *         return buffer_
  * 
  *     with nogil:             # <<<<<<<<<<<<<<
@@ -10083,7 +9898,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer24_c(__Pyx_memviewslice __pyx_v_bu
       }
   }
 
-  /* "Scroll.pyx":656
+  /* "Scroll.pyx":676
  *                     new_buffer[ii+2] = buffer_[i+2]
  * 
  *     return new_buffer             # <<<<<<<<<<<<<<
@@ -10091,13 +9906,13 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer24_c(__Pyx_memviewslice __pyx_v_bu
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_7 = __pyx_memoryview_fromslice(__pyx_v_new_buffer, 1, (PyObject *(*)(char *)) __pyx_memview_get_unsigned_char, (int (*)(char *, PyObject *)) __pyx_memview_set_unsigned_char, 0);; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 656, __pyx_L1_error)
+  __pyx_t_7 = __pyx_memoryview_fromslice(__pyx_v_new_buffer, 1, (PyObject *(*)(char *)) __pyx_memview_get_unsigned_char, (int (*)(char *, PyObject *)) __pyx_memview_set_unsigned_char, 0);; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 676, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __pyx_r = __pyx_t_7;
   __pyx_t_7 = 0;
   goto __pyx_L0;
 
-  /* "Scroll.pyx":597
+  /* "Scroll.pyx":617
  * @cython.nonecheck(False)
  * @cython.cdivision(True)
  * cdef scroll_buffer24_c(unsigned char [:] buffer_, int w, int h, int dy, int dx):             # <<<<<<<<<<<<<<
@@ -10123,7 +9938,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer24_c(__Pyx_memviewslice __pyx_v_bu
   return __pyx_r;
 }
 
-/* "Scroll.pyx":663
+/* "Scroll.pyx":683
  * @cython.nonecheck(False)
  * @cython.cdivision(True)
  * cdef scroll_buffer32_c(unsigned char [:] buffer_, int w, int h, int dy, int dx):             # <<<<<<<<<<<<<<
@@ -10183,7 +9998,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer32_c(__Pyx_memviewslice __pyx_v_bu
   Py_ssize_t __pyx_t_40;
   __Pyx_RefNannySetupContext("scroll_buffer32_c", 0);
 
-  /* "Scroll.pyx":678
+  /* "Scroll.pyx":698
  *     cdef:
  *         int i, ii, x, y
  *         int b_length, dx4 = dx * 4, dyw4 = dy * w * 4             # <<<<<<<<<<<<<<
@@ -10193,7 +10008,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer32_c(__Pyx_memviewslice __pyx_v_bu
   __pyx_v_dx4 = (__pyx_v_dx * 4);
   __pyx_v_dyw4 = ((__pyx_v_dy * __pyx_v_w) * 4);
 
-  /* "Scroll.pyx":679
+  /* "Scroll.pyx":699
  *         int i, ii, x, y
  *         int b_length, dx4 = dx * 4, dyw4 = dy * w * 4
  *         int w4 = w * 4             # <<<<<<<<<<<<<<
@@ -10202,7 +10017,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer32_c(__Pyx_memviewslice __pyx_v_bu
  */
   __pyx_v_w4 = (__pyx_v_w * 4);
 
-  /* "Scroll.pyx":681
+  /* "Scroll.pyx":701
  *         int w4 = w * 4
  * 
  *     try:             # <<<<<<<<<<<<<<
@@ -10218,20 +10033,20 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer32_c(__Pyx_memviewslice __pyx_v_bu
     __Pyx_XGOTREF(__pyx_t_3);
     /*try:*/ {
 
-      /* "Scroll.pyx":682
+      /* "Scroll.pyx":702
  * 
  *     try:
  *         b_length = len(<object>buffer_)             # <<<<<<<<<<<<<<
  *     except:
  *         raise ValueError("Possibly wrong type for argument buffer_")
  */
-      __pyx_t_4 = __pyx_memoryview_fromslice(__pyx_v_buffer_, 1, (PyObject *(*)(char *)) __pyx_memview_get_unsigned_char, (int (*)(char *, PyObject *)) __pyx_memview_set_unsigned_char, 0);; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 682, __pyx_L3_error)
+      __pyx_t_4 = __pyx_memoryview_fromslice(__pyx_v_buffer_, 1, (PyObject *(*)(char *)) __pyx_memview_get_unsigned_char, (int (*)(char *, PyObject *)) __pyx_memview_set_unsigned_char, 0);; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 702, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_5 = PyObject_Length(__pyx_t_4); if (unlikely(__pyx_t_5 == ((Py_ssize_t)-1))) __PYX_ERR(0, 682, __pyx_L3_error)
+      __pyx_t_5 = PyObject_Length(__pyx_t_4); if (unlikely(__pyx_t_5 == ((Py_ssize_t)-1))) __PYX_ERR(0, 702, __pyx_L3_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __pyx_v_b_length = __pyx_t_5;
 
-      /* "Scroll.pyx":681
+      /* "Scroll.pyx":701
  *         int w4 = w * 4
  * 
  *     try:             # <<<<<<<<<<<<<<
@@ -10246,7 +10061,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer32_c(__Pyx_memviewslice __pyx_v_bu
     __pyx_L3_error:;
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-    /* "Scroll.pyx":683
+    /* "Scroll.pyx":703
  *     try:
  *         b_length = len(<object>buffer_)
  *     except:             # <<<<<<<<<<<<<<
@@ -10255,27 +10070,27 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer32_c(__Pyx_memviewslice __pyx_v_bu
  */
     /*except:*/ {
       __Pyx_AddTraceback("Scroll.scroll_buffer32_c", __pyx_clineno, __pyx_lineno, __pyx_filename);
-      if (__Pyx_GetException(&__pyx_t_4, &__pyx_t_6, &__pyx_t_7) < 0) __PYX_ERR(0, 683, __pyx_L5_except_error)
+      if (__Pyx_GetException(&__pyx_t_4, &__pyx_t_6, &__pyx_t_7) < 0) __PYX_ERR(0, 703, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_GOTREF(__pyx_t_7);
 
-      /* "Scroll.pyx":684
+      /* "Scroll.pyx":704
  *         b_length = len(<object>buffer_)
  *     except:
  *         raise ValueError("Possibly wrong type for argument buffer_")             # <<<<<<<<<<<<<<
  * 
  *     assert b_length == w * h * 4, \
  */
-      __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__13, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 684, __pyx_L5_except_error)
+      __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__13, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 704, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_Raise(__pyx_t_8, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-      __PYX_ERR(0, 684, __pyx_L5_except_error)
+      __PYX_ERR(0, 704, __pyx_L5_except_error)
     }
     __pyx_L5_except_error:;
 
-    /* "Scroll.pyx":681
+    /* "Scroll.pyx":701
  *         int w4 = w * 4
  * 
  *     try:             # <<<<<<<<<<<<<<
@@ -10290,7 +10105,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer32_c(__Pyx_memviewslice __pyx_v_bu
     __pyx_L8_try_end:;
   }
 
-  /* "Scroll.pyx":686
+  /* "Scroll.pyx":706
  *         raise ValueError("Possibly wrong type for argument buffer_")
  * 
  *     assert b_length == w * h * 4, \             # <<<<<<<<<<<<<<
@@ -10301,18 +10116,18 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer32_c(__Pyx_memviewslice __pyx_v_bu
   if (unlikely(!Py_OptimizeFlag)) {
     if (unlikely(!((__pyx_v_b_length == ((__pyx_v_w * __pyx_v_h) * 4)) != 0))) {
 
-      /* "Scroll.pyx":688
+      /* "Scroll.pyx":708
  *     assert b_length == w * h * 4, \
  *         "Buffer length is not compatible with a 32-bit buffer,"\
  *         "expecting %s got %s " % (w * h * 4, b_length)             # <<<<<<<<<<<<<<
  * 
  *     cdef:
  */
-      __pyx_t_7 = __Pyx_PyInt_From_long(((__pyx_v_w * __pyx_v_h) * 4)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 688, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyInt_From_long(((__pyx_v_w * __pyx_v_h) * 4)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 708, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
-      __pyx_t_6 = __Pyx_PyInt_From_int(__pyx_v_b_length); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 688, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyInt_From_int(__pyx_v_b_length); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 708, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
-      __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 688, __pyx_L1_error)
+      __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 708, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_GIVEREF(__pyx_t_7);
       PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_7);
@@ -10320,33 +10135,33 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer32_c(__Pyx_memviewslice __pyx_v_bu
       PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_t_6);
       __pyx_t_7 = 0;
       __pyx_t_6 = 0;
-      __pyx_t_6 = __Pyx_PyString_Format(__pyx_kp_s_Buffer_length_is_not_compatible_2, __pyx_t_4); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 688, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyString_Format(__pyx_kp_s_Buffer_length_is_not_compatible_2, __pyx_t_4); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 708, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       PyErr_SetObject(PyExc_AssertionError, __pyx_t_6);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-      __PYX_ERR(0, 686, __pyx_L1_error)
+      __PYX_ERR(0, 706, __pyx_L1_error)
     }
   }
   #endif
 
-  /* "Scroll.pyx":691
+  /* "Scroll.pyx":711
  * 
  *     cdef:
  *         unsigned char [::1] new_buffer = numpy.empty(b_length, numpy.uint8)             # <<<<<<<<<<<<<<
  * 
  *     if dx == 0 and dy==0:
  */
-  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 691, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 711, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_empty); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 691, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_empty); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 711, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_b_length); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 691, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_b_length); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 711, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_8 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 691, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 711, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
-  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_uint8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 691, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_uint8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 711, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   __pyx_t_8 = NULL;
@@ -10364,7 +10179,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer32_c(__Pyx_memviewslice __pyx_v_bu
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_7)) {
     PyObject *__pyx_temp[3] = {__pyx_t_8, __pyx_t_4, __pyx_t_9};
-    __pyx_t_6 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_10, 2+__pyx_t_10); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 691, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_10, 2+__pyx_t_10); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 711, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -10374,7 +10189,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer32_c(__Pyx_memviewslice __pyx_v_bu
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_7)) {
     PyObject *__pyx_temp[3] = {__pyx_t_8, __pyx_t_4, __pyx_t_9};
-    __pyx_t_6 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_10, 2+__pyx_t_10); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 691, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_10, 2+__pyx_t_10); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 711, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -10382,7 +10197,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer32_c(__Pyx_memviewslice __pyx_v_bu
   } else
   #endif
   {
-    __pyx_t_11 = PyTuple_New(2+__pyx_t_10); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 691, __pyx_L1_error)
+    __pyx_t_11 = PyTuple_New(2+__pyx_t_10); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 711, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_11);
     if (__pyx_t_8) {
       __Pyx_GIVEREF(__pyx_t_8); PyTuple_SET_ITEM(__pyx_t_11, 0, __pyx_t_8); __pyx_t_8 = NULL;
@@ -10393,19 +10208,19 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer32_c(__Pyx_memviewslice __pyx_v_bu
     PyTuple_SET_ITEM(__pyx_t_11, 1+__pyx_t_10, __pyx_t_9);
     __pyx_t_4 = 0;
     __pyx_t_9 = 0;
-    __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_11, NULL); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 691, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_11, NULL); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 711, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
   }
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   __pyx_t_12 = __Pyx_PyObject_to_MemoryviewSlice_dc_unsigned_char(__pyx_t_6);
-  if (unlikely(!__pyx_t_12.memview)) __PYX_ERR(0, 691, __pyx_L1_error)
+  if (unlikely(!__pyx_t_12.memview)) __PYX_ERR(0, 711, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __pyx_v_new_buffer = __pyx_t_12;
   __pyx_t_12.memview = NULL;
   __pyx_t_12.data = NULL;
 
-  /* "Scroll.pyx":693
+  /* "Scroll.pyx":713
  *         unsigned char [::1] new_buffer = numpy.empty(b_length, numpy.uint8)
  * 
  *     if dx == 0 and dy==0:             # <<<<<<<<<<<<<<
@@ -10423,7 +10238,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer32_c(__Pyx_memviewslice __pyx_v_bu
   __pyx_L12_bool_binop_done:;
   if (__pyx_t_13) {
 
-    /* "Scroll.pyx":694
+    /* "Scroll.pyx":714
  * 
  *     if dx == 0 and dy==0:
  *         return buffer_             # <<<<<<<<<<<<<<
@@ -10431,13 +10246,13 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer32_c(__Pyx_memviewslice __pyx_v_bu
  *     with nogil:
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_6 = __pyx_memoryview_fromslice(__pyx_v_buffer_, 1, (PyObject *(*)(char *)) __pyx_memview_get_unsigned_char, (int (*)(char *, PyObject *)) __pyx_memview_set_unsigned_char, 0);; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 694, __pyx_L1_error)
+    __pyx_t_6 = __pyx_memoryview_fromslice(__pyx_v_buffer_, 1, (PyObject *(*)(char *)) __pyx_memview_get_unsigned_char, (int (*)(char *, PyObject *)) __pyx_memview_set_unsigned_char, 0);; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 714, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __pyx_r = __pyx_t_6;
     __pyx_t_6 = 0;
     goto __pyx_L0;
 
-    /* "Scroll.pyx":693
+    /* "Scroll.pyx":713
  *         unsigned char [::1] new_buffer = numpy.empty(b_length, numpy.uint8)
  * 
  *     if dx == 0 and dy==0:             # <<<<<<<<<<<<<<
@@ -10446,7 +10261,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer32_c(__Pyx_memviewslice __pyx_v_bu
  */
   }
 
-  /* "Scroll.pyx":696
+  /* "Scroll.pyx":716
  *         return buffer_
  * 
  *     with nogil:             # <<<<<<<<<<<<<<
@@ -10461,7 +10276,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer32_c(__Pyx_memviewslice __pyx_v_bu
       #endif
       /*try:*/ {
 
-        /* "Scroll.pyx":697
+        /* "Scroll.pyx":717
  * 
  *     with nogil:
  *         if dx != 0 and dy != 0:             # <<<<<<<<<<<<<<
@@ -10479,7 +10294,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer32_c(__Pyx_memviewslice __pyx_v_bu
         __pyx_L18_bool_binop_done:;
         if (__pyx_t_13) {
 
-          /* "Scroll.pyx":698
+          /* "Scroll.pyx":718
  *     with nogil:
  *         if dx != 0 and dy != 0:
  *             for i in prange(0, b_length, 4, schedule=SCHEDULE, num_threads=THREAD_NUMBER):             # <<<<<<<<<<<<<<
@@ -10511,7 +10326,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer32_c(__Pyx_memviewslice __pyx_v_bu
                               /* Initialize private variables to invalid values */
                               __pyx_v_ii = ((int)0xbad0bad0);
 
-                              /* "Scroll.pyx":699
+                              /* "Scroll.pyx":719
  *         if dx != 0 and dy != 0:
  *             for i in prange(0, b_length, 4, schedule=SCHEDULE, num_threads=THREAD_NUMBER):
  *                     ii = (i + dx4) % b_length             # <<<<<<<<<<<<<<
@@ -10520,7 +10335,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer32_c(__Pyx_memviewslice __pyx_v_bu
  */
                               __pyx_v_ii = ((__pyx_v_i + __pyx_v_dx4) % __pyx_v_b_length);
 
-                              /* "Scroll.pyx":700
+                              /* "Scroll.pyx":720
  *             for i in prange(0, b_length, 4, schedule=SCHEDULE, num_threads=THREAD_NUMBER):
  *                     ii = (i + dx4) % b_length
  *                     ii = (ii + dyw4) % b_length             # <<<<<<<<<<<<<<
@@ -10529,7 +10344,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer32_c(__Pyx_memviewslice __pyx_v_bu
  */
                               __pyx_v_ii = ((__pyx_v_ii + __pyx_v_dyw4) % __pyx_v_b_length);
 
-                              /* "Scroll.pyx":701
+                              /* "Scroll.pyx":721
  *                     ii = (i + dx4) % b_length
  *                     ii = (ii + dyw4) % b_length
  *                     if ii < 0:             # <<<<<<<<<<<<<<
@@ -10539,7 +10354,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer32_c(__Pyx_memviewslice __pyx_v_bu
                               __pyx_t_13 = ((__pyx_v_ii < 0) != 0);
                               if (__pyx_t_13) {
 
-                                /* "Scroll.pyx":702
+                                /* "Scroll.pyx":722
  *                     ii = (ii + dyw4) % b_length
  *                     if ii < 0:
  *                         ii = b_length + ii             # <<<<<<<<<<<<<<
@@ -10548,7 +10363,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer32_c(__Pyx_memviewslice __pyx_v_bu
  */
                                 __pyx_v_ii = (__pyx_v_b_length + __pyx_v_ii);
 
-                                /* "Scroll.pyx":701
+                                /* "Scroll.pyx":721
  *                     ii = (i + dx4) % b_length
  *                     ii = (ii + dyw4) % b_length
  *                     if ii < 0:             # <<<<<<<<<<<<<<
@@ -10557,7 +10372,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer32_c(__Pyx_memviewslice __pyx_v_bu
  */
                               }
 
-                              /* "Scroll.pyx":703
+                              /* "Scroll.pyx":723
  *                     if ii < 0:
  *                         ii = b_length + ii
  *                     new_buffer[ii]   = buffer_[i]             # <<<<<<<<<<<<<<
@@ -10568,7 +10383,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer32_c(__Pyx_memviewslice __pyx_v_bu
                               __pyx_t_18 = __pyx_v_ii;
                               *((unsigned char *) ( /* dim=0 */ ((char *) (((unsigned char *) __pyx_v_new_buffer.data) + __pyx_t_18)) )) = (*((unsigned char *) ( /* dim=0 */ (__pyx_v_buffer_.data + __pyx_t_17 * __pyx_v_buffer_.strides[0]) )));
 
-                              /* "Scroll.pyx":704
+                              /* "Scroll.pyx":724
  *                         ii = b_length + ii
  *                     new_buffer[ii]   = buffer_[i]
  *                     new_buffer[ii+1] = buffer_[i+1]             # <<<<<<<<<<<<<<
@@ -10579,7 +10394,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer32_c(__Pyx_memviewslice __pyx_v_bu
                               __pyx_t_20 = (__pyx_v_ii + 1);
                               *((unsigned char *) ( /* dim=0 */ ((char *) (((unsigned char *) __pyx_v_new_buffer.data) + __pyx_t_20)) )) = (*((unsigned char *) ( /* dim=0 */ (__pyx_v_buffer_.data + __pyx_t_19 * __pyx_v_buffer_.strides[0]) )));
 
-                              /* "Scroll.pyx":705
+                              /* "Scroll.pyx":725
  *                     new_buffer[ii]   = buffer_[i]
  *                     new_buffer[ii+1] = buffer_[i+1]
  *                     new_buffer[ii+2] = buffer_[i+2]             # <<<<<<<<<<<<<<
@@ -10590,7 +10405,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer32_c(__Pyx_memviewslice __pyx_v_bu
                               __pyx_t_22 = (__pyx_v_ii + 2);
                               *((unsigned char *) ( /* dim=0 */ ((char *) (((unsigned char *) __pyx_v_new_buffer.data) + __pyx_t_22)) )) = (*((unsigned char *) ( /* dim=0 */ (__pyx_v_buffer_.data + __pyx_t_21 * __pyx_v_buffer_.strides[0]) )));
 
-                              /* "Scroll.pyx":706
+                              /* "Scroll.pyx":726
  *                     new_buffer[ii+1] = buffer_[i+1]
  *                     new_buffer[ii+2] = buffer_[i+2]
  *                     new_buffer[ii+3] = buffer_[i+3]             # <<<<<<<<<<<<<<
@@ -10612,7 +10427,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer32_c(__Pyx_memviewslice __pyx_v_bu
               #define unlikely(x) __builtin_expect(!!(x), 0)
           #endif
 
-          /* "Scroll.pyx":697
+          /* "Scroll.pyx":717
  * 
  *     with nogil:
  *         if dx != 0 and dy != 0:             # <<<<<<<<<<<<<<
@@ -10622,7 +10437,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer32_c(__Pyx_memviewslice __pyx_v_bu
           goto __pyx_L17;
         }
 
-        /* "Scroll.pyx":708
+        /* "Scroll.pyx":728
  *                     new_buffer[ii+3] = buffer_[i+3]
  *         else:
  *             if dx !=0:             # <<<<<<<<<<<<<<
@@ -10633,7 +10448,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer32_c(__Pyx_memviewslice __pyx_v_bu
           __pyx_t_13 = ((__pyx_v_dx != 0) != 0);
           if (__pyx_t_13) {
 
-            /* "Scroll.pyx":709
+            /* "Scroll.pyx":729
  *         else:
  *             if dx !=0:
  *                 for i in prange(0, b_length, 4, schedule=SCHEDULE, num_threads=THREAD_NUMBER):             # <<<<<<<<<<<<<<
@@ -10665,7 +10480,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer32_c(__Pyx_memviewslice __pyx_v_bu
                                 /* Initialize private variables to invalid values */
                                 __pyx_v_ii = ((int)0xbad0bad0);
 
-                                /* "Scroll.pyx":710
+                                /* "Scroll.pyx":730
  *             if dx !=0:
  *                 for i in prange(0, b_length, 4, schedule=SCHEDULE, num_threads=THREAD_NUMBER):
  *                     ii = (i + dx4) % b_length             # <<<<<<<<<<<<<<
@@ -10674,7 +10489,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer32_c(__Pyx_memviewslice __pyx_v_bu
  */
                                 __pyx_v_ii = ((__pyx_v_i + __pyx_v_dx4) % __pyx_v_b_length);
 
-                                /* "Scroll.pyx":711
+                                /* "Scroll.pyx":731
  *                 for i in prange(0, b_length, 4, schedule=SCHEDULE, num_threads=THREAD_NUMBER):
  *                     ii = (i + dx4) % b_length
  *                     if ii < 0:             # <<<<<<<<<<<<<<
@@ -10684,7 +10499,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer32_c(__Pyx_memviewslice __pyx_v_bu
                                 __pyx_t_13 = ((__pyx_v_ii < 0) != 0);
                                 if (__pyx_t_13) {
 
-                                  /* "Scroll.pyx":712
+                                  /* "Scroll.pyx":732
  *                     ii = (i + dx4) % b_length
  *                     if ii < 0:
  *                         ii = ii + w4             # <<<<<<<<<<<<<<
@@ -10693,7 +10508,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer32_c(__Pyx_memviewslice __pyx_v_bu
  */
                                   __pyx_v_ii = (__pyx_v_ii + __pyx_v_w4);
 
-                                  /* "Scroll.pyx":711
+                                  /* "Scroll.pyx":731
  *                 for i in prange(0, b_length, 4, schedule=SCHEDULE, num_threads=THREAD_NUMBER):
  *                     ii = (i + dx4) % b_length
  *                     if ii < 0:             # <<<<<<<<<<<<<<
@@ -10702,7 +10517,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer32_c(__Pyx_memviewslice __pyx_v_bu
  */
                                 }
 
-                                /* "Scroll.pyx":713
+                                /* "Scroll.pyx":733
  *                     if ii < 0:
  *                         ii = ii + w4
  *                     new_buffer[ii]   = buffer_[i]             # <<<<<<<<<<<<<<
@@ -10713,7 +10528,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer32_c(__Pyx_memviewslice __pyx_v_bu
                                 __pyx_t_26 = __pyx_v_ii;
                                 *((unsigned char *) ( /* dim=0 */ ((char *) (((unsigned char *) __pyx_v_new_buffer.data) + __pyx_t_26)) )) = (*((unsigned char *) ( /* dim=0 */ (__pyx_v_buffer_.data + __pyx_t_25 * __pyx_v_buffer_.strides[0]) )));
 
-                                /* "Scroll.pyx":714
+                                /* "Scroll.pyx":734
  *                         ii = ii + w4
  *                     new_buffer[ii]   = buffer_[i]
  *                     new_buffer[ii+1] = buffer_[i+1]             # <<<<<<<<<<<<<<
@@ -10724,7 +10539,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer32_c(__Pyx_memviewslice __pyx_v_bu
                                 __pyx_t_28 = (__pyx_v_ii + 1);
                                 *((unsigned char *) ( /* dim=0 */ ((char *) (((unsigned char *) __pyx_v_new_buffer.data) + __pyx_t_28)) )) = (*((unsigned char *) ( /* dim=0 */ (__pyx_v_buffer_.data + __pyx_t_27 * __pyx_v_buffer_.strides[0]) )));
 
-                                /* "Scroll.pyx":715
+                                /* "Scroll.pyx":735
  *                     new_buffer[ii]   = buffer_[i]
  *                     new_buffer[ii+1] = buffer_[i+1]
  *                     new_buffer[ii+2] = buffer_[i+2]             # <<<<<<<<<<<<<<
@@ -10735,7 +10550,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer32_c(__Pyx_memviewslice __pyx_v_bu
                                 __pyx_t_30 = (__pyx_v_ii + 2);
                                 *((unsigned char *) ( /* dim=0 */ ((char *) (((unsigned char *) __pyx_v_new_buffer.data) + __pyx_t_30)) )) = (*((unsigned char *) ( /* dim=0 */ (__pyx_v_buffer_.data + __pyx_t_29 * __pyx_v_buffer_.strides[0]) )));
 
-                                /* "Scroll.pyx":716
+                                /* "Scroll.pyx":736
  *                     new_buffer[ii+1] = buffer_[i+1]
  *                     new_buffer[ii+2] = buffer_[i+2]
  *                     new_buffer[ii+3] = buffer_[i+3]             # <<<<<<<<<<<<<<
@@ -10757,7 +10572,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer32_c(__Pyx_memviewslice __pyx_v_bu
                 #define unlikely(x) __builtin_expect(!!(x), 0)
             #endif
 
-            /* "Scroll.pyx":708
+            /* "Scroll.pyx":728
  *                     new_buffer[ii+3] = buffer_[i+3]
  *         else:
  *             if dx !=0:             # <<<<<<<<<<<<<<
@@ -10767,7 +10582,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer32_c(__Pyx_memviewslice __pyx_v_bu
             goto __pyx_L27;
           }
 
-          /* "Scroll.pyx":718
+          /* "Scroll.pyx":738
  *                     new_buffer[ii+3] = buffer_[i+3]
  * 
  *             elif dy !=0:             # <<<<<<<<<<<<<<
@@ -10777,7 +10592,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer32_c(__Pyx_memviewslice __pyx_v_bu
           __pyx_t_13 = ((__pyx_v_dy != 0) != 0);
           if (__pyx_t_13) {
 
-            /* "Scroll.pyx":719
+            /* "Scroll.pyx":739
  * 
  *             elif dy !=0:
  *                 for i in prange(0, b_length, 4, schedule=SCHEDULE, num_threads=THREAD_NUMBER):             # <<<<<<<<<<<<<<
@@ -10809,7 +10624,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer32_c(__Pyx_memviewslice __pyx_v_bu
                                 /* Initialize private variables to invalid values */
                                 __pyx_v_ii = ((int)0xbad0bad0);
 
-                                /* "Scroll.pyx":720
+                                /* "Scroll.pyx":740
  *             elif dy !=0:
  *                 for i in prange(0, b_length, 4, schedule=SCHEDULE, num_threads=THREAD_NUMBER):
  *                     ii = (i + dyw4) % b_length             # <<<<<<<<<<<<<<
@@ -10818,7 +10633,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer32_c(__Pyx_memviewslice __pyx_v_bu
  */
                                 __pyx_v_ii = ((__pyx_v_i + __pyx_v_dyw4) % __pyx_v_b_length);
 
-                                /* "Scroll.pyx":721
+                                /* "Scroll.pyx":741
  *                 for i in prange(0, b_length, 4, schedule=SCHEDULE, num_threads=THREAD_NUMBER):
  *                     ii = (i + dyw4) % b_length
  *                     if ii < 0:             # <<<<<<<<<<<<<<
@@ -10828,7 +10643,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer32_c(__Pyx_memviewslice __pyx_v_bu
                                 __pyx_t_13 = ((__pyx_v_ii < 0) != 0);
                                 if (__pyx_t_13) {
 
-                                  /* "Scroll.pyx":722
+                                  /* "Scroll.pyx":742
  *                     ii = (i + dyw4) % b_length
  *                     if ii < 0:
  *                         ii = ii + b_length             # <<<<<<<<<<<<<<
@@ -10837,7 +10652,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer32_c(__Pyx_memviewslice __pyx_v_bu
  */
                                   __pyx_v_ii = (__pyx_v_ii + __pyx_v_b_length);
 
-                                  /* "Scroll.pyx":721
+                                  /* "Scroll.pyx":741
  *                 for i in prange(0, b_length, 4, schedule=SCHEDULE, num_threads=THREAD_NUMBER):
  *                     ii = (i + dyw4) % b_length
  *                     if ii < 0:             # <<<<<<<<<<<<<<
@@ -10846,7 +10661,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer32_c(__Pyx_memviewslice __pyx_v_bu
  */
                                 }
 
-                                /* "Scroll.pyx":723
+                                /* "Scroll.pyx":743
  *                     if ii < 0:
  *                         ii = ii + b_length
  *                     new_buffer[ii]   = buffer_[i]             # <<<<<<<<<<<<<<
@@ -10857,7 +10672,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer32_c(__Pyx_memviewslice __pyx_v_bu
                                 __pyx_t_34 = __pyx_v_ii;
                                 *((unsigned char *) ( /* dim=0 */ ((char *) (((unsigned char *) __pyx_v_new_buffer.data) + __pyx_t_34)) )) = (*((unsigned char *) ( /* dim=0 */ (__pyx_v_buffer_.data + __pyx_t_33 * __pyx_v_buffer_.strides[0]) )));
 
-                                /* "Scroll.pyx":724
+                                /* "Scroll.pyx":744
  *                         ii = ii + b_length
  *                     new_buffer[ii]   = buffer_[i]
  *                     new_buffer[ii+1] = buffer_[i+1]             # <<<<<<<<<<<<<<
@@ -10868,7 +10683,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer32_c(__Pyx_memviewslice __pyx_v_bu
                                 __pyx_t_36 = (__pyx_v_ii + 1);
                                 *((unsigned char *) ( /* dim=0 */ ((char *) (((unsigned char *) __pyx_v_new_buffer.data) + __pyx_t_36)) )) = (*((unsigned char *) ( /* dim=0 */ (__pyx_v_buffer_.data + __pyx_t_35 * __pyx_v_buffer_.strides[0]) )));
 
-                                /* "Scroll.pyx":725
+                                /* "Scroll.pyx":745
  *                     new_buffer[ii]   = buffer_[i]
  *                     new_buffer[ii+1] = buffer_[i+1]
  *                     new_buffer[ii+2] = buffer_[i+2]             # <<<<<<<<<<<<<<
@@ -10879,7 +10694,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer32_c(__Pyx_memviewslice __pyx_v_bu
                                 __pyx_t_38 = (__pyx_v_ii + 2);
                                 *((unsigned char *) ( /* dim=0 */ ((char *) (((unsigned char *) __pyx_v_new_buffer.data) + __pyx_t_38)) )) = (*((unsigned char *) ( /* dim=0 */ (__pyx_v_buffer_.data + __pyx_t_37 * __pyx_v_buffer_.strides[0]) )));
 
-                                /* "Scroll.pyx":726
+                                /* "Scroll.pyx":746
  *                     new_buffer[ii+1] = buffer_[i+1]
  *                     new_buffer[ii+2] = buffer_[i+2]
  *                     new_buffer[ii+3] = buffer_[i+3]             # <<<<<<<<<<<<<<
@@ -10901,7 +10716,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer32_c(__Pyx_memviewslice __pyx_v_bu
                 #define unlikely(x) __builtin_expect(!!(x), 0)
             #endif
 
-            /* "Scroll.pyx":718
+            /* "Scroll.pyx":738
  *                     new_buffer[ii+3] = buffer_[i+3]
  * 
  *             elif dy !=0:             # <<<<<<<<<<<<<<
@@ -10914,7 +10729,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer32_c(__Pyx_memviewslice __pyx_v_bu
         __pyx_L17:;
       }
 
-      /* "Scroll.pyx":696
+      /* "Scroll.pyx":716
  *         return buffer_
  * 
  *     with nogil:             # <<<<<<<<<<<<<<
@@ -10933,7 +10748,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer32_c(__Pyx_memviewslice __pyx_v_bu
       }
   }
 
-  /* "Scroll.pyx":728
+  /* "Scroll.pyx":748
  *                     new_buffer[ii+3] = buffer_[i+3]
  * 
  *     return new_buffer             # <<<<<<<<<<<<<<
@@ -10941,13 +10756,13 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer32_c(__Pyx_memviewslice __pyx_v_bu
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_6 = __pyx_memoryview_fromslice(__pyx_v_new_buffer, 1, (PyObject *(*)(char *)) __pyx_memview_get_unsigned_char, (int (*)(char *, PyObject *)) __pyx_memview_set_unsigned_char, 0);; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 728, __pyx_L1_error)
+  __pyx_t_6 = __pyx_memoryview_fromslice(__pyx_v_new_buffer, 1, (PyObject *(*)(char *)) __pyx_memview_get_unsigned_char, (int (*)(char *, PyObject *)) __pyx_memview_set_unsigned_char, 0);; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 748, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __pyx_r = __pyx_t_6;
   __pyx_t_6 = 0;
   goto __pyx_L0;
 
-  /* "Scroll.pyx":663
+  /* "Scroll.pyx":683
  * @cython.nonecheck(False)
  * @cython.cdivision(True)
  * cdef scroll_buffer32_c(unsigned char [:] buffer_, int w, int h, int dy, int dx):             # <<<<<<<<<<<<<<
@@ -10973,7 +10788,7 @@ static PyObject *__pyx_f_6Scroll_scroll_buffer32_c(__Pyx_memviewslice __pyx_v_bu
   return __pyx_r;
 }
 
-/* "Scroll.pyx":736
+/* "Scroll.pyx":756
  * @cython.nonecheck(False)
  * @cython.cdivision(True)
  * cdef unsigned char [:, :, :] scroll_array24_c(unsigned char[:, :, :] rgb_array_, int dy, int dx):             # <<<<<<<<<<<<<<
@@ -11067,45 +10882,45 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array24_c(__Pyx_memviewslice __
   Py_ssize_t __pyx_t_72;
   __Pyx_RefNannySetupContext("scroll_array24_c", 0);
 
-  /* "Scroll.pyx":756
+  /* "Scroll.pyx":776
  *     """
  * 
  *     if not isinstance(dx, int):             # <<<<<<<<<<<<<<
  *         raise TypeError('dx, an integer is required (got type %s)' % type(dx))
  *     if not isinstance(dy, int):
  */
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_dx); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 756, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_dx); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 776, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_2 = PyInt_Check(__pyx_t_1); 
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_t_3 = ((!(__pyx_t_2 != 0)) != 0);
   if (__pyx_t_3) {
 
-    /* "Scroll.pyx":757
+    /* "Scroll.pyx":777
  * 
  *     if not isinstance(dx, int):
  *         raise TypeError('dx, an integer is required (got type %s)' % type(dx))             # <<<<<<<<<<<<<<
  *     if not isinstance(dy, int):
  *         raise TypeError('dy, an integer is required (got type %s)' % type(dy))
  */
-    __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_dx); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 757, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_dx); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 777, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_4 = __Pyx_PyString_Format(__pyx_kp_s_dx_an_integer_is_required_got_ty, ((PyObject *)Py_TYPE(__pyx_t_1))); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 757, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyString_Format(__pyx_kp_s_dx_an_integer_is_required_got_ty, ((PyObject *)Py_TYPE(__pyx_t_1))); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 777, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 757, __pyx_L1_error)
+    __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 777, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_GIVEREF(__pyx_t_4);
     PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_4);
     __pyx_t_4 = 0;
-    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_t_1, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 757, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_t_1, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 777, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_Raise(__pyx_t_4, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __PYX_ERR(0, 757, __pyx_L1_error)
+    __PYX_ERR(0, 777, __pyx_L1_error)
 
-    /* "Scroll.pyx":756
+    /* "Scroll.pyx":776
  *     """
  * 
  *     if not isinstance(dx, int):             # <<<<<<<<<<<<<<
@@ -11114,45 +10929,45 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array24_c(__Pyx_memviewslice __
  */
   }
 
-  /* "Scroll.pyx":758
+  /* "Scroll.pyx":778
  *     if not isinstance(dx, int):
  *         raise TypeError('dx, an integer is required (got type %s)' % type(dx))
  *     if not isinstance(dy, int):             # <<<<<<<<<<<<<<
  *         raise TypeError('dy, an integer is required (got type %s)' % type(dy))
  * 
  */
-  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_dy); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 758, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_dy); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 778, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_3 = PyInt_Check(__pyx_t_4); 
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_2 = ((!(__pyx_t_3 != 0)) != 0);
   if (__pyx_t_2) {
 
-    /* "Scroll.pyx":759
+    /* "Scroll.pyx":779
  *         raise TypeError('dx, an integer is required (got type %s)' % type(dx))
  *     if not isinstance(dy, int):
  *         raise TypeError('dy, an integer is required (got type %s)' % type(dy))             # <<<<<<<<<<<<<<
  * 
  *     cdef int w, h, dim
  */
-    __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_dy); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 759, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_dy); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 779, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_1 = __Pyx_PyString_Format(__pyx_kp_s_dy_an_integer_is_required_got_ty, ((PyObject *)Py_TYPE(__pyx_t_4))); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 759, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyString_Format(__pyx_kp_s_dy_an_integer_is_required_got_ty, ((PyObject *)Py_TYPE(__pyx_t_4))); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 779, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 759, __pyx_L1_error)
+    __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 779, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_GIVEREF(__pyx_t_1);
     PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_1);
     __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_t_4, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 759, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_t_4, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 779, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_Raise(__pyx_t_1, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __PYX_ERR(0, 759, __pyx_L1_error)
+    __PYX_ERR(0, 779, __pyx_L1_error)
 
-    /* "Scroll.pyx":758
+    /* "Scroll.pyx":778
  *     if not isinstance(dx, int):
  *         raise TypeError('dx, an integer is required (got type %s)' % type(dx))
  *     if not isinstance(dy, int):             # <<<<<<<<<<<<<<
@@ -11161,7 +10976,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array24_c(__Pyx_memviewslice __
  */
   }
 
-  /* "Scroll.pyx":762
+  /* "Scroll.pyx":782
  * 
  *     cdef int w, h, dim
  *     try:             # <<<<<<<<<<<<<<
@@ -11177,19 +10992,19 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array24_c(__Pyx_memviewslice __
     __Pyx_XGOTREF(__pyx_t_7);
     /*try:*/ {
 
-      /* "Scroll.pyx":763
+      /* "Scroll.pyx":783
  *     cdef int w, h, dim
  *     try:
  *         w, h, dim = (<object>rgb_array_).shape[:3]             # <<<<<<<<<<<<<<
  *     except (ValueError, pygame.error) as e:
  *         raise ValueError('\nArray shape not compatible.')
  */
-      __pyx_t_1 = __pyx_memoryview_fromslice(__pyx_v_rgb_array_, 3, (PyObject *(*)(char *)) __pyx_memview_get_unsigned_char, (int (*)(char *, PyObject *)) __pyx_memview_set_unsigned_char, 0);; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 763, __pyx_L5_error)
+      __pyx_t_1 = __pyx_memoryview_fromslice(__pyx_v_rgb_array_, 3, (PyObject *(*)(char *)) __pyx_memview_get_unsigned_char, (int (*)(char *, PyObject *)) __pyx_memview_set_unsigned_char, 0);; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 783, __pyx_L5_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_shape); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 763, __pyx_L5_error)
+      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_shape); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 783, __pyx_L5_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __pyx_t_1 = __Pyx_PyObject_GetSlice(__pyx_t_4, 0, 3, NULL, NULL, &__pyx_slice__14, 0, 1, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 763, __pyx_L5_error)
+      __pyx_t_1 = __Pyx_PyObject_GetSlice(__pyx_t_4, 0, 3, NULL, NULL, &__pyx_slice__14, 0, 1, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 783, __pyx_L5_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       if ((likely(PyTuple_CheckExact(__pyx_t_1))) || (PyList_CheckExact(__pyx_t_1))) {
@@ -11202,7 +11017,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array24_c(__Pyx_memviewslice __
         if (unlikely(size != 3)) {
           if (size > 3) __Pyx_RaiseTooManyValuesError(3);
           else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-          __PYX_ERR(0, 763, __pyx_L5_error)
+          __PYX_ERR(0, 783, __pyx_L5_error)
         }
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
         if (likely(PyTuple_CheckExact(sequence))) {
@@ -11218,17 +11033,17 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array24_c(__Pyx_memviewslice __
         __Pyx_INCREF(__pyx_t_8);
         __Pyx_INCREF(__pyx_t_9);
         #else
-        __pyx_t_4 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 763, __pyx_L5_error)
+        __pyx_t_4 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 783, __pyx_L5_error)
         __Pyx_GOTREF(__pyx_t_4);
-        __pyx_t_8 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 763, __pyx_L5_error)
+        __pyx_t_8 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 783, __pyx_L5_error)
         __Pyx_GOTREF(__pyx_t_8);
-        __pyx_t_9 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 763, __pyx_L5_error)
+        __pyx_t_9 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 783, __pyx_L5_error)
         __Pyx_GOTREF(__pyx_t_9);
         #endif
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       } else {
         Py_ssize_t index = -1;
-        __pyx_t_10 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 763, __pyx_L5_error)
+        __pyx_t_10 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 783, __pyx_L5_error)
         __Pyx_GOTREF(__pyx_t_10);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         __pyx_t_11 = Py_TYPE(__pyx_t_10)->tp_iternext;
@@ -11238,7 +11053,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array24_c(__Pyx_memviewslice __
         __Pyx_GOTREF(__pyx_t_8);
         index = 2; __pyx_t_9 = __pyx_t_11(__pyx_t_10); if (unlikely(!__pyx_t_9)) goto __pyx_L11_unpacking_failed;
         __Pyx_GOTREF(__pyx_t_9);
-        if (__Pyx_IternextUnpackEndCheck(__pyx_t_11(__pyx_t_10), 3) < 0) __PYX_ERR(0, 763, __pyx_L5_error)
+        if (__Pyx_IternextUnpackEndCheck(__pyx_t_11(__pyx_t_10), 3) < 0) __PYX_ERR(0, 783, __pyx_L5_error)
         __pyx_t_11 = NULL;
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
         goto __pyx_L12_unpacking_done;
@@ -11246,20 +11061,20 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array24_c(__Pyx_memviewslice __
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
         __pyx_t_11 = NULL;
         if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-        __PYX_ERR(0, 763, __pyx_L5_error)
+        __PYX_ERR(0, 783, __pyx_L5_error)
         __pyx_L12_unpacking_done:;
       }
-      __pyx_t_12 = __Pyx_PyInt_As_int(__pyx_t_4); if (unlikely((__pyx_t_12 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 763, __pyx_L5_error)
+      __pyx_t_12 = __Pyx_PyInt_As_int(__pyx_t_4); if (unlikely((__pyx_t_12 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 783, __pyx_L5_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __pyx_t_13 = __Pyx_PyInt_As_int(__pyx_t_8); if (unlikely((__pyx_t_13 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 763, __pyx_L5_error)
+      __pyx_t_13 = __Pyx_PyInt_As_int(__pyx_t_8); if (unlikely((__pyx_t_13 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 783, __pyx_L5_error)
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-      __pyx_t_14 = __Pyx_PyInt_As_int(__pyx_t_9); if (unlikely((__pyx_t_14 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 763, __pyx_L5_error)
+      __pyx_t_14 = __Pyx_PyInt_As_int(__pyx_t_9); if (unlikely((__pyx_t_14 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 783, __pyx_L5_error)
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
       __pyx_v_w = __pyx_t_12;
       __pyx_v_h = __pyx_t_13;
       __pyx_v_dim = __pyx_t_14;
 
-      /* "Scroll.pyx":762
+      /* "Scroll.pyx":782
  * 
  *     cdef int w, h, dim
  *     try:             # <<<<<<<<<<<<<<
@@ -11278,46 +11093,46 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array24_c(__Pyx_memviewslice __
     __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
     __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "Scroll.pyx":764
+    /* "Scroll.pyx":784
  *     try:
  *         w, h, dim = (<object>rgb_array_).shape[:3]
  *     except (ValueError, pygame.error) as e:             # <<<<<<<<<<<<<<
  *         raise ValueError('\nArray shape not compatible.')
  * 
  */
-    __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_pygame); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 764, __pyx_L7_except_error)
+    __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_pygame); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 784, __pyx_L7_except_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_error); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 764, __pyx_L7_except_error)
+    __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_error); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 784, __pyx_L7_except_error)
     __Pyx_GOTREF(__pyx_t_9);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_t_14 = __Pyx_PyErr_ExceptionMatches(__pyx_builtin_ValueError) || __Pyx_PyErr_ExceptionMatches(__pyx_t_9);
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
     if (__pyx_t_14) {
       __Pyx_AddTraceback("Scroll.scroll_array24_c", __pyx_clineno, __pyx_lineno, __pyx_filename);
-      if (__Pyx_GetException(&__pyx_t_9, &__pyx_t_1, &__pyx_t_8) < 0) __PYX_ERR(0, 764, __pyx_L7_except_error)
+      if (__Pyx_GetException(&__pyx_t_9, &__pyx_t_1, &__pyx_t_8) < 0) __PYX_ERR(0, 784, __pyx_L7_except_error)
       __Pyx_GOTREF(__pyx_t_9);
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_INCREF(__pyx_t_1);
       __pyx_v_e = __pyx_t_1;
 
-      /* "Scroll.pyx":765
+      /* "Scroll.pyx":785
  *         w, h, dim = (<object>rgb_array_).shape[:3]
  *     except (ValueError, pygame.error) as e:
  *         raise ValueError('\nArray shape not compatible.')             # <<<<<<<<<<<<<<
  * 
  *     if dx == 0 and dy == 0:
  */
-      __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__15, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 765, __pyx_L7_except_error)
+      __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__15, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 785, __pyx_L7_except_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_Raise(__pyx_t_4, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __PYX_ERR(0, 765, __pyx_L7_except_error)
+      __PYX_ERR(0, 785, __pyx_L7_except_error)
     }
     goto __pyx_L7_except_error;
     __pyx_L7_except_error:;
 
-    /* "Scroll.pyx":762
+    /* "Scroll.pyx":782
  * 
  *     cdef int w, h, dim
  *     try:             # <<<<<<<<<<<<<<
@@ -11332,7 +11147,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array24_c(__Pyx_memviewslice __
     __pyx_L10_try_end:;
   }
 
-  /* "Scroll.pyx":767
+  /* "Scroll.pyx":787
  *         raise ValueError('\nArray shape not compatible.')
  * 
  *     if dx == 0 and dy == 0:             # <<<<<<<<<<<<<<
@@ -11350,7 +11165,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array24_c(__Pyx_memviewslice __
   __pyx_L16_bool_binop_done:;
   if (__pyx_t_2) {
 
-    /* "Scroll.pyx":768
+    /* "Scroll.pyx":788
  * 
  *     if dx == 0 and dy == 0:
  *         return rgb_array_   # return memoryslice             # <<<<<<<<<<<<<<
@@ -11361,7 +11176,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array24_c(__Pyx_memviewslice __
     __pyx_r = __pyx_v_rgb_array_;
     goto __pyx_L0;
 
-    /* "Scroll.pyx":767
+    /* "Scroll.pyx":787
  *         raise ValueError('\nArray shape not compatible.')
  * 
  *     if dx == 0 and dy == 0:             # <<<<<<<<<<<<<<
@@ -11370,7 +11185,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array24_c(__Pyx_memviewslice __
  */
   }
 
-  /* "Scroll.pyx":771
+  /* "Scroll.pyx":791
  * 
  *     cdef:
  *         int i, j, ii=0, jj=0             # <<<<<<<<<<<<<<
@@ -11380,23 +11195,23 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array24_c(__Pyx_memviewslice __
   __pyx_v_ii = 0;
   __pyx_v_jj = 0;
 
-  /* "Scroll.pyx":772
+  /* "Scroll.pyx":792
  *     cdef:
  *         int i, j, ii=0, jj=0
  *         unsigned char [:, :, ::1] empty_array = numpy.empty((w, h, 3), numpy.uint8)             # <<<<<<<<<<<<<<
  * 
  *     with nogil:
  */
-  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 772, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 792, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_empty); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 772, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_empty); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 792, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_w); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 772, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_w); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 792, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_h); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 772, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_h); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 792, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_10 = PyTuple_New(3); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 772, __pyx_L1_error)
+  __pyx_t_10 = PyTuple_New(3); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 792, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_1);
@@ -11407,9 +11222,9 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array24_c(__Pyx_memviewslice __
   PyTuple_SET_ITEM(__pyx_t_10, 2, __pyx_int_3);
   __pyx_t_1 = 0;
   __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 772, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 792, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_uint8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 772, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_uint8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 792, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_4 = NULL;
@@ -11427,7 +11242,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array24_c(__Pyx_memviewslice __
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_9)) {
     PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_t_10, __pyx_t_1};
-    __pyx_t_8 = __Pyx_PyFunction_FastCall(__pyx_t_9, __pyx_temp+1-__pyx_t_14, 2+__pyx_t_14); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 772, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyFunction_FastCall(__pyx_t_9, __pyx_temp+1-__pyx_t_14, 2+__pyx_t_14); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 792, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
@@ -11437,7 +11252,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array24_c(__Pyx_memviewslice __
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_9)) {
     PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_t_10, __pyx_t_1};
-    __pyx_t_8 = __Pyx_PyCFunction_FastCall(__pyx_t_9, __pyx_temp+1-__pyx_t_14, 2+__pyx_t_14); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 772, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyCFunction_FastCall(__pyx_t_9, __pyx_temp+1-__pyx_t_14, 2+__pyx_t_14); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 792, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
@@ -11445,7 +11260,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array24_c(__Pyx_memviewslice __
   } else
   #endif
   {
-    __pyx_t_15 = PyTuple_New(2+__pyx_t_14); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 772, __pyx_L1_error)
+    __pyx_t_15 = PyTuple_New(2+__pyx_t_14); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 792, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_15);
     if (__pyx_t_4) {
       __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_15, 0, __pyx_t_4); __pyx_t_4 = NULL;
@@ -11456,19 +11271,19 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array24_c(__Pyx_memviewslice __
     PyTuple_SET_ITEM(__pyx_t_15, 1+__pyx_t_14, __pyx_t_1);
     __pyx_t_10 = 0;
     __pyx_t_1 = 0;
-    __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_9, __pyx_t_15, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 772, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_9, __pyx_t_15, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 792, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
   }
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
   __pyx_t_16 = __Pyx_PyObject_to_MemoryviewSlice_d_d_dc_unsigned_char(__pyx_t_8);
-  if (unlikely(!__pyx_t_16.memview)) __PYX_ERR(0, 772, __pyx_L1_error)
+  if (unlikely(!__pyx_t_16.memview)) __PYX_ERR(0, 792, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   __pyx_v_empty_array = __pyx_t_16;
   __pyx_t_16.memview = NULL;
   __pyx_t_16.data = NULL;
 
-  /* "Scroll.pyx":774
+  /* "Scroll.pyx":794
  *         unsigned char [:, :, ::1] empty_array = numpy.empty((w, h, 3), numpy.uint8)
  * 
  *     with nogil:             # <<<<<<<<<<<<<<
@@ -11483,7 +11298,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array24_c(__Pyx_memviewslice __
       #endif
       /*try:*/ {
 
-        /* "Scroll.pyx":776
+        /* "Scroll.pyx":796
  *     with nogil:
  *         # do both vertical and horizontal shift
  *         if dx != 0 and dy != 0:             # <<<<<<<<<<<<<<
@@ -11501,7 +11316,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array24_c(__Pyx_memviewslice __
         __pyx_L22_bool_binop_done:;
         if (__pyx_t_2) {
 
-          /* "Scroll.pyx":777
+          /* "Scroll.pyx":797
  *         # do both vertical and horizontal shift
  *         if dx != 0 and dy != 0:
  *             for i in prange(0, w, schedule=SCHEDULE, num_threads=THREAD_NUMBER):             # <<<<<<<<<<<<<<
@@ -11535,7 +11350,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array24_c(__Pyx_memviewslice __
                               __pyx_v_j = ((int)0xbad0bad0);
                               __pyx_v_jj = ((int)0xbad0bad0);
 
-                              /* "Scroll.pyx":778
+                              /* "Scroll.pyx":798
  *         if dx != 0 and dy != 0:
  *             for i in prange(0, w, schedule=SCHEDULE, num_threads=THREAD_NUMBER):
  *                 for j in range(0, h):             # <<<<<<<<<<<<<<
@@ -11546,7 +11361,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array24_c(__Pyx_memviewslice __
                               for (__pyx_t_12 = 0; __pyx_t_12 < __pyx_t_13; __pyx_t_12+=1) {
                                 __pyx_v_j = __pyx_t_12;
 
-                                /* "Scroll.pyx":779
+                                /* "Scroll.pyx":799
  *             for i in prange(0, w, schedule=SCHEDULE, num_threads=THREAD_NUMBER):
  *                 for j in range(0, h):
  *                     ii = (i + dx) % w             # <<<<<<<<<<<<<<
@@ -11555,7 +11370,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array24_c(__Pyx_memviewslice __
  */
                                 __pyx_v_ii = ((__pyx_v_i + __pyx_v_dx) % __pyx_v_w);
 
-                                /* "Scroll.pyx":780
+                                /* "Scroll.pyx":800
  *                 for j in range(0, h):
  *                     ii = (i + dx) % w
  *                     jj = (j + dy) % h             # <<<<<<<<<<<<<<
@@ -11564,7 +11379,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array24_c(__Pyx_memviewslice __
  */
                                 __pyx_v_jj = ((__pyx_v_j + __pyx_v_dy) % __pyx_v_h);
 
-                                /* "Scroll.pyx":781
+                                /* "Scroll.pyx":801
  *                     ii = (i + dx) % w
  *                     jj = (j + dy) % h
  *                     if ii < 0:             # <<<<<<<<<<<<<<
@@ -11574,7 +11389,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array24_c(__Pyx_memviewslice __
                                 __pyx_t_2 = ((__pyx_v_ii < 0) != 0);
                                 if (__pyx_t_2) {
 
-                                  /* "Scroll.pyx":782
+                                  /* "Scroll.pyx":802
  *                     jj = (j + dy) % h
  *                     if ii < 0:
  *                         ii = ii + w             # <<<<<<<<<<<<<<
@@ -11583,7 +11398,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array24_c(__Pyx_memviewslice __
  */
                                   __pyx_v_ii = (__pyx_v_ii + __pyx_v_w);
 
-                                  /* "Scroll.pyx":781
+                                  /* "Scroll.pyx":801
  *                     ii = (i + dx) % w
  *                     jj = (j + dy) % h
  *                     if ii < 0:             # <<<<<<<<<<<<<<
@@ -11592,7 +11407,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array24_c(__Pyx_memviewslice __
  */
                                 }
 
-                                /* "Scroll.pyx":783
+                                /* "Scroll.pyx":803
  *                     if ii < 0:
  *                         ii = ii + w
  *                     if jj < 0:             # <<<<<<<<<<<<<<
@@ -11602,7 +11417,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array24_c(__Pyx_memviewslice __
                                 __pyx_t_2 = ((__pyx_v_jj < 0) != 0);
                                 if (__pyx_t_2) {
 
-                                  /* "Scroll.pyx":784
+                                  /* "Scroll.pyx":804
  *                         ii = ii + w
  *                     if jj < 0:
  *                         jj = jj + h             # <<<<<<<<<<<<<<
@@ -11611,7 +11426,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array24_c(__Pyx_memviewslice __
  */
                                   __pyx_v_jj = (__pyx_v_jj + __pyx_v_h);
 
-                                  /* "Scroll.pyx":783
+                                  /* "Scroll.pyx":803
  *                     if ii < 0:
  *                         ii = ii + w
  *                     if jj < 0:             # <<<<<<<<<<<<<<
@@ -11620,7 +11435,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array24_c(__Pyx_memviewslice __
  */
                                 }
 
-                                /* "Scroll.pyx":785
+                                /* "Scroll.pyx":805
  *                     if jj < 0:
  *                         jj = jj + h
  *                     empty_array[ii, jj, 0] = rgb_array_[i, j, 0]             # <<<<<<<<<<<<<<
@@ -11635,7 +11450,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array24_c(__Pyx_memviewslice __
                                 __pyx_t_24 = 0;
                                 *((unsigned char *) ( /* dim=2 */ ((char *) (((unsigned char *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_empty_array.data + __pyx_t_22 * __pyx_v_empty_array.strides[0]) ) + __pyx_t_23 * __pyx_v_empty_array.strides[1]) )) + __pyx_t_24)) )) = (*((unsigned char *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rgb_array_.data + __pyx_t_19 * __pyx_v_rgb_array_.strides[0]) ) + __pyx_t_20 * __pyx_v_rgb_array_.strides[1]) ) + __pyx_t_21 * __pyx_v_rgb_array_.strides[2]) )));
 
-                                /* "Scroll.pyx":786
+                                /* "Scroll.pyx":806
  *                         jj = jj + h
  *                     empty_array[ii, jj, 0] = rgb_array_[i, j, 0]
  *                     empty_array[ii, jj, 1] = rgb_array_[i, j, 1]             # <<<<<<<<<<<<<<
@@ -11650,7 +11465,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array24_c(__Pyx_memviewslice __
                                 __pyx_t_30 = 1;
                                 *((unsigned char *) ( /* dim=2 */ ((char *) (((unsigned char *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_empty_array.data + __pyx_t_28 * __pyx_v_empty_array.strides[0]) ) + __pyx_t_29 * __pyx_v_empty_array.strides[1]) )) + __pyx_t_30)) )) = (*((unsigned char *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rgb_array_.data + __pyx_t_25 * __pyx_v_rgb_array_.strides[0]) ) + __pyx_t_26 * __pyx_v_rgb_array_.strides[1]) ) + __pyx_t_27 * __pyx_v_rgb_array_.strides[2]) )));
 
-                                /* "Scroll.pyx":787
+                                /* "Scroll.pyx":807
  *                     empty_array[ii, jj, 0] = rgb_array_[i, j, 0]
  *                     empty_array[ii, jj, 1] = rgb_array_[i, j, 1]
  *                     empty_array[ii, jj, 2] = rgb_array_[i, j, 2]             # <<<<<<<<<<<<<<
@@ -11677,7 +11492,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array24_c(__Pyx_memviewslice __
               #define unlikely(x) __builtin_expect(!!(x), 0)
           #endif
 
-          /* "Scroll.pyx":776
+          /* "Scroll.pyx":796
  *     with nogil:
  *         # do both vertical and horizontal shift
  *         if dx != 0 and dy != 0:             # <<<<<<<<<<<<<<
@@ -11687,7 +11502,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array24_c(__Pyx_memviewslice __
           goto __pyx_L21;
         }
 
-        /* "Scroll.pyx":789
+        /* "Scroll.pyx":809
  *                     empty_array[ii, jj, 2] = rgb_array_[i, j, 2]
  *         else:
  *             if dx != 0:             # <<<<<<<<<<<<<<
@@ -11698,7 +11513,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array24_c(__Pyx_memviewslice __
           __pyx_t_2 = ((__pyx_v_dx != 0) != 0);
           if (__pyx_t_2) {
 
-            /* "Scroll.pyx":791
+            /* "Scroll.pyx":811
  *             if dx != 0:
  *                 # Move horizontally
  *                 for i in prange(0, w, schedule=SCHEDULE, num_threads=THREAD_NUMBER):             # <<<<<<<<<<<<<<
@@ -11731,7 +11546,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array24_c(__Pyx_memviewslice __
                                 __pyx_v_ii = ((int)0xbad0bad0);
                                 __pyx_v_j = ((int)0xbad0bad0);
 
-                                /* "Scroll.pyx":792
+                                /* "Scroll.pyx":812
  *                 # Move horizontally
  *                 for i in prange(0, w, schedule=SCHEDULE, num_threads=THREAD_NUMBER):
  *                     for j in range(0, h):             # <<<<<<<<<<<<<<
@@ -11742,7 +11557,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array24_c(__Pyx_memviewslice __
                                 for (__pyx_t_12 = 0; __pyx_t_12 < __pyx_t_13; __pyx_t_12+=1) {
                                   __pyx_v_j = __pyx_t_12;
 
-                                  /* "Scroll.pyx":793
+                                  /* "Scroll.pyx":813
  *                 for i in prange(0, w, schedule=SCHEDULE, num_threads=THREAD_NUMBER):
  *                     for j in range(0, h):
  *                         ii = (i + dx) % w             # <<<<<<<<<<<<<<
@@ -11751,7 +11566,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array24_c(__Pyx_memviewslice __
  */
                                   __pyx_v_ii = ((__pyx_v_i + __pyx_v_dx) % __pyx_v_w);
 
-                                  /* "Scroll.pyx":794
+                                  /* "Scroll.pyx":814
  *                     for j in range(0, h):
  *                         ii = (i + dx) % w
  *                         if ii < 0:             # <<<<<<<<<<<<<<
@@ -11761,7 +11576,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array24_c(__Pyx_memviewslice __
                                   __pyx_t_2 = ((__pyx_v_ii < 0) != 0);
                                   if (__pyx_t_2) {
 
-                                    /* "Scroll.pyx":795
+                                    /* "Scroll.pyx":815
  *                         ii = (i + dx) % w
  *                         if ii < 0:
  *                             ii = ii + w             # <<<<<<<<<<<<<<
@@ -11770,7 +11585,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array24_c(__Pyx_memviewslice __
  */
                                     __pyx_v_ii = (__pyx_v_ii + __pyx_v_w);
 
-                                    /* "Scroll.pyx":794
+                                    /* "Scroll.pyx":814
  *                     for j in range(0, h):
  *                         ii = (i + dx) % w
  *                         if ii < 0:             # <<<<<<<<<<<<<<
@@ -11779,7 +11594,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array24_c(__Pyx_memviewslice __
  */
                                   }
 
-                                  /* "Scroll.pyx":796
+                                  /* "Scroll.pyx":816
  *                         if ii < 0:
  *                             ii = ii + w
  *                         empty_array[ii, j, 0] = rgb_array_[i, j, 0]             # <<<<<<<<<<<<<<
@@ -11794,7 +11609,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array24_c(__Pyx_memviewslice __
                                   __pyx_t_42 = 0;
                                   *((unsigned char *) ( /* dim=2 */ ((char *) (((unsigned char *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_empty_array.data + __pyx_t_40 * __pyx_v_empty_array.strides[0]) ) + __pyx_t_41 * __pyx_v_empty_array.strides[1]) )) + __pyx_t_42)) )) = (*((unsigned char *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rgb_array_.data + __pyx_t_37 * __pyx_v_rgb_array_.strides[0]) ) + __pyx_t_38 * __pyx_v_rgb_array_.strides[1]) ) + __pyx_t_39 * __pyx_v_rgb_array_.strides[2]) )));
 
-                                  /* "Scroll.pyx":797
+                                  /* "Scroll.pyx":817
  *                             ii = ii + w
  *                         empty_array[ii, j, 0] = rgb_array_[i, j, 0]
  *                         empty_array[ii, j, 1] = rgb_array_[i, j, 1]             # <<<<<<<<<<<<<<
@@ -11809,7 +11624,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array24_c(__Pyx_memviewslice __
                                   __pyx_t_48 = 1;
                                   *((unsigned char *) ( /* dim=2 */ ((char *) (((unsigned char *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_empty_array.data + __pyx_t_46 * __pyx_v_empty_array.strides[0]) ) + __pyx_t_47 * __pyx_v_empty_array.strides[1]) )) + __pyx_t_48)) )) = (*((unsigned char *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rgb_array_.data + __pyx_t_43 * __pyx_v_rgb_array_.strides[0]) ) + __pyx_t_44 * __pyx_v_rgb_array_.strides[1]) ) + __pyx_t_45 * __pyx_v_rgb_array_.strides[2]) )));
 
-                                  /* "Scroll.pyx":798
+                                  /* "Scroll.pyx":818
  *                         empty_array[ii, j, 0] = rgb_array_[i, j, 0]
  *                         empty_array[ii, j, 1] = rgb_array_[i, j, 1]
  *                         empty_array[ii, j, 2] = rgb_array_[i, j, 2]             # <<<<<<<<<<<<<<
@@ -11836,7 +11651,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array24_c(__Pyx_memviewslice __
                 #define unlikely(x) __builtin_expect(!!(x), 0)
             #endif
 
-            /* "Scroll.pyx":789
+            /* "Scroll.pyx":809
  *                     empty_array[ii, jj, 2] = rgb_array_[i, j, 2]
  *         else:
  *             if dx != 0:             # <<<<<<<<<<<<<<
@@ -11846,7 +11661,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array24_c(__Pyx_memviewslice __
             goto __pyx_L34;
           }
 
-          /* "Scroll.pyx":801
+          /* "Scroll.pyx":821
  *             else:
  *                 # Move vertically
  *                 for i in prange(0, w, schedule=SCHEDULE, num_threads=THREAD_NUMBER):             # <<<<<<<<<<<<<<
@@ -11880,7 +11695,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array24_c(__Pyx_memviewslice __
                                 __pyx_v_j = ((int)0xbad0bad0);
                                 __pyx_v_jj = ((int)0xbad0bad0);
 
-                                /* "Scroll.pyx":802
+                                /* "Scroll.pyx":822
  *                 # Move vertically
  *                 for i in prange(0, w, schedule=SCHEDULE, num_threads=THREAD_NUMBER):
  *                     for j in range(0, h):             # <<<<<<<<<<<<<<
@@ -11891,7 +11706,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array24_c(__Pyx_memviewslice __
                                 for (__pyx_t_12 = 0; __pyx_t_12 < __pyx_t_13; __pyx_t_12+=1) {
                                   __pyx_v_j = __pyx_t_12;
 
-                                  /* "Scroll.pyx":803
+                                  /* "Scroll.pyx":823
  *                 for i in prange(0, w, schedule=SCHEDULE, num_threads=THREAD_NUMBER):
  *                     for j in range(0, h):
  *                         jj = (j + dy) % h             # <<<<<<<<<<<<<<
@@ -11900,7 +11715,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array24_c(__Pyx_memviewslice __
  */
                                   __pyx_v_jj = ((__pyx_v_j + __pyx_v_dy) % __pyx_v_h);
 
-                                  /* "Scroll.pyx":804
+                                  /* "Scroll.pyx":824
  *                     for j in range(0, h):
  *                         jj = (j + dy) % h
  *                         if jj < 0:             # <<<<<<<<<<<<<<
@@ -11910,7 +11725,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array24_c(__Pyx_memviewslice __
                                   __pyx_t_2 = ((__pyx_v_jj < 0) != 0);
                                   if (__pyx_t_2) {
 
-                                    /* "Scroll.pyx":805
+                                    /* "Scroll.pyx":825
  *                         jj = (j + dy) % h
  *                         if jj < 0:
  *                             jj = jj + h             # <<<<<<<<<<<<<<
@@ -11919,7 +11734,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array24_c(__Pyx_memviewslice __
  */
                                     __pyx_v_jj = (__pyx_v_jj + __pyx_v_h);
 
-                                    /* "Scroll.pyx":804
+                                    /* "Scroll.pyx":824
  *                     for j in range(0, h):
  *                         jj = (j + dy) % h
  *                         if jj < 0:             # <<<<<<<<<<<<<<
@@ -11928,7 +11743,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array24_c(__Pyx_memviewslice __
  */
                                   }
 
-                                  /* "Scroll.pyx":806
+                                  /* "Scroll.pyx":826
  *                         if jj < 0:
  *                             jj = jj + h
  *                         empty_array[i, jj, 0] = rgb_array_[i, j, 0]             # <<<<<<<<<<<<<<
@@ -11943,7 +11758,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array24_c(__Pyx_memviewslice __
                                   __pyx_t_60 = 0;
                                   *((unsigned char *) ( /* dim=2 */ ((char *) (((unsigned char *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_empty_array.data + __pyx_t_58 * __pyx_v_empty_array.strides[0]) ) + __pyx_t_59 * __pyx_v_empty_array.strides[1]) )) + __pyx_t_60)) )) = (*((unsigned char *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rgb_array_.data + __pyx_t_55 * __pyx_v_rgb_array_.strides[0]) ) + __pyx_t_56 * __pyx_v_rgb_array_.strides[1]) ) + __pyx_t_57 * __pyx_v_rgb_array_.strides[2]) )));
 
-                                  /* "Scroll.pyx":807
+                                  /* "Scroll.pyx":827
  *                             jj = jj + h
  *                         empty_array[i, jj, 0] = rgb_array_[i, j, 0]
  *                         empty_array[i, jj, 1] = rgb_array_[i, j, 1]             # <<<<<<<<<<<<<<
@@ -11958,7 +11773,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array24_c(__Pyx_memviewslice __
                                   __pyx_t_66 = 1;
                                   *((unsigned char *) ( /* dim=2 */ ((char *) (((unsigned char *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_empty_array.data + __pyx_t_64 * __pyx_v_empty_array.strides[0]) ) + __pyx_t_65 * __pyx_v_empty_array.strides[1]) )) + __pyx_t_66)) )) = (*((unsigned char *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rgb_array_.data + __pyx_t_61 * __pyx_v_rgb_array_.strides[0]) ) + __pyx_t_62 * __pyx_v_rgb_array_.strides[1]) ) + __pyx_t_63 * __pyx_v_rgb_array_.strides[2]) )));
 
-                                  /* "Scroll.pyx":808
+                                  /* "Scroll.pyx":828
  *                         empty_array[i, jj, 0] = rgb_array_[i, j, 0]
  *                         empty_array[i, jj, 1] = rgb_array_[i, j, 1]
  *                         empty_array[i, jj, 2] = rgb_array_[i, j, 2]             # <<<<<<<<<<<<<<
@@ -11990,7 +11805,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array24_c(__Pyx_memviewslice __
         __pyx_L21:;
       }
 
-      /* "Scroll.pyx":774
+      /* "Scroll.pyx":794
  *         unsigned char [:, :, ::1] empty_array = numpy.empty((w, h, 3), numpy.uint8)
  * 
  *     with nogil:             # <<<<<<<<<<<<<<
@@ -12009,7 +11824,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array24_c(__Pyx_memviewslice __
       }
   }
 
-  /* "Scroll.pyx":810
+  /* "Scroll.pyx":830
  *                         empty_array[i, jj, 2] = rgb_array_[i, j, 2]
  * 
  *     return empty_array             # <<<<<<<<<<<<<<
@@ -12020,7 +11835,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array24_c(__Pyx_memviewslice __
   __pyx_r = __pyx_v_empty_array;
   goto __pyx_L0;
 
-  /* "Scroll.pyx":736
+  /* "Scroll.pyx":756
  * @cython.nonecheck(False)
  * @cython.cdivision(True)
  * cdef unsigned char [:, :, :] scroll_array24_c(unsigned char[:, :, :] rgb_array_, int dy, int dx):             # <<<<<<<<<<<<<<
@@ -12053,7 +11868,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array24_c(__Pyx_memviewslice __
   return __pyx_r;
 }
 
-/* "Scroll.pyx":817
+/* "Scroll.pyx":837
  * @cython.nonecheck(False)
  * @cython.cdivision(True)
  * cdef unsigned char [:, :, :] scroll_array32_c(unsigned char [:, :, :] rgb_array, int dy, int dx):             # <<<<<<<<<<<<<<
@@ -12165,45 +11980,45 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array32_c(__Pyx_memviewslice __
   Py_ssize_t __pyx_t_90;
   __Pyx_RefNannySetupContext("scroll_array32_c", 0);
 
-  /* "Scroll.pyx":841
+  /* "Scroll.pyx":861
  *     :return: Return a memoryslice (numpy.ndarray type (w, h, 4) numpy uint8)
  *     """
  *     if not isinstance(dx, int):             # <<<<<<<<<<<<<<
  *         raise TypeError('dx, an integer is required (got type %s)' % type(dx))
  *     if not isinstance(dy, int):
  */
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_dx); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 841, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_dx); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 861, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_2 = PyInt_Check(__pyx_t_1); 
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_t_3 = ((!(__pyx_t_2 != 0)) != 0);
   if (__pyx_t_3) {
 
-    /* "Scroll.pyx":842
+    /* "Scroll.pyx":862
  *     """
  *     if not isinstance(dx, int):
  *         raise TypeError('dx, an integer is required (got type %s)' % type(dx))             # <<<<<<<<<<<<<<
  *     if not isinstance(dy, int):
  *         raise TypeError('dy, an integer is required (got type %s)' % type(dy))
  */
-    __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_dx); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 842, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_dx); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 862, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_4 = __Pyx_PyString_Format(__pyx_kp_s_dx_an_integer_is_required_got_ty, ((PyObject *)Py_TYPE(__pyx_t_1))); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 842, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyString_Format(__pyx_kp_s_dx_an_integer_is_required_got_ty, ((PyObject *)Py_TYPE(__pyx_t_1))); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 862, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 842, __pyx_L1_error)
+    __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 862, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_GIVEREF(__pyx_t_4);
     PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_4);
     __pyx_t_4 = 0;
-    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_t_1, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 842, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_t_1, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 862, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_Raise(__pyx_t_4, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __PYX_ERR(0, 842, __pyx_L1_error)
+    __PYX_ERR(0, 862, __pyx_L1_error)
 
-    /* "Scroll.pyx":841
+    /* "Scroll.pyx":861
  *     :return: Return a memoryslice (numpy.ndarray type (w, h, 4) numpy uint8)
  *     """
  *     if not isinstance(dx, int):             # <<<<<<<<<<<<<<
@@ -12212,45 +12027,45 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array32_c(__Pyx_memviewslice __
  */
   }
 
-  /* "Scroll.pyx":843
+  /* "Scroll.pyx":863
  *     if not isinstance(dx, int):
  *         raise TypeError('dx, an integer is required (got type %s)' % type(dx))
  *     if not isinstance(dy, int):             # <<<<<<<<<<<<<<
  *         raise TypeError('dy, an integer is required (got type %s)' % type(dy))
  * 
  */
-  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_dy); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 843, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_dy); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 863, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_3 = PyInt_Check(__pyx_t_4); 
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_2 = ((!(__pyx_t_3 != 0)) != 0);
   if (__pyx_t_2) {
 
-    /* "Scroll.pyx":844
+    /* "Scroll.pyx":864
  *         raise TypeError('dx, an integer is required (got type %s)' % type(dx))
  *     if not isinstance(dy, int):
  *         raise TypeError('dy, an integer is required (got type %s)' % type(dy))             # <<<<<<<<<<<<<<
  * 
  *     cdef int w, h, dim
  */
-    __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_dy); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 844, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_dy); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 864, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_1 = __Pyx_PyString_Format(__pyx_kp_s_dy_an_integer_is_required_got_ty, ((PyObject *)Py_TYPE(__pyx_t_4))); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 844, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyString_Format(__pyx_kp_s_dy_an_integer_is_required_got_ty, ((PyObject *)Py_TYPE(__pyx_t_4))); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 864, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 844, __pyx_L1_error)
+    __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 864, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_GIVEREF(__pyx_t_1);
     PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_1);
     __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_t_4, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 844, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_t_4, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 864, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_Raise(__pyx_t_1, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __PYX_ERR(0, 844, __pyx_L1_error)
+    __PYX_ERR(0, 864, __pyx_L1_error)
 
-    /* "Scroll.pyx":843
+    /* "Scroll.pyx":863
  *     if not isinstance(dx, int):
  *         raise TypeError('dx, an integer is required (got type %s)' % type(dx))
  *     if not isinstance(dy, int):             # <<<<<<<<<<<<<<
@@ -12259,7 +12074,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array32_c(__Pyx_memviewslice __
  */
   }
 
-  /* "Scroll.pyx":847
+  /* "Scroll.pyx":867
  * 
  *     cdef int w, h, dim
  *     try:             # <<<<<<<<<<<<<<
@@ -12275,19 +12090,19 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array32_c(__Pyx_memviewslice __
     __Pyx_XGOTREF(__pyx_t_7);
     /*try:*/ {
 
-      /* "Scroll.pyx":848
+      /* "Scroll.pyx":868
  *     cdef int w, h, dim
  *     try:
  *         w, h, dim = (<object> rgb_array).shape[:3]             # <<<<<<<<<<<<<<
  *     except (ValueError, pygame.error) as e:
  *         raise ValueError('\nArray shape not compatible.')
  */
-      __pyx_t_1 = __pyx_memoryview_fromslice(__pyx_v_rgb_array, 3, (PyObject *(*)(char *)) __pyx_memview_get_unsigned_char, (int (*)(char *, PyObject *)) __pyx_memview_set_unsigned_char, 0);; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 848, __pyx_L5_error)
+      __pyx_t_1 = __pyx_memoryview_fromslice(__pyx_v_rgb_array, 3, (PyObject *(*)(char *)) __pyx_memview_get_unsigned_char, (int (*)(char *, PyObject *)) __pyx_memview_set_unsigned_char, 0);; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 868, __pyx_L5_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_shape); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 848, __pyx_L5_error)
+      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_shape); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 868, __pyx_L5_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __pyx_t_1 = __Pyx_PyObject_GetSlice(__pyx_t_4, 0, 3, NULL, NULL, &__pyx_slice__16, 0, 1, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 848, __pyx_L5_error)
+      __pyx_t_1 = __Pyx_PyObject_GetSlice(__pyx_t_4, 0, 3, NULL, NULL, &__pyx_slice__16, 0, 1, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 868, __pyx_L5_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       if ((likely(PyTuple_CheckExact(__pyx_t_1))) || (PyList_CheckExact(__pyx_t_1))) {
@@ -12300,7 +12115,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array32_c(__Pyx_memviewslice __
         if (unlikely(size != 3)) {
           if (size > 3) __Pyx_RaiseTooManyValuesError(3);
           else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-          __PYX_ERR(0, 848, __pyx_L5_error)
+          __PYX_ERR(0, 868, __pyx_L5_error)
         }
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
         if (likely(PyTuple_CheckExact(sequence))) {
@@ -12316,17 +12131,17 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array32_c(__Pyx_memviewslice __
         __Pyx_INCREF(__pyx_t_8);
         __Pyx_INCREF(__pyx_t_9);
         #else
-        __pyx_t_4 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 848, __pyx_L5_error)
+        __pyx_t_4 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 868, __pyx_L5_error)
         __Pyx_GOTREF(__pyx_t_4);
-        __pyx_t_8 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 848, __pyx_L5_error)
+        __pyx_t_8 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 868, __pyx_L5_error)
         __Pyx_GOTREF(__pyx_t_8);
-        __pyx_t_9 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 848, __pyx_L5_error)
+        __pyx_t_9 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 868, __pyx_L5_error)
         __Pyx_GOTREF(__pyx_t_9);
         #endif
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       } else {
         Py_ssize_t index = -1;
-        __pyx_t_10 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 848, __pyx_L5_error)
+        __pyx_t_10 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 868, __pyx_L5_error)
         __Pyx_GOTREF(__pyx_t_10);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         __pyx_t_11 = Py_TYPE(__pyx_t_10)->tp_iternext;
@@ -12336,7 +12151,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array32_c(__Pyx_memviewslice __
         __Pyx_GOTREF(__pyx_t_8);
         index = 2; __pyx_t_9 = __pyx_t_11(__pyx_t_10); if (unlikely(!__pyx_t_9)) goto __pyx_L11_unpacking_failed;
         __Pyx_GOTREF(__pyx_t_9);
-        if (__Pyx_IternextUnpackEndCheck(__pyx_t_11(__pyx_t_10), 3) < 0) __PYX_ERR(0, 848, __pyx_L5_error)
+        if (__Pyx_IternextUnpackEndCheck(__pyx_t_11(__pyx_t_10), 3) < 0) __PYX_ERR(0, 868, __pyx_L5_error)
         __pyx_t_11 = NULL;
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
         goto __pyx_L12_unpacking_done;
@@ -12344,20 +12159,20 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array32_c(__Pyx_memviewslice __
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
         __pyx_t_11 = NULL;
         if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-        __PYX_ERR(0, 848, __pyx_L5_error)
+        __PYX_ERR(0, 868, __pyx_L5_error)
         __pyx_L12_unpacking_done:;
       }
-      __pyx_t_12 = __Pyx_PyInt_As_int(__pyx_t_4); if (unlikely((__pyx_t_12 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 848, __pyx_L5_error)
+      __pyx_t_12 = __Pyx_PyInt_As_int(__pyx_t_4); if (unlikely((__pyx_t_12 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 868, __pyx_L5_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __pyx_t_13 = __Pyx_PyInt_As_int(__pyx_t_8); if (unlikely((__pyx_t_13 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 848, __pyx_L5_error)
+      __pyx_t_13 = __Pyx_PyInt_As_int(__pyx_t_8); if (unlikely((__pyx_t_13 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 868, __pyx_L5_error)
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-      __pyx_t_14 = __Pyx_PyInt_As_int(__pyx_t_9); if (unlikely((__pyx_t_14 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 848, __pyx_L5_error)
+      __pyx_t_14 = __Pyx_PyInt_As_int(__pyx_t_9); if (unlikely((__pyx_t_14 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 868, __pyx_L5_error)
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
       __pyx_v_w = __pyx_t_12;
       __pyx_v_h = __pyx_t_13;
       __pyx_v_dim = __pyx_t_14;
 
-      /* "Scroll.pyx":847
+      /* "Scroll.pyx":867
  * 
  *     cdef int w, h, dim
  *     try:             # <<<<<<<<<<<<<<
@@ -12376,46 +12191,46 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array32_c(__Pyx_memviewslice __
     __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
     __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "Scroll.pyx":849
+    /* "Scroll.pyx":869
  *     try:
  *         w, h, dim = (<object> rgb_array).shape[:3]
  *     except (ValueError, pygame.error) as e:             # <<<<<<<<<<<<<<
  *         raise ValueError('\nArray shape not compatible.')
  * 
  */
-    __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_pygame); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 849, __pyx_L7_except_error)
+    __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_pygame); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 869, __pyx_L7_except_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_error); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 849, __pyx_L7_except_error)
+    __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_error); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 869, __pyx_L7_except_error)
     __Pyx_GOTREF(__pyx_t_9);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_t_14 = __Pyx_PyErr_ExceptionMatches(__pyx_builtin_ValueError) || __Pyx_PyErr_ExceptionMatches(__pyx_t_9);
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
     if (__pyx_t_14) {
       __Pyx_AddTraceback("Scroll.scroll_array32_c", __pyx_clineno, __pyx_lineno, __pyx_filename);
-      if (__Pyx_GetException(&__pyx_t_9, &__pyx_t_1, &__pyx_t_8) < 0) __PYX_ERR(0, 849, __pyx_L7_except_error)
+      if (__Pyx_GetException(&__pyx_t_9, &__pyx_t_1, &__pyx_t_8) < 0) __PYX_ERR(0, 869, __pyx_L7_except_error)
       __Pyx_GOTREF(__pyx_t_9);
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_INCREF(__pyx_t_1);
       __pyx_v_e = __pyx_t_1;
 
-      /* "Scroll.pyx":850
+      /* "Scroll.pyx":870
  *         w, h, dim = (<object> rgb_array).shape[:3]
  *     except (ValueError, pygame.error) as e:
  *         raise ValueError('\nArray shape not compatible.')             # <<<<<<<<<<<<<<
  * 
  *     if dx == 0 and dy == 0:
  */
-      __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__17, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 850, __pyx_L7_except_error)
+      __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__17, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 870, __pyx_L7_except_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_Raise(__pyx_t_4, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __PYX_ERR(0, 850, __pyx_L7_except_error)
+      __PYX_ERR(0, 870, __pyx_L7_except_error)
     }
     goto __pyx_L7_except_error;
     __pyx_L7_except_error:;
 
-    /* "Scroll.pyx":847
+    /* "Scroll.pyx":867
  * 
  *     cdef int w, h, dim
  *     try:             # <<<<<<<<<<<<<<
@@ -12430,7 +12245,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array32_c(__Pyx_memviewslice __
     __pyx_L10_try_end:;
   }
 
-  /* "Scroll.pyx":852
+  /* "Scroll.pyx":872
  *         raise ValueError('\nArray shape not compatible.')
  * 
  *     if dx == 0 and dy == 0:             # <<<<<<<<<<<<<<
@@ -12448,7 +12263,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array32_c(__Pyx_memviewslice __
   __pyx_L16_bool_binop_done:;
   if (__pyx_t_2) {
 
-    /* "Scroll.pyx":853
+    /* "Scroll.pyx":873
  * 
  *     if dx == 0 and dy == 0:
  *         return rgb_array             # <<<<<<<<<<<<<<
@@ -12459,7 +12274,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array32_c(__Pyx_memviewslice __
     __pyx_r = __pyx_v_rgb_array;
     goto __pyx_L0;
 
-    /* "Scroll.pyx":852
+    /* "Scroll.pyx":872
  *         raise ValueError('\nArray shape not compatible.')
  * 
  *     if dx == 0 and dy == 0:             # <<<<<<<<<<<<<<
@@ -12468,7 +12283,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array32_c(__Pyx_memviewslice __
  */
   }
 
-  /* "Scroll.pyx":856
+  /* "Scroll.pyx":876
  * 
  *     cdef:
  *         int i, j, ii=0, jj=0             # <<<<<<<<<<<<<<
@@ -12478,23 +12293,23 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array32_c(__Pyx_memviewslice __
   __pyx_v_ii = 0;
   __pyx_v_jj = 0;
 
-  /* "Scroll.pyx":857
+  /* "Scroll.pyx":877
  *     cdef:
  *         int i, j, ii=0, jj=0
  *         unsigned char [:, :, ::1] empty_array = numpy.empty((w, h, 4), numpy.uint8)             # <<<<<<<<<<<<<<
  * 
  *     with nogil:
  */
-  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 857, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 877, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_empty); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 857, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_empty); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 877, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_w); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 857, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_w); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 877, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_h); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 857, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_h); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 877, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_10 = PyTuple_New(3); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 857, __pyx_L1_error)
+  __pyx_t_10 = PyTuple_New(3); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 877, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_1);
@@ -12505,9 +12320,9 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array32_c(__Pyx_memviewslice __
   PyTuple_SET_ITEM(__pyx_t_10, 2, __pyx_int_4);
   __pyx_t_1 = 0;
   __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 857, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 877, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_uint8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 857, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_uint8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 877, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_4 = NULL;
@@ -12525,7 +12340,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array32_c(__Pyx_memviewslice __
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_9)) {
     PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_t_10, __pyx_t_1};
-    __pyx_t_8 = __Pyx_PyFunction_FastCall(__pyx_t_9, __pyx_temp+1-__pyx_t_14, 2+__pyx_t_14); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 857, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyFunction_FastCall(__pyx_t_9, __pyx_temp+1-__pyx_t_14, 2+__pyx_t_14); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 877, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
@@ -12535,7 +12350,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array32_c(__Pyx_memviewslice __
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_9)) {
     PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_t_10, __pyx_t_1};
-    __pyx_t_8 = __Pyx_PyCFunction_FastCall(__pyx_t_9, __pyx_temp+1-__pyx_t_14, 2+__pyx_t_14); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 857, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyCFunction_FastCall(__pyx_t_9, __pyx_temp+1-__pyx_t_14, 2+__pyx_t_14); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 877, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
@@ -12543,7 +12358,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array32_c(__Pyx_memviewslice __
   } else
   #endif
   {
-    __pyx_t_15 = PyTuple_New(2+__pyx_t_14); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 857, __pyx_L1_error)
+    __pyx_t_15 = PyTuple_New(2+__pyx_t_14); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 877, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_15);
     if (__pyx_t_4) {
       __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_15, 0, __pyx_t_4); __pyx_t_4 = NULL;
@@ -12554,19 +12369,19 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array32_c(__Pyx_memviewslice __
     PyTuple_SET_ITEM(__pyx_t_15, 1+__pyx_t_14, __pyx_t_1);
     __pyx_t_10 = 0;
     __pyx_t_1 = 0;
-    __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_9, __pyx_t_15, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 857, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_9, __pyx_t_15, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 877, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
   }
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
   __pyx_t_16 = __Pyx_PyObject_to_MemoryviewSlice_d_d_dc_unsigned_char(__pyx_t_8);
-  if (unlikely(!__pyx_t_16.memview)) __PYX_ERR(0, 857, __pyx_L1_error)
+  if (unlikely(!__pyx_t_16.memview)) __PYX_ERR(0, 877, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   __pyx_v_empty_array = __pyx_t_16;
   __pyx_t_16.memview = NULL;
   __pyx_t_16.data = NULL;
 
-  /* "Scroll.pyx":859
+  /* "Scroll.pyx":879
  *         unsigned char [:, :, ::1] empty_array = numpy.empty((w, h, 4), numpy.uint8)
  * 
  *     with nogil:             # <<<<<<<<<<<<<<
@@ -12581,7 +12396,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array32_c(__Pyx_memviewslice __
       #endif
       /*try:*/ {
 
-        /* "Scroll.pyx":861
+        /* "Scroll.pyx":881
  *     with nogil:
  *         # do both vertical and horizontal shift
  *         if dx != 0 and dy != 0:             # <<<<<<<<<<<<<<
@@ -12599,7 +12414,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array32_c(__Pyx_memviewslice __
         __pyx_L22_bool_binop_done:;
         if (__pyx_t_2) {
 
-          /* "Scroll.pyx":862
+          /* "Scroll.pyx":882
  *         # do both vertical and horizontal shift
  *         if dx != 0 and dy != 0:
  *             for i in prange(0, w, schedule=SCHEDULE, num_threads=THREAD_NUMBER):             # <<<<<<<<<<<<<<
@@ -12633,7 +12448,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array32_c(__Pyx_memviewslice __
                               __pyx_v_j = ((int)0xbad0bad0);
                               __pyx_v_jj = ((int)0xbad0bad0);
 
-                              /* "Scroll.pyx":863
+                              /* "Scroll.pyx":883
  *         if dx != 0 and dy != 0:
  *             for i in prange(0, w, schedule=SCHEDULE, num_threads=THREAD_NUMBER):
  *                 for j in range(0, h):             # <<<<<<<<<<<<<<
@@ -12644,7 +12459,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array32_c(__Pyx_memviewslice __
                               for (__pyx_t_12 = 0; __pyx_t_12 < __pyx_t_13; __pyx_t_12+=1) {
                                 __pyx_v_j = __pyx_t_12;
 
-                                /* "Scroll.pyx":864
+                                /* "Scroll.pyx":884
  *             for i in prange(0, w, schedule=SCHEDULE, num_threads=THREAD_NUMBER):
  *                 for j in range(0, h):
  *                     ii = (i + dx) % w             # <<<<<<<<<<<<<<
@@ -12653,7 +12468,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array32_c(__Pyx_memviewslice __
  */
                                 __pyx_v_ii = ((__pyx_v_i + __pyx_v_dx) % __pyx_v_w);
 
-                                /* "Scroll.pyx":865
+                                /* "Scroll.pyx":885
  *                 for j in range(0, h):
  *                     ii = (i + dx) % w
  *                     jj = (j + dy) % h             # <<<<<<<<<<<<<<
@@ -12662,7 +12477,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array32_c(__Pyx_memviewslice __
  */
                                 __pyx_v_jj = ((__pyx_v_j + __pyx_v_dy) % __pyx_v_h);
 
-                                /* "Scroll.pyx":866
+                                /* "Scroll.pyx":886
  *                     ii = (i + dx) % w
  *                     jj = (j + dy) % h
  *                     if ii < 0:             # <<<<<<<<<<<<<<
@@ -12672,7 +12487,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array32_c(__Pyx_memviewslice __
                                 __pyx_t_2 = ((__pyx_v_ii < 0) != 0);
                                 if (__pyx_t_2) {
 
-                                  /* "Scroll.pyx":867
+                                  /* "Scroll.pyx":887
  *                     jj = (j + dy) % h
  *                     if ii < 0:
  *                         ii = ii + w             # <<<<<<<<<<<<<<
@@ -12681,7 +12496,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array32_c(__Pyx_memviewslice __
  */
                                   __pyx_v_ii = (__pyx_v_ii + __pyx_v_w);
 
-                                  /* "Scroll.pyx":866
+                                  /* "Scroll.pyx":886
  *                     ii = (i + dx) % w
  *                     jj = (j + dy) % h
  *                     if ii < 0:             # <<<<<<<<<<<<<<
@@ -12690,7 +12505,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array32_c(__Pyx_memviewslice __
  */
                                 }
 
-                                /* "Scroll.pyx":868
+                                /* "Scroll.pyx":888
  *                     if ii < 0:
  *                         ii = ii + w
  *                     if jj < 0:             # <<<<<<<<<<<<<<
@@ -12700,7 +12515,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array32_c(__Pyx_memviewslice __
                                 __pyx_t_2 = ((__pyx_v_jj < 0) != 0);
                                 if (__pyx_t_2) {
 
-                                  /* "Scroll.pyx":869
+                                  /* "Scroll.pyx":889
  *                         ii = ii + w
  *                     if jj < 0:
  *                         jj = jj + h             # <<<<<<<<<<<<<<
@@ -12709,7 +12524,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array32_c(__Pyx_memviewslice __
  */
                                   __pyx_v_jj = (__pyx_v_jj + __pyx_v_h);
 
-                                  /* "Scroll.pyx":868
+                                  /* "Scroll.pyx":888
  *                     if ii < 0:
  *                         ii = ii + w
  *                     if jj < 0:             # <<<<<<<<<<<<<<
@@ -12718,7 +12533,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array32_c(__Pyx_memviewslice __
  */
                                 }
 
-                                /* "Scroll.pyx":870
+                                /* "Scroll.pyx":890
  *                     if jj < 0:
  *                         jj = jj + h
  *                     empty_array[ii, jj, 0] = rgb_array[i, j, 0]             # <<<<<<<<<<<<<<
@@ -12733,7 +12548,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array32_c(__Pyx_memviewslice __
                                 __pyx_t_24 = 0;
                                 *((unsigned char *) ( /* dim=2 */ ((char *) (((unsigned char *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_empty_array.data + __pyx_t_22 * __pyx_v_empty_array.strides[0]) ) + __pyx_t_23 * __pyx_v_empty_array.strides[1]) )) + __pyx_t_24)) )) = (*((unsigned char *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rgb_array.data + __pyx_t_19 * __pyx_v_rgb_array.strides[0]) ) + __pyx_t_20 * __pyx_v_rgb_array.strides[1]) ) + __pyx_t_21 * __pyx_v_rgb_array.strides[2]) )));
 
-                                /* "Scroll.pyx":871
+                                /* "Scroll.pyx":891
  *                         jj = jj + h
  *                     empty_array[ii, jj, 0] = rgb_array[i, j, 0]
  *                     empty_array[ii, jj, 1] = rgb_array[i, j, 1]             # <<<<<<<<<<<<<<
@@ -12748,7 +12563,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array32_c(__Pyx_memviewslice __
                                 __pyx_t_30 = 1;
                                 *((unsigned char *) ( /* dim=2 */ ((char *) (((unsigned char *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_empty_array.data + __pyx_t_28 * __pyx_v_empty_array.strides[0]) ) + __pyx_t_29 * __pyx_v_empty_array.strides[1]) )) + __pyx_t_30)) )) = (*((unsigned char *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rgb_array.data + __pyx_t_25 * __pyx_v_rgb_array.strides[0]) ) + __pyx_t_26 * __pyx_v_rgb_array.strides[1]) ) + __pyx_t_27 * __pyx_v_rgb_array.strides[2]) )));
 
-                                /* "Scroll.pyx":872
+                                /* "Scroll.pyx":892
  *                     empty_array[ii, jj, 0] = rgb_array[i, j, 0]
  *                     empty_array[ii, jj, 1] = rgb_array[i, j, 1]
  *                     empty_array[ii, jj, 2] = rgb_array[i, j, 2]             # <<<<<<<<<<<<<<
@@ -12763,7 +12578,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array32_c(__Pyx_memviewslice __
                                 __pyx_t_36 = 2;
                                 *((unsigned char *) ( /* dim=2 */ ((char *) (((unsigned char *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_empty_array.data + __pyx_t_34 * __pyx_v_empty_array.strides[0]) ) + __pyx_t_35 * __pyx_v_empty_array.strides[1]) )) + __pyx_t_36)) )) = (*((unsigned char *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rgb_array.data + __pyx_t_31 * __pyx_v_rgb_array.strides[0]) ) + __pyx_t_32 * __pyx_v_rgb_array.strides[1]) ) + __pyx_t_33 * __pyx_v_rgb_array.strides[2]) )));
 
-                                /* "Scroll.pyx":873
+                                /* "Scroll.pyx":893
  *                     empty_array[ii, jj, 1] = rgb_array[i, j, 1]
  *                     empty_array[ii, jj, 2] = rgb_array[i, j, 2]
  *                     empty_array[ii, jj, 3] = rgb_array[i, j, 3]             # <<<<<<<<<<<<<<
@@ -12790,7 +12605,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array32_c(__Pyx_memviewslice __
               #define unlikely(x) __builtin_expect(!!(x), 0)
           #endif
 
-          /* "Scroll.pyx":861
+          /* "Scroll.pyx":881
  *     with nogil:
  *         # do both vertical and horizontal shift
  *         if dx != 0 and dy != 0:             # <<<<<<<<<<<<<<
@@ -12800,7 +12615,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array32_c(__Pyx_memviewslice __
           goto __pyx_L21;
         }
 
-        /* "Scroll.pyx":875
+        /* "Scroll.pyx":895
  *                     empty_array[ii, jj, 3] = rgb_array[i, j, 3]
  *         else:
  *             if dx != 0:             # <<<<<<<<<<<<<<
@@ -12811,7 +12626,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array32_c(__Pyx_memviewslice __
           __pyx_t_2 = ((__pyx_v_dx != 0) != 0);
           if (__pyx_t_2) {
 
-            /* "Scroll.pyx":877
+            /* "Scroll.pyx":897
  *             if dx != 0:
  *                 # Move horizontally
  *                 for i in prange(0, w, schedule=SCHEDULE, num_threads=THREAD_NUMBER):             # <<<<<<<<<<<<<<
@@ -12844,7 +12659,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array32_c(__Pyx_memviewslice __
                                 __pyx_v_ii = ((int)0xbad0bad0);
                                 __pyx_v_j = ((int)0xbad0bad0);
 
-                                /* "Scroll.pyx":878
+                                /* "Scroll.pyx":898
  *                 # Move horizontally
  *                 for i in prange(0, w, schedule=SCHEDULE, num_threads=THREAD_NUMBER):
  *                     for j in range(0, h):             # <<<<<<<<<<<<<<
@@ -12855,7 +12670,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array32_c(__Pyx_memviewslice __
                                 for (__pyx_t_12 = 0; __pyx_t_12 < __pyx_t_13; __pyx_t_12+=1) {
                                   __pyx_v_j = __pyx_t_12;
 
-                                  /* "Scroll.pyx":879
+                                  /* "Scroll.pyx":899
  *                 for i in prange(0, w, schedule=SCHEDULE, num_threads=THREAD_NUMBER):
  *                     for j in range(0, h):
  *                         ii = (i + dx) % w             # <<<<<<<<<<<<<<
@@ -12864,7 +12679,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array32_c(__Pyx_memviewslice __
  */
                                   __pyx_v_ii = ((__pyx_v_i + __pyx_v_dx) % __pyx_v_w);
 
-                                  /* "Scroll.pyx":880
+                                  /* "Scroll.pyx":900
  *                     for j in range(0, h):
  *                         ii = (i + dx) % w
  *                         if ii < 0:             # <<<<<<<<<<<<<<
@@ -12874,7 +12689,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array32_c(__Pyx_memviewslice __
                                   __pyx_t_2 = ((__pyx_v_ii < 0) != 0);
                                   if (__pyx_t_2) {
 
-                                    /* "Scroll.pyx":881
+                                    /* "Scroll.pyx":901
  *                         ii = (i + dx) % w
  *                         if ii < 0:
  *                             ii = ii + w             # <<<<<<<<<<<<<<
@@ -12883,7 +12698,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array32_c(__Pyx_memviewslice __
  */
                                     __pyx_v_ii = (__pyx_v_ii + __pyx_v_w);
 
-                                    /* "Scroll.pyx":880
+                                    /* "Scroll.pyx":900
  *                     for j in range(0, h):
  *                         ii = (i + dx) % w
  *                         if ii < 0:             # <<<<<<<<<<<<<<
@@ -12892,7 +12707,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array32_c(__Pyx_memviewslice __
  */
                                   }
 
-                                  /* "Scroll.pyx":882
+                                  /* "Scroll.pyx":902
  *                         if ii < 0:
  *                             ii = ii + w
  *                         empty_array[ii, j, 0] = rgb_array[i, j, 0]             # <<<<<<<<<<<<<<
@@ -12907,7 +12722,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array32_c(__Pyx_memviewslice __
                                   __pyx_t_48 = 0;
                                   *((unsigned char *) ( /* dim=2 */ ((char *) (((unsigned char *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_empty_array.data + __pyx_t_46 * __pyx_v_empty_array.strides[0]) ) + __pyx_t_47 * __pyx_v_empty_array.strides[1]) )) + __pyx_t_48)) )) = (*((unsigned char *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rgb_array.data + __pyx_t_43 * __pyx_v_rgb_array.strides[0]) ) + __pyx_t_44 * __pyx_v_rgb_array.strides[1]) ) + __pyx_t_45 * __pyx_v_rgb_array.strides[2]) )));
 
-                                  /* "Scroll.pyx":883
+                                  /* "Scroll.pyx":903
  *                             ii = ii + w
  *                         empty_array[ii, j, 0] = rgb_array[i, j, 0]
  *                         empty_array[ii, j, 1] = rgb_array[i, j, 1]             # <<<<<<<<<<<<<<
@@ -12922,7 +12737,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array32_c(__Pyx_memviewslice __
                                   __pyx_t_54 = 1;
                                   *((unsigned char *) ( /* dim=2 */ ((char *) (((unsigned char *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_empty_array.data + __pyx_t_52 * __pyx_v_empty_array.strides[0]) ) + __pyx_t_53 * __pyx_v_empty_array.strides[1]) )) + __pyx_t_54)) )) = (*((unsigned char *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rgb_array.data + __pyx_t_49 * __pyx_v_rgb_array.strides[0]) ) + __pyx_t_50 * __pyx_v_rgb_array.strides[1]) ) + __pyx_t_51 * __pyx_v_rgb_array.strides[2]) )));
 
-                                  /* "Scroll.pyx":884
+                                  /* "Scroll.pyx":904
  *                         empty_array[ii, j, 0] = rgb_array[i, j, 0]
  *                         empty_array[ii, j, 1] = rgb_array[i, j, 1]
  *                         empty_array[ii, j, 2] = rgb_array[i, j, 2]             # <<<<<<<<<<<<<<
@@ -12937,7 +12752,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array32_c(__Pyx_memviewslice __
                                   __pyx_t_60 = 2;
                                   *((unsigned char *) ( /* dim=2 */ ((char *) (((unsigned char *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_empty_array.data + __pyx_t_58 * __pyx_v_empty_array.strides[0]) ) + __pyx_t_59 * __pyx_v_empty_array.strides[1]) )) + __pyx_t_60)) )) = (*((unsigned char *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rgb_array.data + __pyx_t_55 * __pyx_v_rgb_array.strides[0]) ) + __pyx_t_56 * __pyx_v_rgb_array.strides[1]) ) + __pyx_t_57 * __pyx_v_rgb_array.strides[2]) )));
 
-                                  /* "Scroll.pyx":885
+                                  /* "Scroll.pyx":905
  *                         empty_array[ii, j, 1] = rgb_array[i, j, 1]
  *                         empty_array[ii, j, 2] = rgb_array[i, j, 2]
  *                         empty_array[ii, j, 3] = rgb_array[i, j, 3]             # <<<<<<<<<<<<<<
@@ -12964,7 +12779,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array32_c(__Pyx_memviewslice __
                 #define unlikely(x) __builtin_expect(!!(x), 0)
             #endif
 
-            /* "Scroll.pyx":875
+            /* "Scroll.pyx":895
  *                     empty_array[ii, jj, 3] = rgb_array[i, j, 3]
  *         else:
  *             if dx != 0:             # <<<<<<<<<<<<<<
@@ -12974,7 +12789,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array32_c(__Pyx_memviewslice __
             goto __pyx_L34;
           }
 
-          /* "Scroll.pyx":889
+          /* "Scroll.pyx":909
  *             else:
  *                 # Move vertically
  *                 for i in prange(0, w, schedule=SCHEDULE, num_threads=THREAD_NUMBER):             # <<<<<<<<<<<<<<
@@ -13008,7 +12823,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array32_c(__Pyx_memviewslice __
                                 __pyx_v_j = ((int)0xbad0bad0);
                                 __pyx_v_jj = ((int)0xbad0bad0);
 
-                                /* "Scroll.pyx":890
+                                /* "Scroll.pyx":910
  *                 # Move vertically
  *                 for i in prange(0, w, schedule=SCHEDULE, num_threads=THREAD_NUMBER):
  *                     for j in range(0, h):             # <<<<<<<<<<<<<<
@@ -13019,7 +12834,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array32_c(__Pyx_memviewslice __
                                 for (__pyx_t_12 = 0; __pyx_t_12 < __pyx_t_13; __pyx_t_12+=1) {
                                   __pyx_v_j = __pyx_t_12;
 
-                                  /* "Scroll.pyx":891
+                                  /* "Scroll.pyx":911
  *                 for i in prange(0, w, schedule=SCHEDULE, num_threads=THREAD_NUMBER):
  *                     for j in range(0, h):
  *                         jj = (j + dy) % h             # <<<<<<<<<<<<<<
@@ -13028,7 +12843,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array32_c(__Pyx_memviewslice __
  */
                                   __pyx_v_jj = ((__pyx_v_j + __pyx_v_dy) % __pyx_v_h);
 
-                                  /* "Scroll.pyx":892
+                                  /* "Scroll.pyx":912
  *                     for j in range(0, h):
  *                         jj = (j + dy) % h
  *                         if jj < 0:             # <<<<<<<<<<<<<<
@@ -13038,7 +12853,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array32_c(__Pyx_memviewslice __
                                   __pyx_t_2 = ((__pyx_v_jj < 0) != 0);
                                   if (__pyx_t_2) {
 
-                                    /* "Scroll.pyx":893
+                                    /* "Scroll.pyx":913
  *                         jj = (j + dy) % h
  *                         if jj < 0:
  *                             jj = jj + h             # <<<<<<<<<<<<<<
@@ -13047,7 +12862,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array32_c(__Pyx_memviewslice __
  */
                                     __pyx_v_jj = (__pyx_v_jj + __pyx_v_h);
 
-                                    /* "Scroll.pyx":892
+                                    /* "Scroll.pyx":912
  *                     for j in range(0, h):
  *                         jj = (j + dy) % h
  *                         if jj < 0:             # <<<<<<<<<<<<<<
@@ -13056,7 +12871,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array32_c(__Pyx_memviewslice __
  */
                                   }
 
-                                  /* "Scroll.pyx":894
+                                  /* "Scroll.pyx":914
  *                         if jj < 0:
  *                             jj = jj + h
  *                         empty_array[i, jj, 0] = rgb_array[i, j, 0]             # <<<<<<<<<<<<<<
@@ -13071,7 +12886,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array32_c(__Pyx_memviewslice __
                                   __pyx_t_72 = 0;
                                   *((unsigned char *) ( /* dim=2 */ ((char *) (((unsigned char *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_empty_array.data + __pyx_t_70 * __pyx_v_empty_array.strides[0]) ) + __pyx_t_71 * __pyx_v_empty_array.strides[1]) )) + __pyx_t_72)) )) = (*((unsigned char *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rgb_array.data + __pyx_t_67 * __pyx_v_rgb_array.strides[0]) ) + __pyx_t_68 * __pyx_v_rgb_array.strides[1]) ) + __pyx_t_69 * __pyx_v_rgb_array.strides[2]) )));
 
-                                  /* "Scroll.pyx":895
+                                  /* "Scroll.pyx":915
  *                             jj = jj + h
  *                         empty_array[i, jj, 0] = rgb_array[i, j, 0]
  *                         empty_array[i, jj, 1] = rgb_array[i, j, 1]             # <<<<<<<<<<<<<<
@@ -13086,7 +12901,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array32_c(__Pyx_memviewslice __
                                   __pyx_t_78 = 1;
                                   *((unsigned char *) ( /* dim=2 */ ((char *) (((unsigned char *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_empty_array.data + __pyx_t_76 * __pyx_v_empty_array.strides[0]) ) + __pyx_t_77 * __pyx_v_empty_array.strides[1]) )) + __pyx_t_78)) )) = (*((unsigned char *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rgb_array.data + __pyx_t_73 * __pyx_v_rgb_array.strides[0]) ) + __pyx_t_74 * __pyx_v_rgb_array.strides[1]) ) + __pyx_t_75 * __pyx_v_rgb_array.strides[2]) )));
 
-                                  /* "Scroll.pyx":896
+                                  /* "Scroll.pyx":916
  *                         empty_array[i, jj, 0] = rgb_array[i, j, 0]
  *                         empty_array[i, jj, 1] = rgb_array[i, j, 1]
  *                         empty_array[i, jj, 2] = rgb_array[i, j, 2]             # <<<<<<<<<<<<<<
@@ -13101,7 +12916,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array32_c(__Pyx_memviewslice __
                                   __pyx_t_84 = 2;
                                   *((unsigned char *) ( /* dim=2 */ ((char *) (((unsigned char *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_empty_array.data + __pyx_t_82 * __pyx_v_empty_array.strides[0]) ) + __pyx_t_83 * __pyx_v_empty_array.strides[1]) )) + __pyx_t_84)) )) = (*((unsigned char *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rgb_array.data + __pyx_t_79 * __pyx_v_rgb_array.strides[0]) ) + __pyx_t_80 * __pyx_v_rgb_array.strides[1]) ) + __pyx_t_81 * __pyx_v_rgb_array.strides[2]) )));
 
-                                  /* "Scroll.pyx":897
+                                  /* "Scroll.pyx":917
  *                         empty_array[i, jj, 1] = rgb_array[i, j, 1]
  *                         empty_array[i, jj, 2] = rgb_array[i, j, 2]
  *                         empty_array[i, jj, 3] = rgb_array[i, j, 3]             # <<<<<<<<<<<<<<
@@ -13133,7 +12948,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array32_c(__Pyx_memviewslice __
         __pyx_L21:;
       }
 
-      /* "Scroll.pyx":859
+      /* "Scroll.pyx":879
  *         unsigned char [:, :, ::1] empty_array = numpy.empty((w, h, 4), numpy.uint8)
  * 
  *     with nogil:             # <<<<<<<<<<<<<<
@@ -13152,7 +12967,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array32_c(__Pyx_memviewslice __
       }
   }
 
-  /* "Scroll.pyx":898
+  /* "Scroll.pyx":918
  *                         empty_array[i, jj, 2] = rgb_array[i, j, 2]
  *                         empty_array[i, jj, 3] = rgb_array[i, j, 3]
  *     return empty_array             # <<<<<<<<<<<<<<
@@ -13163,7 +12978,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array32_c(__Pyx_memviewslice __
   __pyx_r = __pyx_v_empty_array;
   goto __pyx_L0;
 
-  /* "Scroll.pyx":817
+  /* "Scroll.pyx":837
  * @cython.nonecheck(False)
  * @cython.cdivision(True)
  * cdef unsigned char [:, :, :] scroll_array32_c(unsigned char [:, :, :] rgb_array, int dy, int dx):             # <<<<<<<<<<<<<<
@@ -13196,7 +13011,7 @@ static __Pyx_memviewslice __pyx_f_6Scroll_scroll_array32_c(__Pyx_memviewslice __
   return __pyx_r;
 }
 
-/* "Scroll.pyx":905
+/* "Scroll.pyx":925
  * @cython.nonecheck(False)
  * @cython.cdivision(True)
  * cdef scroll_array32m_c(unsigned char [:, :, :] rgb_array,             # <<<<<<<<<<<<<<
@@ -13304,45 +13119,45 @@ static PyObject *__pyx_f_6Scroll_scroll_array32m_c(__Pyx_memviewslice __pyx_v_rg
   Py_ssize_t __pyx_t_85;
   __Pyx_RefNannySetupContext("scroll_array32m_c", 0);
 
-  /* "Scroll.pyx":928
+  /* "Scroll.pyx":948
  *     :return: a numpy.ndarray type (w, h, 4) numpy uint8
  *     """
  *     if not isinstance(dx, int):             # <<<<<<<<<<<<<<
  *         raise TypeError('dx, an integer is required (got type %s)' % type(dx))
  *     if not isinstance(dy, int):
  */
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_dx); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 928, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_dx); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 948, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_2 = PyInt_Check(__pyx_t_1); 
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_t_3 = ((!(__pyx_t_2 != 0)) != 0);
   if (__pyx_t_3) {
 
-    /* "Scroll.pyx":929
+    /* "Scroll.pyx":949
  *     """
  *     if not isinstance(dx, int):
  *         raise TypeError('dx, an integer is required (got type %s)' % type(dx))             # <<<<<<<<<<<<<<
  *     if not isinstance(dy, int):
  *         raise TypeError('dy, an integer is required (got type %s)' % type(dy))
  */
-    __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_dx); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 929, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_dx); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 949, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_4 = __Pyx_PyString_Format(__pyx_kp_s_dx_an_integer_is_required_got_ty, ((PyObject *)Py_TYPE(__pyx_t_1))); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 929, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyString_Format(__pyx_kp_s_dx_an_integer_is_required_got_ty, ((PyObject *)Py_TYPE(__pyx_t_1))); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 949, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 929, __pyx_L1_error)
+    __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 949, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_GIVEREF(__pyx_t_4);
     PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_4);
     __pyx_t_4 = 0;
-    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_t_1, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 929, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_t_1, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 949, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_Raise(__pyx_t_4, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __PYX_ERR(0, 929, __pyx_L1_error)
+    __PYX_ERR(0, 949, __pyx_L1_error)
 
-    /* "Scroll.pyx":928
+    /* "Scroll.pyx":948
  *     :return: a numpy.ndarray type (w, h, 4) numpy uint8
  *     """
  *     if not isinstance(dx, int):             # <<<<<<<<<<<<<<
@@ -13351,45 +13166,45 @@ static PyObject *__pyx_f_6Scroll_scroll_array32m_c(__Pyx_memviewslice __pyx_v_rg
  */
   }
 
-  /* "Scroll.pyx":930
+  /* "Scroll.pyx":950
  *     if not isinstance(dx, int):
  *         raise TypeError('dx, an integer is required (got type %s)' % type(dx))
  *     if not isinstance(dy, int):             # <<<<<<<<<<<<<<
  *         raise TypeError('dy, an integer is required (got type %s)' % type(dy))
  * 
  */
-  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_dy); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 930, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_dy); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 950, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_3 = PyInt_Check(__pyx_t_4); 
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_2 = ((!(__pyx_t_3 != 0)) != 0);
   if (__pyx_t_2) {
 
-    /* "Scroll.pyx":931
+    /* "Scroll.pyx":951
  *         raise TypeError('dx, an integer is required (got type %s)' % type(dx))
  *     if not isinstance(dy, int):
  *         raise TypeError('dy, an integer is required (got type %s)' % type(dy))             # <<<<<<<<<<<<<<
  * 
  *     cdef int w, h, dim
  */
-    __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_dy); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 931, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_dy); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 951, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_1 = __Pyx_PyString_Format(__pyx_kp_s_dy_an_integer_is_required_got_ty, ((PyObject *)Py_TYPE(__pyx_t_4))); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 931, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyString_Format(__pyx_kp_s_dy_an_integer_is_required_got_ty, ((PyObject *)Py_TYPE(__pyx_t_4))); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 951, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 931, __pyx_L1_error)
+    __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 951, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_GIVEREF(__pyx_t_1);
     PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_1);
     __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_t_4, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 931, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_t_4, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 951, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_Raise(__pyx_t_1, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __PYX_ERR(0, 931, __pyx_L1_error)
+    __PYX_ERR(0, 951, __pyx_L1_error)
 
-    /* "Scroll.pyx":930
+    /* "Scroll.pyx":950
  *     if not isinstance(dx, int):
  *         raise TypeError('dx, an integer is required (got type %s)' % type(dx))
  *     if not isinstance(dy, int):             # <<<<<<<<<<<<<<
@@ -13398,7 +13213,7 @@ static PyObject *__pyx_f_6Scroll_scroll_array32m_c(__Pyx_memviewslice __pyx_v_rg
  */
   }
 
-  /* "Scroll.pyx":934
+  /* "Scroll.pyx":954
  * 
  *     cdef int w, h, dim
  *     try:             # <<<<<<<<<<<<<<
@@ -13414,19 +13229,19 @@ static PyObject *__pyx_f_6Scroll_scroll_array32m_c(__Pyx_memviewslice __pyx_v_rg
     __Pyx_XGOTREF(__pyx_t_7);
     /*try:*/ {
 
-      /* "Scroll.pyx":935
+      /* "Scroll.pyx":955
  *     cdef int w, h, dim
  *     try:
  *         w, h, dim = (<object> rgb_array).shape[:3]             # <<<<<<<<<<<<<<
  *     except (ValueError, pygame.error) as e:
  *         raise ValueError('\nArray shape not compatible.')
  */
-      __pyx_t_1 = __pyx_memoryview_fromslice(__pyx_v_rgb_array, 3, (PyObject *(*)(char *)) __pyx_memview_get_unsigned_char, (int (*)(char *, PyObject *)) __pyx_memview_set_unsigned_char, 0);; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 935, __pyx_L5_error)
+      __pyx_t_1 = __pyx_memoryview_fromslice(__pyx_v_rgb_array, 3, (PyObject *(*)(char *)) __pyx_memview_get_unsigned_char, (int (*)(char *, PyObject *)) __pyx_memview_set_unsigned_char, 0);; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 955, __pyx_L5_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_shape); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 935, __pyx_L5_error)
+      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_shape); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 955, __pyx_L5_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __pyx_t_1 = __Pyx_PyObject_GetSlice(__pyx_t_4, 0, 3, NULL, NULL, &__pyx_slice__18, 0, 1, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 935, __pyx_L5_error)
+      __pyx_t_1 = __Pyx_PyObject_GetSlice(__pyx_t_4, 0, 3, NULL, NULL, &__pyx_slice__18, 0, 1, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 955, __pyx_L5_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       if ((likely(PyTuple_CheckExact(__pyx_t_1))) || (PyList_CheckExact(__pyx_t_1))) {
@@ -13439,7 +13254,7 @@ static PyObject *__pyx_f_6Scroll_scroll_array32m_c(__Pyx_memviewslice __pyx_v_rg
         if (unlikely(size != 3)) {
           if (size > 3) __Pyx_RaiseTooManyValuesError(3);
           else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-          __PYX_ERR(0, 935, __pyx_L5_error)
+          __PYX_ERR(0, 955, __pyx_L5_error)
         }
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
         if (likely(PyTuple_CheckExact(sequence))) {
@@ -13455,17 +13270,17 @@ static PyObject *__pyx_f_6Scroll_scroll_array32m_c(__Pyx_memviewslice __pyx_v_rg
         __Pyx_INCREF(__pyx_t_8);
         __Pyx_INCREF(__pyx_t_9);
         #else
-        __pyx_t_4 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 935, __pyx_L5_error)
+        __pyx_t_4 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 955, __pyx_L5_error)
         __Pyx_GOTREF(__pyx_t_4);
-        __pyx_t_8 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 935, __pyx_L5_error)
+        __pyx_t_8 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 955, __pyx_L5_error)
         __Pyx_GOTREF(__pyx_t_8);
-        __pyx_t_9 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 935, __pyx_L5_error)
+        __pyx_t_9 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 955, __pyx_L5_error)
         __Pyx_GOTREF(__pyx_t_9);
         #endif
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       } else {
         Py_ssize_t index = -1;
-        __pyx_t_10 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 935, __pyx_L5_error)
+        __pyx_t_10 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 955, __pyx_L5_error)
         __Pyx_GOTREF(__pyx_t_10);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         __pyx_t_11 = Py_TYPE(__pyx_t_10)->tp_iternext;
@@ -13475,7 +13290,7 @@ static PyObject *__pyx_f_6Scroll_scroll_array32m_c(__Pyx_memviewslice __pyx_v_rg
         __Pyx_GOTREF(__pyx_t_8);
         index = 2; __pyx_t_9 = __pyx_t_11(__pyx_t_10); if (unlikely(!__pyx_t_9)) goto __pyx_L11_unpacking_failed;
         __Pyx_GOTREF(__pyx_t_9);
-        if (__Pyx_IternextUnpackEndCheck(__pyx_t_11(__pyx_t_10), 3) < 0) __PYX_ERR(0, 935, __pyx_L5_error)
+        if (__Pyx_IternextUnpackEndCheck(__pyx_t_11(__pyx_t_10), 3) < 0) __PYX_ERR(0, 955, __pyx_L5_error)
         __pyx_t_11 = NULL;
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
         goto __pyx_L12_unpacking_done;
@@ -13483,20 +13298,20 @@ static PyObject *__pyx_f_6Scroll_scroll_array32m_c(__Pyx_memviewslice __pyx_v_rg
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
         __pyx_t_11 = NULL;
         if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-        __PYX_ERR(0, 935, __pyx_L5_error)
+        __PYX_ERR(0, 955, __pyx_L5_error)
         __pyx_L12_unpacking_done:;
       }
-      __pyx_t_12 = __Pyx_PyInt_As_int(__pyx_t_4); if (unlikely((__pyx_t_12 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 935, __pyx_L5_error)
+      __pyx_t_12 = __Pyx_PyInt_As_int(__pyx_t_4); if (unlikely((__pyx_t_12 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 955, __pyx_L5_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __pyx_t_13 = __Pyx_PyInt_As_int(__pyx_t_8); if (unlikely((__pyx_t_13 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 935, __pyx_L5_error)
+      __pyx_t_13 = __Pyx_PyInt_As_int(__pyx_t_8); if (unlikely((__pyx_t_13 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 955, __pyx_L5_error)
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-      __pyx_t_14 = __Pyx_PyInt_As_int(__pyx_t_9); if (unlikely((__pyx_t_14 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 935, __pyx_L5_error)
+      __pyx_t_14 = __Pyx_PyInt_As_int(__pyx_t_9); if (unlikely((__pyx_t_14 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 955, __pyx_L5_error)
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
       __pyx_v_w = __pyx_t_12;
       __pyx_v_h = __pyx_t_13;
       __pyx_v_dim = __pyx_t_14;
 
-      /* "Scroll.pyx":934
+      /* "Scroll.pyx":954
  * 
  *     cdef int w, h, dim
  *     try:             # <<<<<<<<<<<<<<
@@ -13515,46 +13330,46 @@ static PyObject *__pyx_f_6Scroll_scroll_array32m_c(__Pyx_memviewslice __pyx_v_rg
     __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
     __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "Scroll.pyx":936
+    /* "Scroll.pyx":956
  *     try:
  *         w, h, dim = (<object> rgb_array).shape[:3]
  *     except (ValueError, pygame.error) as e:             # <<<<<<<<<<<<<<
  *         raise ValueError('\nArray shape not compatible.')
  * 
  */
-    __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_pygame); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 936, __pyx_L7_except_error)
+    __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_pygame); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 956, __pyx_L7_except_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_error); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 936, __pyx_L7_except_error)
+    __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_error); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 956, __pyx_L7_except_error)
     __Pyx_GOTREF(__pyx_t_9);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_t_14 = __Pyx_PyErr_ExceptionMatches(__pyx_builtin_ValueError) || __Pyx_PyErr_ExceptionMatches(__pyx_t_9);
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
     if (__pyx_t_14) {
       __Pyx_AddTraceback("Scroll.scroll_array32m_c", __pyx_clineno, __pyx_lineno, __pyx_filename);
-      if (__Pyx_GetException(&__pyx_t_9, &__pyx_t_1, &__pyx_t_8) < 0) __PYX_ERR(0, 936, __pyx_L7_except_error)
+      if (__Pyx_GetException(&__pyx_t_9, &__pyx_t_1, &__pyx_t_8) < 0) __PYX_ERR(0, 956, __pyx_L7_except_error)
       __Pyx_GOTREF(__pyx_t_9);
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_INCREF(__pyx_t_1);
       __pyx_v_e = __pyx_t_1;
 
-      /* "Scroll.pyx":937
+      /* "Scroll.pyx":957
  *         w, h, dim = (<object> rgb_array).shape[:3]
  *     except (ValueError, pygame.error) as e:
  *         raise ValueError('\nArray shape not compatible.')             # <<<<<<<<<<<<<<
  * 
  *     if dx == 0 and dy == 0:
  */
-      __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__19, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 937, __pyx_L7_except_error)
+      __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__19, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 957, __pyx_L7_except_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_Raise(__pyx_t_4, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __PYX_ERR(0, 937, __pyx_L7_except_error)
+      __PYX_ERR(0, 957, __pyx_L7_except_error)
     }
     goto __pyx_L7_except_error;
     __pyx_L7_except_error:;
 
-    /* "Scroll.pyx":934
+    /* "Scroll.pyx":954
  * 
  *     cdef int w, h, dim
  *     try:             # <<<<<<<<<<<<<<
@@ -13569,7 +13384,7 @@ static PyObject *__pyx_f_6Scroll_scroll_array32m_c(__Pyx_memviewslice __pyx_v_rg
     __pyx_L10_try_end:;
   }
 
-  /* "Scroll.pyx":939
+  /* "Scroll.pyx":959
  *         raise ValueError('\nArray shape not compatible.')
  * 
  *     if dx == 0 and dy == 0:             # <<<<<<<<<<<<<<
@@ -13587,7 +13402,7 @@ static PyObject *__pyx_f_6Scroll_scroll_array32m_c(__Pyx_memviewslice __pyx_v_rg
   __pyx_L16_bool_binop_done:;
   if (__pyx_t_2) {
 
-    /* "Scroll.pyx":940
+    /* "Scroll.pyx":960
  * 
  *     if dx == 0 and dy == 0:
  *         return rgb_array             # <<<<<<<<<<<<<<
@@ -13595,13 +13410,13 @@ static PyObject *__pyx_f_6Scroll_scroll_array32m_c(__Pyx_memviewslice __pyx_v_rg
  *     cdef:
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_8 = __pyx_memoryview_fromslice(__pyx_v_rgb_array, 3, (PyObject *(*)(char *)) __pyx_memview_get_unsigned_char, (int (*)(char *, PyObject *)) __pyx_memview_set_unsigned_char, 0);; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 940, __pyx_L1_error)
+    __pyx_t_8 = __pyx_memoryview_fromslice(__pyx_v_rgb_array, 3, (PyObject *(*)(char *)) __pyx_memview_get_unsigned_char, (int (*)(char *, PyObject *)) __pyx_memview_set_unsigned_char, 0);; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 960, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __pyx_r = __pyx_t_8;
     __pyx_t_8 = 0;
     goto __pyx_L0;
 
-    /* "Scroll.pyx":939
+    /* "Scroll.pyx":959
  *         raise ValueError('\nArray shape not compatible.')
  * 
  *     if dx == 0 and dy == 0:             # <<<<<<<<<<<<<<
@@ -13610,7 +13425,7 @@ static PyObject *__pyx_f_6Scroll_scroll_array32m_c(__Pyx_memviewslice __pyx_v_rg
  */
   }
 
-  /* "Scroll.pyx":943
+  /* "Scroll.pyx":963
  * 
  *     cdef:
  *         int i, j, ii=0, jj=0             # <<<<<<<<<<<<<<
@@ -13620,23 +13435,23 @@ static PyObject *__pyx_f_6Scroll_scroll_array32m_c(__Pyx_memviewslice __pyx_v_rg
   __pyx_v_ii = 0;
   __pyx_v_jj = 0;
 
-  /* "Scroll.pyx":944
+  /* "Scroll.pyx":964
  *     cdef:
  *         int i, j, ii=0, jj=0
  *         unsigned char [:, :, ::1] new_array = numpy.empty((w, h, 3), numpy.uint8)             # <<<<<<<<<<<<<<
  *         unsigned char [:, :] new_alpha = numpy.empty((w, h), numpy.uint8)
  * 
  */
-  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 944, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 964, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_empty); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 944, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_empty); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 964, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_w); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 944, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_w); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 964, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_h); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 944, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_h); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 964, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_10 = PyTuple_New(3); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 944, __pyx_L1_error)
+  __pyx_t_10 = PyTuple_New(3); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 964, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_1);
@@ -13647,9 +13462,9 @@ static PyObject *__pyx_f_6Scroll_scroll_array32m_c(__Pyx_memviewslice __pyx_v_rg
   PyTuple_SET_ITEM(__pyx_t_10, 2, __pyx_int_3);
   __pyx_t_1 = 0;
   __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 944, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 964, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_uint8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 944, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_uint8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 964, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_4 = NULL;
@@ -13667,7 +13482,7 @@ static PyObject *__pyx_f_6Scroll_scroll_array32m_c(__Pyx_memviewslice __pyx_v_rg
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_9)) {
     PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_t_10, __pyx_t_1};
-    __pyx_t_8 = __Pyx_PyFunction_FastCall(__pyx_t_9, __pyx_temp+1-__pyx_t_14, 2+__pyx_t_14); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 944, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyFunction_FastCall(__pyx_t_9, __pyx_temp+1-__pyx_t_14, 2+__pyx_t_14); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 964, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
@@ -13677,7 +13492,7 @@ static PyObject *__pyx_f_6Scroll_scroll_array32m_c(__Pyx_memviewslice __pyx_v_rg
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_9)) {
     PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_t_10, __pyx_t_1};
-    __pyx_t_8 = __Pyx_PyCFunction_FastCall(__pyx_t_9, __pyx_temp+1-__pyx_t_14, 2+__pyx_t_14); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 944, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyCFunction_FastCall(__pyx_t_9, __pyx_temp+1-__pyx_t_14, 2+__pyx_t_14); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 964, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
@@ -13685,7 +13500,7 @@ static PyObject *__pyx_f_6Scroll_scroll_array32m_c(__Pyx_memviewslice __pyx_v_rg
   } else
   #endif
   {
-    __pyx_t_15 = PyTuple_New(2+__pyx_t_14); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 944, __pyx_L1_error)
+    __pyx_t_15 = PyTuple_New(2+__pyx_t_14); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 964, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_15);
     if (__pyx_t_4) {
       __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_15, 0, __pyx_t_4); __pyx_t_4 = NULL;
@@ -13696,35 +13511,35 @@ static PyObject *__pyx_f_6Scroll_scroll_array32m_c(__Pyx_memviewslice __pyx_v_rg
     PyTuple_SET_ITEM(__pyx_t_15, 1+__pyx_t_14, __pyx_t_1);
     __pyx_t_10 = 0;
     __pyx_t_1 = 0;
-    __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_9, __pyx_t_15, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 944, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_9, __pyx_t_15, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 964, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
   }
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
   __pyx_t_16 = __Pyx_PyObject_to_MemoryviewSlice_d_d_dc_unsigned_char(__pyx_t_8);
-  if (unlikely(!__pyx_t_16.memview)) __PYX_ERR(0, 944, __pyx_L1_error)
+  if (unlikely(!__pyx_t_16.memview)) __PYX_ERR(0, 964, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   __pyx_v_new_array = __pyx_t_16;
   __pyx_t_16.memview = NULL;
   __pyx_t_16.data = NULL;
 
-  /* "Scroll.pyx":945
+  /* "Scroll.pyx":965
  *         int i, j, ii=0, jj=0
  *         unsigned char [:, :, ::1] new_array = numpy.empty((w, h, 3), numpy.uint8)
  *         unsigned char [:, :] new_alpha = numpy.empty((w, h), numpy.uint8)             # <<<<<<<<<<<<<<
  * 
  *     with nogil:
  */
-  __pyx_t_9 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 945, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 965, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
-  __pyx_t_15 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_empty); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 945, __pyx_L1_error)
+  __pyx_t_15 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_empty); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 965, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_15);
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-  __pyx_t_9 = __Pyx_PyInt_From_int(__pyx_v_w); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 945, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyInt_From_int(__pyx_v_w); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 965, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_h); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 945, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_h); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 965, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_10 = PyTuple_New(2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 945, __pyx_L1_error)
+  __pyx_t_10 = PyTuple_New(2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 965, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
   __Pyx_GIVEREF(__pyx_t_9);
   PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_9);
@@ -13732,9 +13547,9 @@ static PyObject *__pyx_f_6Scroll_scroll_array32m_c(__Pyx_memviewslice __pyx_v_rg
   PyTuple_SET_ITEM(__pyx_t_10, 1, __pyx_t_1);
   __pyx_t_9 = 0;
   __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 945, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 965, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_uint8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 945, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_uint8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 965, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_t_1 = NULL;
@@ -13752,7 +13567,7 @@ static PyObject *__pyx_f_6Scroll_scroll_array32m_c(__Pyx_memviewslice __pyx_v_rg
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_15)) {
     PyObject *__pyx_temp[3] = {__pyx_t_1, __pyx_t_10, __pyx_t_9};
-    __pyx_t_8 = __Pyx_PyFunction_FastCall(__pyx_t_15, __pyx_temp+1-__pyx_t_14, 2+__pyx_t_14); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 945, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyFunction_FastCall(__pyx_t_15, __pyx_temp+1-__pyx_t_14, 2+__pyx_t_14); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 965, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
@@ -13762,7 +13577,7 @@ static PyObject *__pyx_f_6Scroll_scroll_array32m_c(__Pyx_memviewslice __pyx_v_rg
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_15)) {
     PyObject *__pyx_temp[3] = {__pyx_t_1, __pyx_t_10, __pyx_t_9};
-    __pyx_t_8 = __Pyx_PyCFunction_FastCall(__pyx_t_15, __pyx_temp+1-__pyx_t_14, 2+__pyx_t_14); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 945, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyCFunction_FastCall(__pyx_t_15, __pyx_temp+1-__pyx_t_14, 2+__pyx_t_14); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 965, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
@@ -13770,7 +13585,7 @@ static PyObject *__pyx_f_6Scroll_scroll_array32m_c(__Pyx_memviewslice __pyx_v_rg
   } else
   #endif
   {
-    __pyx_t_4 = PyTuple_New(2+__pyx_t_14); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 945, __pyx_L1_error)
+    __pyx_t_4 = PyTuple_New(2+__pyx_t_14); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 965, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     if (__pyx_t_1) {
       __Pyx_GIVEREF(__pyx_t_1); PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_1); __pyx_t_1 = NULL;
@@ -13781,19 +13596,19 @@ static PyObject *__pyx_f_6Scroll_scroll_array32m_c(__Pyx_memviewslice __pyx_v_rg
     PyTuple_SET_ITEM(__pyx_t_4, 1+__pyx_t_14, __pyx_t_9);
     __pyx_t_10 = 0;
     __pyx_t_9 = 0;
-    __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_15, __pyx_t_4, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 945, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_15, __pyx_t_4, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 965, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   }
   __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
   __pyx_t_17 = __Pyx_PyObject_to_MemoryviewSlice_dsds_unsigned_char(__pyx_t_8);
-  if (unlikely(!__pyx_t_17.memview)) __PYX_ERR(0, 945, __pyx_L1_error)
+  if (unlikely(!__pyx_t_17.memview)) __PYX_ERR(0, 965, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   __pyx_v_new_alpha = __pyx_t_17;
   __pyx_t_17.memview = NULL;
   __pyx_t_17.data = NULL;
 
-  /* "Scroll.pyx":947
+  /* "Scroll.pyx":967
  *         unsigned char [:, :] new_alpha = numpy.empty((w, h), numpy.uint8)
  * 
  *     with nogil:             # <<<<<<<<<<<<<<
@@ -13808,7 +13623,7 @@ static PyObject *__pyx_f_6Scroll_scroll_array32m_c(__Pyx_memviewslice __pyx_v_rg
       #endif
       /*try:*/ {
 
-        /* "Scroll.pyx":949
+        /* "Scroll.pyx":969
  *     with nogil:
  *         # do both vertical and horizontal shift
  *         if dx != 0 and dy != 0:             # <<<<<<<<<<<<<<
@@ -13826,7 +13641,7 @@ static PyObject *__pyx_f_6Scroll_scroll_array32m_c(__Pyx_memviewslice __pyx_v_rg
         __pyx_L22_bool_binop_done:;
         if (__pyx_t_2) {
 
-          /* "Scroll.pyx":950
+          /* "Scroll.pyx":970
  *         # do both vertical and horizontal shift
  *         if dx != 0 and dy != 0:
  *             for i in prange(0, w, schedule=SCHEDULE, num_threads=THREAD_NUMBER):             # <<<<<<<<<<<<<<
@@ -13860,7 +13675,7 @@ static PyObject *__pyx_f_6Scroll_scroll_array32m_c(__Pyx_memviewslice __pyx_v_rg
                               __pyx_v_j = ((int)0xbad0bad0);
                               __pyx_v_jj = ((int)0xbad0bad0);
 
-                              /* "Scroll.pyx":951
+                              /* "Scroll.pyx":971
  *         if dx != 0 and dy != 0:
  *             for i in prange(0, w, schedule=SCHEDULE, num_threads=THREAD_NUMBER):
  *                 for j in range(0, h):             # <<<<<<<<<<<<<<
@@ -13871,7 +13686,7 @@ static PyObject *__pyx_f_6Scroll_scroll_array32m_c(__Pyx_memviewslice __pyx_v_rg
                               for (__pyx_t_12 = 0; __pyx_t_12 < __pyx_t_13; __pyx_t_12+=1) {
                                 __pyx_v_j = __pyx_t_12;
 
-                                /* "Scroll.pyx":952
+                                /* "Scroll.pyx":972
  *             for i in prange(0, w, schedule=SCHEDULE, num_threads=THREAD_NUMBER):
  *                 for j in range(0, h):
  *                     ii = (i + dx) % w             # <<<<<<<<<<<<<<
@@ -13880,7 +13695,7 @@ static PyObject *__pyx_f_6Scroll_scroll_array32m_c(__Pyx_memviewslice __pyx_v_rg
  */
                                 __pyx_v_ii = ((__pyx_v_i + __pyx_v_dx) % __pyx_v_w);
 
-                                /* "Scroll.pyx":953
+                                /* "Scroll.pyx":973
  *                 for j in range(0, h):
  *                     ii = (i + dx) % w
  *                     jj = (j + dy) % h             # <<<<<<<<<<<<<<
@@ -13889,7 +13704,7 @@ static PyObject *__pyx_f_6Scroll_scroll_array32m_c(__Pyx_memviewslice __pyx_v_rg
  */
                                 __pyx_v_jj = ((__pyx_v_j + __pyx_v_dy) % __pyx_v_h);
 
-                                /* "Scroll.pyx":954
+                                /* "Scroll.pyx":974
  *                     ii = (i + dx) % w
  *                     jj = (j + dy) % h
  *                     if ii < 0:             # <<<<<<<<<<<<<<
@@ -13899,7 +13714,7 @@ static PyObject *__pyx_f_6Scroll_scroll_array32m_c(__Pyx_memviewslice __pyx_v_rg
                                 __pyx_t_2 = ((__pyx_v_ii < 0) != 0);
                                 if (__pyx_t_2) {
 
-                                  /* "Scroll.pyx":955
+                                  /* "Scroll.pyx":975
  *                     jj = (j + dy) % h
  *                     if ii < 0:
  *                         ii = ii + w             # <<<<<<<<<<<<<<
@@ -13908,7 +13723,7 @@ static PyObject *__pyx_f_6Scroll_scroll_array32m_c(__Pyx_memviewslice __pyx_v_rg
  */
                                   __pyx_v_ii = (__pyx_v_ii + __pyx_v_w);
 
-                                  /* "Scroll.pyx":954
+                                  /* "Scroll.pyx":974
  *                     ii = (i + dx) % w
  *                     jj = (j + dy) % h
  *                     if ii < 0:             # <<<<<<<<<<<<<<
@@ -13917,7 +13732,7 @@ static PyObject *__pyx_f_6Scroll_scroll_array32m_c(__Pyx_memviewslice __pyx_v_rg
  */
                                 }
 
-                                /* "Scroll.pyx":956
+                                /* "Scroll.pyx":976
  *                     if ii < 0:
  *                         ii = ii + w
  *                     if jj < 0:             # <<<<<<<<<<<<<<
@@ -13927,7 +13742,7 @@ static PyObject *__pyx_f_6Scroll_scroll_array32m_c(__Pyx_memviewslice __pyx_v_rg
                                 __pyx_t_2 = ((__pyx_v_jj < 0) != 0);
                                 if (__pyx_t_2) {
 
-                                  /* "Scroll.pyx":957
+                                  /* "Scroll.pyx":977
  *                         ii = ii + w
  *                     if jj < 0:
  *                         jj = jj + h             # <<<<<<<<<<<<<<
@@ -13936,7 +13751,7 @@ static PyObject *__pyx_f_6Scroll_scroll_array32m_c(__Pyx_memviewslice __pyx_v_rg
  */
                                   __pyx_v_jj = (__pyx_v_jj + __pyx_v_h);
 
-                                  /* "Scroll.pyx":956
+                                  /* "Scroll.pyx":976
  *                     if ii < 0:
  *                         ii = ii + w
  *                     if jj < 0:             # <<<<<<<<<<<<<<
@@ -13945,7 +13760,7 @@ static PyObject *__pyx_f_6Scroll_scroll_array32m_c(__Pyx_memviewslice __pyx_v_rg
  */
                                 }
 
-                                /* "Scroll.pyx":958
+                                /* "Scroll.pyx":978
  *                     if jj < 0:
  *                         jj = jj + h
  *                     new_array[ii, jj, 0] = rgb_array[i, j, 0]             # <<<<<<<<<<<<<<
@@ -13960,7 +13775,7 @@ static PyObject *__pyx_f_6Scroll_scroll_array32m_c(__Pyx_memviewslice __pyx_v_rg
                                 __pyx_t_25 = 0;
                                 *((unsigned char *) ( /* dim=2 */ ((char *) (((unsigned char *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_new_array.data + __pyx_t_23 * __pyx_v_new_array.strides[0]) ) + __pyx_t_24 * __pyx_v_new_array.strides[1]) )) + __pyx_t_25)) )) = (*((unsigned char *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rgb_array.data + __pyx_t_20 * __pyx_v_rgb_array.strides[0]) ) + __pyx_t_21 * __pyx_v_rgb_array.strides[1]) ) + __pyx_t_22 * __pyx_v_rgb_array.strides[2]) )));
 
-                                /* "Scroll.pyx":959
+                                /* "Scroll.pyx":979
  *                         jj = jj + h
  *                     new_array[ii, jj, 0] = rgb_array[i, j, 0]
  *                     new_array[ii, jj, 1] = rgb_array[i, j, 1]             # <<<<<<<<<<<<<<
@@ -13975,7 +13790,7 @@ static PyObject *__pyx_f_6Scroll_scroll_array32m_c(__Pyx_memviewslice __pyx_v_rg
                                 __pyx_t_31 = 1;
                                 *((unsigned char *) ( /* dim=2 */ ((char *) (((unsigned char *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_new_array.data + __pyx_t_29 * __pyx_v_new_array.strides[0]) ) + __pyx_t_30 * __pyx_v_new_array.strides[1]) )) + __pyx_t_31)) )) = (*((unsigned char *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rgb_array.data + __pyx_t_26 * __pyx_v_rgb_array.strides[0]) ) + __pyx_t_27 * __pyx_v_rgb_array.strides[1]) ) + __pyx_t_28 * __pyx_v_rgb_array.strides[2]) )));
 
-                                /* "Scroll.pyx":960
+                                /* "Scroll.pyx":980
  *                     new_array[ii, jj, 0] = rgb_array[i, j, 0]
  *                     new_array[ii, jj, 1] = rgb_array[i, j, 1]
  *                     new_array[ii, jj, 2] = rgb_array[i, j, 2]             # <<<<<<<<<<<<<<
@@ -13990,7 +13805,7 @@ static PyObject *__pyx_f_6Scroll_scroll_array32m_c(__Pyx_memviewslice __pyx_v_rg
                                 __pyx_t_37 = 2;
                                 *((unsigned char *) ( /* dim=2 */ ((char *) (((unsigned char *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_new_array.data + __pyx_t_35 * __pyx_v_new_array.strides[0]) ) + __pyx_t_36 * __pyx_v_new_array.strides[1]) )) + __pyx_t_37)) )) = (*((unsigned char *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rgb_array.data + __pyx_t_32 * __pyx_v_rgb_array.strides[0]) ) + __pyx_t_33 * __pyx_v_rgb_array.strides[1]) ) + __pyx_t_34 * __pyx_v_rgb_array.strides[2]) )));
 
-                                /* "Scroll.pyx":961
+                                /* "Scroll.pyx":981
  *                     new_array[ii, jj, 1] = rgb_array[i, j, 1]
  *                     new_array[ii, jj, 2] = rgb_array[i, j, 2]
  *                     new_alpha[ii, jj] = alpha_array[i, j]             # <<<<<<<<<<<<<<
@@ -14015,7 +13830,7 @@ static PyObject *__pyx_f_6Scroll_scroll_array32m_c(__Pyx_memviewslice __pyx_v_rg
               #define unlikely(x) __builtin_expect(!!(x), 0)
           #endif
 
-          /* "Scroll.pyx":949
+          /* "Scroll.pyx":969
  *     with nogil:
  *         # do both vertical and horizontal shift
  *         if dx != 0 and dy != 0:             # <<<<<<<<<<<<<<
@@ -14025,7 +13840,7 @@ static PyObject *__pyx_f_6Scroll_scroll_array32m_c(__Pyx_memviewslice __pyx_v_rg
           goto __pyx_L21;
         }
 
-        /* "Scroll.pyx":963
+        /* "Scroll.pyx":983
  *                     new_alpha[ii, jj] = alpha_array[i, j]
  *         else:
  *             if dx != 0:             # <<<<<<<<<<<<<<
@@ -14036,7 +13851,7 @@ static PyObject *__pyx_f_6Scroll_scroll_array32m_c(__Pyx_memviewslice __pyx_v_rg
           __pyx_t_2 = ((__pyx_v_dx != 0) != 0);
           if (__pyx_t_2) {
 
-            /* "Scroll.pyx":965
+            /* "Scroll.pyx":985
  *             if dx != 0:
  *                 # Move horizontally
  *                 for i in prange(0, w, schedule=SCHEDULE, num_threads=THREAD_NUMBER):             # <<<<<<<<<<<<<<
@@ -14069,7 +13884,7 @@ static PyObject *__pyx_f_6Scroll_scroll_array32m_c(__Pyx_memviewslice __pyx_v_rg
                                 __pyx_v_ii = ((int)0xbad0bad0);
                                 __pyx_v_j = ((int)0xbad0bad0);
 
-                                /* "Scroll.pyx":966
+                                /* "Scroll.pyx":986
  *                 # Move horizontally
  *                 for i in prange(0, w, schedule=SCHEDULE, num_threads=THREAD_NUMBER):
  *                     for j in range(0, h):             # <<<<<<<<<<<<<<
@@ -14080,7 +13895,7 @@ static PyObject *__pyx_f_6Scroll_scroll_array32m_c(__Pyx_memviewslice __pyx_v_rg
                                 for (__pyx_t_12 = 0; __pyx_t_12 < __pyx_t_13; __pyx_t_12+=1) {
                                   __pyx_v_j = __pyx_t_12;
 
-                                  /* "Scroll.pyx":967
+                                  /* "Scroll.pyx":987
  *                 for i in prange(0, w, schedule=SCHEDULE, num_threads=THREAD_NUMBER):
  *                     for j in range(0, h):
  *                         ii = (i + dx) % w             # <<<<<<<<<<<<<<
@@ -14089,7 +13904,7 @@ static PyObject *__pyx_f_6Scroll_scroll_array32m_c(__Pyx_memviewslice __pyx_v_rg
  */
                                   __pyx_v_ii = ((__pyx_v_i + __pyx_v_dx) % __pyx_v_w);
 
-                                  /* "Scroll.pyx":968
+                                  /* "Scroll.pyx":988
  *                     for j in range(0, h):
  *                         ii = (i + dx) % w
  *                         if ii < 0:             # <<<<<<<<<<<<<<
@@ -14099,7 +13914,7 @@ static PyObject *__pyx_f_6Scroll_scroll_array32m_c(__Pyx_memviewslice __pyx_v_rg
                                   __pyx_t_2 = ((__pyx_v_ii < 0) != 0);
                                   if (__pyx_t_2) {
 
-                                    /* "Scroll.pyx":969
+                                    /* "Scroll.pyx":989
  *                         ii = (i + dx) % w
  *                         if ii < 0:
  *                             ii = ii + w             # <<<<<<<<<<<<<<
@@ -14108,7 +13923,7 @@ static PyObject *__pyx_f_6Scroll_scroll_array32m_c(__Pyx_memviewslice __pyx_v_rg
  */
                                     __pyx_v_ii = (__pyx_v_ii + __pyx_v_w);
 
-                                    /* "Scroll.pyx":968
+                                    /* "Scroll.pyx":988
  *                     for j in range(0, h):
  *                         ii = (i + dx) % w
  *                         if ii < 0:             # <<<<<<<<<<<<<<
@@ -14117,7 +13932,7 @@ static PyObject *__pyx_f_6Scroll_scroll_array32m_c(__Pyx_memviewslice __pyx_v_rg
  */
                                   }
 
-                                  /* "Scroll.pyx":970
+                                  /* "Scroll.pyx":990
  *                         if ii < 0:
  *                             ii = ii + w
  *                         new_array[ii, j, 0] = rgb_array[i, j, 0]             # <<<<<<<<<<<<<<
@@ -14132,7 +13947,7 @@ static PyObject *__pyx_f_6Scroll_scroll_array32m_c(__Pyx_memviewslice __pyx_v_rg
                                   __pyx_t_47 = 0;
                                   *((unsigned char *) ( /* dim=2 */ ((char *) (((unsigned char *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_new_array.data + __pyx_t_45 * __pyx_v_new_array.strides[0]) ) + __pyx_t_46 * __pyx_v_new_array.strides[1]) )) + __pyx_t_47)) )) = (*((unsigned char *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rgb_array.data + __pyx_t_42 * __pyx_v_rgb_array.strides[0]) ) + __pyx_t_43 * __pyx_v_rgb_array.strides[1]) ) + __pyx_t_44 * __pyx_v_rgb_array.strides[2]) )));
 
-                                  /* "Scroll.pyx":971
+                                  /* "Scroll.pyx":991
  *                             ii = ii + w
  *                         new_array[ii, j, 0] = rgb_array[i, j, 0]
  *                         new_array[ii, j, 1] = rgb_array[i, j, 1]             # <<<<<<<<<<<<<<
@@ -14147,7 +13962,7 @@ static PyObject *__pyx_f_6Scroll_scroll_array32m_c(__Pyx_memviewslice __pyx_v_rg
                                   __pyx_t_53 = 1;
                                   *((unsigned char *) ( /* dim=2 */ ((char *) (((unsigned char *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_new_array.data + __pyx_t_51 * __pyx_v_new_array.strides[0]) ) + __pyx_t_52 * __pyx_v_new_array.strides[1]) )) + __pyx_t_53)) )) = (*((unsigned char *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rgb_array.data + __pyx_t_48 * __pyx_v_rgb_array.strides[0]) ) + __pyx_t_49 * __pyx_v_rgb_array.strides[1]) ) + __pyx_t_50 * __pyx_v_rgb_array.strides[2]) )));
 
-                                  /* "Scroll.pyx":972
+                                  /* "Scroll.pyx":992
  *                         new_array[ii, j, 0] = rgb_array[i, j, 0]
  *                         new_array[ii, j, 1] = rgb_array[i, j, 1]
  *                         new_array[ii, j, 2] = rgb_array[i, j, 2]             # <<<<<<<<<<<<<<
@@ -14162,7 +13977,7 @@ static PyObject *__pyx_f_6Scroll_scroll_array32m_c(__Pyx_memviewslice __pyx_v_rg
                                   __pyx_t_59 = 2;
                                   *((unsigned char *) ( /* dim=2 */ ((char *) (((unsigned char *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_new_array.data + __pyx_t_57 * __pyx_v_new_array.strides[0]) ) + __pyx_t_58 * __pyx_v_new_array.strides[1]) )) + __pyx_t_59)) )) = (*((unsigned char *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rgb_array.data + __pyx_t_54 * __pyx_v_rgb_array.strides[0]) ) + __pyx_t_55 * __pyx_v_rgb_array.strides[1]) ) + __pyx_t_56 * __pyx_v_rgb_array.strides[2]) )));
 
-                                  /* "Scroll.pyx":973
+                                  /* "Scroll.pyx":993
  *                         new_array[ii, j, 1] = rgb_array[i, j, 1]
  *                         new_array[ii, j, 2] = rgb_array[i, j, 2]
  *                         new_alpha[ii, j] = alpha_array[i, j]             # <<<<<<<<<<<<<<
@@ -14187,7 +14002,7 @@ static PyObject *__pyx_f_6Scroll_scroll_array32m_c(__Pyx_memviewslice __pyx_v_rg
                 #define unlikely(x) __builtin_expect(!!(x), 0)
             #endif
 
-            /* "Scroll.pyx":963
+            /* "Scroll.pyx":983
  *                     new_alpha[ii, jj] = alpha_array[i, j]
  *         else:
  *             if dx != 0:             # <<<<<<<<<<<<<<
@@ -14197,7 +14012,7 @@ static PyObject *__pyx_f_6Scroll_scroll_array32m_c(__Pyx_memviewslice __pyx_v_rg
             goto __pyx_L34;
           }
 
-          /* "Scroll.pyx":977
+          /* "Scroll.pyx":997
  *             else:
  *                 # Move vertically
  *                 for i in prange(0, w, schedule=SCHEDULE, num_threads=THREAD_NUMBER):             # <<<<<<<<<<<<<<
@@ -14231,7 +14046,7 @@ static PyObject *__pyx_f_6Scroll_scroll_array32m_c(__Pyx_memviewslice __pyx_v_rg
                                 __pyx_v_j = ((int)0xbad0bad0);
                                 __pyx_v_jj = ((int)0xbad0bad0);
 
-                                /* "Scroll.pyx":978
+                                /* "Scroll.pyx":998
  *                 # Move vertically
  *                 for i in prange(0, w, schedule=SCHEDULE, num_threads=THREAD_NUMBER):
  *                     for j in range(0, h):             # <<<<<<<<<<<<<<
@@ -14242,7 +14057,7 @@ static PyObject *__pyx_f_6Scroll_scroll_array32m_c(__Pyx_memviewslice __pyx_v_rg
                                 for (__pyx_t_12 = 0; __pyx_t_12 < __pyx_t_13; __pyx_t_12+=1) {
                                   __pyx_v_j = __pyx_t_12;
 
-                                  /* "Scroll.pyx":979
+                                  /* "Scroll.pyx":999
  *                 for i in prange(0, w, schedule=SCHEDULE, num_threads=THREAD_NUMBER):
  *                     for j in range(0, h):
  *                         jj = (j + dy) % h             # <<<<<<<<<<<<<<
@@ -14251,7 +14066,7 @@ static PyObject *__pyx_f_6Scroll_scroll_array32m_c(__Pyx_memviewslice __pyx_v_rg
  */
                                   __pyx_v_jj = ((__pyx_v_j + __pyx_v_dy) % __pyx_v_h);
 
-                                  /* "Scroll.pyx":980
+                                  /* "Scroll.pyx":1000
  *                     for j in range(0, h):
  *                         jj = (j + dy) % h
  *                         if jj < 0:             # <<<<<<<<<<<<<<
@@ -14261,7 +14076,7 @@ static PyObject *__pyx_f_6Scroll_scroll_array32m_c(__Pyx_memviewslice __pyx_v_rg
                                   __pyx_t_2 = ((__pyx_v_jj < 0) != 0);
                                   if (__pyx_t_2) {
 
-                                    /* "Scroll.pyx":981
+                                    /* "Scroll.pyx":1001
  *                         jj = (j + dy) % h
  *                         if jj < 0:
  *                             jj = jj + h             # <<<<<<<<<<<<<<
@@ -14270,7 +14085,7 @@ static PyObject *__pyx_f_6Scroll_scroll_array32m_c(__Pyx_memviewslice __pyx_v_rg
  */
                                     __pyx_v_jj = (__pyx_v_jj + __pyx_v_h);
 
-                                    /* "Scroll.pyx":980
+                                    /* "Scroll.pyx":1000
  *                     for j in range(0, h):
  *                         jj = (j + dy) % h
  *                         if jj < 0:             # <<<<<<<<<<<<<<
@@ -14279,7 +14094,7 @@ static PyObject *__pyx_f_6Scroll_scroll_array32m_c(__Pyx_memviewslice __pyx_v_rg
  */
                                   }
 
-                                  /* "Scroll.pyx":982
+                                  /* "Scroll.pyx":1002
  *                         if jj < 0:
  *                             jj = jj + h
  *                         new_array[i, jj, 0] = rgb_array[i, j, 0]             # <<<<<<<<<<<<<<
@@ -14294,7 +14109,7 @@ static PyObject *__pyx_f_6Scroll_scroll_array32m_c(__Pyx_memviewslice __pyx_v_rg
                                   __pyx_t_69 = 0;
                                   *((unsigned char *) ( /* dim=2 */ ((char *) (((unsigned char *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_new_array.data + __pyx_t_67 * __pyx_v_new_array.strides[0]) ) + __pyx_t_68 * __pyx_v_new_array.strides[1]) )) + __pyx_t_69)) )) = (*((unsigned char *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rgb_array.data + __pyx_t_64 * __pyx_v_rgb_array.strides[0]) ) + __pyx_t_65 * __pyx_v_rgb_array.strides[1]) ) + __pyx_t_66 * __pyx_v_rgb_array.strides[2]) )));
 
-                                  /* "Scroll.pyx":983
+                                  /* "Scroll.pyx":1003
  *                             jj = jj + h
  *                         new_array[i, jj, 0] = rgb_array[i, j, 0]
  *                         new_array[i, jj, 1] = rgb_array[i, j, 1]             # <<<<<<<<<<<<<<
@@ -14309,7 +14124,7 @@ static PyObject *__pyx_f_6Scroll_scroll_array32m_c(__Pyx_memviewslice __pyx_v_rg
                                   __pyx_t_75 = 1;
                                   *((unsigned char *) ( /* dim=2 */ ((char *) (((unsigned char *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_new_array.data + __pyx_t_73 * __pyx_v_new_array.strides[0]) ) + __pyx_t_74 * __pyx_v_new_array.strides[1]) )) + __pyx_t_75)) )) = (*((unsigned char *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rgb_array.data + __pyx_t_70 * __pyx_v_rgb_array.strides[0]) ) + __pyx_t_71 * __pyx_v_rgb_array.strides[1]) ) + __pyx_t_72 * __pyx_v_rgb_array.strides[2]) )));
 
-                                  /* "Scroll.pyx":984
+                                  /* "Scroll.pyx":1004
  *                         new_array[i, jj, 0] = rgb_array[i, j, 0]
  *                         new_array[i, jj, 1] = rgb_array[i, j, 1]
  *                         new_array[i, jj, 2] = rgb_array[i, j, 2]             # <<<<<<<<<<<<<<
@@ -14324,7 +14139,7 @@ static PyObject *__pyx_f_6Scroll_scroll_array32m_c(__Pyx_memviewslice __pyx_v_rg
                                   __pyx_t_81 = 2;
                                   *((unsigned char *) ( /* dim=2 */ ((char *) (((unsigned char *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_new_array.data + __pyx_t_79 * __pyx_v_new_array.strides[0]) ) + __pyx_t_80 * __pyx_v_new_array.strides[1]) )) + __pyx_t_81)) )) = (*((unsigned char *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rgb_array.data + __pyx_t_76 * __pyx_v_rgb_array.strides[0]) ) + __pyx_t_77 * __pyx_v_rgb_array.strides[1]) ) + __pyx_t_78 * __pyx_v_rgb_array.strides[2]) )));
 
-                                  /* "Scroll.pyx":985
+                                  /* "Scroll.pyx":1005
  *                         new_array[i, jj, 1] = rgb_array[i, j, 1]
  *                         new_array[i, jj, 2] = rgb_array[i, j, 2]
  *                         new_alpha[i, jj] = alpha_array[i, j]             # <<<<<<<<<<<<<<
@@ -14354,7 +14169,7 @@ static PyObject *__pyx_f_6Scroll_scroll_array32m_c(__Pyx_memviewslice __pyx_v_rg
         __pyx_L21:;
       }
 
-      /* "Scroll.pyx":947
+      /* "Scroll.pyx":967
  *         unsigned char [:, :] new_alpha = numpy.empty((w, h), numpy.uint8)
  * 
  *     with nogil:             # <<<<<<<<<<<<<<
@@ -14373,7 +14188,7 @@ static PyObject *__pyx_f_6Scroll_scroll_array32m_c(__Pyx_memviewslice __pyx_v_rg
       }
   }
 
-  /* "Scroll.pyx":986
+  /* "Scroll.pyx":1006
  *                         new_array[i, jj, 2] = rgb_array[i, j, 2]
  *                         new_alpha[i, jj] = alpha_array[i, j]
  *     return new_array, new_alpha             # <<<<<<<<<<<<<<
@@ -14381,11 +14196,11 @@ static PyObject *__pyx_f_6Scroll_scroll_array32m_c(__Pyx_memviewslice __pyx_v_rg
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_8 = __pyx_memoryview_fromslice(__pyx_v_new_array, 3, (PyObject *(*)(char *)) __pyx_memview_get_unsigned_char, (int (*)(char *, PyObject *)) __pyx_memview_set_unsigned_char, 0);; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 986, __pyx_L1_error)
+  __pyx_t_8 = __pyx_memoryview_fromslice(__pyx_v_new_array, 3, (PyObject *(*)(char *)) __pyx_memview_get_unsigned_char, (int (*)(char *, PyObject *)) __pyx_memview_set_unsigned_char, 0);; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1006, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
-  __pyx_t_15 = __pyx_memoryview_fromslice(__pyx_v_new_alpha, 2, (PyObject *(*)(char *)) __pyx_memview_get_unsigned_char, (int (*)(char *, PyObject *)) __pyx_memview_set_unsigned_char, 0);; if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 986, __pyx_L1_error)
+  __pyx_t_15 = __pyx_memoryview_fromslice(__pyx_v_new_alpha, 2, (PyObject *(*)(char *)) __pyx_memview_get_unsigned_char, (int (*)(char *, PyObject *)) __pyx_memview_set_unsigned_char, 0);; if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 1006, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_15);
-  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 986, __pyx_L1_error)
+  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1006, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_GIVEREF(__pyx_t_8);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_8);
@@ -14397,7 +14212,7 @@ static PyObject *__pyx_f_6Scroll_scroll_array32m_c(__Pyx_memviewslice __pyx_v_rg
   __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "Scroll.pyx":905
+  /* "Scroll.pyx":925
  * @cython.nonecheck(False)
  * @cython.cdivision(True)
  * cdef scroll_array32m_c(unsigned char [:, :, :] rgb_array,             # <<<<<<<<<<<<<<
@@ -14426,7 +14241,7 @@ static PyObject *__pyx_f_6Scroll_scroll_array32m_c(__Pyx_memviewslice __pyx_v_rg
   return __pyx_r;
 }
 
-/* "Scroll.pyx":993
+/* "Scroll.pyx":1013
  * @cython.nonecheck(False)
  * @cython.cdivision(True)
  * cdef roll_array_c(array_, dx=0, dy=0):             # <<<<<<<<<<<<<<
@@ -14466,7 +14281,7 @@ static PyObject *__pyx_f_6Scroll_roll_array_c(PyObject *__pyx_v_array_, struct _
     }
   }
 
-  /* "Scroll.pyx":1011
+  /* "Scroll.pyx":1031
  *     Lower pixel formats cannot be referenced using this method.
  *     """
  *     if not isinstance(dx, int):             # <<<<<<<<<<<<<<
@@ -14477,28 +14292,28 @@ static PyObject *__pyx_f_6Scroll_roll_array_c(PyObject *__pyx_v_array_, struct _
   __pyx_t_2 = ((!(__pyx_t_1 != 0)) != 0);
   if (__pyx_t_2) {
 
-    /* "Scroll.pyx":1012
+    /* "Scroll.pyx":1032
  *     """
  *     if not isinstance(dx, int):
  *         raise TypeError('dx, an integer is required (got type %s)' % type(dx))             # <<<<<<<<<<<<<<
  *     if not isinstance(dy, int):
  *         raise TypeError('dy, an integer is required (got type %s)' % type(dy))
  */
-    __pyx_t_3 = __Pyx_PyString_Format(__pyx_kp_s_dx_an_integer_is_required_got_ty, ((PyObject *)Py_TYPE(__pyx_v_dx))); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1012, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyString_Format(__pyx_kp_s_dx_an_integer_is_required_got_ty, ((PyObject *)Py_TYPE(__pyx_v_dx))); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1032, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1012, __pyx_L1_error)
+    __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1032, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_GIVEREF(__pyx_t_3);
     PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_3);
     __pyx_t_3 = 0;
-    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1012, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1032, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_Raise(__pyx_t_3, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __PYX_ERR(0, 1012, __pyx_L1_error)
+    __PYX_ERR(0, 1032, __pyx_L1_error)
 
-    /* "Scroll.pyx":1011
+    /* "Scroll.pyx":1031
  *     Lower pixel formats cannot be referenced using this method.
  *     """
  *     if not isinstance(dx, int):             # <<<<<<<<<<<<<<
@@ -14507,7 +14322,7 @@ static PyObject *__pyx_f_6Scroll_roll_array_c(PyObject *__pyx_v_array_, struct _
  */
   }
 
-  /* "Scroll.pyx":1013
+  /* "Scroll.pyx":1033
  *     if not isinstance(dx, int):
  *         raise TypeError('dx, an integer is required (got type %s)' % type(dx))
  *     if not isinstance(dy, int):             # <<<<<<<<<<<<<<
@@ -14518,28 +14333,28 @@ static PyObject *__pyx_f_6Scroll_roll_array_c(PyObject *__pyx_v_array_, struct _
   __pyx_t_1 = ((!(__pyx_t_2 != 0)) != 0);
   if (__pyx_t_1) {
 
-    /* "Scroll.pyx":1014
+    /* "Scroll.pyx":1034
  *         raise TypeError('dx, an integer is required (got type %s)' % type(dx))
  *     if not isinstance(dy, int):
  *         raise TypeError('dy, an integer is required (got type %s)' % type(dy))             # <<<<<<<<<<<<<<
  *     if not isinstance(array_, numpy.ndarray):
  *         raise TypeError('array, a numpy.ndarray is required (got type %s)' % type(array_))
  */
-    __pyx_t_3 = __Pyx_PyString_Format(__pyx_kp_s_dy_an_integer_is_required_got_ty, ((PyObject *)Py_TYPE(__pyx_v_dy))); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1014, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyString_Format(__pyx_kp_s_dy_an_integer_is_required_got_ty, ((PyObject *)Py_TYPE(__pyx_v_dy))); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1034, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1014, __pyx_L1_error)
+    __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1034, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_GIVEREF(__pyx_t_3);
     PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_3);
     __pyx_t_3 = 0;
-    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1014, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1034, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_Raise(__pyx_t_3, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __PYX_ERR(0, 1014, __pyx_L1_error)
+    __PYX_ERR(0, 1034, __pyx_L1_error)
 
-    /* "Scroll.pyx":1013
+    /* "Scroll.pyx":1033
  *     if not isinstance(dx, int):
  *         raise TypeError('dx, an integer is required (got type %s)' % type(dx))
  *     if not isinstance(dy, int):             # <<<<<<<<<<<<<<
@@ -14548,45 +14363,45 @@ static PyObject *__pyx_f_6Scroll_roll_array_c(PyObject *__pyx_v_array_, struct _
  */
   }
 
-  /* "Scroll.pyx":1015
+  /* "Scroll.pyx":1035
  *     if not isinstance(dy, int):
  *         raise TypeError('dy, an integer is required (got type %s)' % type(dy))
  *     if not isinstance(array_, numpy.ndarray):             # <<<<<<<<<<<<<<
  *         raise TypeError('array, a numpy.ndarray is required (got type %s)' % type(array_))
  * 
  */
-  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1015, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1035, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_ndarray); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1015, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_ndarray); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1035, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_1 = PyObject_IsInstance(__pyx_v_array_, __pyx_t_4); if (unlikely(__pyx_t_1 == ((int)-1))) __PYX_ERR(0, 1015, __pyx_L1_error)
+  __pyx_t_1 = PyObject_IsInstance(__pyx_v_array_, __pyx_t_4); if (unlikely(__pyx_t_1 == ((int)-1))) __PYX_ERR(0, 1035, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_2 = ((!(__pyx_t_1 != 0)) != 0);
   if (__pyx_t_2) {
 
-    /* "Scroll.pyx":1016
+    /* "Scroll.pyx":1036
  *         raise TypeError('dy, an integer is required (got type %s)' % type(dy))
  *     if not isinstance(array_, numpy.ndarray):
  *         raise TypeError('array, a numpy.ndarray is required (got type %s)' % type(array_))             # <<<<<<<<<<<<<<
  * 
  *     cdef int w, h
  */
-    __pyx_t_4 = __Pyx_PyString_Format(__pyx_kp_s_array_a_numpy_ndarray_is_require, ((PyObject *)Py_TYPE(__pyx_v_array_))); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1016, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyString_Format(__pyx_kp_s_array_a_numpy_ndarray_is_require, ((PyObject *)Py_TYPE(__pyx_v_array_))); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1036, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1016, __pyx_L1_error)
+    __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1036, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_GIVEREF(__pyx_t_4);
     PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_4);
     __pyx_t_4 = 0;
-    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_t_3, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1016, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_t_3, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1036, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_Raise(__pyx_t_4, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __PYX_ERR(0, 1016, __pyx_L1_error)
+    __PYX_ERR(0, 1036, __pyx_L1_error)
 
-    /* "Scroll.pyx":1015
+    /* "Scroll.pyx":1035
  *     if not isinstance(dy, int):
  *         raise TypeError('dy, an integer is required (got type %s)' % type(dy))
  *     if not isinstance(array_, numpy.ndarray):             # <<<<<<<<<<<<<<
@@ -14595,7 +14410,7 @@ static PyObject *__pyx_f_6Scroll_roll_array_c(PyObject *__pyx_v_array_, struct _
  */
   }
 
-  /* "Scroll.pyx":1019
+  /* "Scroll.pyx":1039
  * 
  *     cdef int w, h
  *     try:             # <<<<<<<<<<<<<<
@@ -14611,16 +14426,16 @@ static PyObject *__pyx_f_6Scroll_roll_array_c(PyObject *__pyx_v_array_, struct _
     __Pyx_XGOTREF(__pyx_t_7);
     /*try:*/ {
 
-      /* "Scroll.pyx":1020
+      /* "Scroll.pyx":1040
  *     cdef int w, h
  *     try:
  *         w, h = (<object>array_).shape[:2]             # <<<<<<<<<<<<<<
  *     except (ValueError, pygame.error) as e:
  *         raise ValueError('\nArray shape not compatible.')
  */
-      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_array_, __pyx_n_s_shape); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1020, __pyx_L6_error)
+      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_array_, __pyx_n_s_shape); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1040, __pyx_L6_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_3 = __Pyx_PyObject_GetSlice(__pyx_t_4, 0, 2, NULL, NULL, &__pyx_slice__20, 0, 1, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1020, __pyx_L6_error)
+      __pyx_t_3 = __Pyx_PyObject_GetSlice(__pyx_t_4, 0, 2, NULL, NULL, &__pyx_slice__20, 0, 1, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1040, __pyx_L6_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       if ((likely(PyTuple_CheckExact(__pyx_t_3))) || (PyList_CheckExact(__pyx_t_3))) {
@@ -14633,7 +14448,7 @@ static PyObject *__pyx_f_6Scroll_roll_array_c(PyObject *__pyx_v_array_, struct _
         if (unlikely(size != 2)) {
           if (size > 2) __Pyx_RaiseTooManyValuesError(2);
           else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-          __PYX_ERR(0, 1020, __pyx_L6_error)
+          __PYX_ERR(0, 1040, __pyx_L6_error)
         }
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
         if (likely(PyTuple_CheckExact(sequence))) {
@@ -14646,15 +14461,15 @@ static PyObject *__pyx_f_6Scroll_roll_array_c(PyObject *__pyx_v_array_, struct _
         __Pyx_INCREF(__pyx_t_4);
         __Pyx_INCREF(__pyx_t_8);
         #else
-        __pyx_t_4 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1020, __pyx_L6_error)
+        __pyx_t_4 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1040, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_4);
-        __pyx_t_8 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1020, __pyx_L6_error)
+        __pyx_t_8 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1040, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_8);
         #endif
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       } else {
         Py_ssize_t index = -1;
-        __pyx_t_9 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1020, __pyx_L6_error)
+        __pyx_t_9 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1040, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_9);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         __pyx_t_10 = Py_TYPE(__pyx_t_9)->tp_iternext;
@@ -14662,7 +14477,7 @@ static PyObject *__pyx_f_6Scroll_roll_array_c(PyObject *__pyx_v_array_, struct _
         __Pyx_GOTREF(__pyx_t_4);
         index = 1; __pyx_t_8 = __pyx_t_10(__pyx_t_9); if (unlikely(!__pyx_t_8)) goto __pyx_L12_unpacking_failed;
         __Pyx_GOTREF(__pyx_t_8);
-        if (__Pyx_IternextUnpackEndCheck(__pyx_t_10(__pyx_t_9), 2) < 0) __PYX_ERR(0, 1020, __pyx_L6_error)
+        if (__Pyx_IternextUnpackEndCheck(__pyx_t_10(__pyx_t_9), 2) < 0) __PYX_ERR(0, 1040, __pyx_L6_error)
         __pyx_t_10 = NULL;
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
         goto __pyx_L13_unpacking_done;
@@ -14670,17 +14485,17 @@ static PyObject *__pyx_f_6Scroll_roll_array_c(PyObject *__pyx_v_array_, struct _
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
         __pyx_t_10 = NULL;
         if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-        __PYX_ERR(0, 1020, __pyx_L6_error)
+        __PYX_ERR(0, 1040, __pyx_L6_error)
         __pyx_L13_unpacking_done:;
       }
-      __pyx_t_11 = __Pyx_PyInt_As_int(__pyx_t_4); if (unlikely((__pyx_t_11 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 1020, __pyx_L6_error)
+      __pyx_t_11 = __Pyx_PyInt_As_int(__pyx_t_4); if (unlikely((__pyx_t_11 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 1040, __pyx_L6_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __pyx_t_12 = __Pyx_PyInt_As_int(__pyx_t_8); if (unlikely((__pyx_t_12 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 1020, __pyx_L6_error)
+      __pyx_t_12 = __Pyx_PyInt_As_int(__pyx_t_8); if (unlikely((__pyx_t_12 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 1040, __pyx_L6_error)
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       __pyx_v_w = __pyx_t_11;
       __pyx_v_h = __pyx_t_12;
 
-      /* "Scroll.pyx":1019
+      /* "Scroll.pyx":1039
  * 
  *     cdef int w, h
  *     try:             # <<<<<<<<<<<<<<
@@ -14698,46 +14513,46 @@ static PyObject *__pyx_f_6Scroll_roll_array_c(PyObject *__pyx_v_array_, struct _
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-    /* "Scroll.pyx":1021
+    /* "Scroll.pyx":1041
  *     try:
  *         w, h = (<object>array_).shape[:2]
  *     except (ValueError, pygame.error) as e:             # <<<<<<<<<<<<<<
  *         raise ValueError('\nArray shape not compatible.')
  *     if dx != 0:
  */
-    __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_pygame); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1021, __pyx_L8_except_error)
+    __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_pygame); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1041, __pyx_L8_except_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_error); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1021, __pyx_L8_except_error)
+    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_error); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1041, __pyx_L8_except_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_t_12 = __Pyx_PyErr_ExceptionMatches(__pyx_builtin_ValueError) || __Pyx_PyErr_ExceptionMatches(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     if (__pyx_t_12) {
       __Pyx_AddTraceback("Scroll.roll_array_c", __pyx_clineno, __pyx_lineno, __pyx_filename);
-      if (__Pyx_GetException(&__pyx_t_8, &__pyx_t_3, &__pyx_t_4) < 0) __PYX_ERR(0, 1021, __pyx_L8_except_error)
+      if (__Pyx_GetException(&__pyx_t_8, &__pyx_t_3, &__pyx_t_4) < 0) __PYX_ERR(0, 1041, __pyx_L8_except_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_INCREF(__pyx_t_3);
       __pyx_v_e = __pyx_t_3;
 
-      /* "Scroll.pyx":1022
+      /* "Scroll.pyx":1042
  *         w, h = (<object>array_).shape[:2]
  *     except (ValueError, pygame.error) as e:
  *         raise ValueError('\nArray shape not compatible.')             # <<<<<<<<<<<<<<
  *     if dx != 0:
  *         array = numpy.roll(array_, dx, axis=1)
  */
-      __pyx_t_9 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__21, NULL); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1022, __pyx_L8_except_error)
+      __pyx_t_9 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__21, NULL); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1042, __pyx_L8_except_error)
       __Pyx_GOTREF(__pyx_t_9);
       __Pyx_Raise(__pyx_t_9, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-      __PYX_ERR(0, 1022, __pyx_L8_except_error)
+      __PYX_ERR(0, 1042, __pyx_L8_except_error)
     }
     goto __pyx_L8_except_error;
     __pyx_L8_except_error:;
 
-    /* "Scroll.pyx":1019
+    /* "Scroll.pyx":1039
  * 
  *     cdef int w, h
  *     try:             # <<<<<<<<<<<<<<
@@ -14752,31 +14567,31 @@ static PyObject *__pyx_f_6Scroll_roll_array_c(PyObject *__pyx_v_array_, struct _
     __pyx_L11_try_end:;
   }
 
-  /* "Scroll.pyx":1023
+  /* "Scroll.pyx":1043
  *     except (ValueError, pygame.error) as e:
  *         raise ValueError('\nArray shape not compatible.')
  *     if dx != 0:             # <<<<<<<<<<<<<<
  *         array = numpy.roll(array_, dx, axis=1)
  *     if dy != 0:
  */
-  __pyx_t_4 = PyObject_RichCompare(__pyx_v_dx, __pyx_int_0, Py_NE); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1023, __pyx_L1_error)
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 1023, __pyx_L1_error)
+  __pyx_t_4 = PyObject_RichCompare(__pyx_v_dx, __pyx_int_0, Py_NE); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1043, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 1043, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   if (__pyx_t_2) {
 
-    /* "Scroll.pyx":1024
+    /* "Scroll.pyx":1044
  *         raise ValueError('\nArray shape not compatible.')
  *     if dx != 0:
  *         array = numpy.roll(array_, dx, axis=1)             # <<<<<<<<<<<<<<
  *     if dy != 0:
  *         array = numpy.roll(array, dy, axis=0)
  */
-    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1024, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1044, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_roll); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1024, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_roll); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1044, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1024, __pyx_L1_error)
+    __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1044, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_INCREF(__pyx_v_array_);
     __Pyx_GIVEREF(__pyx_v_array_);
@@ -14784,10 +14599,10 @@ static PyObject *__pyx_f_6Scroll_roll_array_c(PyObject *__pyx_v_array_, struct _
     __Pyx_INCREF(__pyx_v_dx);
     __Pyx_GIVEREF(__pyx_v_dx);
     PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_v_dx);
-    __pyx_t_8 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1024, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1044, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
-    if (PyDict_SetItem(__pyx_t_8, __pyx_n_s_axis, __pyx_int_1) < 0) __PYX_ERR(0, 1024, __pyx_L1_error)
-    __pyx_t_9 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_4, __pyx_t_8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1024, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_8, __pyx_n_s_axis, __pyx_int_1) < 0) __PYX_ERR(0, 1044, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_4, __pyx_t_8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1044, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -14795,7 +14610,7 @@ static PyObject *__pyx_f_6Scroll_roll_array_c(PyObject *__pyx_v_array_, struct _
     __pyx_v_array = __pyx_t_9;
     __pyx_t_9 = 0;
 
-    /* "Scroll.pyx":1023
+    /* "Scroll.pyx":1043
  *     except (ValueError, pygame.error) as e:
  *         raise ValueError('\nArray shape not compatible.')
  *     if dx != 0:             # <<<<<<<<<<<<<<
@@ -14804,32 +14619,32 @@ static PyObject *__pyx_f_6Scroll_roll_array_c(PyObject *__pyx_v_array_, struct _
  */
   }
 
-  /* "Scroll.pyx":1025
+  /* "Scroll.pyx":1045
  *     if dx != 0:
  *         array = numpy.roll(array_, dx, axis=1)
  *     if dy != 0:             # <<<<<<<<<<<<<<
  *         array = numpy.roll(array, dy, axis=0)
  *     return pygame.image.frombuffer(array, (w, h), 'RGB'), array
  */
-  __pyx_t_9 = PyObject_RichCompare(__pyx_v_dy, __pyx_int_0, Py_NE); __Pyx_XGOTREF(__pyx_t_9); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1025, __pyx_L1_error)
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_9); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 1025, __pyx_L1_error)
+  __pyx_t_9 = PyObject_RichCompare(__pyx_v_dy, __pyx_int_0, Py_NE); __Pyx_XGOTREF(__pyx_t_9); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1045, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_9); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 1045, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
   if (__pyx_t_2) {
 
-    /* "Scroll.pyx":1026
+    /* "Scroll.pyx":1046
  *         array = numpy.roll(array_, dx, axis=1)
  *     if dy != 0:
  *         array = numpy.roll(array, dy, axis=0)             # <<<<<<<<<<<<<<
  *     return pygame.image.frombuffer(array, (w, h), 'RGB'), array
  * 
  */
-    __pyx_t_9 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1026, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1046, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
-    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_roll); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1026, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_roll); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1046, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-    if (unlikely(!__pyx_v_array)) { __Pyx_RaiseUnboundLocalError("array"); __PYX_ERR(0, 1026, __pyx_L1_error) }
-    __pyx_t_9 = PyTuple_New(2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1026, __pyx_L1_error)
+    if (unlikely(!__pyx_v_array)) { __Pyx_RaiseUnboundLocalError("array"); __PYX_ERR(0, 1046, __pyx_L1_error) }
+    __pyx_t_9 = PyTuple_New(2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1046, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
     __Pyx_INCREF(__pyx_v_array);
     __Pyx_GIVEREF(__pyx_v_array);
@@ -14837,10 +14652,10 @@ static PyObject *__pyx_f_6Scroll_roll_array_c(PyObject *__pyx_v_array_, struct _
     __Pyx_INCREF(__pyx_v_dy);
     __Pyx_GIVEREF(__pyx_v_dy);
     PyTuple_SET_ITEM(__pyx_t_9, 1, __pyx_v_dy);
-    __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1026, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1046, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_axis, __pyx_int_0) < 0) __PYX_ERR(0, 1026, __pyx_L1_error)
-    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_9, __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1026, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_axis, __pyx_int_0) < 0) __PYX_ERR(0, 1046, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_9, __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1046, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
@@ -14848,7 +14663,7 @@ static PyObject *__pyx_f_6Scroll_roll_array_c(PyObject *__pyx_v_array_, struct _
     __Pyx_XDECREF_SET(__pyx_v_array, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "Scroll.pyx":1025
+    /* "Scroll.pyx":1045
  *     if dx != 0:
  *         array = numpy.roll(array_, dx, axis=1)
  *     if dy != 0:             # <<<<<<<<<<<<<<
@@ -14857,7 +14672,7 @@ static PyObject *__pyx_f_6Scroll_roll_array_c(PyObject *__pyx_v_array_, struct _
  */
   }
 
-  /* "Scroll.pyx":1027
+  /* "Scroll.pyx":1047
  *     if dy != 0:
  *         array = numpy.roll(array, dy, axis=0)
  *     return pygame.image.frombuffer(array, (w, h), 'RGB'), array             # <<<<<<<<<<<<<<
@@ -14865,20 +14680,20 @@ static PyObject *__pyx_f_6Scroll_roll_array_c(PyObject *__pyx_v_array_, struct _
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_pygame); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1027, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_pygame); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1047, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_image); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1027, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_image); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1047, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_frombuffer); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1027, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_frombuffer); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1047, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-  if (unlikely(!__pyx_v_array)) { __Pyx_RaiseUnboundLocalError("array"); __PYX_ERR(0, 1027, __pyx_L1_error) }
-  __pyx_t_9 = __Pyx_PyInt_From_int(__pyx_v_w); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1027, __pyx_L1_error)
+  if (unlikely(!__pyx_v_array)) { __Pyx_RaiseUnboundLocalError("array"); __PYX_ERR(0, 1047, __pyx_L1_error) }
+  __pyx_t_9 = __Pyx_PyInt_From_int(__pyx_v_w); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1047, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
-  __pyx_t_8 = __Pyx_PyInt_From_int(__pyx_v_h); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1027, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyInt_From_int(__pyx_v_h); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1047, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
-  __pyx_t_13 = PyTuple_New(2); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 1027, __pyx_L1_error)
+  __pyx_t_13 = PyTuple_New(2); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 1047, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_13);
   __Pyx_GIVEREF(__pyx_t_9);
   PyTuple_SET_ITEM(__pyx_t_13, 0, __pyx_t_9);
@@ -14901,7 +14716,7 @@ static PyObject *__pyx_f_6Scroll_roll_array_c(PyObject *__pyx_v_array_, struct _
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_4)) {
     PyObject *__pyx_temp[4] = {__pyx_t_8, __pyx_v_array, __pyx_t_13, __pyx_n_s_RGB};
-    __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_12, 3+__pyx_t_12); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1027, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_12, 3+__pyx_t_12); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1047, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
@@ -14910,14 +14725,14 @@ static PyObject *__pyx_f_6Scroll_roll_array_c(PyObject *__pyx_v_array_, struct _
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
     PyObject *__pyx_temp[4] = {__pyx_t_8, __pyx_v_array, __pyx_t_13, __pyx_n_s_RGB};
-    __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_12, 3+__pyx_t_12); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1027, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_12, 3+__pyx_t_12); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1047, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
   } else
   #endif
   {
-    __pyx_t_9 = PyTuple_New(3+__pyx_t_12); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1027, __pyx_L1_error)
+    __pyx_t_9 = PyTuple_New(3+__pyx_t_12); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1047, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
     if (__pyx_t_8) {
       __Pyx_GIVEREF(__pyx_t_8); PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_8); __pyx_t_8 = NULL;
@@ -14931,13 +14746,13 @@ static PyObject *__pyx_f_6Scroll_roll_array_c(PyObject *__pyx_v_array_, struct _
     __Pyx_GIVEREF(__pyx_n_s_RGB);
     PyTuple_SET_ITEM(__pyx_t_9, 2+__pyx_t_12, __pyx_n_s_RGB);
     __pyx_t_13 = 0;
-    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_9, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1027, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_9, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1047, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
   }
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (unlikely(!__pyx_v_array)) { __Pyx_RaiseUnboundLocalError("array"); __PYX_ERR(0, 1027, __pyx_L1_error) }
-  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1027, __pyx_L1_error)
+  if (unlikely(!__pyx_v_array)) { __Pyx_RaiseUnboundLocalError("array"); __PYX_ERR(0, 1047, __pyx_L1_error) }
+  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1047, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_GIVEREF(__pyx_t_3);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_3);
@@ -14949,7 +14764,7 @@ static PyObject *__pyx_f_6Scroll_roll_array_c(PyObject *__pyx_v_array_, struct _
   __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "Scroll.pyx":993
+  /* "Scroll.pyx":1013
  * @cython.nonecheck(False)
  * @cython.cdivision(True)
  * cdef roll_array_c(array_, dx=0, dy=0):             # <<<<<<<<<<<<<<
@@ -14974,7 +14789,7 @@ static PyObject *__pyx_f_6Scroll_roll_array_c(PyObject *__pyx_v_array_, struct _
   return __pyx_r;
 }
 
-/* "Scroll.pyx":1034
+/* "Scroll.pyx":1054
  * @cython.nonecheck(False)
  * @cython.cdivision(True)
  * cdef roll_surface_c(surface_, dx=0, dy=0):             # <<<<<<<<<<<<<<
@@ -15019,7 +14834,7 @@ static PyObject *__pyx_f_6Scroll_roll_surface_c(PyObject *__pyx_v_surface_, stru
     }
   }
 
-  /* "Scroll.pyx":1042
+  /* "Scroll.pyx":1062
  *     :param surface_: pygame.Surface 24-32 bit format compatible
  *     """
  *     if not isinstance(dx, int):             # <<<<<<<<<<<<<<
@@ -15030,28 +14845,28 @@ static PyObject *__pyx_f_6Scroll_roll_surface_c(PyObject *__pyx_v_surface_, stru
   __pyx_t_2 = ((!(__pyx_t_1 != 0)) != 0);
   if (__pyx_t_2) {
 
-    /* "Scroll.pyx":1043
+    /* "Scroll.pyx":1063
  *     """
  *     if not isinstance(dx, int):
  *         raise TypeError('dx, an integer is required (got type %s)' % type(dx))             # <<<<<<<<<<<<<<
  *     if not isinstance(dy, int):
  *         raise TypeError('dy, an integer is required (got type %s)' % type(dy))
  */
-    __pyx_t_3 = __Pyx_PyString_Format(__pyx_kp_s_dx_an_integer_is_required_got_ty, ((PyObject *)Py_TYPE(__pyx_v_dx))); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1043, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyString_Format(__pyx_kp_s_dx_an_integer_is_required_got_ty, ((PyObject *)Py_TYPE(__pyx_v_dx))); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1063, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1043, __pyx_L1_error)
+    __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1063, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_GIVEREF(__pyx_t_3);
     PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_3);
     __pyx_t_3 = 0;
-    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1043, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1063, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_Raise(__pyx_t_3, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __PYX_ERR(0, 1043, __pyx_L1_error)
+    __PYX_ERR(0, 1063, __pyx_L1_error)
 
-    /* "Scroll.pyx":1042
+    /* "Scroll.pyx":1062
  *     :param surface_: pygame.Surface 24-32 bit format compatible
  *     """
  *     if not isinstance(dx, int):             # <<<<<<<<<<<<<<
@@ -15060,7 +14875,7 @@ static PyObject *__pyx_f_6Scroll_roll_surface_c(PyObject *__pyx_v_surface_, stru
  */
   }
 
-  /* "Scroll.pyx":1044
+  /* "Scroll.pyx":1064
  *     if not isinstance(dx, int):
  *         raise TypeError('dx, an integer is required (got type %s)' % type(dx))
  *     if not isinstance(dy, int):             # <<<<<<<<<<<<<<
@@ -15071,28 +14886,28 @@ static PyObject *__pyx_f_6Scroll_roll_surface_c(PyObject *__pyx_v_surface_, stru
   __pyx_t_1 = ((!(__pyx_t_2 != 0)) != 0);
   if (__pyx_t_1) {
 
-    /* "Scroll.pyx":1045
+    /* "Scroll.pyx":1065
  *         raise TypeError('dx, an integer is required (got type %s)' % type(dx))
  *     if not isinstance(dy, int):
  *         raise TypeError('dy, an integer is required (got type %s)' % type(dy))             # <<<<<<<<<<<<<<
  *     if not isinstance(surface_, pygame.Surface):
  *         raise TypeError('array, a numpy.ndarray is required (got type %s)' % type(surface_))
  */
-    __pyx_t_3 = __Pyx_PyString_Format(__pyx_kp_s_dy_an_integer_is_required_got_ty, ((PyObject *)Py_TYPE(__pyx_v_dy))); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1045, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyString_Format(__pyx_kp_s_dy_an_integer_is_required_got_ty, ((PyObject *)Py_TYPE(__pyx_v_dy))); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1065, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1045, __pyx_L1_error)
+    __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1065, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_GIVEREF(__pyx_t_3);
     PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_3);
     __pyx_t_3 = 0;
-    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1045, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1065, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_Raise(__pyx_t_3, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __PYX_ERR(0, 1045, __pyx_L1_error)
+    __PYX_ERR(0, 1065, __pyx_L1_error)
 
-    /* "Scroll.pyx":1044
+    /* "Scroll.pyx":1064
  *     if not isinstance(dx, int):
  *         raise TypeError('dx, an integer is required (got type %s)' % type(dx))
  *     if not isinstance(dy, int):             # <<<<<<<<<<<<<<
@@ -15101,45 +14916,45 @@ static PyObject *__pyx_f_6Scroll_roll_surface_c(PyObject *__pyx_v_surface_, stru
  */
   }
 
-  /* "Scroll.pyx":1046
+  /* "Scroll.pyx":1066
  *     if not isinstance(dy, int):
  *         raise TypeError('dy, an integer is required (got type %s)' % type(dy))
  *     if not isinstance(surface_, pygame.Surface):             # <<<<<<<<<<<<<<
  *         raise TypeError('array, a numpy.ndarray is required (got type %s)' % type(surface_))
  * 
  */
-  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_pygame); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1046, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_pygame); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1066, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_Surface); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1046, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_Surface); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1066, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_1 = PyObject_IsInstance(__pyx_v_surface_, __pyx_t_4); if (unlikely(__pyx_t_1 == ((int)-1))) __PYX_ERR(0, 1046, __pyx_L1_error)
+  __pyx_t_1 = PyObject_IsInstance(__pyx_v_surface_, __pyx_t_4); if (unlikely(__pyx_t_1 == ((int)-1))) __PYX_ERR(0, 1066, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_2 = ((!(__pyx_t_1 != 0)) != 0);
   if (__pyx_t_2) {
 
-    /* "Scroll.pyx":1047
+    /* "Scroll.pyx":1067
  *         raise TypeError('dy, an integer is required (got type %s)' % type(dy))
  *     if not isinstance(surface_, pygame.Surface):
  *         raise TypeError('array, a numpy.ndarray is required (got type %s)' % type(surface_))             # <<<<<<<<<<<<<<
  * 
  *     cdef int w, h
  */
-    __pyx_t_4 = __Pyx_PyString_Format(__pyx_kp_s_array_a_numpy_ndarray_is_require, ((PyObject *)Py_TYPE(__pyx_v_surface_))); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1047, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyString_Format(__pyx_kp_s_array_a_numpy_ndarray_is_require, ((PyObject *)Py_TYPE(__pyx_v_surface_))); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1067, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1047, __pyx_L1_error)
+    __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1067, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_GIVEREF(__pyx_t_4);
     PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_4);
     __pyx_t_4 = 0;
-    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_t_3, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1047, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_t_3, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1067, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_Raise(__pyx_t_4, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __PYX_ERR(0, 1047, __pyx_L1_error)
+    __PYX_ERR(0, 1067, __pyx_L1_error)
 
-    /* "Scroll.pyx":1046
+    /* "Scroll.pyx":1066
  *     if not isinstance(dy, int):
  *         raise TypeError('dy, an integer is required (got type %s)' % type(dy))
  *     if not isinstance(surface_, pygame.Surface):             # <<<<<<<<<<<<<<
@@ -15148,7 +14963,7 @@ static PyObject *__pyx_f_6Scroll_roll_surface_c(PyObject *__pyx_v_surface_, stru
  */
   }
 
-  /* "Scroll.pyx":1051
+  /* "Scroll.pyx":1071
  *     cdef int w, h
  * 
  *     try:             # <<<<<<<<<<<<<<
@@ -15164,14 +14979,14 @@ static PyObject *__pyx_f_6Scroll_roll_surface_c(PyObject *__pyx_v_surface_, stru
     __Pyx_XGOTREF(__pyx_t_7);
     /*try:*/ {
 
-      /* "Scroll.pyx":1052
+      /* "Scroll.pyx":1072
  * 
  *     try:
  *         w, h = surface_.get_size()             # <<<<<<<<<<<<<<
  * 
  *     except (ValueError, pygame.error) as e:
  */
-      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_surface_, __pyx_n_s_get_size); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1052, __pyx_L6_error)
+      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_surface_, __pyx_n_s_get_size); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1072, __pyx_L6_error)
       __Pyx_GOTREF(__pyx_t_3);
       __pyx_t_8 = NULL;
       if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
@@ -15184,10 +14999,10 @@ static PyObject *__pyx_f_6Scroll_roll_surface_c(PyObject *__pyx_v_surface_, stru
         }
       }
       if (__pyx_t_8) {
-        __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_8); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1052, __pyx_L6_error)
+        __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_8); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1072, __pyx_L6_error)
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       } else {
-        __pyx_t_4 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1052, __pyx_L6_error)
+        __pyx_t_4 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1072, __pyx_L6_error)
       }
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -15201,7 +15016,7 @@ static PyObject *__pyx_f_6Scroll_roll_surface_c(PyObject *__pyx_v_surface_, stru
         if (unlikely(size != 2)) {
           if (size > 2) __Pyx_RaiseTooManyValuesError(2);
           else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-          __PYX_ERR(0, 1052, __pyx_L6_error)
+          __PYX_ERR(0, 1072, __pyx_L6_error)
         }
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
         if (likely(PyTuple_CheckExact(sequence))) {
@@ -15214,15 +15029,15 @@ static PyObject *__pyx_f_6Scroll_roll_surface_c(PyObject *__pyx_v_surface_, stru
         __Pyx_INCREF(__pyx_t_3);
         __Pyx_INCREF(__pyx_t_8);
         #else
-        __pyx_t_3 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1052, __pyx_L6_error)
+        __pyx_t_3 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1072, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_8 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1052, __pyx_L6_error)
+        __pyx_t_8 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1072, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_8);
         #endif
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       } else {
         Py_ssize_t index = -1;
-        __pyx_t_9 = PyObject_GetIter(__pyx_t_4); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1052, __pyx_L6_error)
+        __pyx_t_9 = PyObject_GetIter(__pyx_t_4); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1072, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_9);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
         __pyx_t_10 = Py_TYPE(__pyx_t_9)->tp_iternext;
@@ -15230,7 +15045,7 @@ static PyObject *__pyx_f_6Scroll_roll_surface_c(PyObject *__pyx_v_surface_, stru
         __Pyx_GOTREF(__pyx_t_3);
         index = 1; __pyx_t_8 = __pyx_t_10(__pyx_t_9); if (unlikely(!__pyx_t_8)) goto __pyx_L12_unpacking_failed;
         __Pyx_GOTREF(__pyx_t_8);
-        if (__Pyx_IternextUnpackEndCheck(__pyx_t_10(__pyx_t_9), 2) < 0) __PYX_ERR(0, 1052, __pyx_L6_error)
+        if (__Pyx_IternextUnpackEndCheck(__pyx_t_10(__pyx_t_9), 2) < 0) __PYX_ERR(0, 1072, __pyx_L6_error)
         __pyx_t_10 = NULL;
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
         goto __pyx_L13_unpacking_done;
@@ -15238,17 +15053,17 @@ static PyObject *__pyx_f_6Scroll_roll_surface_c(PyObject *__pyx_v_surface_, stru
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
         __pyx_t_10 = NULL;
         if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-        __PYX_ERR(0, 1052, __pyx_L6_error)
+        __PYX_ERR(0, 1072, __pyx_L6_error)
         __pyx_L13_unpacking_done:;
       }
-      __pyx_t_11 = __Pyx_PyInt_As_int(__pyx_t_3); if (unlikely((__pyx_t_11 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 1052, __pyx_L6_error)
+      __pyx_t_11 = __Pyx_PyInt_As_int(__pyx_t_3); if (unlikely((__pyx_t_11 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 1072, __pyx_L6_error)
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __pyx_t_12 = __Pyx_PyInt_As_int(__pyx_t_8); if (unlikely((__pyx_t_12 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 1052, __pyx_L6_error)
+      __pyx_t_12 = __Pyx_PyInt_As_int(__pyx_t_8); if (unlikely((__pyx_t_12 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 1072, __pyx_L6_error)
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       __pyx_v_w = __pyx_t_11;
       __pyx_v_h = __pyx_t_12;
 
-      /* "Scroll.pyx":1051
+      /* "Scroll.pyx":1071
  *     cdef int w, h
  * 
  *     try:             # <<<<<<<<<<<<<<
@@ -15266,46 +15081,46 @@ static PyObject *__pyx_f_6Scroll_roll_surface_c(PyObject *__pyx_v_surface_, stru
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-    /* "Scroll.pyx":1054
+    /* "Scroll.pyx":1074
  *         w, h = surface_.get_size()
  * 
  *     except (ValueError, pygame.error) as e:             # <<<<<<<<<<<<<<
  *         raise ValueError('\nArray shape not compatible.')
  * 
  */
-    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_pygame); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1054, __pyx_L8_except_error)
+    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_pygame); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1074, __pyx_L8_except_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_error); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1054, __pyx_L8_except_error)
+    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_error); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1074, __pyx_L8_except_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_t_12 = __Pyx_PyErr_ExceptionMatches(__pyx_builtin_ValueError) || __Pyx_PyErr_ExceptionMatches(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     if (__pyx_t_12) {
       __Pyx_AddTraceback("Scroll.roll_surface_c", __pyx_clineno, __pyx_lineno, __pyx_filename);
-      if (__Pyx_GetException(&__pyx_t_8, &__pyx_t_4, &__pyx_t_3) < 0) __PYX_ERR(0, 1054, __pyx_L8_except_error)
+      if (__Pyx_GetException(&__pyx_t_8, &__pyx_t_4, &__pyx_t_3) < 0) __PYX_ERR(0, 1074, __pyx_L8_except_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_INCREF(__pyx_t_4);
       __pyx_v_e = __pyx_t_4;
 
-      /* "Scroll.pyx":1055
+      /* "Scroll.pyx":1075
  * 
  *     except (ValueError, pygame.error) as e:
  *         raise ValueError('\nArray shape not compatible.')             # <<<<<<<<<<<<<<
  * 
  *     try:
  */
-      __pyx_t_9 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__22, NULL); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1055, __pyx_L8_except_error)
+      __pyx_t_9 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__22, NULL); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1075, __pyx_L8_except_error)
       __Pyx_GOTREF(__pyx_t_9);
       __Pyx_Raise(__pyx_t_9, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-      __PYX_ERR(0, 1055, __pyx_L8_except_error)
+      __PYX_ERR(0, 1075, __pyx_L8_except_error)
     }
     goto __pyx_L8_except_error;
     __pyx_L8_except_error:;
 
-    /* "Scroll.pyx":1051
+    /* "Scroll.pyx":1071
  *     cdef int w, h
  * 
  *     try:             # <<<<<<<<<<<<<<
@@ -15320,7 +15135,7 @@ static PyObject *__pyx_f_6Scroll_roll_surface_c(PyObject *__pyx_v_surface_, stru
     __pyx_L11_try_end:;
   }
 
-  /* "Scroll.pyx":1057
+  /* "Scroll.pyx":1077
  *         raise ValueError('\nArray shape not compatible.')
  * 
  *     try:             # <<<<<<<<<<<<<<
@@ -15336,19 +15151,19 @@ static PyObject *__pyx_f_6Scroll_roll_surface_c(PyObject *__pyx_v_surface_, stru
     __Pyx_XGOTREF(__pyx_t_5);
     /*try:*/ {
 
-      /* "Scroll.pyx":1058
+      /* "Scroll.pyx":1078
  * 
  *     try:
  *         array = pygame.surfarray.pixels3d(surface_)             # <<<<<<<<<<<<<<
  *     except (pygame.error, ValueError):
  *         try:
  */
-      __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_pygame); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1058, __pyx_L16_error)
+      __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_pygame); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1078, __pyx_L16_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_surfarray); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1058, __pyx_L16_error)
+      __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_surfarray); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1078, __pyx_L16_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_pixels3d); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1058, __pyx_L16_error)
+      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_pixels3d); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1078, __pyx_L16_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       __pyx_t_8 = NULL;
@@ -15362,13 +15177,13 @@ static PyObject *__pyx_f_6Scroll_roll_surface_c(PyObject *__pyx_v_surface_, stru
         }
       }
       if (!__pyx_t_8) {
-        __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_v_surface_); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1058, __pyx_L16_error)
+        __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_v_surface_); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1078, __pyx_L16_error)
         __Pyx_GOTREF(__pyx_t_3);
       } else {
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_4)) {
           PyObject *__pyx_temp[2] = {__pyx_t_8, __pyx_v_surface_};
-          __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1058, __pyx_L16_error)
+          __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1078, __pyx_L16_error)
           __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
           __Pyx_GOTREF(__pyx_t_3);
         } else
@@ -15376,19 +15191,19 @@ static PyObject *__pyx_f_6Scroll_roll_surface_c(PyObject *__pyx_v_surface_, stru
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
           PyObject *__pyx_temp[2] = {__pyx_t_8, __pyx_v_surface_};
-          __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1058, __pyx_L16_error)
+          __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1078, __pyx_L16_error)
           __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
           __Pyx_GOTREF(__pyx_t_3);
         } else
         #endif
         {
-          __pyx_t_9 = PyTuple_New(1+1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1058, __pyx_L16_error)
+          __pyx_t_9 = PyTuple_New(1+1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1078, __pyx_L16_error)
           __Pyx_GOTREF(__pyx_t_9);
           __Pyx_GIVEREF(__pyx_t_8); PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_8); __pyx_t_8 = NULL;
           __Pyx_INCREF(__pyx_v_surface_);
           __Pyx_GIVEREF(__pyx_v_surface_);
           PyTuple_SET_ITEM(__pyx_t_9, 0+1, __pyx_v_surface_);
-          __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_9, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1058, __pyx_L16_error)
+          __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_9, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1078, __pyx_L16_error)
           __Pyx_GOTREF(__pyx_t_3);
           __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
         }
@@ -15397,7 +15212,7 @@ static PyObject *__pyx_f_6Scroll_roll_surface_c(PyObject *__pyx_v_surface_, stru
       __pyx_v_array = __pyx_t_3;
       __pyx_t_3 = 0;
 
-      /* "Scroll.pyx":1057
+      /* "Scroll.pyx":1077
  *         raise ValueError('\nArray shape not compatible.')
  * 
  *     try:             # <<<<<<<<<<<<<<
@@ -15415,28 +15230,28 @@ static PyObject *__pyx_f_6Scroll_roll_surface_c(PyObject *__pyx_v_surface_, stru
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-    /* "Scroll.pyx":1059
+    /* "Scroll.pyx":1079
  *     try:
  *         array = pygame.surfarray.pixels3d(surface_)
  *     except (pygame.error, ValueError):             # <<<<<<<<<<<<<<
  *         try:
  *             array = pygame.surfarray.array3d(surface_)
  */
-    __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_pygame); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1059, __pyx_L18_except_error)
+    __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_pygame); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1079, __pyx_L18_except_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_error); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1059, __pyx_L18_except_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_error); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1079, __pyx_L18_except_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_t_12 = __Pyx_PyErr_ExceptionMatches(__pyx_t_4) || __Pyx_PyErr_ExceptionMatches(__pyx_builtin_ValueError);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     if (__pyx_t_12) {
       __Pyx_AddTraceback("Scroll.roll_surface_c", __pyx_clineno, __pyx_lineno, __pyx_filename);
-      if (__Pyx_GetException(&__pyx_t_4, &__pyx_t_3, &__pyx_t_9) < 0) __PYX_ERR(0, 1059, __pyx_L18_except_error)
+      if (__Pyx_GetException(&__pyx_t_4, &__pyx_t_3, &__pyx_t_9) < 0) __PYX_ERR(0, 1079, __pyx_L18_except_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_GOTREF(__pyx_t_9);
 
-      /* "Scroll.pyx":1060
+      /* "Scroll.pyx":1080
  *         array = pygame.surfarray.pixels3d(surface_)
  *     except (pygame.error, ValueError):
  *         try:             # <<<<<<<<<<<<<<
@@ -15452,19 +15267,19 @@ static PyObject *__pyx_f_6Scroll_roll_surface_c(PyObject *__pyx_v_surface_, stru
         __Pyx_XGOTREF(__pyx_t_15);
         /*try:*/ {
 
-          /* "Scroll.pyx":1061
+          /* "Scroll.pyx":1081
  *     except (pygame.error, ValueError):
  *         try:
  *             array = pygame.surfarray.array3d(surface_)             # <<<<<<<<<<<<<<
  *         except (pygame.error, ValueError):
  *             raise ValueError('Surface not compatible.')
  */
-          __pyx_t_16 = __Pyx_GetModuleGlobalName(__pyx_n_s_pygame); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 1061, __pyx_L24_error)
+          __pyx_t_16 = __Pyx_GetModuleGlobalName(__pyx_n_s_pygame); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 1081, __pyx_L24_error)
           __Pyx_GOTREF(__pyx_t_16);
-          __pyx_t_17 = __Pyx_PyObject_GetAttrStr(__pyx_t_16, __pyx_n_s_surfarray); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 1061, __pyx_L24_error)
+          __pyx_t_17 = __Pyx_PyObject_GetAttrStr(__pyx_t_16, __pyx_n_s_surfarray); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 1081, __pyx_L24_error)
           __Pyx_GOTREF(__pyx_t_17);
           __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
-          __pyx_t_16 = __Pyx_PyObject_GetAttrStr(__pyx_t_17, __pyx_n_s_array3d); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 1061, __pyx_L24_error)
+          __pyx_t_16 = __Pyx_PyObject_GetAttrStr(__pyx_t_17, __pyx_n_s_array3d); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 1081, __pyx_L24_error)
           __Pyx_GOTREF(__pyx_t_16);
           __Pyx_DECREF(__pyx_t_17); __pyx_t_17 = 0;
           __pyx_t_17 = NULL;
@@ -15478,13 +15293,13 @@ static PyObject *__pyx_f_6Scroll_roll_surface_c(PyObject *__pyx_v_surface_, stru
             }
           }
           if (!__pyx_t_17) {
-            __pyx_t_8 = __Pyx_PyObject_CallOneArg(__pyx_t_16, __pyx_v_surface_); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1061, __pyx_L24_error)
+            __pyx_t_8 = __Pyx_PyObject_CallOneArg(__pyx_t_16, __pyx_v_surface_); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1081, __pyx_L24_error)
             __Pyx_GOTREF(__pyx_t_8);
           } else {
             #if CYTHON_FAST_PYCALL
             if (PyFunction_Check(__pyx_t_16)) {
               PyObject *__pyx_temp[2] = {__pyx_t_17, __pyx_v_surface_};
-              __pyx_t_8 = __Pyx_PyFunction_FastCall(__pyx_t_16, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1061, __pyx_L24_error)
+              __pyx_t_8 = __Pyx_PyFunction_FastCall(__pyx_t_16, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1081, __pyx_L24_error)
               __Pyx_XDECREF(__pyx_t_17); __pyx_t_17 = 0;
               __Pyx_GOTREF(__pyx_t_8);
             } else
@@ -15492,19 +15307,19 @@ static PyObject *__pyx_f_6Scroll_roll_surface_c(PyObject *__pyx_v_surface_, stru
             #if CYTHON_FAST_PYCCALL
             if (__Pyx_PyFastCFunction_Check(__pyx_t_16)) {
               PyObject *__pyx_temp[2] = {__pyx_t_17, __pyx_v_surface_};
-              __pyx_t_8 = __Pyx_PyCFunction_FastCall(__pyx_t_16, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1061, __pyx_L24_error)
+              __pyx_t_8 = __Pyx_PyCFunction_FastCall(__pyx_t_16, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1081, __pyx_L24_error)
               __Pyx_XDECREF(__pyx_t_17); __pyx_t_17 = 0;
               __Pyx_GOTREF(__pyx_t_8);
             } else
             #endif
             {
-              __pyx_t_18 = PyTuple_New(1+1); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 1061, __pyx_L24_error)
+              __pyx_t_18 = PyTuple_New(1+1); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 1081, __pyx_L24_error)
               __Pyx_GOTREF(__pyx_t_18);
               __Pyx_GIVEREF(__pyx_t_17); PyTuple_SET_ITEM(__pyx_t_18, 0, __pyx_t_17); __pyx_t_17 = NULL;
               __Pyx_INCREF(__pyx_v_surface_);
               __Pyx_GIVEREF(__pyx_v_surface_);
               PyTuple_SET_ITEM(__pyx_t_18, 0+1, __pyx_v_surface_);
-              __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_16, __pyx_t_18, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1061, __pyx_L24_error)
+              __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_16, __pyx_t_18, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1081, __pyx_L24_error)
               __Pyx_GOTREF(__pyx_t_8);
               __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
             }
@@ -15513,7 +15328,7 @@ static PyObject *__pyx_f_6Scroll_roll_surface_c(PyObject *__pyx_v_surface_, stru
           __Pyx_XDECREF_SET(__pyx_v_array, __pyx_t_8);
           __pyx_t_8 = 0;
 
-          /* "Scroll.pyx":1060
+          /* "Scroll.pyx":1080
  *         array = pygame.surfarray.pixels3d(surface_)
  *     except (pygame.error, ValueError):
  *         try:             # <<<<<<<<<<<<<<
@@ -15531,44 +15346,44 @@ static PyObject *__pyx_f_6Scroll_roll_surface_c(PyObject *__pyx_v_surface_, stru
         __Pyx_XDECREF(__pyx_t_16); __pyx_t_16 = 0;
         __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-        /* "Scroll.pyx":1062
+        /* "Scroll.pyx":1082
  *         try:
  *             array = pygame.surfarray.array3d(surface_)
  *         except (pygame.error, ValueError):             # <<<<<<<<<<<<<<
  *             raise ValueError('Surface not compatible.')
  * 
  */
-        __pyx_t_8 = __Pyx_GetModuleGlobalName(__pyx_n_s_pygame); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1062, __pyx_L26_except_error)
+        __pyx_t_8 = __Pyx_GetModuleGlobalName(__pyx_n_s_pygame); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1082, __pyx_L26_except_error)
         __Pyx_GOTREF(__pyx_t_8);
-        __pyx_t_16 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_error); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 1062, __pyx_L26_except_error)
+        __pyx_t_16 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_error); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 1082, __pyx_L26_except_error)
         __Pyx_GOTREF(__pyx_t_16);
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
         __pyx_t_12 = __Pyx_PyErr_ExceptionMatches(__pyx_t_16) || __Pyx_PyErr_ExceptionMatches(__pyx_builtin_ValueError);
         __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
         if (__pyx_t_12) {
           __Pyx_AddTraceback("Scroll.roll_surface_c", __pyx_clineno, __pyx_lineno, __pyx_filename);
-          if (__Pyx_GetException(&__pyx_t_16, &__pyx_t_8, &__pyx_t_18) < 0) __PYX_ERR(0, 1062, __pyx_L26_except_error)
+          if (__Pyx_GetException(&__pyx_t_16, &__pyx_t_8, &__pyx_t_18) < 0) __PYX_ERR(0, 1082, __pyx_L26_except_error)
           __Pyx_GOTREF(__pyx_t_16);
           __Pyx_GOTREF(__pyx_t_8);
           __Pyx_GOTREF(__pyx_t_18);
 
-          /* "Scroll.pyx":1063
+          /* "Scroll.pyx":1083
  *             array = pygame.surfarray.array3d(surface_)
  *         except (pygame.error, ValueError):
  *             raise ValueError('Surface not compatible.')             # <<<<<<<<<<<<<<
  * 
  *     if dx != 0:
  */
-          __pyx_t_17 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__23, NULL); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 1063, __pyx_L26_except_error)
+          __pyx_t_17 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__23, NULL); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 1083, __pyx_L26_except_error)
           __Pyx_GOTREF(__pyx_t_17);
           __Pyx_Raise(__pyx_t_17, 0, 0, 0);
           __Pyx_DECREF(__pyx_t_17); __pyx_t_17 = 0;
-          __PYX_ERR(0, 1063, __pyx_L26_except_error)
+          __PYX_ERR(0, 1083, __pyx_L26_except_error)
         }
         goto __pyx_L26_except_error;
         __pyx_L26_except_error:;
 
-        /* "Scroll.pyx":1060
+        /* "Scroll.pyx":1080
  *         array = pygame.surfarray.pixels3d(surface_)
  *     except (pygame.error, ValueError):
  *         try:             # <<<<<<<<<<<<<<
@@ -15590,7 +15405,7 @@ static PyObject *__pyx_f_6Scroll_roll_surface_c(PyObject *__pyx_v_surface_, stru
     goto __pyx_L18_except_error;
     __pyx_L18_except_error:;
 
-    /* "Scroll.pyx":1057
+    /* "Scroll.pyx":1077
  *         raise ValueError('\nArray shape not compatible.')
  * 
  *     try:             # <<<<<<<<<<<<<<
@@ -15610,31 +15425,31 @@ static PyObject *__pyx_f_6Scroll_roll_surface_c(PyObject *__pyx_v_surface_, stru
     __pyx_L21_try_end:;
   }
 
-  /* "Scroll.pyx":1065
+  /* "Scroll.pyx":1085
  *             raise ValueError('Surface not compatible.')
  * 
  *     if dx != 0:             # <<<<<<<<<<<<<<
  *         array = numpy.roll(array, dx, axis=1)
  *     if dy != 0:
  */
-  __pyx_t_9 = PyObject_RichCompare(__pyx_v_dx, __pyx_int_0, Py_NE); __Pyx_XGOTREF(__pyx_t_9); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1065, __pyx_L1_error)
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_9); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 1065, __pyx_L1_error)
+  __pyx_t_9 = PyObject_RichCompare(__pyx_v_dx, __pyx_int_0, Py_NE); __Pyx_XGOTREF(__pyx_t_9); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1085, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_9); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 1085, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
   if (__pyx_t_2) {
 
-    /* "Scroll.pyx":1066
+    /* "Scroll.pyx":1086
  * 
  *     if dx != 0:
  *         array = numpy.roll(array, dx, axis=1)             # <<<<<<<<<<<<<<
  *     if dy != 0:
  *         array = numpy.roll(array, dy, axis=0)
  */
-    __pyx_t_9 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1066, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1086, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_roll); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1066, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_roll); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1086, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-    __pyx_t_9 = PyTuple_New(2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1066, __pyx_L1_error)
+    __pyx_t_9 = PyTuple_New(2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1086, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
     __Pyx_INCREF(__pyx_v_array);
     __Pyx_GIVEREF(__pyx_v_array);
@@ -15642,10 +15457,10 @@ static PyObject *__pyx_f_6Scroll_roll_surface_c(PyObject *__pyx_v_surface_, stru
     __Pyx_INCREF(__pyx_v_dx);
     __Pyx_GIVEREF(__pyx_v_dx);
     PyTuple_SET_ITEM(__pyx_t_9, 1, __pyx_v_dx);
-    __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1066, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1086, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_axis, __pyx_int_1) < 0) __PYX_ERR(0, 1066, __pyx_L1_error)
-    __pyx_t_18 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_9, __pyx_t_4); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 1066, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_axis, __pyx_int_1) < 0) __PYX_ERR(0, 1086, __pyx_L1_error)
+    __pyx_t_18 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_9, __pyx_t_4); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 1086, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_18);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
@@ -15653,7 +15468,7 @@ static PyObject *__pyx_f_6Scroll_roll_surface_c(PyObject *__pyx_v_surface_, stru
     __Pyx_DECREF_SET(__pyx_v_array, __pyx_t_18);
     __pyx_t_18 = 0;
 
-    /* "Scroll.pyx":1065
+    /* "Scroll.pyx":1085
  *             raise ValueError('Surface not compatible.')
  * 
  *     if dx != 0:             # <<<<<<<<<<<<<<
@@ -15662,31 +15477,31 @@ static PyObject *__pyx_f_6Scroll_roll_surface_c(PyObject *__pyx_v_surface_, stru
  */
   }
 
-  /* "Scroll.pyx":1067
+  /* "Scroll.pyx":1087
  *     if dx != 0:
  *         array = numpy.roll(array, dx, axis=1)
  *     if dy != 0:             # <<<<<<<<<<<<<<
  *         array = numpy.roll(array, dy, axis=0)
  *     return pygame.image.frombuffer(array.transpose(1, 0, 2), (w, h), 'RGB'), array
  */
-  __pyx_t_18 = PyObject_RichCompare(__pyx_v_dy, __pyx_int_0, Py_NE); __Pyx_XGOTREF(__pyx_t_18); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 1067, __pyx_L1_error)
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_18); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 1067, __pyx_L1_error)
+  __pyx_t_18 = PyObject_RichCompare(__pyx_v_dy, __pyx_int_0, Py_NE); __Pyx_XGOTREF(__pyx_t_18); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 1087, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_18); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 1087, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
   if (__pyx_t_2) {
 
-    /* "Scroll.pyx":1068
+    /* "Scroll.pyx":1088
  *         array = numpy.roll(array, dx, axis=1)
  *     if dy != 0:
  *         array = numpy.roll(array, dy, axis=0)             # <<<<<<<<<<<<<<
  *     return pygame.image.frombuffer(array.transpose(1, 0, 2), (w, h), 'RGB'), array
  * 
  */
-    __pyx_t_18 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 1068, __pyx_L1_error)
+    __pyx_t_18 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 1088, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_18);
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_18, __pyx_n_s_roll); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1068, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_18, __pyx_n_s_roll); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1088, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
-    __pyx_t_18 = PyTuple_New(2); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 1068, __pyx_L1_error)
+    __pyx_t_18 = PyTuple_New(2); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 1088, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_18);
     __Pyx_INCREF(__pyx_v_array);
     __Pyx_GIVEREF(__pyx_v_array);
@@ -15694,10 +15509,10 @@ static PyObject *__pyx_f_6Scroll_roll_surface_c(PyObject *__pyx_v_surface_, stru
     __Pyx_INCREF(__pyx_v_dy);
     __Pyx_GIVEREF(__pyx_v_dy);
     PyTuple_SET_ITEM(__pyx_t_18, 1, __pyx_v_dy);
-    __pyx_t_9 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1068, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1088, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
-    if (PyDict_SetItem(__pyx_t_9, __pyx_n_s_axis, __pyx_int_0) < 0) __PYX_ERR(0, 1068, __pyx_L1_error)
-    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_18, __pyx_t_9); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1068, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_9, __pyx_n_s_axis, __pyx_int_0) < 0) __PYX_ERR(0, 1088, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_18, __pyx_t_9); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1088, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
@@ -15705,7 +15520,7 @@ static PyObject *__pyx_f_6Scroll_roll_surface_c(PyObject *__pyx_v_surface_, stru
     __Pyx_DECREF_SET(__pyx_v_array, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "Scroll.pyx":1067
+    /* "Scroll.pyx":1087
  *     if dx != 0:
  *         array = numpy.roll(array, dx, axis=1)
  *     if dy != 0:             # <<<<<<<<<<<<<<
@@ -15714,7 +15529,7 @@ static PyObject *__pyx_f_6Scroll_roll_surface_c(PyObject *__pyx_v_surface_, stru
  */
   }
 
-  /* "Scroll.pyx":1069
+  /* "Scroll.pyx":1089
  *     if dy != 0:
  *         array = numpy.roll(array, dy, axis=0)
  *     return pygame.image.frombuffer(array.transpose(1, 0, 2), (w, h), 'RGB'), array             # <<<<<<<<<<<<<<
@@ -15722,24 +15537,24 @@ static PyObject *__pyx_f_6Scroll_roll_surface_c(PyObject *__pyx_v_surface_, stru
  * @cython.boundscheck(False)
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_9 = __Pyx_GetModuleGlobalName(__pyx_n_s_pygame); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1069, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_GetModuleGlobalName(__pyx_n_s_pygame); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1089, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
-  __pyx_t_18 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_image); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 1069, __pyx_L1_error)
+  __pyx_t_18 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_image); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 1089, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_18);
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_18, __pyx_n_s_frombuffer); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1069, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_18, __pyx_n_s_frombuffer); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1089, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
-  __pyx_t_18 = __Pyx_PyObject_GetAttrStr(__pyx_v_array, __pyx_n_s_transpose); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 1069, __pyx_L1_error)
+  __pyx_t_18 = __Pyx_PyObject_GetAttrStr(__pyx_v_array, __pyx_n_s_transpose); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 1089, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_18);
-  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_18, __pyx_tuple__24, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1069, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_18, __pyx_tuple__24, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1089, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
-  __pyx_t_18 = __Pyx_PyInt_From_int(__pyx_v_w); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 1069, __pyx_L1_error)
+  __pyx_t_18 = __Pyx_PyInt_From_int(__pyx_v_w); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 1089, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_18);
-  __pyx_t_8 = __Pyx_PyInt_From_int(__pyx_v_h); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1069, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyInt_From_int(__pyx_v_h); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1089, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
-  __pyx_t_16 = PyTuple_New(2); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 1069, __pyx_L1_error)
+  __pyx_t_16 = PyTuple_New(2); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 1089, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_16);
   __Pyx_GIVEREF(__pyx_t_18);
   PyTuple_SET_ITEM(__pyx_t_16, 0, __pyx_t_18);
@@ -15762,7 +15577,7 @@ static PyObject *__pyx_f_6Scroll_roll_surface_c(PyObject *__pyx_v_surface_, stru
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_9)) {
     PyObject *__pyx_temp[4] = {__pyx_t_8, __pyx_t_4, __pyx_t_16, __pyx_n_s_RGB};
-    __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_9, __pyx_temp+1-__pyx_t_12, 3+__pyx_t_12); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1069, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_9, __pyx_temp+1-__pyx_t_12, 3+__pyx_t_12); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1089, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -15772,7 +15587,7 @@ static PyObject *__pyx_f_6Scroll_roll_surface_c(PyObject *__pyx_v_surface_, stru
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_9)) {
     PyObject *__pyx_temp[4] = {__pyx_t_8, __pyx_t_4, __pyx_t_16, __pyx_n_s_RGB};
-    __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_9, __pyx_temp+1-__pyx_t_12, 3+__pyx_t_12); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1069, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_9, __pyx_temp+1-__pyx_t_12, 3+__pyx_t_12); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1089, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -15780,7 +15595,7 @@ static PyObject *__pyx_f_6Scroll_roll_surface_c(PyObject *__pyx_v_surface_, stru
   } else
   #endif
   {
-    __pyx_t_18 = PyTuple_New(3+__pyx_t_12); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 1069, __pyx_L1_error)
+    __pyx_t_18 = PyTuple_New(3+__pyx_t_12); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 1089, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_18);
     if (__pyx_t_8) {
       __Pyx_GIVEREF(__pyx_t_8); PyTuple_SET_ITEM(__pyx_t_18, 0, __pyx_t_8); __pyx_t_8 = NULL;
@@ -15794,12 +15609,12 @@ static PyObject *__pyx_f_6Scroll_roll_surface_c(PyObject *__pyx_v_surface_, stru
     PyTuple_SET_ITEM(__pyx_t_18, 2+__pyx_t_12, __pyx_n_s_RGB);
     __pyx_t_4 = 0;
     __pyx_t_16 = 0;
-    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_9, __pyx_t_18, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1069, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_9, __pyx_t_18, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1089, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
   }
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-  __pyx_t_9 = PyTuple_New(2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1069, __pyx_L1_error)
+  __pyx_t_9 = PyTuple_New(2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1089, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_GIVEREF(__pyx_t_3);
   PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_3);
@@ -15811,7 +15626,7 @@ static PyObject *__pyx_f_6Scroll_roll_surface_c(PyObject *__pyx_v_surface_, stru
   __pyx_t_9 = 0;
   goto __pyx_L0;
 
-  /* "Scroll.pyx":1034
+  /* "Scroll.pyx":1054
  * @cython.nonecheck(False)
  * @cython.cdivision(True)
  * cdef roll_surface_c(surface_, dx=0, dy=0):             # <<<<<<<<<<<<<<
@@ -15838,7 +15653,7 @@ static PyObject *__pyx_f_6Scroll_roll_surface_c(PyObject *__pyx_v_surface_, stru
   return __pyx_r;
 }
 
-/* "Scroll.pyx":1075
+/* "Scroll.pyx":1095
  * @cython.nonecheck(False)
  * @cython.cdivision(True)
  * cdef scroll_surface24_c(surface, int dy, int dx):             # <<<<<<<<<<<<<<
@@ -15945,45 +15760,45 @@ static PyObject *__pyx_f_6Scroll_scroll_surface24_c(PyObject *__pyx_v_surface, i
   Py_ssize_t __pyx_t_82;
   __Pyx_RefNannySetupContext("scroll_surface24_c", 0);
 
-  /* "Scroll.pyx":1084
+  /* "Scroll.pyx":1104
  *     :return: Return a tuple (surface:Surface, array:numpy.ndarray) type (w, h, 3) numpy uint8
  *     """
  *     if not isinstance(dx, int):             # <<<<<<<<<<<<<<
  *         raise TypeError('dx, an integer is required (got type %s)' % type(dx))
  *     if not isinstance(dy, int):
  */
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_dx); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1084, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_dx); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1104, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_2 = PyInt_Check(__pyx_t_1); 
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_t_3 = ((!(__pyx_t_2 != 0)) != 0);
   if (__pyx_t_3) {
 
-    /* "Scroll.pyx":1085
+    /* "Scroll.pyx":1105
  *     """
  *     if not isinstance(dx, int):
  *         raise TypeError('dx, an integer is required (got type %s)' % type(dx))             # <<<<<<<<<<<<<<
  *     if not isinstance(dy, int):
  *         raise TypeError('dy, an integer is required (got type %s)' % type(dy))
  */
-    __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_dx); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1085, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_dx); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1105, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_4 = __Pyx_PyString_Format(__pyx_kp_s_dx_an_integer_is_required_got_ty, ((PyObject *)Py_TYPE(__pyx_t_1))); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1085, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyString_Format(__pyx_kp_s_dx_an_integer_is_required_got_ty, ((PyObject *)Py_TYPE(__pyx_t_1))); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1105, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1085, __pyx_L1_error)
+    __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1105, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_GIVEREF(__pyx_t_4);
     PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_4);
     __pyx_t_4 = 0;
-    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_t_1, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1085, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_t_1, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1105, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_Raise(__pyx_t_4, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __PYX_ERR(0, 1085, __pyx_L1_error)
+    __PYX_ERR(0, 1105, __pyx_L1_error)
 
-    /* "Scroll.pyx":1084
+    /* "Scroll.pyx":1104
  *     :return: Return a tuple (surface:Surface, array:numpy.ndarray) type (w, h, 3) numpy uint8
  *     """
  *     if not isinstance(dx, int):             # <<<<<<<<<<<<<<
@@ -15992,45 +15807,45 @@ static PyObject *__pyx_f_6Scroll_scroll_surface24_c(PyObject *__pyx_v_surface, i
  */
   }
 
-  /* "Scroll.pyx":1086
+  /* "Scroll.pyx":1106
  *     if not isinstance(dx, int):
  *         raise TypeError('dx, an integer is required (got type %s)' % type(dx))
  *     if not isinstance(dy, int):             # <<<<<<<<<<<<<<
  *         raise TypeError('dy, an integer is required (got type %s)' % type(dy))
  *     if not isinstance(surface, pygame.Surface):
  */
-  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_dy); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1086, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_dy); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1106, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_3 = PyInt_Check(__pyx_t_4); 
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_2 = ((!(__pyx_t_3 != 0)) != 0);
   if (__pyx_t_2) {
 
-    /* "Scroll.pyx":1087
+    /* "Scroll.pyx":1107
  *         raise TypeError('dx, an integer is required (got type %s)' % type(dx))
  *     if not isinstance(dy, int):
  *         raise TypeError('dy, an integer is required (got type %s)' % type(dy))             # <<<<<<<<<<<<<<
  *     if not isinstance(surface, pygame.Surface):
  *         raise TypeError('surface, a pygame.Surface is required (got type %s)' % type(surface))
  */
-    __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_dy); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1087, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_dy); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1107, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_1 = __Pyx_PyString_Format(__pyx_kp_s_dy_an_integer_is_required_got_ty, ((PyObject *)Py_TYPE(__pyx_t_4))); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1087, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyString_Format(__pyx_kp_s_dy_an_integer_is_required_got_ty, ((PyObject *)Py_TYPE(__pyx_t_4))); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1107, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1087, __pyx_L1_error)
+    __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1107, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_GIVEREF(__pyx_t_1);
     PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_1);
     __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_t_4, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1087, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_t_4, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1107, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_Raise(__pyx_t_1, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __PYX_ERR(0, 1087, __pyx_L1_error)
+    __PYX_ERR(0, 1107, __pyx_L1_error)
 
-    /* "Scroll.pyx":1086
+    /* "Scroll.pyx":1106
  *     if not isinstance(dx, int):
  *         raise TypeError('dx, an integer is required (got type %s)' % type(dx))
  *     if not isinstance(dy, int):             # <<<<<<<<<<<<<<
@@ -16039,45 +15854,45 @@ static PyObject *__pyx_f_6Scroll_scroll_surface24_c(PyObject *__pyx_v_surface, i
  */
   }
 
-  /* "Scroll.pyx":1088
+  /* "Scroll.pyx":1108
  *     if not isinstance(dy, int):
  *         raise TypeError('dy, an integer is required (got type %s)' % type(dy))
  *     if not isinstance(surface, pygame.Surface):             # <<<<<<<<<<<<<<
  *         raise TypeError('surface, a pygame.Surface is required (got type %s)' % type(surface))
  * 
  */
-  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_pygame); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1088, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_pygame); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1108, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_Surface); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1088, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_Surface); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1108, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_2 = PyObject_IsInstance(__pyx_v_surface, __pyx_t_4); if (unlikely(__pyx_t_2 == ((int)-1))) __PYX_ERR(0, 1088, __pyx_L1_error)
+  __pyx_t_2 = PyObject_IsInstance(__pyx_v_surface, __pyx_t_4); if (unlikely(__pyx_t_2 == ((int)-1))) __PYX_ERR(0, 1108, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_3 = ((!(__pyx_t_2 != 0)) != 0);
   if (__pyx_t_3) {
 
-    /* "Scroll.pyx":1089
+    /* "Scroll.pyx":1109
  *         raise TypeError('dy, an integer is required (got type %s)' % type(dy))
  *     if not isinstance(surface, pygame.Surface):
  *         raise TypeError('surface, a pygame.Surface is required (got type %s)' % type(surface))             # <<<<<<<<<<<<<<
  * 
  *     cdef int w, h, dim
  */
-    __pyx_t_4 = __Pyx_PyString_Format(__pyx_kp_s_surface_a_pygame_Surface_is_requ, ((PyObject *)Py_TYPE(__pyx_v_surface))); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1089, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyString_Format(__pyx_kp_s_surface_a_pygame_Surface_is_requ, ((PyObject *)Py_TYPE(__pyx_v_surface))); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1109, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1089, __pyx_L1_error)
+    __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1109, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_GIVEREF(__pyx_t_4);
     PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_4);
     __pyx_t_4 = 0;
-    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_t_1, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1089, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_t_1, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1109, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_Raise(__pyx_t_4, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __PYX_ERR(0, 1089, __pyx_L1_error)
+    __PYX_ERR(0, 1109, __pyx_L1_error)
 
-    /* "Scroll.pyx":1088
+    /* "Scroll.pyx":1108
  *     if not isinstance(dy, int):
  *         raise TypeError('dy, an integer is required (got type %s)' % type(dy))
  *     if not isinstance(surface, pygame.Surface):             # <<<<<<<<<<<<<<
@@ -16086,7 +15901,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface24_c(PyObject *__pyx_v_surface, i
  */
   }
 
-  /* "Scroll.pyx":1093
+  /* "Scroll.pyx":1113
  *     cdef int w, h, dim
  * 
  *     try:             # <<<<<<<<<<<<<<
@@ -16102,14 +15917,14 @@ static PyObject *__pyx_f_6Scroll_scroll_surface24_c(PyObject *__pyx_v_surface, i
     __Pyx_XGOTREF(__pyx_t_7);
     /*try:*/ {
 
-      /* "Scroll.pyx":1094
+      /* "Scroll.pyx":1114
  * 
  *     try:
  *         array = pixels3d(surface)             # <<<<<<<<<<<<<<
  *         alpha = pixels_alpha(surface)
  *     except (ValueError, pygame.error) as e:
  */
-      __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_pixels3d); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1094, __pyx_L6_error)
+      __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_pixels3d); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1114, __pyx_L6_error)
       __Pyx_GOTREF(__pyx_t_1);
       __pyx_t_8 = NULL;
       if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_1))) {
@@ -16122,13 +15937,13 @@ static PyObject *__pyx_f_6Scroll_scroll_surface24_c(PyObject *__pyx_v_surface, i
         }
       }
       if (!__pyx_t_8) {
-        __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_v_surface); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1094, __pyx_L6_error)
+        __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_v_surface); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1114, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_4);
       } else {
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_1)) {
           PyObject *__pyx_temp[2] = {__pyx_t_8, __pyx_v_surface};
-          __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1094, __pyx_L6_error)
+          __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1114, __pyx_L6_error)
           __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
           __Pyx_GOTREF(__pyx_t_4);
         } else
@@ -16136,19 +15951,19 @@ static PyObject *__pyx_f_6Scroll_scroll_surface24_c(PyObject *__pyx_v_surface, i
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_1)) {
           PyObject *__pyx_temp[2] = {__pyx_t_8, __pyx_v_surface};
-          __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1094, __pyx_L6_error)
+          __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1114, __pyx_L6_error)
           __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
           __Pyx_GOTREF(__pyx_t_4);
         } else
         #endif
         {
-          __pyx_t_9 = PyTuple_New(1+1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1094, __pyx_L6_error)
+          __pyx_t_9 = PyTuple_New(1+1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1114, __pyx_L6_error)
           __Pyx_GOTREF(__pyx_t_9);
           __Pyx_GIVEREF(__pyx_t_8); PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_8); __pyx_t_8 = NULL;
           __Pyx_INCREF(__pyx_v_surface);
           __Pyx_GIVEREF(__pyx_v_surface);
           PyTuple_SET_ITEM(__pyx_t_9, 0+1, __pyx_v_surface);
-          __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_9, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1094, __pyx_L6_error)
+          __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_9, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1114, __pyx_L6_error)
           __Pyx_GOTREF(__pyx_t_4);
           __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
         }
@@ -16157,14 +15972,14 @@ static PyObject *__pyx_f_6Scroll_scroll_surface24_c(PyObject *__pyx_v_surface, i
       __pyx_v_array = __pyx_t_4;
       __pyx_t_4 = 0;
 
-      /* "Scroll.pyx":1095
+      /* "Scroll.pyx":1115
  *     try:
  *         array = pixels3d(surface)
  *         alpha = pixels_alpha(surface)             # <<<<<<<<<<<<<<
  *     except (ValueError, pygame.error) as e:
  *         try:
  */
-      __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_pixels_alpha); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1095, __pyx_L6_error)
+      __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_pixels_alpha); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1115, __pyx_L6_error)
       __Pyx_GOTREF(__pyx_t_1);
       __pyx_t_9 = NULL;
       if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_1))) {
@@ -16177,13 +15992,13 @@ static PyObject *__pyx_f_6Scroll_scroll_surface24_c(PyObject *__pyx_v_surface, i
         }
       }
       if (!__pyx_t_9) {
-        __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_v_surface); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1095, __pyx_L6_error)
+        __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_v_surface); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1115, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_4);
       } else {
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_1)) {
           PyObject *__pyx_temp[2] = {__pyx_t_9, __pyx_v_surface};
-          __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1095, __pyx_L6_error)
+          __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1115, __pyx_L6_error)
           __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
           __Pyx_GOTREF(__pyx_t_4);
         } else
@@ -16191,19 +16006,19 @@ static PyObject *__pyx_f_6Scroll_scroll_surface24_c(PyObject *__pyx_v_surface, i
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_1)) {
           PyObject *__pyx_temp[2] = {__pyx_t_9, __pyx_v_surface};
-          __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1095, __pyx_L6_error)
+          __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1115, __pyx_L6_error)
           __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
           __Pyx_GOTREF(__pyx_t_4);
         } else
         #endif
         {
-          __pyx_t_8 = PyTuple_New(1+1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1095, __pyx_L6_error)
+          __pyx_t_8 = PyTuple_New(1+1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1115, __pyx_L6_error)
           __Pyx_GOTREF(__pyx_t_8);
           __Pyx_GIVEREF(__pyx_t_9); PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_9); __pyx_t_9 = NULL;
           __Pyx_INCREF(__pyx_v_surface);
           __Pyx_GIVEREF(__pyx_v_surface);
           PyTuple_SET_ITEM(__pyx_t_8, 0+1, __pyx_v_surface);
-          __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_8, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1095, __pyx_L6_error)
+          __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_8, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1115, __pyx_L6_error)
           __Pyx_GOTREF(__pyx_t_4);
           __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
         }
@@ -16212,7 +16027,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface24_c(PyObject *__pyx_v_surface, i
       __pyx_v_alpha = __pyx_t_4;
       __pyx_t_4 = 0;
 
-      /* "Scroll.pyx":1093
+      /* "Scroll.pyx":1113
  *     cdef int w, h, dim
  * 
  *     try:             # <<<<<<<<<<<<<<
@@ -16230,30 +16045,30 @@ static PyObject *__pyx_f_6Scroll_scroll_surface24_c(PyObject *__pyx_v_surface, i
     __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-    /* "Scroll.pyx":1096
+    /* "Scroll.pyx":1116
  *         array = pixels3d(surface)
  *         alpha = pixels_alpha(surface)
  *     except (ValueError, pygame.error) as e:             # <<<<<<<<<<<<<<
  *         try:
  *             array = array3d(surface)
  */
-    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_pygame); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1096, __pyx_L8_except_error)
+    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_pygame); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1116, __pyx_L8_except_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_error); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1096, __pyx_L8_except_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_error); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1116, __pyx_L8_except_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_t_10 = __Pyx_PyErr_ExceptionMatches(__pyx_builtin_ValueError) || __Pyx_PyErr_ExceptionMatches(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     if (__pyx_t_10) {
       __Pyx_AddTraceback("Scroll.scroll_surface24_c", __pyx_clineno, __pyx_lineno, __pyx_filename);
-      if (__Pyx_GetException(&__pyx_t_1, &__pyx_t_4, &__pyx_t_8) < 0) __PYX_ERR(0, 1096, __pyx_L8_except_error)
+      if (__Pyx_GetException(&__pyx_t_1, &__pyx_t_4, &__pyx_t_8) < 0) __PYX_ERR(0, 1116, __pyx_L8_except_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_INCREF(__pyx_t_4);
       __pyx_v_e = __pyx_t_4;
 
-      /* "Scroll.pyx":1097
+      /* "Scroll.pyx":1117
  *         alpha = pixels_alpha(surface)
  *     except (ValueError, pygame.error) as e:
  *         try:             # <<<<<<<<<<<<<<
@@ -16269,14 +16084,14 @@ static PyObject *__pyx_f_6Scroll_scroll_surface24_c(PyObject *__pyx_v_surface, i
         __Pyx_XGOTREF(__pyx_t_13);
         /*try:*/ {
 
-          /* "Scroll.pyx":1098
+          /* "Scroll.pyx":1118
  *     except (ValueError, pygame.error) as e:
  *         try:
  *             array = array3d(surface)             # <<<<<<<<<<<<<<
  *             alpha = array_alpha(surface)
  *         except (ValueError, pygame.error) as e:
  */
-          __pyx_t_14 = __Pyx_GetModuleGlobalName(__pyx_n_s_array3d); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 1098, __pyx_L14_error)
+          __pyx_t_14 = __Pyx_GetModuleGlobalName(__pyx_n_s_array3d); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 1118, __pyx_L14_error)
           __Pyx_GOTREF(__pyx_t_14);
           __pyx_t_15 = NULL;
           if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_14))) {
@@ -16289,13 +16104,13 @@ static PyObject *__pyx_f_6Scroll_scroll_surface24_c(PyObject *__pyx_v_surface, i
             }
           }
           if (!__pyx_t_15) {
-            __pyx_t_9 = __Pyx_PyObject_CallOneArg(__pyx_t_14, __pyx_v_surface); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1098, __pyx_L14_error)
+            __pyx_t_9 = __Pyx_PyObject_CallOneArg(__pyx_t_14, __pyx_v_surface); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1118, __pyx_L14_error)
             __Pyx_GOTREF(__pyx_t_9);
           } else {
             #if CYTHON_FAST_PYCALL
             if (PyFunction_Check(__pyx_t_14)) {
               PyObject *__pyx_temp[2] = {__pyx_t_15, __pyx_v_surface};
-              __pyx_t_9 = __Pyx_PyFunction_FastCall(__pyx_t_14, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1098, __pyx_L14_error)
+              __pyx_t_9 = __Pyx_PyFunction_FastCall(__pyx_t_14, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1118, __pyx_L14_error)
               __Pyx_XDECREF(__pyx_t_15); __pyx_t_15 = 0;
               __Pyx_GOTREF(__pyx_t_9);
             } else
@@ -16303,19 +16118,19 @@ static PyObject *__pyx_f_6Scroll_scroll_surface24_c(PyObject *__pyx_v_surface, i
             #if CYTHON_FAST_PYCCALL
             if (__Pyx_PyFastCFunction_Check(__pyx_t_14)) {
               PyObject *__pyx_temp[2] = {__pyx_t_15, __pyx_v_surface};
-              __pyx_t_9 = __Pyx_PyCFunction_FastCall(__pyx_t_14, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1098, __pyx_L14_error)
+              __pyx_t_9 = __Pyx_PyCFunction_FastCall(__pyx_t_14, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1118, __pyx_L14_error)
               __Pyx_XDECREF(__pyx_t_15); __pyx_t_15 = 0;
               __Pyx_GOTREF(__pyx_t_9);
             } else
             #endif
             {
-              __pyx_t_16 = PyTuple_New(1+1); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 1098, __pyx_L14_error)
+              __pyx_t_16 = PyTuple_New(1+1); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 1118, __pyx_L14_error)
               __Pyx_GOTREF(__pyx_t_16);
               __Pyx_GIVEREF(__pyx_t_15); PyTuple_SET_ITEM(__pyx_t_16, 0, __pyx_t_15); __pyx_t_15 = NULL;
               __Pyx_INCREF(__pyx_v_surface);
               __Pyx_GIVEREF(__pyx_v_surface);
               PyTuple_SET_ITEM(__pyx_t_16, 0+1, __pyx_v_surface);
-              __pyx_t_9 = __Pyx_PyObject_Call(__pyx_t_14, __pyx_t_16, NULL); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1098, __pyx_L14_error)
+              __pyx_t_9 = __Pyx_PyObject_Call(__pyx_t_14, __pyx_t_16, NULL); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1118, __pyx_L14_error)
               __Pyx_GOTREF(__pyx_t_9);
               __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
             }
@@ -16324,14 +16139,14 @@ static PyObject *__pyx_f_6Scroll_scroll_surface24_c(PyObject *__pyx_v_surface, i
           __Pyx_XDECREF_SET(__pyx_v_array, __pyx_t_9);
           __pyx_t_9 = 0;
 
-          /* "Scroll.pyx":1099
+          /* "Scroll.pyx":1119
  *         try:
  *             array = array3d(surface)
  *             alpha = array_alpha(surface)             # <<<<<<<<<<<<<<
  *         except (ValueError, pygame.error) as e:
  *             raise ValueError('\nIncompatible pixel format.')
  */
-          __pyx_t_14 = __Pyx_GetModuleGlobalName(__pyx_n_s_array_alpha); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 1099, __pyx_L14_error)
+          __pyx_t_14 = __Pyx_GetModuleGlobalName(__pyx_n_s_array_alpha); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 1119, __pyx_L14_error)
           __Pyx_GOTREF(__pyx_t_14);
           __pyx_t_16 = NULL;
           if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_14))) {
@@ -16344,13 +16159,13 @@ static PyObject *__pyx_f_6Scroll_scroll_surface24_c(PyObject *__pyx_v_surface, i
             }
           }
           if (!__pyx_t_16) {
-            __pyx_t_9 = __Pyx_PyObject_CallOneArg(__pyx_t_14, __pyx_v_surface); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1099, __pyx_L14_error)
+            __pyx_t_9 = __Pyx_PyObject_CallOneArg(__pyx_t_14, __pyx_v_surface); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1119, __pyx_L14_error)
             __Pyx_GOTREF(__pyx_t_9);
           } else {
             #if CYTHON_FAST_PYCALL
             if (PyFunction_Check(__pyx_t_14)) {
               PyObject *__pyx_temp[2] = {__pyx_t_16, __pyx_v_surface};
-              __pyx_t_9 = __Pyx_PyFunction_FastCall(__pyx_t_14, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1099, __pyx_L14_error)
+              __pyx_t_9 = __Pyx_PyFunction_FastCall(__pyx_t_14, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1119, __pyx_L14_error)
               __Pyx_XDECREF(__pyx_t_16); __pyx_t_16 = 0;
               __Pyx_GOTREF(__pyx_t_9);
             } else
@@ -16358,19 +16173,19 @@ static PyObject *__pyx_f_6Scroll_scroll_surface24_c(PyObject *__pyx_v_surface, i
             #if CYTHON_FAST_PYCCALL
             if (__Pyx_PyFastCFunction_Check(__pyx_t_14)) {
               PyObject *__pyx_temp[2] = {__pyx_t_16, __pyx_v_surface};
-              __pyx_t_9 = __Pyx_PyCFunction_FastCall(__pyx_t_14, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1099, __pyx_L14_error)
+              __pyx_t_9 = __Pyx_PyCFunction_FastCall(__pyx_t_14, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1119, __pyx_L14_error)
               __Pyx_XDECREF(__pyx_t_16); __pyx_t_16 = 0;
               __Pyx_GOTREF(__pyx_t_9);
             } else
             #endif
             {
-              __pyx_t_15 = PyTuple_New(1+1); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 1099, __pyx_L14_error)
+              __pyx_t_15 = PyTuple_New(1+1); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 1119, __pyx_L14_error)
               __Pyx_GOTREF(__pyx_t_15);
               __Pyx_GIVEREF(__pyx_t_16); PyTuple_SET_ITEM(__pyx_t_15, 0, __pyx_t_16); __pyx_t_16 = NULL;
               __Pyx_INCREF(__pyx_v_surface);
               __Pyx_GIVEREF(__pyx_v_surface);
               PyTuple_SET_ITEM(__pyx_t_15, 0+1, __pyx_v_surface);
-              __pyx_t_9 = __Pyx_PyObject_Call(__pyx_t_14, __pyx_t_15, NULL); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1099, __pyx_L14_error)
+              __pyx_t_9 = __Pyx_PyObject_Call(__pyx_t_14, __pyx_t_15, NULL); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1119, __pyx_L14_error)
               __Pyx_GOTREF(__pyx_t_9);
               __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
             }
@@ -16379,7 +16194,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface24_c(PyObject *__pyx_v_surface, i
           __Pyx_XDECREF_SET(__pyx_v_alpha, __pyx_t_9);
           __pyx_t_9 = 0;
 
-          /* "Scroll.pyx":1097
+          /* "Scroll.pyx":1117
  *         alpha = pixels_alpha(surface)
  *     except (ValueError, pygame.error) as e:
  *         try:             # <<<<<<<<<<<<<<
@@ -16397,46 +16212,46 @@ static PyObject *__pyx_f_6Scroll_scroll_surface24_c(PyObject *__pyx_v_surface, i
         __Pyx_XDECREF(__pyx_t_14); __pyx_t_14 = 0;
         __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-        /* "Scroll.pyx":1100
+        /* "Scroll.pyx":1120
  *             array = array3d(surface)
  *             alpha = array_alpha(surface)
  *         except (ValueError, pygame.error) as e:             # <<<<<<<<<<<<<<
  *             raise ValueError('\nIncompatible pixel format.')
  * 
  */
-        __pyx_t_9 = __Pyx_GetModuleGlobalName(__pyx_n_s_pygame); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1100, __pyx_L16_except_error)
+        __pyx_t_9 = __Pyx_GetModuleGlobalName(__pyx_n_s_pygame); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1120, __pyx_L16_except_error)
         __Pyx_GOTREF(__pyx_t_9);
-        __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_error); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 1100, __pyx_L16_except_error)
+        __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_error); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 1120, __pyx_L16_except_error)
         __Pyx_GOTREF(__pyx_t_14);
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
         __pyx_t_10 = __Pyx_PyErr_ExceptionMatches(__pyx_builtin_ValueError) || __Pyx_PyErr_ExceptionMatches(__pyx_t_14);
         __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
         if (__pyx_t_10) {
           __Pyx_AddTraceback("Scroll.scroll_surface24_c", __pyx_clineno, __pyx_lineno, __pyx_filename);
-          if (__Pyx_GetException(&__pyx_t_14, &__pyx_t_9, &__pyx_t_15) < 0) __PYX_ERR(0, 1100, __pyx_L16_except_error)
+          if (__Pyx_GetException(&__pyx_t_14, &__pyx_t_9, &__pyx_t_15) < 0) __PYX_ERR(0, 1120, __pyx_L16_except_error)
           __Pyx_GOTREF(__pyx_t_14);
           __Pyx_GOTREF(__pyx_t_9);
           __Pyx_GOTREF(__pyx_t_15);
           __Pyx_INCREF(__pyx_t_9);
           __Pyx_DECREF_SET(__pyx_v_e, __pyx_t_9);
 
-          /* "Scroll.pyx":1101
+          /* "Scroll.pyx":1121
  *             alpha = array_alpha(surface)
  *         except (ValueError, pygame.error) as e:
  *             raise ValueError('\nIncompatible pixel format.')             # <<<<<<<<<<<<<<
  * 
  *     try:
  */
-          __pyx_t_16 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__25, NULL); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 1101, __pyx_L16_except_error)
+          __pyx_t_16 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__25, NULL); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 1121, __pyx_L16_except_error)
           __Pyx_GOTREF(__pyx_t_16);
           __Pyx_Raise(__pyx_t_16, 0, 0, 0);
           __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
-          __PYX_ERR(0, 1101, __pyx_L16_except_error)
+          __PYX_ERR(0, 1121, __pyx_L16_except_error)
         }
         goto __pyx_L16_except_error;
         __pyx_L16_except_error:;
 
-        /* "Scroll.pyx":1097
+        /* "Scroll.pyx":1117
  *         alpha = pixels_alpha(surface)
  *     except (ValueError, pygame.error) as e:
  *         try:             # <<<<<<<<<<<<<<
@@ -16458,7 +16273,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface24_c(PyObject *__pyx_v_surface, i
     goto __pyx_L8_except_error;
     __pyx_L8_except_error:;
 
-    /* "Scroll.pyx":1093
+    /* "Scroll.pyx":1113
  *     cdef int w, h, dim
  * 
  *     try:             # <<<<<<<<<<<<<<
@@ -16478,7 +16293,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface24_c(PyObject *__pyx_v_surface, i
     __pyx_L11_try_end:;
   }
 
-  /* "Scroll.pyx":1103
+  /* "Scroll.pyx":1123
  *             raise ValueError('\nIncompatible pixel format.')
  * 
  *     try:             # <<<<<<<<<<<<<<
@@ -16494,16 +16309,16 @@ static PyObject *__pyx_f_6Scroll_scroll_surface24_c(PyObject *__pyx_v_surface, i
     __Pyx_XGOTREF(__pyx_t_5);
     /*try:*/ {
 
-      /* "Scroll.pyx":1104
+      /* "Scroll.pyx":1124
  * 
  *     try:
  *         w, h, dim = (<object> array).shape[:3]             # <<<<<<<<<<<<<<
  *     except (ValueError, pygame.error) as e:
  *         raise ValueError('\nArray shape not compatible.')
  */
-      __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_array, __pyx_n_s_shape); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1104, __pyx_L24_error)
+      __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_array, __pyx_n_s_shape); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1124, __pyx_L24_error)
       __Pyx_GOTREF(__pyx_t_8);
-      __pyx_t_4 = __Pyx_PyObject_GetSlice(__pyx_t_8, 0, 3, NULL, NULL, &__pyx_slice__26, 0, 1, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1104, __pyx_L24_error)
+      __pyx_t_4 = __Pyx_PyObject_GetSlice(__pyx_t_8, 0, 3, NULL, NULL, &__pyx_slice__26, 0, 1, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1124, __pyx_L24_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       if ((likely(PyTuple_CheckExact(__pyx_t_4))) || (PyList_CheckExact(__pyx_t_4))) {
@@ -16516,7 +16331,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface24_c(PyObject *__pyx_v_surface, i
         if (unlikely(size != 3)) {
           if (size > 3) __Pyx_RaiseTooManyValuesError(3);
           else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-          __PYX_ERR(0, 1104, __pyx_L24_error)
+          __PYX_ERR(0, 1124, __pyx_L24_error)
         }
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
         if (likely(PyTuple_CheckExact(sequence))) {
@@ -16532,17 +16347,17 @@ static PyObject *__pyx_f_6Scroll_scroll_surface24_c(PyObject *__pyx_v_surface, i
         __Pyx_INCREF(__pyx_t_1);
         __Pyx_INCREF(__pyx_t_15);
         #else
-        __pyx_t_8 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1104, __pyx_L24_error)
+        __pyx_t_8 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1124, __pyx_L24_error)
         __Pyx_GOTREF(__pyx_t_8);
-        __pyx_t_1 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1104, __pyx_L24_error)
+        __pyx_t_1 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1124, __pyx_L24_error)
         __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_15 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 1104, __pyx_L24_error)
+        __pyx_t_15 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 1124, __pyx_L24_error)
         __Pyx_GOTREF(__pyx_t_15);
         #endif
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       } else {
         Py_ssize_t index = -1;
-        __pyx_t_9 = PyObject_GetIter(__pyx_t_4); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1104, __pyx_L24_error)
+        __pyx_t_9 = PyObject_GetIter(__pyx_t_4); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1124, __pyx_L24_error)
         __Pyx_GOTREF(__pyx_t_9);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
         __pyx_t_17 = Py_TYPE(__pyx_t_9)->tp_iternext;
@@ -16552,7 +16367,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface24_c(PyObject *__pyx_v_surface, i
         __Pyx_GOTREF(__pyx_t_1);
         index = 2; __pyx_t_15 = __pyx_t_17(__pyx_t_9); if (unlikely(!__pyx_t_15)) goto __pyx_L30_unpacking_failed;
         __Pyx_GOTREF(__pyx_t_15);
-        if (__Pyx_IternextUnpackEndCheck(__pyx_t_17(__pyx_t_9), 3) < 0) __PYX_ERR(0, 1104, __pyx_L24_error)
+        if (__Pyx_IternextUnpackEndCheck(__pyx_t_17(__pyx_t_9), 3) < 0) __PYX_ERR(0, 1124, __pyx_L24_error)
         __pyx_t_17 = NULL;
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
         goto __pyx_L31_unpacking_done;
@@ -16560,20 +16375,20 @@ static PyObject *__pyx_f_6Scroll_scroll_surface24_c(PyObject *__pyx_v_surface, i
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
         __pyx_t_17 = NULL;
         if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-        __PYX_ERR(0, 1104, __pyx_L24_error)
+        __PYX_ERR(0, 1124, __pyx_L24_error)
         __pyx_L31_unpacking_done:;
       }
-      __pyx_t_10 = __Pyx_PyInt_As_int(__pyx_t_8); if (unlikely((__pyx_t_10 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 1104, __pyx_L24_error)
+      __pyx_t_10 = __Pyx_PyInt_As_int(__pyx_t_8); if (unlikely((__pyx_t_10 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 1124, __pyx_L24_error)
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-      __pyx_t_18 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_18 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 1104, __pyx_L24_error)
+      __pyx_t_18 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_18 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 1124, __pyx_L24_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __pyx_t_19 = __Pyx_PyInt_As_int(__pyx_t_15); if (unlikely((__pyx_t_19 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 1104, __pyx_L24_error)
+      __pyx_t_19 = __Pyx_PyInt_As_int(__pyx_t_15); if (unlikely((__pyx_t_19 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 1124, __pyx_L24_error)
       __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
       __pyx_v_w = __pyx_t_10;
       __pyx_v_h = __pyx_t_18;
       __pyx_v_dim = __pyx_t_19;
 
-      /* "Scroll.pyx":1103
+      /* "Scroll.pyx":1123
  *             raise ValueError('\nIncompatible pixel format.')
  * 
  *     try:             # <<<<<<<<<<<<<<
@@ -16594,46 +16409,46 @@ static PyObject *__pyx_f_6Scroll_scroll_surface24_c(PyObject *__pyx_v_surface, i
     __Pyx_XDECREF(__pyx_t_15); __pyx_t_15 = 0;
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-    /* "Scroll.pyx":1105
+    /* "Scroll.pyx":1125
  *     try:
  *         w, h, dim = (<object> array).shape[:3]
  *     except (ValueError, pygame.error) as e:             # <<<<<<<<<<<<<<
  *         raise ValueError('\nArray shape not compatible.')
  * 
  */
-    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_pygame); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1105, __pyx_L26_except_error)
+    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_pygame); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1125, __pyx_L26_except_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_15 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_error); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 1105, __pyx_L26_except_error)
+    __pyx_t_15 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_error); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 1125, __pyx_L26_except_error)
     __Pyx_GOTREF(__pyx_t_15);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_t_19 = __Pyx_PyErr_ExceptionMatches(__pyx_builtin_ValueError) || __Pyx_PyErr_ExceptionMatches(__pyx_t_15);
     __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
     if (__pyx_t_19) {
       __Pyx_AddTraceback("Scroll.scroll_surface24_c", __pyx_clineno, __pyx_lineno, __pyx_filename);
-      if (__Pyx_GetException(&__pyx_t_15, &__pyx_t_4, &__pyx_t_1) < 0) __PYX_ERR(0, 1105, __pyx_L26_except_error)
+      if (__Pyx_GetException(&__pyx_t_15, &__pyx_t_4, &__pyx_t_1) < 0) __PYX_ERR(0, 1125, __pyx_L26_except_error)
       __Pyx_GOTREF(__pyx_t_15);
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_INCREF(__pyx_t_4);
       __Pyx_XDECREF_SET(__pyx_v_e, __pyx_t_4);
 
-      /* "Scroll.pyx":1106
+      /* "Scroll.pyx":1126
  *         w, h, dim = (<object> array).shape[:3]
  *     except (ValueError, pygame.error) as e:
  *         raise ValueError('\nArray shape not compatible.')             # <<<<<<<<<<<<<<
  * 
  *     cdef:
  */
-      __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__27, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1106, __pyx_L26_except_error)
+      __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__27, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1126, __pyx_L26_except_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_Raise(__pyx_t_8, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-      __PYX_ERR(0, 1106, __pyx_L26_except_error)
+      __PYX_ERR(0, 1126, __pyx_L26_except_error)
     }
     goto __pyx_L26_except_error;
     __pyx_L26_except_error:;
 
-    /* "Scroll.pyx":1103
+    /* "Scroll.pyx":1123
  *             raise ValueError('\nIncompatible pixel format.')
  * 
  *     try:             # <<<<<<<<<<<<<<
@@ -16648,7 +16463,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface24_c(PyObject *__pyx_v_surface, i
     __pyx_L29_try_end:;
   }
 
-  /* "Scroll.pyx":1109
+  /* "Scroll.pyx":1129
  * 
  *     cdef:
  *         int i=0, j=0, ii=0, jj=0             # <<<<<<<<<<<<<<
@@ -16660,7 +16475,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface24_c(PyObject *__pyx_v_surface, i
   __pyx_v_ii = 0;
   __pyx_v_jj = 0;
 
-  /* "Scroll.pyx":1110
+  /* "Scroll.pyx":1130
  *     cdef:
  *         int i=0, j=0, ii=0, jj=0
  *         unsigned char [:, :, :] rgb_array = array             # <<<<<<<<<<<<<<
@@ -16668,28 +16483,28 @@ static PyObject *__pyx_f_6Scroll_scroll_surface24_c(PyObject *__pyx_v_surface, i
  * 
  */
   __pyx_t_20 = __Pyx_PyObject_to_MemoryviewSlice_dsdsds_unsigned_char(__pyx_v_array);
-  if (unlikely(!__pyx_t_20.memview)) __PYX_ERR(0, 1110, __pyx_L1_error)
+  if (unlikely(!__pyx_t_20.memview)) __PYX_ERR(0, 1130, __pyx_L1_error)
   __pyx_v_rgb_array = __pyx_t_20;
   __pyx_t_20.memview = NULL;
   __pyx_t_20.data = NULL;
 
-  /* "Scroll.pyx":1111
+  /* "Scroll.pyx":1131
  *         int i=0, j=0, ii=0, jj=0
  *         unsigned char [:, :, :] rgb_array = array
  *         unsigned char [:, :, ::1] new_array = numpy.empty((h, w, 3), dtype=uint8)             # <<<<<<<<<<<<<<
  * 
  *     if dx==0 and dy==0:
  */
-  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1111, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1131, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_empty); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1111, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_empty); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1131, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_h); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1111, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_h); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1131, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_15 = __Pyx_PyInt_From_int(__pyx_v_w); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 1111, __pyx_L1_error)
+  __pyx_t_15 = __Pyx_PyInt_From_int(__pyx_v_w); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 1131, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_15);
-  __pyx_t_8 = PyTuple_New(3); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1111, __pyx_L1_error)
+  __pyx_t_8 = PyTuple_New(3); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1131, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_1);
@@ -16700,30 +16515,30 @@ static PyObject *__pyx_f_6Scroll_scroll_surface24_c(PyObject *__pyx_v_surface, i
   PyTuple_SET_ITEM(__pyx_t_8, 2, __pyx_int_3);
   __pyx_t_1 = 0;
   __pyx_t_15 = 0;
-  __pyx_t_15 = PyTuple_New(1); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 1111, __pyx_L1_error)
+  __pyx_t_15 = PyTuple_New(1); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 1131, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_15);
   __Pyx_GIVEREF(__pyx_t_8);
   PyTuple_SET_ITEM(__pyx_t_15, 0, __pyx_t_8);
   __pyx_t_8 = 0;
-  __pyx_t_8 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1111, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1131, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
-  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_uint8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1111, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_uint8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1131, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_t_8, __pyx_n_s_dtype, __pyx_t_1) < 0) __PYX_ERR(0, 1111, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_8, __pyx_n_s_dtype, __pyx_t_1) < 0) __PYX_ERR(0, 1131, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_15, __pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1111, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_15, __pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1131, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   __pyx_t_21 = __Pyx_PyObject_to_MemoryviewSlice_d_d_dc_unsigned_char(__pyx_t_1);
-  if (unlikely(!__pyx_t_21.memview)) __PYX_ERR(0, 1111, __pyx_L1_error)
+  if (unlikely(!__pyx_t_21.memview)) __PYX_ERR(0, 1131, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_new_array = __pyx_t_21;
   __pyx_t_21.memview = NULL;
   __pyx_t_21.data = NULL;
 
-  /* "Scroll.pyx":1113
+  /* "Scroll.pyx":1133
  *         unsigned char [:, :, ::1] new_array = numpy.empty((h, w, 3), dtype=uint8)
  * 
  *     if dx==0 and dy==0:             # <<<<<<<<<<<<<<
@@ -16741,7 +16556,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface24_c(PyObject *__pyx_v_surface, i
   __pyx_L35_bool_binop_done:;
   if (__pyx_t_3) {
 
-    /* "Scroll.pyx":1114
+    /* "Scroll.pyx":1134
  * 
  *     if dx==0 and dy==0:
  *         return surface, array             # <<<<<<<<<<<<<<
@@ -16749,7 +16564,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface24_c(PyObject *__pyx_v_surface, i
  *         if dx !=0 and dy != 0:
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1114, __pyx_L1_error)
+    __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1134, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_INCREF(__pyx_v_surface);
     __Pyx_GIVEREF(__pyx_v_surface);
@@ -16761,7 +16576,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface24_c(PyObject *__pyx_v_surface, i
     __pyx_t_1 = 0;
     goto __pyx_L0;
 
-    /* "Scroll.pyx":1113
+    /* "Scroll.pyx":1133
  *         unsigned char [:, :, ::1] new_array = numpy.empty((h, w, 3), dtype=uint8)
  * 
  *     if dx==0 and dy==0:             # <<<<<<<<<<<<<<
@@ -16770,7 +16585,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface24_c(PyObject *__pyx_v_surface, i
  */
   }
 
-  /* "Scroll.pyx":1115
+  /* "Scroll.pyx":1135
  *     if dx==0 and dy==0:
  *         return surface, array
  *     with nogil:             # <<<<<<<<<<<<<<
@@ -16785,7 +16600,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface24_c(PyObject *__pyx_v_surface, i
       #endif
       /*try:*/ {
 
-        /* "Scroll.pyx":1116
+        /* "Scroll.pyx":1136
  *         return surface, array
  *     with nogil:
  *         if dx !=0 and dy != 0:             # <<<<<<<<<<<<<<
@@ -16803,7 +16618,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface24_c(PyObject *__pyx_v_surface, i
         __pyx_L41_bool_binop_done:;
         if (__pyx_t_3) {
 
-          /* "Scroll.pyx":1117
+          /* "Scroll.pyx":1137
  *     with nogil:
  *         if dx !=0 and dy != 0:
  *             for i in prange(0, w, schedule=SCHEDULE, num_threads=THREAD_NUMBER):             # <<<<<<<<<<<<<<
@@ -16837,7 +16652,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface24_c(PyObject *__pyx_v_surface, i
                               __pyx_v_j = ((int)0xbad0bad0);
                               __pyx_v_jj = ((int)0xbad0bad0);
 
-                              /* "Scroll.pyx":1118
+                              /* "Scroll.pyx":1138
  *         if dx !=0 and dy != 0:
  *             for i in prange(0, w, schedule=SCHEDULE, num_threads=THREAD_NUMBER):
  *                     for j in range(0, h):             # <<<<<<<<<<<<<<
@@ -16848,7 +16663,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface24_c(PyObject *__pyx_v_surface, i
                               for (__pyx_t_10 = 0; __pyx_t_10 < __pyx_t_18; __pyx_t_10+=1) {
                                 __pyx_v_j = __pyx_t_10;
 
-                                /* "Scroll.pyx":1119
+                                /* "Scroll.pyx":1139
  *             for i in prange(0, w, schedule=SCHEDULE, num_threads=THREAD_NUMBER):
  *                     for j in range(0, h):
  *                         ii = (i + dx) % w             # <<<<<<<<<<<<<<
@@ -16857,7 +16672,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface24_c(PyObject *__pyx_v_surface, i
  */
                                 __pyx_v_ii = ((__pyx_v_i + __pyx_v_dx) % __pyx_v_w);
 
-                                /* "Scroll.pyx":1120
+                                /* "Scroll.pyx":1140
  *                     for j in range(0, h):
  *                         ii = (i + dx) % w
  *                         jj = (j + dy) % h             # <<<<<<<<<<<<<<
@@ -16866,7 +16681,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface24_c(PyObject *__pyx_v_surface, i
  */
                                 __pyx_v_jj = ((__pyx_v_j + __pyx_v_dy) % __pyx_v_h);
 
-                                /* "Scroll.pyx":1121
+                                /* "Scroll.pyx":1141
  *                         ii = (i + dx) % w
  *                         jj = (j + dy) % h
  *                         if ii < 0:             # <<<<<<<<<<<<<<
@@ -16876,7 +16691,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface24_c(PyObject *__pyx_v_surface, i
                                 __pyx_t_3 = ((__pyx_v_ii < 0) != 0);
                                 if (__pyx_t_3) {
 
-                                  /* "Scroll.pyx":1122
+                                  /* "Scroll.pyx":1142
  *                         jj = (j + dy) % h
  *                         if ii < 0:
  *                             ii = ii + w             # <<<<<<<<<<<<<<
@@ -16885,7 +16700,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface24_c(PyObject *__pyx_v_surface, i
  */
                                   __pyx_v_ii = (__pyx_v_ii + __pyx_v_w);
 
-                                  /* "Scroll.pyx":1121
+                                  /* "Scroll.pyx":1141
  *                         ii = (i + dx) % w
  *                         jj = (j + dy) % h
  *                         if ii < 0:             # <<<<<<<<<<<<<<
@@ -16894,7 +16709,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface24_c(PyObject *__pyx_v_surface, i
  */
                                 }
 
-                                /* "Scroll.pyx":1123
+                                /* "Scroll.pyx":1143
  *                         if ii < 0:
  *                             ii = ii + w
  *                         if jj < 0:             # <<<<<<<<<<<<<<
@@ -16904,7 +16719,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface24_c(PyObject *__pyx_v_surface, i
                                 __pyx_t_3 = ((__pyx_v_jj < 0) != 0);
                                 if (__pyx_t_3) {
 
-                                  /* "Scroll.pyx":1124
+                                  /* "Scroll.pyx":1144
  *                             ii = ii + w
  *                         if jj < 0:
  *                             jj = jj + h             # <<<<<<<<<<<<<<
@@ -16913,7 +16728,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface24_c(PyObject *__pyx_v_surface, i
  */
                                   __pyx_v_jj = (__pyx_v_jj + __pyx_v_h);
 
-                                  /* "Scroll.pyx":1123
+                                  /* "Scroll.pyx":1143
  *                         if ii < 0:
  *                             ii = ii + w
  *                         if jj < 0:             # <<<<<<<<<<<<<<
@@ -16922,7 +16737,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface24_c(PyObject *__pyx_v_surface, i
  */
                                 }
 
-                                /* "Scroll.pyx":1125
+                                /* "Scroll.pyx":1145
  *                         if jj < 0:
  *                             jj = jj + h
  *                         new_array[jj, ii, 0] = rgb_array[i, j, 0]             # <<<<<<<<<<<<<<
@@ -16937,7 +16752,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface24_c(PyObject *__pyx_v_surface, i
                                 __pyx_t_29 = 0;
                                 *((unsigned char *) ( /* dim=2 */ ((char *) (((unsigned char *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_new_array.data + __pyx_t_27 * __pyx_v_new_array.strides[0]) ) + __pyx_t_28 * __pyx_v_new_array.strides[1]) )) + __pyx_t_29)) )) = (*((unsigned char *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rgb_array.data + __pyx_t_24 * __pyx_v_rgb_array.strides[0]) ) + __pyx_t_25 * __pyx_v_rgb_array.strides[1]) ) + __pyx_t_26 * __pyx_v_rgb_array.strides[2]) )));
 
-                                /* "Scroll.pyx":1126
+                                /* "Scroll.pyx":1146
  *                             jj = jj + h
  *                         new_array[jj, ii, 0] = rgb_array[i, j, 0]
  *                         new_array[jj, ii, 1] = rgb_array[i, j, 1]             # <<<<<<<<<<<<<<
@@ -16952,7 +16767,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface24_c(PyObject *__pyx_v_surface, i
                                 __pyx_t_35 = 1;
                                 *((unsigned char *) ( /* dim=2 */ ((char *) (((unsigned char *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_new_array.data + __pyx_t_33 * __pyx_v_new_array.strides[0]) ) + __pyx_t_34 * __pyx_v_new_array.strides[1]) )) + __pyx_t_35)) )) = (*((unsigned char *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rgb_array.data + __pyx_t_30 * __pyx_v_rgb_array.strides[0]) ) + __pyx_t_31 * __pyx_v_rgb_array.strides[1]) ) + __pyx_t_32 * __pyx_v_rgb_array.strides[2]) )));
 
-                                /* "Scroll.pyx":1127
+                                /* "Scroll.pyx":1147
  *                         new_array[jj, ii, 0] = rgb_array[i, j, 0]
  *                         new_array[jj, ii, 1] = rgb_array[i, j, 1]
  *                         new_array[jj, ii, 2] = rgb_array[i, j, 2]             # <<<<<<<<<<<<<<
@@ -16979,7 +16794,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface24_c(PyObject *__pyx_v_surface, i
               #define unlikely(x) __builtin_expect(!!(x), 0)
           #endif
 
-          /* "Scroll.pyx":1116
+          /* "Scroll.pyx":1136
  *         return surface, array
  *     with nogil:
  *         if dx !=0 and dy != 0:             # <<<<<<<<<<<<<<
@@ -16989,7 +16804,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface24_c(PyObject *__pyx_v_surface, i
           goto __pyx_L40;
         }
 
-        /* "Scroll.pyx":1129
+        /* "Scroll.pyx":1149
  *                         new_array[jj, ii, 2] = rgb_array[i, j, 2]
  *         else:
  *             if dx != 0:             # <<<<<<<<<<<<<<
@@ -17000,7 +16815,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface24_c(PyObject *__pyx_v_surface, i
           __pyx_t_3 = ((__pyx_v_dx != 0) != 0);
           if (__pyx_t_3) {
 
-            /* "Scroll.pyx":1130
+            /* "Scroll.pyx":1150
  *         else:
  *             if dx != 0:
  *                 for i in prange(w, schedule=SCHEDULE, num_threads=THREAD_NUMBER):             # <<<<<<<<<<<<<<
@@ -17033,7 +16848,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface24_c(PyObject *__pyx_v_surface, i
                                 __pyx_v_ii = ((int)0xbad0bad0);
                                 __pyx_v_j = ((int)0xbad0bad0);
 
-                                /* "Scroll.pyx":1131
+                                /* "Scroll.pyx":1151
  *             if dx != 0:
  *                 for i in prange(w, schedule=SCHEDULE, num_threads=THREAD_NUMBER):
  *                     for j in range(h):             # <<<<<<<<<<<<<<
@@ -17044,7 +16859,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface24_c(PyObject *__pyx_v_surface, i
                                 for (__pyx_t_43 = 0; __pyx_t_43 < __pyx_t_42; __pyx_t_43+=1) {
                                   __pyx_v_j = __pyx_t_43;
 
-                                  /* "Scroll.pyx":1132
+                                  /* "Scroll.pyx":1152
  *                 for i in prange(w, schedule=SCHEDULE, num_threads=THREAD_NUMBER):
  *                     for j in range(h):
  *                         ii = (i + dx) % w             # <<<<<<<<<<<<<<
@@ -17053,7 +16868,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface24_c(PyObject *__pyx_v_surface, i
  */
                                   __pyx_v_ii = ((__pyx_v_i + __pyx_v_dx) % __pyx_v_w);
 
-                                  /* "Scroll.pyx":1133
+                                  /* "Scroll.pyx":1153
  *                     for j in range(h):
  *                         ii = (i + dx) % w
  *                         if ii < 0:             # <<<<<<<<<<<<<<
@@ -17063,7 +16878,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface24_c(PyObject *__pyx_v_surface, i
                                   __pyx_t_3 = ((__pyx_v_ii < 0) != 0);
                                   if (__pyx_t_3) {
 
-                                    /* "Scroll.pyx":1134
+                                    /* "Scroll.pyx":1154
  *                         ii = (i + dx) % w
  *                         if ii < 0:
  *                             ii = ii + w             # <<<<<<<<<<<<<<
@@ -17072,7 +16887,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface24_c(PyObject *__pyx_v_surface, i
  */
                                     __pyx_v_ii = (__pyx_v_ii + __pyx_v_w);
 
-                                    /* "Scroll.pyx":1133
+                                    /* "Scroll.pyx":1153
  *                     for j in range(h):
  *                         ii = (i + dx) % w
  *                         if ii < 0:             # <<<<<<<<<<<<<<
@@ -17081,7 +16896,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface24_c(PyObject *__pyx_v_surface, i
  */
                                   }
 
-                                  /* "Scroll.pyx":1136
+                                  /* "Scroll.pyx":1156
  *                             ii = ii + w
  *                         new_array[j, ii, 0], new_array[j, ii, 1], new_array[j, ii, 2] = \
  *                             rgb_array[i, j, 0], rgb_array[i, j, 1], rgb_array[i, j, 2]             # <<<<<<<<<<<<<<
@@ -17101,7 +16916,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface24_c(PyObject *__pyx_v_surface, i
                                   __pyx_t_54 = 2;
                                   __pyx_t_55 = (*((unsigned char *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rgb_array.data + __pyx_t_52 * __pyx_v_rgb_array.strides[0]) ) + __pyx_t_53 * __pyx_v_rgb_array.strides[1]) ) + __pyx_t_54 * __pyx_v_rgb_array.strides[2]) )));
 
-                                  /* "Scroll.pyx":1135
+                                  /* "Scroll.pyx":1155
  *                         if ii < 0:
  *                             ii = ii + w
  *                         new_array[j, ii, 0], new_array[j, ii, 1], new_array[j, ii, 2] = \             # <<<<<<<<<<<<<<
@@ -17133,7 +16948,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface24_c(PyObject *__pyx_v_surface, i
                 #define unlikely(x) __builtin_expect(!!(x), 0)
             #endif
 
-            /* "Scroll.pyx":1129
+            /* "Scroll.pyx":1149
  *                         new_array[jj, ii, 2] = rgb_array[i, j, 2]
  *         else:
  *             if dx != 0:             # <<<<<<<<<<<<<<
@@ -17143,7 +16958,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface24_c(PyObject *__pyx_v_surface, i
             goto __pyx_L53;
           }
 
-          /* "Scroll.pyx":1138
+          /* "Scroll.pyx":1158
  *                             rgb_array[i, j, 0], rgb_array[i, j, 1], rgb_array[i, j, 2]
  *             else:
  *                 for i in prange(w, schedule=SCHEDULE, num_threads=THREAD_NUMBER):             # <<<<<<<<<<<<<<
@@ -17177,7 +16992,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface24_c(PyObject *__pyx_v_surface, i
                                 __pyx_v_j = ((int)0xbad0bad0);
                                 __pyx_v_jj = ((int)0xbad0bad0);
 
-                                /* "Scroll.pyx":1139
+                                /* "Scroll.pyx":1159
  *             else:
  *                 for i in prange(w, schedule=SCHEDULE, num_threads=THREAD_NUMBER):
  *                     for j in range(h):             # <<<<<<<<<<<<<<
@@ -17188,7 +17003,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface24_c(PyObject *__pyx_v_surface, i
                                 for (__pyx_t_43 = 0; __pyx_t_43 < __pyx_t_42; __pyx_t_43+=1) {
                                   __pyx_v_j = __pyx_t_43;
 
-                                  /* "Scroll.pyx":1140
+                                  /* "Scroll.pyx":1160
  *                 for i in prange(w, schedule=SCHEDULE, num_threads=THREAD_NUMBER):
  *                     for j in range(h):
  *                         jj = (j + dy) % h             # <<<<<<<<<<<<<<
@@ -17197,7 +17012,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface24_c(PyObject *__pyx_v_surface, i
  */
                                   __pyx_v_jj = ((__pyx_v_j + __pyx_v_dy) % __pyx_v_h);
 
-                                  /* "Scroll.pyx":1141
+                                  /* "Scroll.pyx":1161
  *                     for j in range(h):
  *                         jj = (j + dy) % h
  *                         if jj < 0:             # <<<<<<<<<<<<<<
@@ -17207,7 +17022,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface24_c(PyObject *__pyx_v_surface, i
                                   __pyx_t_3 = ((__pyx_v_jj < 0) != 0);
                                   if (__pyx_t_3) {
 
-                                    /* "Scroll.pyx":1142
+                                    /* "Scroll.pyx":1162
  *                         jj = (j + dy) % h
  *                         if jj < 0:
  *                             jj = jj + h             # <<<<<<<<<<<<<<
@@ -17216,7 +17031,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface24_c(PyObject *__pyx_v_surface, i
  */
                                     __pyx_v_jj = (__pyx_v_jj + __pyx_v_h);
 
-                                    /* "Scroll.pyx":1141
+                                    /* "Scroll.pyx":1161
  *                     for j in range(h):
  *                         jj = (j + dy) % h
  *                         if jj < 0:             # <<<<<<<<<<<<<<
@@ -17225,7 +17040,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface24_c(PyObject *__pyx_v_surface, i
  */
                                   }
 
-                                  /* "Scroll.pyx":1144
+                                  /* "Scroll.pyx":1164
  *                             jj = jj + h
  *                         new_array[j, ii, 0], new_array[j, ii, 1], new_array[j, ii, 2] = \
  *                             rgb_array[i, j, 0], rgb_array[i, j, 1], rgb_array[i, j, 2]             # <<<<<<<<<<<<<<
@@ -17245,7 +17060,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface24_c(PyObject *__pyx_v_surface, i
                                   __pyx_t_73 = 2;
                                   __pyx_t_47 = (*((unsigned char *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rgb_array.data + __pyx_t_71 * __pyx_v_rgb_array.strides[0]) ) + __pyx_t_72 * __pyx_v_rgb_array.strides[1]) ) + __pyx_t_73 * __pyx_v_rgb_array.strides[2]) )));
 
-                                  /* "Scroll.pyx":1143
+                                  /* "Scroll.pyx":1163
  *                         if jj < 0:
  *                             jj = jj + h
  *                         new_array[j, ii, 0], new_array[j, ii, 1], new_array[j, ii, 2] = \             # <<<<<<<<<<<<<<
@@ -17282,7 +17097,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface24_c(PyObject *__pyx_v_surface, i
         __pyx_L40:;
       }
 
-      /* "Scroll.pyx":1115
+      /* "Scroll.pyx":1135
  *     if dx==0 and dy==0:
  *         return surface, array
  *     with nogil:             # <<<<<<<<<<<<<<
@@ -17301,7 +17116,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface24_c(PyObject *__pyx_v_surface, i
       }
   }
 
-  /* "Scroll.pyx":1146
+  /* "Scroll.pyx":1166
  *                             rgb_array[i, j, 0], rgb_array[i, j, 1], rgb_array[i, j, 2]
  * 
  *     return pygame.image.frombuffer(new_array, (w, h), 'RGB'), new_array             # <<<<<<<<<<<<<<
@@ -17309,21 +17124,21 @@ static PyObject *__pyx_f_6Scroll_scroll_surface24_c(PyObject *__pyx_v_surface, i
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_8 = __Pyx_GetModuleGlobalName(__pyx_n_s_pygame); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1146, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_GetModuleGlobalName(__pyx_n_s_pygame); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1166, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
-  __pyx_t_15 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_image); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 1146, __pyx_L1_error)
+  __pyx_t_15 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_image); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 1166, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_15);
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_15, __pyx_n_s_frombuffer); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1146, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_15, __pyx_n_s_frombuffer); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1166, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
-  __pyx_t_15 = __pyx_memoryview_fromslice(__pyx_v_new_array, 3, (PyObject *(*)(char *)) __pyx_memview_get_unsigned_char, (int (*)(char *, PyObject *)) __pyx_memview_set_unsigned_char, 0);; if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 1146, __pyx_L1_error)
+  __pyx_t_15 = __pyx_memoryview_fromslice(__pyx_v_new_array, 3, (PyObject *(*)(char *)) __pyx_memview_get_unsigned_char, (int (*)(char *, PyObject *)) __pyx_memview_set_unsigned_char, 0);; if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 1166, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_15);
-  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_w); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1146, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_w); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1166, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_9 = __Pyx_PyInt_From_int(__pyx_v_h); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1146, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyInt_From_int(__pyx_v_h); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1166, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
-  __pyx_t_14 = PyTuple_New(2); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 1146, __pyx_L1_error)
+  __pyx_t_14 = PyTuple_New(2); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 1166, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_14);
   __Pyx_GIVEREF(__pyx_t_4);
   PyTuple_SET_ITEM(__pyx_t_14, 0, __pyx_t_4);
@@ -17346,7 +17161,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface24_c(PyObject *__pyx_v_surface, i
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_8)) {
     PyObject *__pyx_temp[4] = {__pyx_t_9, __pyx_t_15, __pyx_t_14, __pyx_n_s_RGB};
-    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_8, __pyx_temp+1-__pyx_t_19, 3+__pyx_t_19); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1146, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_8, __pyx_temp+1-__pyx_t_19, 3+__pyx_t_19); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1166, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
@@ -17356,7 +17171,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface24_c(PyObject *__pyx_v_surface, i
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_8)) {
     PyObject *__pyx_temp[4] = {__pyx_t_9, __pyx_t_15, __pyx_t_14, __pyx_n_s_RGB};
-    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_8, __pyx_temp+1-__pyx_t_19, 3+__pyx_t_19); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1146, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_8, __pyx_temp+1-__pyx_t_19, 3+__pyx_t_19); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1166, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
@@ -17364,7 +17179,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface24_c(PyObject *__pyx_v_surface, i
   } else
   #endif
   {
-    __pyx_t_4 = PyTuple_New(3+__pyx_t_19); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1146, __pyx_L1_error)
+    __pyx_t_4 = PyTuple_New(3+__pyx_t_19); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1166, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     if (__pyx_t_9) {
       __Pyx_GIVEREF(__pyx_t_9); PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_9); __pyx_t_9 = NULL;
@@ -17378,14 +17193,14 @@ static PyObject *__pyx_f_6Scroll_scroll_surface24_c(PyObject *__pyx_v_surface, i
     PyTuple_SET_ITEM(__pyx_t_4, 2+__pyx_t_19, __pyx_n_s_RGB);
     __pyx_t_15 = 0;
     __pyx_t_14 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_4, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1146, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_4, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1166, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   }
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-  __pyx_t_8 = __pyx_memoryview_fromslice(__pyx_v_new_array, 3, (PyObject *(*)(char *)) __pyx_memview_get_unsigned_char, (int (*)(char *, PyObject *)) __pyx_memview_set_unsigned_char, 0);; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1146, __pyx_L1_error)
+  __pyx_t_8 = __pyx_memoryview_fromslice(__pyx_v_new_array, 3, (PyObject *(*)(char *)) __pyx_memview_get_unsigned_char, (int (*)(char *, PyObject *)) __pyx_memview_set_unsigned_char, 0);; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1166, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
-  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1146, __pyx_L1_error)
+  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1166, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_1);
@@ -17397,7 +17212,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface24_c(PyObject *__pyx_v_surface, i
   __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "Scroll.pyx":1075
+  /* "Scroll.pyx":1095
  * @cython.nonecheck(False)
  * @cython.cdivision(True)
  * cdef scroll_surface24_c(surface, int dy, int dx):             # <<<<<<<<<<<<<<
@@ -17429,12 +17244,12 @@ static PyObject *__pyx_f_6Scroll_scroll_surface24_c(PyObject *__pyx_v_surface, i
   return __pyx_r;
 }
 
-/* "Scroll.pyx":1153
+/* "Scroll.pyx":1173
  * @cython.nonecheck(False)
  * @cython.cdivision(True)
  * cdef scroll_surface32_c(surface, int dy, int dx):             # <<<<<<<<<<<<<<
  *     """
- *     Scroll surface channel alpha (lateral/vertical using optional dx, dy values)
+ *     Scroll surface 32-bit (lateral/vertical using optional dx, dy values)
  */
 
 static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, int __pyx_v_dy, int __pyx_v_dx) {
@@ -17549,45 +17364,45 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
   Py_ssize_t __pyx_t_95;
   __Pyx_RefNannySetupContext("scroll_surface32_c", 0);
 
-  /* "Scroll.pyx":1165
+  /* "Scroll.pyx":1185
  *     array:3d array numpy.ndarray shape (w, h, 4))
  *     """
  *     if not isinstance(dx, int):             # <<<<<<<<<<<<<<
  *         raise TypeError('dx, an integer is required (got type %s)' % type(dx))
  *     if not isinstance(dy, int):
  */
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_dx); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1165, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_dx); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1185, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_2 = PyInt_Check(__pyx_t_1); 
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_t_3 = ((!(__pyx_t_2 != 0)) != 0);
   if (__pyx_t_3) {
 
-    /* "Scroll.pyx":1166
+    /* "Scroll.pyx":1186
  *     """
  *     if not isinstance(dx, int):
  *         raise TypeError('dx, an integer is required (got type %s)' % type(dx))             # <<<<<<<<<<<<<<
  *     if not isinstance(dy, int):
  *         raise TypeError('dy, an integer is required (got type %s)' % type(dy))
  */
-    __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_dx); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1166, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_dx); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1186, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_4 = __Pyx_PyString_Format(__pyx_kp_s_dx_an_integer_is_required_got_ty, ((PyObject *)Py_TYPE(__pyx_t_1))); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1166, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyString_Format(__pyx_kp_s_dx_an_integer_is_required_got_ty, ((PyObject *)Py_TYPE(__pyx_t_1))); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1186, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1166, __pyx_L1_error)
+    __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1186, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_GIVEREF(__pyx_t_4);
     PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_4);
     __pyx_t_4 = 0;
-    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_t_1, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1166, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_t_1, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1186, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_Raise(__pyx_t_4, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __PYX_ERR(0, 1166, __pyx_L1_error)
+    __PYX_ERR(0, 1186, __pyx_L1_error)
 
-    /* "Scroll.pyx":1165
+    /* "Scroll.pyx":1185
  *     array:3d array numpy.ndarray shape (w, h, 4))
  *     """
  *     if not isinstance(dx, int):             # <<<<<<<<<<<<<<
@@ -17596,45 +17411,45 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
  */
   }
 
-  /* "Scroll.pyx":1167
+  /* "Scroll.pyx":1187
  *     if not isinstance(dx, int):
  *         raise TypeError('dx, an integer is required (got type %s)' % type(dx))
  *     if not isinstance(dy, int):             # <<<<<<<<<<<<<<
  *         raise TypeError('dy, an integer is required (got type %s)' % type(dy))
  *     if not isinstance(surface, pygame.Surface):
  */
-  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_dy); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1167, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_dy); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1187, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_3 = PyInt_Check(__pyx_t_4); 
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_2 = ((!(__pyx_t_3 != 0)) != 0);
   if (__pyx_t_2) {
 
-    /* "Scroll.pyx":1168
+    /* "Scroll.pyx":1188
  *         raise TypeError('dx, an integer is required (got type %s)' % type(dx))
  *     if not isinstance(dy, int):
  *         raise TypeError('dy, an integer is required (got type %s)' % type(dy))             # <<<<<<<<<<<<<<
  *     if not isinstance(surface, pygame.Surface):
  *         raise TypeError('surface, a pygame surface is required (got type %s)' % type(surface))
  */
-    __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_dy); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1168, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_dy); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1188, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_1 = __Pyx_PyString_Format(__pyx_kp_s_dy_an_integer_is_required_got_ty, ((PyObject *)Py_TYPE(__pyx_t_4))); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1168, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyString_Format(__pyx_kp_s_dy_an_integer_is_required_got_ty, ((PyObject *)Py_TYPE(__pyx_t_4))); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1188, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1168, __pyx_L1_error)
+    __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1188, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_GIVEREF(__pyx_t_1);
     PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_1);
     __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_t_4, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1168, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_t_4, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1188, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_Raise(__pyx_t_1, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __PYX_ERR(0, 1168, __pyx_L1_error)
+    __PYX_ERR(0, 1188, __pyx_L1_error)
 
-    /* "Scroll.pyx":1167
+    /* "Scroll.pyx":1187
  *     if not isinstance(dx, int):
  *         raise TypeError('dx, an integer is required (got type %s)' % type(dx))
  *     if not isinstance(dy, int):             # <<<<<<<<<<<<<<
@@ -17643,45 +17458,45 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
  */
   }
 
-  /* "Scroll.pyx":1169
+  /* "Scroll.pyx":1189
  *     if not isinstance(dy, int):
  *         raise TypeError('dy, an integer is required (got type %s)' % type(dy))
  *     if not isinstance(surface, pygame.Surface):             # <<<<<<<<<<<<<<
  *         raise TypeError('surface, a pygame surface is required (got type %s)' % type(surface))
  * 
  */
-  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_pygame); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1169, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_pygame); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1189, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_Surface); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1169, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_Surface); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1189, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_2 = PyObject_IsInstance(__pyx_v_surface, __pyx_t_4); if (unlikely(__pyx_t_2 == ((int)-1))) __PYX_ERR(0, 1169, __pyx_L1_error)
+  __pyx_t_2 = PyObject_IsInstance(__pyx_v_surface, __pyx_t_4); if (unlikely(__pyx_t_2 == ((int)-1))) __PYX_ERR(0, 1189, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_3 = ((!(__pyx_t_2 != 0)) != 0);
   if (__pyx_t_3) {
 
-    /* "Scroll.pyx":1170
+    /* "Scroll.pyx":1190
  *         raise TypeError('dy, an integer is required (got type %s)' % type(dy))
  *     if not isinstance(surface, pygame.Surface):
  *         raise TypeError('surface, a pygame surface is required (got type %s)' % type(surface))             # <<<<<<<<<<<<<<
  * 
  *     try:
  */
-    __pyx_t_4 = __Pyx_PyString_Format(__pyx_kp_s_surface_a_pygame_surface_is_requ, ((PyObject *)Py_TYPE(__pyx_v_surface))); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1170, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyString_Format(__pyx_kp_s_surface_a_pygame_surface_is_requ, ((PyObject *)Py_TYPE(__pyx_v_surface))); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1190, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1170, __pyx_L1_error)
+    __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1190, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_GIVEREF(__pyx_t_4);
     PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_4);
     __pyx_t_4 = 0;
-    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_t_1, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1170, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_t_1, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1190, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_Raise(__pyx_t_4, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __PYX_ERR(0, 1170, __pyx_L1_error)
+    __PYX_ERR(0, 1190, __pyx_L1_error)
 
-    /* "Scroll.pyx":1169
+    /* "Scroll.pyx":1189
  *     if not isinstance(dy, int):
  *         raise TypeError('dy, an integer is required (got type %s)' % type(dy))
  *     if not isinstance(surface, pygame.Surface):             # <<<<<<<<<<<<<<
@@ -17690,7 +17505,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
  */
   }
 
-  /* "Scroll.pyx":1172
+  /* "Scroll.pyx":1192
  *         raise TypeError('surface, a pygame surface is required (got type %s)' % type(surface))
  * 
  *     try:             # <<<<<<<<<<<<<<
@@ -17706,14 +17521,14 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
     __Pyx_XGOTREF(__pyx_t_7);
     /*try:*/ {
 
-      /* "Scroll.pyx":1173
+      /* "Scroll.pyx":1193
  * 
  *     try:
  *         array = pixels3d(surface)             # <<<<<<<<<<<<<<
  *         alpha = pixels_alpha(surface)
  * 
  */
-      __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_pixels3d); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1173, __pyx_L6_error)
+      __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_pixels3d); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1193, __pyx_L6_error)
       __Pyx_GOTREF(__pyx_t_1);
       __pyx_t_8 = NULL;
       if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_1))) {
@@ -17726,13 +17541,13 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
         }
       }
       if (!__pyx_t_8) {
-        __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_v_surface); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1173, __pyx_L6_error)
+        __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_v_surface); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1193, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_4);
       } else {
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_1)) {
           PyObject *__pyx_temp[2] = {__pyx_t_8, __pyx_v_surface};
-          __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1173, __pyx_L6_error)
+          __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1193, __pyx_L6_error)
           __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
           __Pyx_GOTREF(__pyx_t_4);
         } else
@@ -17740,19 +17555,19 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_1)) {
           PyObject *__pyx_temp[2] = {__pyx_t_8, __pyx_v_surface};
-          __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1173, __pyx_L6_error)
+          __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1193, __pyx_L6_error)
           __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
           __Pyx_GOTREF(__pyx_t_4);
         } else
         #endif
         {
-          __pyx_t_9 = PyTuple_New(1+1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1173, __pyx_L6_error)
+          __pyx_t_9 = PyTuple_New(1+1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1193, __pyx_L6_error)
           __Pyx_GOTREF(__pyx_t_9);
           __Pyx_GIVEREF(__pyx_t_8); PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_8); __pyx_t_8 = NULL;
           __Pyx_INCREF(__pyx_v_surface);
           __Pyx_GIVEREF(__pyx_v_surface);
           PyTuple_SET_ITEM(__pyx_t_9, 0+1, __pyx_v_surface);
-          __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_9, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1173, __pyx_L6_error)
+          __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_9, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1193, __pyx_L6_error)
           __Pyx_GOTREF(__pyx_t_4);
           __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
         }
@@ -17761,14 +17576,14 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
       __pyx_v_array = __pyx_t_4;
       __pyx_t_4 = 0;
 
-      /* "Scroll.pyx":1174
+      /* "Scroll.pyx":1194
  *     try:
  *         array = pixels3d(surface)
  *         alpha = pixels_alpha(surface)             # <<<<<<<<<<<<<<
  * 
  *     except (ValueError, pygame.error) as e:
  */
-      __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_pixels_alpha); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1174, __pyx_L6_error)
+      __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_pixels_alpha); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1194, __pyx_L6_error)
       __Pyx_GOTREF(__pyx_t_1);
       __pyx_t_9 = NULL;
       if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_1))) {
@@ -17781,13 +17596,13 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
         }
       }
       if (!__pyx_t_9) {
-        __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_v_surface); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1174, __pyx_L6_error)
+        __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_v_surface); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1194, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_4);
       } else {
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_1)) {
           PyObject *__pyx_temp[2] = {__pyx_t_9, __pyx_v_surface};
-          __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1174, __pyx_L6_error)
+          __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1194, __pyx_L6_error)
           __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
           __Pyx_GOTREF(__pyx_t_4);
         } else
@@ -17795,19 +17610,19 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_1)) {
           PyObject *__pyx_temp[2] = {__pyx_t_9, __pyx_v_surface};
-          __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1174, __pyx_L6_error)
+          __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1194, __pyx_L6_error)
           __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
           __Pyx_GOTREF(__pyx_t_4);
         } else
         #endif
         {
-          __pyx_t_8 = PyTuple_New(1+1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1174, __pyx_L6_error)
+          __pyx_t_8 = PyTuple_New(1+1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1194, __pyx_L6_error)
           __Pyx_GOTREF(__pyx_t_8);
           __Pyx_GIVEREF(__pyx_t_9); PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_9); __pyx_t_9 = NULL;
           __Pyx_INCREF(__pyx_v_surface);
           __Pyx_GIVEREF(__pyx_v_surface);
           PyTuple_SET_ITEM(__pyx_t_8, 0+1, __pyx_v_surface);
-          __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_8, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1174, __pyx_L6_error)
+          __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_8, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1194, __pyx_L6_error)
           __Pyx_GOTREF(__pyx_t_4);
           __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
         }
@@ -17816,7 +17631,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
       __pyx_v_alpha = __pyx_t_4;
       __pyx_t_4 = 0;
 
-      /* "Scroll.pyx":1172
+      /* "Scroll.pyx":1192
  *         raise TypeError('surface, a pygame surface is required (got type %s)' % type(surface))
  * 
  *     try:             # <<<<<<<<<<<<<<
@@ -17834,30 +17649,30 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
     __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-    /* "Scroll.pyx":1176
+    /* "Scroll.pyx":1196
  *         alpha = pixels_alpha(surface)
  * 
  *     except (ValueError, pygame.error) as e:             # <<<<<<<<<<<<<<
  *         try:
  *             array = pygame.surfarray.array3d(surface)
  */
-    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_pygame); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1176, __pyx_L8_except_error)
+    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_pygame); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1196, __pyx_L8_except_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_error); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1176, __pyx_L8_except_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_error); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1196, __pyx_L8_except_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_t_10 = __Pyx_PyErr_ExceptionMatches(__pyx_builtin_ValueError) || __Pyx_PyErr_ExceptionMatches(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     if (__pyx_t_10) {
       __Pyx_AddTraceback("Scroll.scroll_surface32_c", __pyx_clineno, __pyx_lineno, __pyx_filename);
-      if (__Pyx_GetException(&__pyx_t_1, &__pyx_t_4, &__pyx_t_8) < 0) __PYX_ERR(0, 1176, __pyx_L8_except_error)
+      if (__Pyx_GetException(&__pyx_t_1, &__pyx_t_4, &__pyx_t_8) < 0) __PYX_ERR(0, 1196, __pyx_L8_except_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_INCREF(__pyx_t_4);
       __pyx_v_e = __pyx_t_4;
 
-      /* "Scroll.pyx":1177
+      /* "Scroll.pyx":1197
  * 
  *     except (ValueError, pygame.error) as e:
  *         try:             # <<<<<<<<<<<<<<
@@ -17873,19 +17688,19 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
         __Pyx_XGOTREF(__pyx_t_13);
         /*try:*/ {
 
-          /* "Scroll.pyx":1178
+          /* "Scroll.pyx":1198
  *     except (ValueError, pygame.error) as e:
  *         try:
  *             array = pygame.surfarray.array3d(surface)             # <<<<<<<<<<<<<<
  *             alpha = pygame.surfarray.array_alpha(surface)
  *         except (ValueError, pygame.error) as e:
  */
-          __pyx_t_14 = __Pyx_GetModuleGlobalName(__pyx_n_s_pygame); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 1178, __pyx_L14_error)
+          __pyx_t_14 = __Pyx_GetModuleGlobalName(__pyx_n_s_pygame); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 1198, __pyx_L14_error)
           __Pyx_GOTREF(__pyx_t_14);
-          __pyx_t_15 = __Pyx_PyObject_GetAttrStr(__pyx_t_14, __pyx_n_s_surfarray); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 1178, __pyx_L14_error)
+          __pyx_t_15 = __Pyx_PyObject_GetAttrStr(__pyx_t_14, __pyx_n_s_surfarray); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 1198, __pyx_L14_error)
           __Pyx_GOTREF(__pyx_t_15);
           __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-          __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_t_15, __pyx_n_s_array3d); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 1178, __pyx_L14_error)
+          __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_t_15, __pyx_n_s_array3d); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 1198, __pyx_L14_error)
           __Pyx_GOTREF(__pyx_t_14);
           __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
           __pyx_t_15 = NULL;
@@ -17899,13 +17714,13 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
             }
           }
           if (!__pyx_t_15) {
-            __pyx_t_9 = __Pyx_PyObject_CallOneArg(__pyx_t_14, __pyx_v_surface); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1178, __pyx_L14_error)
+            __pyx_t_9 = __Pyx_PyObject_CallOneArg(__pyx_t_14, __pyx_v_surface); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1198, __pyx_L14_error)
             __Pyx_GOTREF(__pyx_t_9);
           } else {
             #if CYTHON_FAST_PYCALL
             if (PyFunction_Check(__pyx_t_14)) {
               PyObject *__pyx_temp[2] = {__pyx_t_15, __pyx_v_surface};
-              __pyx_t_9 = __Pyx_PyFunction_FastCall(__pyx_t_14, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1178, __pyx_L14_error)
+              __pyx_t_9 = __Pyx_PyFunction_FastCall(__pyx_t_14, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1198, __pyx_L14_error)
               __Pyx_XDECREF(__pyx_t_15); __pyx_t_15 = 0;
               __Pyx_GOTREF(__pyx_t_9);
             } else
@@ -17913,19 +17728,19 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
             #if CYTHON_FAST_PYCCALL
             if (__Pyx_PyFastCFunction_Check(__pyx_t_14)) {
               PyObject *__pyx_temp[2] = {__pyx_t_15, __pyx_v_surface};
-              __pyx_t_9 = __Pyx_PyCFunction_FastCall(__pyx_t_14, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1178, __pyx_L14_error)
+              __pyx_t_9 = __Pyx_PyCFunction_FastCall(__pyx_t_14, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1198, __pyx_L14_error)
               __Pyx_XDECREF(__pyx_t_15); __pyx_t_15 = 0;
               __Pyx_GOTREF(__pyx_t_9);
             } else
             #endif
             {
-              __pyx_t_16 = PyTuple_New(1+1); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 1178, __pyx_L14_error)
+              __pyx_t_16 = PyTuple_New(1+1); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 1198, __pyx_L14_error)
               __Pyx_GOTREF(__pyx_t_16);
               __Pyx_GIVEREF(__pyx_t_15); PyTuple_SET_ITEM(__pyx_t_16, 0, __pyx_t_15); __pyx_t_15 = NULL;
               __Pyx_INCREF(__pyx_v_surface);
               __Pyx_GIVEREF(__pyx_v_surface);
               PyTuple_SET_ITEM(__pyx_t_16, 0+1, __pyx_v_surface);
-              __pyx_t_9 = __Pyx_PyObject_Call(__pyx_t_14, __pyx_t_16, NULL); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1178, __pyx_L14_error)
+              __pyx_t_9 = __Pyx_PyObject_Call(__pyx_t_14, __pyx_t_16, NULL); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1198, __pyx_L14_error)
               __Pyx_GOTREF(__pyx_t_9);
               __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
             }
@@ -17934,19 +17749,19 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
           __Pyx_XDECREF_SET(__pyx_v_array, __pyx_t_9);
           __pyx_t_9 = 0;
 
-          /* "Scroll.pyx":1179
+          /* "Scroll.pyx":1199
  *         try:
  *             array = pygame.surfarray.array3d(surface)
  *             alpha = pygame.surfarray.array_alpha(surface)             # <<<<<<<<<<<<<<
  *         except (ValueError, pygame.error) as e:
  *             raise ValueError('\nIncompatible image pixel format.')
  */
-          __pyx_t_14 = __Pyx_GetModuleGlobalName(__pyx_n_s_pygame); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 1179, __pyx_L14_error)
+          __pyx_t_14 = __Pyx_GetModuleGlobalName(__pyx_n_s_pygame); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 1199, __pyx_L14_error)
           __Pyx_GOTREF(__pyx_t_14);
-          __pyx_t_16 = __Pyx_PyObject_GetAttrStr(__pyx_t_14, __pyx_n_s_surfarray); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 1179, __pyx_L14_error)
+          __pyx_t_16 = __Pyx_PyObject_GetAttrStr(__pyx_t_14, __pyx_n_s_surfarray); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 1199, __pyx_L14_error)
           __Pyx_GOTREF(__pyx_t_16);
           __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-          __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_t_16, __pyx_n_s_array_alpha); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 1179, __pyx_L14_error)
+          __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_t_16, __pyx_n_s_array_alpha); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 1199, __pyx_L14_error)
           __Pyx_GOTREF(__pyx_t_14);
           __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
           __pyx_t_16 = NULL;
@@ -17960,13 +17775,13 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
             }
           }
           if (!__pyx_t_16) {
-            __pyx_t_9 = __Pyx_PyObject_CallOneArg(__pyx_t_14, __pyx_v_surface); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1179, __pyx_L14_error)
+            __pyx_t_9 = __Pyx_PyObject_CallOneArg(__pyx_t_14, __pyx_v_surface); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1199, __pyx_L14_error)
             __Pyx_GOTREF(__pyx_t_9);
           } else {
             #if CYTHON_FAST_PYCALL
             if (PyFunction_Check(__pyx_t_14)) {
               PyObject *__pyx_temp[2] = {__pyx_t_16, __pyx_v_surface};
-              __pyx_t_9 = __Pyx_PyFunction_FastCall(__pyx_t_14, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1179, __pyx_L14_error)
+              __pyx_t_9 = __Pyx_PyFunction_FastCall(__pyx_t_14, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1199, __pyx_L14_error)
               __Pyx_XDECREF(__pyx_t_16); __pyx_t_16 = 0;
               __Pyx_GOTREF(__pyx_t_9);
             } else
@@ -17974,19 +17789,19 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
             #if CYTHON_FAST_PYCCALL
             if (__Pyx_PyFastCFunction_Check(__pyx_t_14)) {
               PyObject *__pyx_temp[2] = {__pyx_t_16, __pyx_v_surface};
-              __pyx_t_9 = __Pyx_PyCFunction_FastCall(__pyx_t_14, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1179, __pyx_L14_error)
+              __pyx_t_9 = __Pyx_PyCFunction_FastCall(__pyx_t_14, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1199, __pyx_L14_error)
               __Pyx_XDECREF(__pyx_t_16); __pyx_t_16 = 0;
               __Pyx_GOTREF(__pyx_t_9);
             } else
             #endif
             {
-              __pyx_t_15 = PyTuple_New(1+1); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 1179, __pyx_L14_error)
+              __pyx_t_15 = PyTuple_New(1+1); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 1199, __pyx_L14_error)
               __Pyx_GOTREF(__pyx_t_15);
               __Pyx_GIVEREF(__pyx_t_16); PyTuple_SET_ITEM(__pyx_t_15, 0, __pyx_t_16); __pyx_t_16 = NULL;
               __Pyx_INCREF(__pyx_v_surface);
               __Pyx_GIVEREF(__pyx_v_surface);
               PyTuple_SET_ITEM(__pyx_t_15, 0+1, __pyx_v_surface);
-              __pyx_t_9 = __Pyx_PyObject_Call(__pyx_t_14, __pyx_t_15, NULL); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1179, __pyx_L14_error)
+              __pyx_t_9 = __Pyx_PyObject_Call(__pyx_t_14, __pyx_t_15, NULL); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1199, __pyx_L14_error)
               __Pyx_GOTREF(__pyx_t_9);
               __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
             }
@@ -17995,7 +17810,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
           __Pyx_XDECREF_SET(__pyx_v_alpha, __pyx_t_9);
           __pyx_t_9 = 0;
 
-          /* "Scroll.pyx":1177
+          /* "Scroll.pyx":1197
  * 
  *     except (ValueError, pygame.error) as e:
  *         try:             # <<<<<<<<<<<<<<
@@ -18013,46 +17828,46 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
         __Pyx_XDECREF(__pyx_t_14); __pyx_t_14 = 0;
         __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-        /* "Scroll.pyx":1180
+        /* "Scroll.pyx":1200
  *             array = pygame.surfarray.array3d(surface)
  *             alpha = pygame.surfarray.array_alpha(surface)
  *         except (ValueError, pygame.error) as e:             # <<<<<<<<<<<<<<
  *             raise ValueError('\nIncompatible image pixel format.')
  * 
  */
-        __pyx_t_9 = __Pyx_GetModuleGlobalName(__pyx_n_s_pygame); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1180, __pyx_L16_except_error)
+        __pyx_t_9 = __Pyx_GetModuleGlobalName(__pyx_n_s_pygame); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1200, __pyx_L16_except_error)
         __Pyx_GOTREF(__pyx_t_9);
-        __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_error); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 1180, __pyx_L16_except_error)
+        __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_error); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 1200, __pyx_L16_except_error)
         __Pyx_GOTREF(__pyx_t_14);
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
         __pyx_t_10 = __Pyx_PyErr_ExceptionMatches(__pyx_builtin_ValueError) || __Pyx_PyErr_ExceptionMatches(__pyx_t_14);
         __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
         if (__pyx_t_10) {
           __Pyx_AddTraceback("Scroll.scroll_surface32_c", __pyx_clineno, __pyx_lineno, __pyx_filename);
-          if (__Pyx_GetException(&__pyx_t_14, &__pyx_t_9, &__pyx_t_15) < 0) __PYX_ERR(0, 1180, __pyx_L16_except_error)
+          if (__Pyx_GetException(&__pyx_t_14, &__pyx_t_9, &__pyx_t_15) < 0) __PYX_ERR(0, 1200, __pyx_L16_except_error)
           __Pyx_GOTREF(__pyx_t_14);
           __Pyx_GOTREF(__pyx_t_9);
           __Pyx_GOTREF(__pyx_t_15);
           __Pyx_INCREF(__pyx_t_9);
           __Pyx_DECREF_SET(__pyx_v_e, __pyx_t_9);
 
-          /* "Scroll.pyx":1181
+          /* "Scroll.pyx":1201
  *             alpha = pygame.surfarray.array_alpha(surface)
  *         except (ValueError, pygame.error) as e:
  *             raise ValueError('\nIncompatible image pixel format.')             # <<<<<<<<<<<<<<
  * 
  *     cdef int w, h
  */
-          __pyx_t_16 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__28, NULL); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 1181, __pyx_L16_except_error)
+          __pyx_t_16 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__28, NULL); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 1201, __pyx_L16_except_error)
           __Pyx_GOTREF(__pyx_t_16);
           __Pyx_Raise(__pyx_t_16, 0, 0, 0);
           __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
-          __PYX_ERR(0, 1181, __pyx_L16_except_error)
+          __PYX_ERR(0, 1201, __pyx_L16_except_error)
         }
         goto __pyx_L16_except_error;
         __pyx_L16_except_error:;
 
-        /* "Scroll.pyx":1177
+        /* "Scroll.pyx":1197
  * 
  *     except (ValueError, pygame.error) as e:
  *         try:             # <<<<<<<<<<<<<<
@@ -18074,7 +17889,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
     goto __pyx_L8_except_error;
     __pyx_L8_except_error:;
 
-    /* "Scroll.pyx":1172
+    /* "Scroll.pyx":1192
  *         raise TypeError('surface, a pygame surface is required (got type %s)' % type(surface))
  * 
  *     try:             # <<<<<<<<<<<<<<
@@ -18094,7 +17909,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
     __pyx_L11_try_end:;
   }
 
-  /* "Scroll.pyx":1184
+  /* "Scroll.pyx":1204
  * 
  *     cdef int w, h
  *     try:             # <<<<<<<<<<<<<<
@@ -18110,16 +17925,16 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
     __Pyx_XGOTREF(__pyx_t_5);
     /*try:*/ {
 
-      /* "Scroll.pyx":1185
+      /* "Scroll.pyx":1205
  *     cdef int w, h
  *     try:
  *         w, h = array.shape[:2]             # <<<<<<<<<<<<<<
  *     except (ValueError, pygame.error) as e:
  *         raise ValueError('\nArray shape not compatible.')
  */
-      __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_array, __pyx_n_s_shape); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1185, __pyx_L24_error)
+      __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_array, __pyx_n_s_shape); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1205, __pyx_L24_error)
       __Pyx_GOTREF(__pyx_t_8);
-      __pyx_t_4 = __Pyx_PyObject_GetSlice(__pyx_t_8, 0, 2, NULL, NULL, &__pyx_slice__29, 0, 1, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1185, __pyx_L24_error)
+      __pyx_t_4 = __Pyx_PyObject_GetSlice(__pyx_t_8, 0, 2, NULL, NULL, &__pyx_slice__29, 0, 1, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1205, __pyx_L24_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       if ((likely(PyTuple_CheckExact(__pyx_t_4))) || (PyList_CheckExact(__pyx_t_4))) {
@@ -18132,7 +17947,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
         if (unlikely(size != 2)) {
           if (size > 2) __Pyx_RaiseTooManyValuesError(2);
           else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-          __PYX_ERR(0, 1185, __pyx_L24_error)
+          __PYX_ERR(0, 1205, __pyx_L24_error)
         }
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
         if (likely(PyTuple_CheckExact(sequence))) {
@@ -18145,15 +17960,15 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
         __Pyx_INCREF(__pyx_t_8);
         __Pyx_INCREF(__pyx_t_1);
         #else
-        __pyx_t_8 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1185, __pyx_L24_error)
+        __pyx_t_8 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1205, __pyx_L24_error)
         __Pyx_GOTREF(__pyx_t_8);
-        __pyx_t_1 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1185, __pyx_L24_error)
+        __pyx_t_1 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1205, __pyx_L24_error)
         __Pyx_GOTREF(__pyx_t_1);
         #endif
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       } else {
         Py_ssize_t index = -1;
-        __pyx_t_15 = PyObject_GetIter(__pyx_t_4); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 1185, __pyx_L24_error)
+        __pyx_t_15 = PyObject_GetIter(__pyx_t_4); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 1205, __pyx_L24_error)
         __Pyx_GOTREF(__pyx_t_15);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
         __pyx_t_17 = Py_TYPE(__pyx_t_15)->tp_iternext;
@@ -18161,7 +17976,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
         __Pyx_GOTREF(__pyx_t_8);
         index = 1; __pyx_t_1 = __pyx_t_17(__pyx_t_15); if (unlikely(!__pyx_t_1)) goto __pyx_L30_unpacking_failed;
         __Pyx_GOTREF(__pyx_t_1);
-        if (__Pyx_IternextUnpackEndCheck(__pyx_t_17(__pyx_t_15), 2) < 0) __PYX_ERR(0, 1185, __pyx_L24_error)
+        if (__Pyx_IternextUnpackEndCheck(__pyx_t_17(__pyx_t_15), 2) < 0) __PYX_ERR(0, 1205, __pyx_L24_error)
         __pyx_t_17 = NULL;
         __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
         goto __pyx_L31_unpacking_done;
@@ -18169,17 +17984,17 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
         __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
         __pyx_t_17 = NULL;
         if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-        __PYX_ERR(0, 1185, __pyx_L24_error)
+        __PYX_ERR(0, 1205, __pyx_L24_error)
         __pyx_L31_unpacking_done:;
       }
-      __pyx_t_10 = __Pyx_PyInt_As_int(__pyx_t_8); if (unlikely((__pyx_t_10 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 1185, __pyx_L24_error)
+      __pyx_t_10 = __Pyx_PyInt_As_int(__pyx_t_8); if (unlikely((__pyx_t_10 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 1205, __pyx_L24_error)
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-      __pyx_t_18 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_18 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 1185, __pyx_L24_error)
+      __pyx_t_18 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_18 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 1205, __pyx_L24_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __pyx_v_w = __pyx_t_10;
       __pyx_v_h = __pyx_t_18;
 
-      /* "Scroll.pyx":1184
+      /* "Scroll.pyx":1204
  * 
  *     cdef int w, h
  *     try:             # <<<<<<<<<<<<<<
@@ -18200,46 +18015,46 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
     __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-    /* "Scroll.pyx":1186
+    /* "Scroll.pyx":1206
  *     try:
  *         w, h = array.shape[:2]
  *     except (ValueError, pygame.error) as e:             # <<<<<<<<<<<<<<
  *         raise ValueError('\nArray shape not compatible.')
  * 
  */
-    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_pygame); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1186, __pyx_L26_except_error)
+    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_pygame); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1206, __pyx_L26_except_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_error); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1186, __pyx_L26_except_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_error); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1206, __pyx_L26_except_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_t_18 = __Pyx_PyErr_ExceptionMatches(__pyx_builtin_ValueError) || __Pyx_PyErr_ExceptionMatches(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     if (__pyx_t_18) {
       __Pyx_AddTraceback("Scroll.scroll_surface32_c", __pyx_clineno, __pyx_lineno, __pyx_filename);
-      if (__Pyx_GetException(&__pyx_t_1, &__pyx_t_4, &__pyx_t_8) < 0) __PYX_ERR(0, 1186, __pyx_L26_except_error)
+      if (__Pyx_GetException(&__pyx_t_1, &__pyx_t_4, &__pyx_t_8) < 0) __PYX_ERR(0, 1206, __pyx_L26_except_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_INCREF(__pyx_t_4);
       __Pyx_XDECREF_SET(__pyx_v_e, __pyx_t_4);
 
-      /* "Scroll.pyx":1187
+      /* "Scroll.pyx":1207
  *         w, h = array.shape[:2]
  *     except (ValueError, pygame.error) as e:
  *         raise ValueError('\nArray shape not compatible.')             # <<<<<<<<<<<<<<
  * 
  *     cdef:
  */
-      __pyx_t_15 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__30, NULL); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 1187, __pyx_L26_except_error)
+      __pyx_t_15 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__30, NULL); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 1207, __pyx_L26_except_error)
       __Pyx_GOTREF(__pyx_t_15);
       __Pyx_Raise(__pyx_t_15, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
-      __PYX_ERR(0, 1187, __pyx_L26_except_error)
+      __PYX_ERR(0, 1207, __pyx_L26_except_error)
     }
     goto __pyx_L26_except_error;
     __pyx_L26_except_error:;
 
-    /* "Scroll.pyx":1184
+    /* "Scroll.pyx":1204
  * 
  *     cdef int w, h
  *     try:             # <<<<<<<<<<<<<<
@@ -18254,7 +18069,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
     __pyx_L29_try_end:;
   }
 
-  /* "Scroll.pyx":1190
+  /* "Scroll.pyx":1210
  * 
  *     cdef:
  *         int i, j, ii=0, jj=0             # <<<<<<<<<<<<<<
@@ -18264,7 +18079,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
   __pyx_v_ii = 0;
   __pyx_v_jj = 0;
 
-  /* "Scroll.pyx":1191
+  /* "Scroll.pyx":1211
  *     cdef:
  *         int i, j, ii=0, jj=0
  *         unsigned char [:, :, :] rgb_array = array             # <<<<<<<<<<<<<<
@@ -18272,12 +18087,12 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
  *         unsigned char [:, :, ::1] new_array = numpy.empty((w, h, 4), numpy.uint8)
  */
   __pyx_t_19 = __Pyx_PyObject_to_MemoryviewSlice_dsdsds_unsigned_char(__pyx_v_array);
-  if (unlikely(!__pyx_t_19.memview)) __PYX_ERR(0, 1191, __pyx_L1_error)
+  if (unlikely(!__pyx_t_19.memview)) __PYX_ERR(0, 1211, __pyx_L1_error)
   __pyx_v_rgb_array = __pyx_t_19;
   __pyx_t_19.memview = NULL;
   __pyx_t_19.data = NULL;
 
-  /* "Scroll.pyx":1192
+  /* "Scroll.pyx":1212
  *         int i, j, ii=0, jj=0
  *         unsigned char [:, :, :] rgb_array = array
  *         unsigned char [:, :] alpha_array = alpha             # <<<<<<<<<<<<<<
@@ -18285,28 +18100,28 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
  * 
  */
   __pyx_t_20 = __Pyx_PyObject_to_MemoryviewSlice_dsds_unsigned_char(__pyx_v_alpha);
-  if (unlikely(!__pyx_t_20.memview)) __PYX_ERR(0, 1192, __pyx_L1_error)
+  if (unlikely(!__pyx_t_20.memview)) __PYX_ERR(0, 1212, __pyx_L1_error)
   __pyx_v_alpha_array = __pyx_t_20;
   __pyx_t_20.memview = NULL;
   __pyx_t_20.data = NULL;
 
-  /* "Scroll.pyx":1193
+  /* "Scroll.pyx":1213
  *         unsigned char [:, :, :] rgb_array = array
  *         unsigned char [:, :] alpha_array = alpha
  *         unsigned char [:, :, ::1] new_array = numpy.empty((w, h, 4), numpy.uint8)             # <<<<<<<<<<<<<<
  * 
  *     if dx==0 and dy==0:
  */
-  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1193, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1213, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_empty); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1193, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_empty); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1213, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_w); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1193, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_w); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1213, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_15 = __Pyx_PyInt_From_int(__pyx_v_h); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 1193, __pyx_L1_error)
+  __pyx_t_15 = __Pyx_PyInt_From_int(__pyx_v_h); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 1213, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_15);
-  __pyx_t_9 = PyTuple_New(3); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1193, __pyx_L1_error)
+  __pyx_t_9 = PyTuple_New(3); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1213, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_GIVEREF(__pyx_t_4);
   PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_4);
@@ -18317,9 +18132,9 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
   PyTuple_SET_ITEM(__pyx_t_9, 2, __pyx_int_4);
   __pyx_t_4 = 0;
   __pyx_t_15 = 0;
-  __pyx_t_15 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 1193, __pyx_L1_error)
+  __pyx_t_15 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 1213, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_15);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_15, __pyx_n_s_uint8); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1193, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_15, __pyx_n_s_uint8); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1213, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
   __pyx_t_15 = NULL;
@@ -18337,7 +18152,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_1)) {
     PyObject *__pyx_temp[3] = {__pyx_t_15, __pyx_t_9, __pyx_t_4};
-    __pyx_t_8 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_18, 2+__pyx_t_18); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1193, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_18, 2+__pyx_t_18); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1213, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_15); __pyx_t_15 = 0;
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
@@ -18347,7 +18162,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_1)) {
     PyObject *__pyx_temp[3] = {__pyx_t_15, __pyx_t_9, __pyx_t_4};
-    __pyx_t_8 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_18, 2+__pyx_t_18); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1193, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_18, 2+__pyx_t_18); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1213, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_15); __pyx_t_15 = 0;
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
@@ -18355,7 +18170,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
   } else
   #endif
   {
-    __pyx_t_14 = PyTuple_New(2+__pyx_t_18); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 1193, __pyx_L1_error)
+    __pyx_t_14 = PyTuple_New(2+__pyx_t_18); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 1213, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_14);
     if (__pyx_t_15) {
       __Pyx_GIVEREF(__pyx_t_15); PyTuple_SET_ITEM(__pyx_t_14, 0, __pyx_t_15); __pyx_t_15 = NULL;
@@ -18366,19 +18181,19 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
     PyTuple_SET_ITEM(__pyx_t_14, 1+__pyx_t_18, __pyx_t_4);
     __pyx_t_9 = 0;
     __pyx_t_4 = 0;
-    __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_14, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1193, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_14, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1213, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_t_21 = __Pyx_PyObject_to_MemoryviewSlice_d_d_dc_unsigned_char(__pyx_t_8);
-  if (unlikely(!__pyx_t_21.memview)) __PYX_ERR(0, 1193, __pyx_L1_error)
+  if (unlikely(!__pyx_t_21.memview)) __PYX_ERR(0, 1213, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   __pyx_v_new_array = __pyx_t_21;
   __pyx_t_21.memview = NULL;
   __pyx_t_21.data = NULL;
 
-  /* "Scroll.pyx":1195
+  /* "Scroll.pyx":1215
  *         unsigned char [:, :, ::1] new_array = numpy.empty((w, h, 4), numpy.uint8)
  * 
  *     if dx==0 and dy==0:             # <<<<<<<<<<<<<<
@@ -18396,7 +18211,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
   __pyx_L35_bool_binop_done:;
   if (__pyx_t_3) {
 
-    /* "Scroll.pyx":1196
+    /* "Scroll.pyx":1216
  * 
  *     if dx==0 and dy==0:
  *         return surface             # <<<<<<<<<<<<<<
@@ -18408,7 +18223,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
     __pyx_r = __pyx_v_surface;
     goto __pyx_L0;
 
-    /* "Scroll.pyx":1195
+    /* "Scroll.pyx":1215
  *         unsigned char [:, :, ::1] new_array = numpy.empty((w, h, 4), numpy.uint8)
  * 
  *     if dx==0 and dy==0:             # <<<<<<<<<<<<<<
@@ -18417,7 +18232,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
  */
   }
 
-  /* "Scroll.pyx":1198
+  /* "Scroll.pyx":1218
  *         return surface
  * 
  *     with nogil:             # <<<<<<<<<<<<<<
@@ -18432,7 +18247,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
       #endif
       /*try:*/ {
 
-        /* "Scroll.pyx":1199
+        /* "Scroll.pyx":1219
  * 
  *     with nogil:
  *         if dx !=0 and dy != 0:             # <<<<<<<<<<<<<<
@@ -18450,7 +18265,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
         __pyx_L41_bool_binop_done:;
         if (__pyx_t_3) {
 
-          /* "Scroll.pyx":1200
+          /* "Scroll.pyx":1220
  *     with nogil:
  *         if dx !=0 and dy != 0:
  *             for i in prange(0, w, schedule=SCHEDULE, num_threads=THREAD_NUMBER):             # <<<<<<<<<<<<<<
@@ -18484,7 +18299,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
                               __pyx_v_j = ((int)0xbad0bad0);
                               __pyx_v_jj = ((int)0xbad0bad0);
 
-                              /* "Scroll.pyx":1201
+                              /* "Scroll.pyx":1221
  *         if dx !=0 and dy != 0:
  *             for i in prange(0, w, schedule=SCHEDULE, num_threads=THREAD_NUMBER):
  *                     for j in range(0, h):             # <<<<<<<<<<<<<<
@@ -18495,7 +18310,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
                               for (__pyx_t_24 = 0; __pyx_t_24 < __pyx_t_10; __pyx_t_24+=1) {
                                 __pyx_v_j = __pyx_t_24;
 
-                                /* "Scroll.pyx":1202
+                                /* "Scroll.pyx":1222
  *             for i in prange(0, w, schedule=SCHEDULE, num_threads=THREAD_NUMBER):
  *                     for j in range(0, h):
  *                         ii = (i + dx) % w             # <<<<<<<<<<<<<<
@@ -18504,7 +18319,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
  */
                                 __pyx_v_ii = ((__pyx_v_i + __pyx_v_dx) % __pyx_v_w);
 
-                                /* "Scroll.pyx":1203
+                                /* "Scroll.pyx":1223
  *                     for j in range(0, h):
  *                         ii = (i + dx) % w
  *                         jj = (j + dy) % h             # <<<<<<<<<<<<<<
@@ -18513,7 +18328,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
  */
                                 __pyx_v_jj = ((__pyx_v_j + __pyx_v_dy) % __pyx_v_h);
 
-                                /* "Scroll.pyx":1204
+                                /* "Scroll.pyx":1224
  *                         ii = (i + dx) % w
  *                         jj = (j + dy) % h
  *                         if ii < 0:             # <<<<<<<<<<<<<<
@@ -18523,7 +18338,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
                                 __pyx_t_3 = ((__pyx_v_ii < 0) != 0);
                                 if (__pyx_t_3) {
 
-                                  /* "Scroll.pyx":1205
+                                  /* "Scroll.pyx":1225
  *                         jj = (j + dy) % h
  *                         if ii < 0:
  *                             ii = ii + w             # <<<<<<<<<<<<<<
@@ -18532,7 +18347,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
  */
                                   __pyx_v_ii = (__pyx_v_ii + __pyx_v_w);
 
-                                  /* "Scroll.pyx":1204
+                                  /* "Scroll.pyx":1224
  *                         ii = (i + dx) % w
  *                         jj = (j + dy) % h
  *                         if ii < 0:             # <<<<<<<<<<<<<<
@@ -18541,7 +18356,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
  */
                                 }
 
-                                /* "Scroll.pyx":1206
+                                /* "Scroll.pyx":1226
  *                         if ii < 0:
  *                             ii = ii + w
  *                         if jj < 0:             # <<<<<<<<<<<<<<
@@ -18551,7 +18366,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
                                 __pyx_t_3 = ((__pyx_v_jj < 0) != 0);
                                 if (__pyx_t_3) {
 
-                                  /* "Scroll.pyx":1207
+                                  /* "Scroll.pyx":1227
  *                             ii = ii + w
  *                         if jj < 0:
  *                             jj = jj + h             # <<<<<<<<<<<<<<
@@ -18560,7 +18375,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
  */
                                   __pyx_v_jj = (__pyx_v_jj + __pyx_v_h);
 
-                                  /* "Scroll.pyx":1206
+                                  /* "Scroll.pyx":1226
  *                         if ii < 0:
  *                             ii = ii + w
  *                         if jj < 0:             # <<<<<<<<<<<<<<
@@ -18569,7 +18384,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
  */
                                 }
 
-                                /* "Scroll.pyx":1208
+                                /* "Scroll.pyx":1228
  *                         if jj < 0:
  *                             jj = jj + h
  *                         new_array[jj, ii, 0] = rgb_array[i, j, 0]             # <<<<<<<<<<<<<<
@@ -18584,7 +18399,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
                                 __pyx_t_30 = 0;
                                 *((unsigned char *) ( /* dim=2 */ ((char *) (((unsigned char *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_new_array.data + __pyx_t_28 * __pyx_v_new_array.strides[0]) ) + __pyx_t_29 * __pyx_v_new_array.strides[1]) )) + __pyx_t_30)) )) = (*((unsigned char *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rgb_array.data + __pyx_t_25 * __pyx_v_rgb_array.strides[0]) ) + __pyx_t_26 * __pyx_v_rgb_array.strides[1]) ) + __pyx_t_27 * __pyx_v_rgb_array.strides[2]) )));
 
-                                /* "Scroll.pyx":1209
+                                /* "Scroll.pyx":1229
  *                             jj = jj + h
  *                         new_array[jj, ii, 0] = rgb_array[i, j, 0]
  *                         new_array[jj, ii, 1] = rgb_array[i, j, 1]             # <<<<<<<<<<<<<<
@@ -18599,7 +18414,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
                                 __pyx_t_36 = 1;
                                 *((unsigned char *) ( /* dim=2 */ ((char *) (((unsigned char *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_new_array.data + __pyx_t_34 * __pyx_v_new_array.strides[0]) ) + __pyx_t_35 * __pyx_v_new_array.strides[1]) )) + __pyx_t_36)) )) = (*((unsigned char *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rgb_array.data + __pyx_t_31 * __pyx_v_rgb_array.strides[0]) ) + __pyx_t_32 * __pyx_v_rgb_array.strides[1]) ) + __pyx_t_33 * __pyx_v_rgb_array.strides[2]) )));
 
-                                /* "Scroll.pyx":1210
+                                /* "Scroll.pyx":1230
  *                         new_array[jj, ii, 0] = rgb_array[i, j, 0]
  *                         new_array[jj, ii, 1] = rgb_array[i, j, 1]
  *                         new_array[jj, ii, 2] = rgb_array[i, j, 2]             # <<<<<<<<<<<<<<
@@ -18614,7 +18429,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
                                 __pyx_t_42 = 2;
                                 *((unsigned char *) ( /* dim=2 */ ((char *) (((unsigned char *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_new_array.data + __pyx_t_40 * __pyx_v_new_array.strides[0]) ) + __pyx_t_41 * __pyx_v_new_array.strides[1]) )) + __pyx_t_42)) )) = (*((unsigned char *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rgb_array.data + __pyx_t_37 * __pyx_v_rgb_array.strides[0]) ) + __pyx_t_38 * __pyx_v_rgb_array.strides[1]) ) + __pyx_t_39 * __pyx_v_rgb_array.strides[2]) )));
 
-                                /* "Scroll.pyx":1211
+                                /* "Scroll.pyx":1231
  *                         new_array[jj, ii, 1] = rgb_array[i, j, 1]
  *                         new_array[jj, ii, 2] = rgb_array[i, j, 2]
  *                         new_array[jj, ii, 3] = alpha_array[i, j]             # <<<<<<<<<<<<<<
@@ -18640,7 +18455,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
               #define unlikely(x) __builtin_expect(!!(x), 0)
           #endif
 
-          /* "Scroll.pyx":1199
+          /* "Scroll.pyx":1219
  * 
  *     with nogil:
  *         if dx !=0 and dy != 0:             # <<<<<<<<<<<<<<
@@ -18650,7 +18465,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
           goto __pyx_L40;
         }
 
-        /* "Scroll.pyx":1213
+        /* "Scroll.pyx":1233
  *                         new_array[jj, ii, 3] = alpha_array[i, j]
  *         else:
  *             if dx != 0:             # <<<<<<<<<<<<<<
@@ -18661,7 +18476,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
           __pyx_t_3 = ((__pyx_v_dx != 0) != 0);
           if (__pyx_t_3) {
 
-            /* "Scroll.pyx":1214
+            /* "Scroll.pyx":1234
  *         else:
  *             if dx != 0:
  *                 for i in prange(w, schedule=SCHEDULE, num_threads=THREAD_NUMBER):             # <<<<<<<<<<<<<<
@@ -18694,7 +18509,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
                                 __pyx_v_ii = ((int)0xbad0bad0);
                                 __pyx_v_j = ((int)0xbad0bad0);
 
-                                /* "Scroll.pyx":1215
+                                /* "Scroll.pyx":1235
  *             if dx != 0:
  *                 for i in prange(w, schedule=SCHEDULE, num_threads=THREAD_NUMBER):
  *                     for j in range(h):             # <<<<<<<<<<<<<<
@@ -18705,7 +18520,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
                                 for (__pyx_t_49 = 0; __pyx_t_49 < __pyx_t_48; __pyx_t_49+=1) {
                                   __pyx_v_j = __pyx_t_49;
 
-                                  /* "Scroll.pyx":1216
+                                  /* "Scroll.pyx":1236
  *                 for i in prange(w, schedule=SCHEDULE, num_threads=THREAD_NUMBER):
  *                     for j in range(h):
  *                         ii = (i + dx) % w             # <<<<<<<<<<<<<<
@@ -18714,7 +18529,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
  */
                                   __pyx_v_ii = ((__pyx_v_i + __pyx_v_dx) % __pyx_v_w);
 
-                                  /* "Scroll.pyx":1217
+                                  /* "Scroll.pyx":1237
  *                     for j in range(h):
  *                         ii = (i + dx) % w
  *                         if ii < 0:             # <<<<<<<<<<<<<<
@@ -18724,7 +18539,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
                                   __pyx_t_3 = ((__pyx_v_ii < 0) != 0);
                                   if (__pyx_t_3) {
 
-                                    /* "Scroll.pyx":1218
+                                    /* "Scroll.pyx":1238
  *                         ii = (i + dx) % w
  *                         if ii < 0:
  *                             ii = ii + w             # <<<<<<<<<<<<<<
@@ -18733,7 +18548,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
  */
                                     __pyx_v_ii = (__pyx_v_ii + __pyx_v_w);
 
-                                    /* "Scroll.pyx":1217
+                                    /* "Scroll.pyx":1237
  *                     for j in range(h):
  *                         ii = (i + dx) % w
  *                         if ii < 0:             # <<<<<<<<<<<<<<
@@ -18742,7 +18557,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
  */
                                   }
 
-                                  /* "Scroll.pyx":1219
+                                  /* "Scroll.pyx":1239
  *                         if ii < 0:
  *                             ii = ii + w
  *                         new_array[j, ii, 0] = rgb_array[i, j, 0]             # <<<<<<<<<<<<<<
@@ -18757,7 +18572,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
                                   __pyx_t_55 = 0;
                                   *((unsigned char *) ( /* dim=2 */ ((char *) (((unsigned char *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_new_array.data + __pyx_t_53 * __pyx_v_new_array.strides[0]) ) + __pyx_t_54 * __pyx_v_new_array.strides[1]) )) + __pyx_t_55)) )) = (*((unsigned char *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rgb_array.data + __pyx_t_50 * __pyx_v_rgb_array.strides[0]) ) + __pyx_t_51 * __pyx_v_rgb_array.strides[1]) ) + __pyx_t_52 * __pyx_v_rgb_array.strides[2]) )));
 
-                                  /* "Scroll.pyx":1220
+                                  /* "Scroll.pyx":1240
  *                             ii = ii + w
  *                         new_array[j, ii, 0] = rgb_array[i, j, 0]
  *                         new_array[j, ii, 1] = rgb_array[i, j, 1]             # <<<<<<<<<<<<<<
@@ -18772,7 +18587,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
                                   __pyx_t_61 = 1;
                                   *((unsigned char *) ( /* dim=2 */ ((char *) (((unsigned char *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_new_array.data + __pyx_t_59 * __pyx_v_new_array.strides[0]) ) + __pyx_t_60 * __pyx_v_new_array.strides[1]) )) + __pyx_t_61)) )) = (*((unsigned char *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rgb_array.data + __pyx_t_56 * __pyx_v_rgb_array.strides[0]) ) + __pyx_t_57 * __pyx_v_rgb_array.strides[1]) ) + __pyx_t_58 * __pyx_v_rgb_array.strides[2]) )));
 
-                                  /* "Scroll.pyx":1221
+                                  /* "Scroll.pyx":1241
  *                         new_array[j, ii, 0] = rgb_array[i, j, 0]
  *                         new_array[j, ii, 1] = rgb_array[i, j, 1]
  *                         new_array[j, ii, 2] = rgb_array[i, j, 2]             # <<<<<<<<<<<<<<
@@ -18787,7 +18602,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
                                   __pyx_t_67 = 2;
                                   *((unsigned char *) ( /* dim=2 */ ((char *) (((unsigned char *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_new_array.data + __pyx_t_65 * __pyx_v_new_array.strides[0]) ) + __pyx_t_66 * __pyx_v_new_array.strides[1]) )) + __pyx_t_67)) )) = (*((unsigned char *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rgb_array.data + __pyx_t_62 * __pyx_v_rgb_array.strides[0]) ) + __pyx_t_63 * __pyx_v_rgb_array.strides[1]) ) + __pyx_t_64 * __pyx_v_rgb_array.strides[2]) )));
 
-                                  /* "Scroll.pyx":1222
+                                  /* "Scroll.pyx":1242
  *                         new_array[j, ii, 1] = rgb_array[i, j, 1]
  *                         new_array[j, ii, 2] = rgb_array[i, j, 2]
  *                         new_array[j, ii, 3] = alpha_array[i, j]             # <<<<<<<<<<<<<<
@@ -18813,7 +18628,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
                 #define unlikely(x) __builtin_expect(!!(x), 0)
             #endif
 
-            /* "Scroll.pyx":1213
+            /* "Scroll.pyx":1233
  *                         new_array[jj, ii, 3] = alpha_array[i, j]
  *         else:
  *             if dx != 0:             # <<<<<<<<<<<<<<
@@ -18823,7 +18638,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
             goto __pyx_L53;
           }
 
-          /* "Scroll.pyx":1224
+          /* "Scroll.pyx":1244
  *                         new_array[j, ii, 3] = alpha_array[i, j]
  *             else:
  *                 for i in prange(w, schedule=SCHEDULE, num_threads=THREAD_NUMBER):             # <<<<<<<<<<<<<<
@@ -18857,7 +18672,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
                                 __pyx_v_j = ((int)0xbad0bad0);
                                 __pyx_v_jj = ((int)0xbad0bad0);
 
-                                /* "Scroll.pyx":1225
+                                /* "Scroll.pyx":1245
  *             else:
  *                 for i in prange(w, schedule=SCHEDULE, num_threads=THREAD_NUMBER):
  *                     for j in range(h):             # <<<<<<<<<<<<<<
@@ -18868,7 +18683,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
                                 for (__pyx_t_49 = 0; __pyx_t_49 < __pyx_t_48; __pyx_t_49+=1) {
                                   __pyx_v_j = __pyx_t_49;
 
-                                  /* "Scroll.pyx":1226
+                                  /* "Scroll.pyx":1246
  *                 for i in prange(w, schedule=SCHEDULE, num_threads=THREAD_NUMBER):
  *                     for j in range(h):
  *                         jj = (j + dy) % h             # <<<<<<<<<<<<<<
@@ -18877,7 +18692,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
  */
                                   __pyx_v_jj = ((__pyx_v_j + __pyx_v_dy) % __pyx_v_h);
 
-                                  /* "Scroll.pyx":1227
+                                  /* "Scroll.pyx":1247
  *                     for j in range(h):
  *                         jj = (j + dy) % h
  *                         if jj < 0:             # <<<<<<<<<<<<<<
@@ -18887,7 +18702,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
                                   __pyx_t_3 = ((__pyx_v_jj < 0) != 0);
                                   if (__pyx_t_3) {
 
-                                    /* "Scroll.pyx":1228
+                                    /* "Scroll.pyx":1248
  *                         jj = (j + dy) % h
  *                         if jj < 0:
  *                             jj = jj + h             # <<<<<<<<<<<<<<
@@ -18896,7 +18711,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
  */
                                     __pyx_v_jj = (__pyx_v_jj + __pyx_v_h);
 
-                                    /* "Scroll.pyx":1227
+                                    /* "Scroll.pyx":1247
  *                     for j in range(h):
  *                         jj = (j + dy) % h
  *                         if jj < 0:             # <<<<<<<<<<<<<<
@@ -18905,7 +18720,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
  */
                                   }
 
-                                  /* "Scroll.pyx":1229
+                                  /* "Scroll.pyx":1249
  *                         if jj < 0:
  *                             jj = jj + h
  *                         new_array[jj, i, 0] = rgb_array[i, j, 1]             # <<<<<<<<<<<<<<
@@ -18920,7 +18735,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
                                   __pyx_t_78 = 0;
                                   *((unsigned char *) ( /* dim=2 */ ((char *) (((unsigned char *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_new_array.data + __pyx_t_76 * __pyx_v_new_array.strides[0]) ) + __pyx_t_77 * __pyx_v_new_array.strides[1]) )) + __pyx_t_78)) )) = (*((unsigned char *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rgb_array.data + __pyx_t_73 * __pyx_v_rgb_array.strides[0]) ) + __pyx_t_74 * __pyx_v_rgb_array.strides[1]) ) + __pyx_t_75 * __pyx_v_rgb_array.strides[2]) )));
 
-                                  /* "Scroll.pyx":1230
+                                  /* "Scroll.pyx":1250
  *                             jj = jj + h
  *                         new_array[jj, i, 0] = rgb_array[i, j, 1]
  *                         new_array[jj, i, 1] = rgb_array[i, j, 1]             # <<<<<<<<<<<<<<
@@ -18935,7 +18750,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
                                   __pyx_t_84 = 1;
                                   *((unsigned char *) ( /* dim=2 */ ((char *) (((unsigned char *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_new_array.data + __pyx_t_82 * __pyx_v_new_array.strides[0]) ) + __pyx_t_83 * __pyx_v_new_array.strides[1]) )) + __pyx_t_84)) )) = (*((unsigned char *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rgb_array.data + __pyx_t_79 * __pyx_v_rgb_array.strides[0]) ) + __pyx_t_80 * __pyx_v_rgb_array.strides[1]) ) + __pyx_t_81 * __pyx_v_rgb_array.strides[2]) )));
 
-                                  /* "Scroll.pyx":1231
+                                  /* "Scroll.pyx":1251
  *                         new_array[jj, i, 0] = rgb_array[i, j, 1]
  *                         new_array[jj, i, 1] = rgb_array[i, j, 1]
  *                         new_array[jj, i, 2] = rgb_array[i, j, 1]             # <<<<<<<<<<<<<<
@@ -18950,7 +18765,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
                                   __pyx_t_90 = 2;
                                   *((unsigned char *) ( /* dim=2 */ ((char *) (((unsigned char *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_new_array.data + __pyx_t_88 * __pyx_v_new_array.strides[0]) ) + __pyx_t_89 * __pyx_v_new_array.strides[1]) )) + __pyx_t_90)) )) = (*((unsigned char *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rgb_array.data + __pyx_t_85 * __pyx_v_rgb_array.strides[0]) ) + __pyx_t_86 * __pyx_v_rgb_array.strides[1]) ) + __pyx_t_87 * __pyx_v_rgb_array.strides[2]) )));
 
-                                  /* "Scroll.pyx":1232
+                                  /* "Scroll.pyx":1252
  *                         new_array[jj, i, 1] = rgb_array[i, j, 1]
  *                         new_array[jj, i, 2] = rgb_array[i, j, 1]
  *                         new_array[jj, i, 3] = alpha_array[i, j]             # <<<<<<<<<<<<<<
@@ -18981,7 +18796,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
         __pyx_L40:;
       }
 
-      /* "Scroll.pyx":1198
+      /* "Scroll.pyx":1218
  *         return surface
  * 
  *     with nogil:             # <<<<<<<<<<<<<<
@@ -19000,29 +18815,29 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
       }
   }
 
-  /* "Scroll.pyx":1234
+  /* "Scroll.pyx":1254
  *                         new_array[jj, i, 3] = alpha_array[i, j]
  * 
  *     return pygame.image.frombuffer(new_array, (w, h), 'RGBA')             # <<<<<<<<<<<<<<
  * 
- * @cython.boundscheck(False)
+ * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_pygame); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1234, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_pygame); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1254, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_image); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 1234, __pyx_L1_error)
+  __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_image); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 1254, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_14);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_14, __pyx_n_s_frombuffer); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1234, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_14, __pyx_n_s_frombuffer); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1254, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-  __pyx_t_14 = __pyx_memoryview_fromslice(__pyx_v_new_array, 3, (PyObject *(*)(char *)) __pyx_memview_get_unsigned_char, (int (*)(char *, PyObject *)) __pyx_memview_set_unsigned_char, 0);; if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 1234, __pyx_L1_error)
+  __pyx_t_14 = __pyx_memoryview_fromslice(__pyx_v_new_array, 3, (PyObject *(*)(char *)) __pyx_memview_get_unsigned_char, (int (*)(char *, PyObject *)) __pyx_memview_set_unsigned_char, 0);; if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 1254, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_14);
-  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_w); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1234, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_w); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1254, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_9 = __Pyx_PyInt_From_int(__pyx_v_h); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1234, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyInt_From_int(__pyx_v_h); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1254, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
-  __pyx_t_15 = PyTuple_New(2); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 1234, __pyx_L1_error)
+  __pyx_t_15 = PyTuple_New(2); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 1254, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_15);
   __Pyx_GIVEREF(__pyx_t_4);
   PyTuple_SET_ITEM(__pyx_t_15, 0, __pyx_t_4);
@@ -19045,7 +18860,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_1)) {
     PyObject *__pyx_temp[4] = {__pyx_t_9, __pyx_t_14, __pyx_t_15, __pyx_n_s_RGBA};
-    __pyx_t_8 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_18, 3+__pyx_t_18); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1234, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_18, 3+__pyx_t_18); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1254, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
@@ -19055,7 +18870,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_1)) {
     PyObject *__pyx_temp[4] = {__pyx_t_9, __pyx_t_14, __pyx_t_15, __pyx_n_s_RGBA};
-    __pyx_t_8 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_18, 3+__pyx_t_18); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1234, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_18, 3+__pyx_t_18); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1254, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
@@ -19063,7 +18878,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
   } else
   #endif
   {
-    __pyx_t_4 = PyTuple_New(3+__pyx_t_18); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1234, __pyx_L1_error)
+    __pyx_t_4 = PyTuple_New(3+__pyx_t_18); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1254, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     if (__pyx_t_9) {
       __Pyx_GIVEREF(__pyx_t_9); PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_9); __pyx_t_9 = NULL;
@@ -19077,7 +18892,7 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
     PyTuple_SET_ITEM(__pyx_t_4, 2+__pyx_t_18, __pyx_n_s_RGBA);
     __pyx_t_14 = 0;
     __pyx_t_15 = 0;
-    __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_4, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1234, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_4, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1254, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   }
@@ -19086,12 +18901,12 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
   __pyx_t_8 = 0;
   goto __pyx_L0;
 
-  /* "Scroll.pyx":1153
+  /* "Scroll.pyx":1173
  * @cython.nonecheck(False)
  * @cython.cdivision(True)
  * cdef scroll_surface32_c(surface, int dy, int dx):             # <<<<<<<<<<<<<<
  *     """
- *     Scroll surface channel alpha (lateral/vertical using optional dx, dy values)
+ *     Scroll surface 32-bit (lateral/vertical using optional dx, dy values)
  */
 
   /* function exit code */
@@ -19120,356 +18935,1691 @@ static PyObject *__pyx_f_6Scroll_scroll_surface32_c(PyObject *__pyx_v_surface, i
   return __pyx_r;
 }
 
-/* "Scroll.pyx":1240
+/* "Scroll.pyx":1261
  * @cython.nonecheck(False)
  * @cython.cdivision(True)
- * cdef unsigned char [:] vfb24_c(unsigned char [:] source, unsigned char [:] target, int width, int height)nogil:             # <<<<<<<<<<<<<<
+ * cdef scroll_transparency_c(surface, int dy, int dx):             # <<<<<<<<<<<<<<
  *     """
- *     Vertically flipped buffer
+ *     Scroll channel alpha (lateral/vertical using optional dx, dy values)
  */
 
-static __Pyx_memviewslice __pyx_f_6Scroll_vfb24_c(__Pyx_memviewslice __pyx_v_source, __Pyx_memviewslice __pyx_v_target, int __pyx_v_width, int __pyx_v_height) {
-  Py_ssize_t __pyx_v_i;
-  Py_ssize_t __pyx_v_j;
-  int __pyx_v_index;
-  int __pyx_v_k;
-  int __pyx_v_w3;
-  __Pyx_memviewslice __pyx_r = { 0, 0, { 0 }, { 0 }, { 0 } };
-  int __pyx_t_1;
-  Py_ssize_t __pyx_t_2;
-  Py_ssize_t __pyx_t_3;
-  int __pyx_t_4;
-  Py_ssize_t __pyx_t_5;
-  Py_ssize_t __pyx_t_6;
-  Py_ssize_t __pyx_t_7;
-  Py_ssize_t __pyx_t_8;
-  Py_ssize_t __pyx_t_9;
-  Py_ssize_t __pyx_t_10;
-  Py_ssize_t __pyx_t_11;
-
-  /* "Scroll.pyx":1279
- *         cdef Py_ssize_t i, j
- *         int index, k
- *         int w3 = width * 3             # <<<<<<<<<<<<<<
- * 
- *     for i in prange(0, w3, 3):
- */
-  __pyx_v_w3 = (__pyx_v_width * 3);
-
-  /* "Scroll.pyx":1281
- *         int w3 = width * 3
- * 
- *     for i in prange(0, w3, 3):             # <<<<<<<<<<<<<<
- *         for j in range(0, height):
- *             index = i + (w3 * j)
- */
-  __pyx_t_1 = __pyx_v_w3;
-  if (3 == 0) abort();
-  {
-      #if ((defined(__APPLE__) || defined(__OSX__)) && (defined(__GNUC__) && (__GNUC__ > 2 || (__GNUC__ == 2 && (__GNUC_MINOR__ > 95)))))
-          #undef likely
-          #undef unlikely
-          #define likely(x)   (x)
-          #define unlikely(x) (x)
-      #endif
-      __pyx_t_3 = (__pyx_t_1 - 0 + 3 - 3/abs(3)) / 3;
-      if (__pyx_t_3 > 0)
-      {
-          #ifdef _OPENMP
-          #pragma omp parallel private(__pyx_t_10, __pyx_t_11, __pyx_t_4, __pyx_t_5, __pyx_t_6, __pyx_t_7, __pyx_t_8, __pyx_t_9)
-          #endif /* _OPENMP */
-          {
-              #ifdef _OPENMP
-              #pragma omp for firstprivate(__pyx_v_i) lastprivate(__pyx_v_i) lastprivate(__pyx_v_index) lastprivate(__pyx_v_j) lastprivate(__pyx_v_k)
-              #endif /* _OPENMP */
-              for (__pyx_t_2 = 0; __pyx_t_2 < __pyx_t_3; __pyx_t_2++){
-                  {
-                      __pyx_v_i = (Py_ssize_t)(0 + 3 * __pyx_t_2);
-                      /* Initialize private variables to invalid values */
-                      __pyx_v_index = ((int)0xbad0bad0);
-                      __pyx_v_j = ((Py_ssize_t)0xbad0bad0);
-                      __pyx_v_k = ((int)0xbad0bad0);
-
-                      /* "Scroll.pyx":1282
- * 
- *     for i in prange(0, w3, 3):
- *         for j in range(0, height):             # <<<<<<<<<<<<<<
- *             index = i + (w3 * j)
- *             k = (j * 3) + (i * height)
- */
-                      __pyx_t_4 = __pyx_v_height;
-                      for (__pyx_t_5 = 0; __pyx_t_5 < __pyx_t_4; __pyx_t_5+=1) {
-                        __pyx_v_j = __pyx_t_5;
-
-                        /* "Scroll.pyx":1283
- *     for i in prange(0, w3, 3):
- *         for j in range(0, height):
- *             index = i + (w3 * j)             # <<<<<<<<<<<<<<
- *             k = (j * 3) + (i * height)
- *             target[k] =  <unsigned char>source[index]
- */
-                        __pyx_v_index = (__pyx_v_i + (__pyx_v_w3 * __pyx_v_j));
-
-                        /* "Scroll.pyx":1284
- *         for j in range(0, height):
- *             index = i + (w3 * j)
- *             k = (j * 3) + (i * height)             # <<<<<<<<<<<<<<
- *             target[k] =  <unsigned char>source[index]
- *             target[k + 1] =  <unsigned char>source[index + 1]
- */
-                        __pyx_v_k = ((__pyx_v_j * 3) + (__pyx_v_i * __pyx_v_height));
-
-                        /* "Scroll.pyx":1285
- *             index = i + (w3 * j)
- *             k = (j * 3) + (i * height)
- *             target[k] =  <unsigned char>source[index]             # <<<<<<<<<<<<<<
- *             target[k + 1] =  <unsigned char>source[index + 1]
- *             target[k + 2] =  <unsigned char>source[index + 2]
- */
-                        __pyx_t_6 = __pyx_v_index;
-                        __pyx_t_7 = __pyx_v_k;
-                        *((unsigned char *) ( /* dim=0 */ (__pyx_v_target.data + __pyx_t_7 * __pyx_v_target.strides[0]) )) = ((unsigned char)(*((unsigned char *) ( /* dim=0 */ (__pyx_v_source.data + __pyx_t_6 * __pyx_v_source.strides[0]) ))));
-
-                        /* "Scroll.pyx":1286
- *             k = (j * 3) + (i * height)
- *             target[k] =  <unsigned char>source[index]
- *             target[k + 1] =  <unsigned char>source[index + 1]             # <<<<<<<<<<<<<<
- *             target[k + 2] =  <unsigned char>source[index + 2]
- * 
- */
-                        __pyx_t_8 = (__pyx_v_index + 1);
-                        __pyx_t_9 = (__pyx_v_k + 1);
-                        *((unsigned char *) ( /* dim=0 */ (__pyx_v_target.data + __pyx_t_9 * __pyx_v_target.strides[0]) )) = ((unsigned char)(*((unsigned char *) ( /* dim=0 */ (__pyx_v_source.data + __pyx_t_8 * __pyx_v_source.strides[0]) ))));
-
-                        /* "Scroll.pyx":1287
- *             target[k] =  <unsigned char>source[index]
- *             target[k + 1] =  <unsigned char>source[index + 1]
- *             target[k + 2] =  <unsigned char>source[index + 2]             # <<<<<<<<<<<<<<
- * 
- *     return target
- */
-                        __pyx_t_10 = (__pyx_v_index + 2);
-                        __pyx_t_11 = (__pyx_v_k + 2);
-                        *((unsigned char *) ( /* dim=0 */ (__pyx_v_target.data + __pyx_t_11 * __pyx_v_target.strides[0]) )) = ((unsigned char)(*((unsigned char *) ( /* dim=0 */ (__pyx_v_source.data + __pyx_t_10 * __pyx_v_source.strides[0]) ))));
-                      }
-                  }
-              }
-          }
-      }
-  }
-  #if ((defined(__APPLE__) || defined(__OSX__)) && (defined(__GNUC__) && (__GNUC__ > 2 || (__GNUC__ == 2 && (__GNUC_MINOR__ > 95)))))
-      #undef likely
-      #undef unlikely
-      #define likely(x)   __builtin_expect(!!(x), 1)
-      #define unlikely(x) __builtin_expect(!!(x), 0)
-  #endif
-
-  /* "Scroll.pyx":1289
- *             target[k + 2] =  <unsigned char>source[index + 2]
- * 
- *     return target             # <<<<<<<<<<<<<<
- * 
- * 
- */
-  __PYX_INC_MEMVIEW(&__pyx_v_target, 1);
-  __pyx_r = __pyx_v_target;
-  goto __pyx_L0;
-
-  /* "Scroll.pyx":1240
- * @cython.nonecheck(False)
- * @cython.cdivision(True)
- * cdef unsigned char [:] vfb24_c(unsigned char [:] source, unsigned char [:] target, int width, int height)nogil:             # <<<<<<<<<<<<<<
- *     """
- *     Vertically flipped buffer
- */
-
-  /* function exit code */
-  __pyx_L0:;
-  if (unlikely(!__pyx_r.memview)) {
-    PyErr_SetString(PyExc_TypeError, "Memoryview return value is not initialized");
-  }
-  return __pyx_r;
-}
-
-/* "Scroll.pyx":1297
- * @cython.nonecheck(False)
- * @cython.cdivision(True)
- * cdef unsigned char [::1] vfb32_c(unsigned char [:] source, unsigned char [::1] target,             # <<<<<<<<<<<<<<
- *                                    int width, int height)nogil:
- *     """
- */
-
-static __Pyx_memviewslice __pyx_f_6Scroll_vfb32_c(__Pyx_memviewslice __pyx_v_source, __Pyx_memviewslice __pyx_v_target, int __pyx_v_width, int __pyx_v_height) {
+static PyObject *__pyx_f_6Scroll_scroll_transparency_c(PyObject *__pyx_v_surface, int __pyx_v_dy, int __pyx_v_dx) {
+  PyObject *__pyx_v_array = NULL;
+  PyObject *__pyx_v_alpha = NULL;
+  CYTHON_UNUSED PyObject *__pyx_v_e = NULL;
+  int __pyx_v_w;
+  int __pyx_v_h;
   int __pyx_v_i;
   int __pyx_v_j;
-  int __pyx_v_index;
-  int __pyx_v_k;
-  int __pyx_v_w4;
-  __Pyx_memviewslice __pyx_r = { 0, 0, { 0 }, { 0 }, { 0 } };
-  int __pyx_t_1;
-  long __pyx_t_2;
-  long __pyx_t_3;
-  int __pyx_t_4;
-  int __pyx_t_5;
-  Py_ssize_t __pyx_t_6;
-  Py_ssize_t __pyx_t_7;
-  Py_ssize_t __pyx_t_8;
-  Py_ssize_t __pyx_t_9;
-  Py_ssize_t __pyx_t_10;
-  Py_ssize_t __pyx_t_11;
-  Py_ssize_t __pyx_t_12;
-  Py_ssize_t __pyx_t_13;
+  int __pyx_v_ii;
+  int __pyx_v_jj;
+  __Pyx_memviewslice __pyx_v_rgb_array = { 0, 0, { 0 }, { 0 }, { 0 } };
+  __Pyx_memviewslice __pyx_v_alpha_array = { 0, 0, { 0 }, { 0 }, { 0 } };
+  __Pyx_memviewslice __pyx_v_new_array = { 0, 0, { 0 }, { 0 }, { 0 } };
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_t_2;
+  int __pyx_t_3;
+  PyObject *__pyx_t_4 = NULL;
+  PyObject *__pyx_t_5 = NULL;
+  PyObject *__pyx_t_6 = NULL;
+  PyObject *__pyx_t_7 = NULL;
+  PyObject *__pyx_t_8 = NULL;
+  PyObject *__pyx_t_9 = NULL;
+  int __pyx_t_10;
+  PyObject *__pyx_t_11 = NULL;
+  PyObject *__pyx_t_12 = NULL;
+  PyObject *__pyx_t_13 = NULL;
+  PyObject *__pyx_t_14 = NULL;
+  PyObject *__pyx_t_15 = NULL;
+  PyObject *__pyx_t_16 = NULL;
+  PyObject *(*__pyx_t_17)(PyObject *);
+  int __pyx_t_18;
+  __Pyx_memviewslice __pyx_t_19 = { 0, 0, { 0 }, { 0 }, { 0 } };
+  __Pyx_memviewslice __pyx_t_20 = { 0, 0, { 0 }, { 0 }, { 0 } };
+  long __pyx_t_21;
+  long __pyx_t_22;
+  int __pyx_t_23;
+  Py_ssize_t __pyx_t_24;
+  Py_ssize_t __pyx_t_25;
+  Py_ssize_t __pyx_t_26;
+  Py_ssize_t __pyx_t_27;
+  Py_ssize_t __pyx_t_28;
+  Py_ssize_t __pyx_t_29;
+  Py_ssize_t __pyx_t_30;
+  Py_ssize_t __pyx_t_31;
+  Py_ssize_t __pyx_t_32;
+  Py_ssize_t __pyx_t_33;
+  Py_ssize_t __pyx_t_34;
+  Py_ssize_t __pyx_t_35;
+  Py_ssize_t __pyx_t_36;
+  Py_ssize_t __pyx_t_37;
+  Py_ssize_t __pyx_t_38;
+  Py_ssize_t __pyx_t_39;
+  Py_ssize_t __pyx_t_40;
+  Py_ssize_t __pyx_t_41;
+  Py_ssize_t __pyx_t_42;
+  Py_ssize_t __pyx_t_43;
+  Py_ssize_t __pyx_t_44;
+  Py_ssize_t __pyx_t_45;
+  Py_ssize_t __pyx_t_46;
+  int __pyx_t_47;
+  int __pyx_t_48;
+  Py_ssize_t __pyx_t_49;
+  Py_ssize_t __pyx_t_50;
+  Py_ssize_t __pyx_t_51;
+  Py_ssize_t __pyx_t_52;
+  Py_ssize_t __pyx_t_53;
+  Py_ssize_t __pyx_t_54;
+  Py_ssize_t __pyx_t_55;
+  Py_ssize_t __pyx_t_56;
+  Py_ssize_t __pyx_t_57;
+  Py_ssize_t __pyx_t_58;
+  Py_ssize_t __pyx_t_59;
+  Py_ssize_t __pyx_t_60;
+  Py_ssize_t __pyx_t_61;
+  Py_ssize_t __pyx_t_62;
+  Py_ssize_t __pyx_t_63;
+  Py_ssize_t __pyx_t_64;
+  Py_ssize_t __pyx_t_65;
+  Py_ssize_t __pyx_t_66;
+  Py_ssize_t __pyx_t_67;
+  Py_ssize_t __pyx_t_68;
+  Py_ssize_t __pyx_t_69;
+  Py_ssize_t __pyx_t_70;
+  Py_ssize_t __pyx_t_71;
+  Py_ssize_t __pyx_t_72;
+  Py_ssize_t __pyx_t_73;
+  Py_ssize_t __pyx_t_74;
+  Py_ssize_t __pyx_t_75;
+  Py_ssize_t __pyx_t_76;
+  Py_ssize_t __pyx_t_77;
+  Py_ssize_t __pyx_t_78;
+  Py_ssize_t __pyx_t_79;
+  Py_ssize_t __pyx_t_80;
+  Py_ssize_t __pyx_t_81;
+  Py_ssize_t __pyx_t_82;
+  Py_ssize_t __pyx_t_83;
+  Py_ssize_t __pyx_t_84;
+  Py_ssize_t __pyx_t_85;
+  Py_ssize_t __pyx_t_86;
+  Py_ssize_t __pyx_t_87;
+  Py_ssize_t __pyx_t_88;
+  Py_ssize_t __pyx_t_89;
+  Py_ssize_t __pyx_t_90;
+  Py_ssize_t __pyx_t_91;
+  Py_ssize_t __pyx_t_92;
+  Py_ssize_t __pyx_t_93;
+  Py_ssize_t __pyx_t_94;
+  __Pyx_RefNannySetupContext("scroll_transparency_c", 0);
 
-  /* "Scroll.pyx":1335
- *     cdef:
- *         int i, j, index, k
- *         int w4 = width * 4             # <<<<<<<<<<<<<<
- * 
- *     for i in prange(0, w4, 4):
+  /* "Scroll.pyx":1273
+ *     array:3d array numpy.ndarray shape (w, h, 4))
+ *     """
+ *     if not isinstance(dx, int):             # <<<<<<<<<<<<<<
+ *         raise TypeError('dx, an integer is required (got type %s)' % type(dx))
+ *     if not isinstance(dy, int):
  */
-  __pyx_v_w4 = (__pyx_v_width * 4);
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_dx); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1273, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = PyInt_Check(__pyx_t_1); 
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_3 = ((!(__pyx_t_2 != 0)) != 0);
+  if (__pyx_t_3) {
 
-  /* "Scroll.pyx":1337
- *         int w4 = width * 4
- * 
- *     for i in prange(0, w4, 4):             # <<<<<<<<<<<<<<
- *         for j in range(0, height):
- *             index = i + (w4 * j)
+    /* "Scroll.pyx":1274
+ *     """
+ *     if not isinstance(dx, int):
+ *         raise TypeError('dx, an integer is required (got type %s)' % type(dx))             # <<<<<<<<<<<<<<
+ *     if not isinstance(dy, int):
+ *         raise TypeError('dy, an integer is required (got type %s)' % type(dy))
  */
-  __pyx_t_1 = __pyx_v_w4;
-  if (4 == 0) abort();
+    __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_dx); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1274, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_t_4 = __Pyx_PyString_Format(__pyx_kp_s_dx_an_integer_is_required_got_ty, ((PyObject *)Py_TYPE(__pyx_t_1))); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1274, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1274, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_GIVEREF(__pyx_t_4);
+    PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_4);
+    __pyx_t_4 = 0;
+    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_t_1, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1274, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __Pyx_Raise(__pyx_t_4, 0, 0, 0);
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __PYX_ERR(0, 1274, __pyx_L1_error)
+
+    /* "Scroll.pyx":1273
+ *     array:3d array numpy.ndarray shape (w, h, 4))
+ *     """
+ *     if not isinstance(dx, int):             # <<<<<<<<<<<<<<
+ *         raise TypeError('dx, an integer is required (got type %s)' % type(dx))
+ *     if not isinstance(dy, int):
+ */
+  }
+
+  /* "Scroll.pyx":1275
+ *     if not isinstance(dx, int):
+ *         raise TypeError('dx, an integer is required (got type %s)' % type(dx))
+ *     if not isinstance(dy, int):             # <<<<<<<<<<<<<<
+ *         raise TypeError('dy, an integer is required (got type %s)' % type(dy))
+ *     if not isinstance(surface, pygame.Surface):
+ */
+  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_dy); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1275, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_3 = PyInt_Check(__pyx_t_4); 
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_2 = ((!(__pyx_t_3 != 0)) != 0);
+  if (__pyx_t_2) {
+
+    /* "Scroll.pyx":1276
+ *         raise TypeError('dx, an integer is required (got type %s)' % type(dx))
+ *     if not isinstance(dy, int):
+ *         raise TypeError('dy, an integer is required (got type %s)' % type(dy))             # <<<<<<<<<<<<<<
+ *     if not isinstance(surface, pygame.Surface):
+ *         raise TypeError('surface, a pygame surface is required (got type %s)' % type(surface))
+ */
+    __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_dy); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1276, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_1 = __Pyx_PyString_Format(__pyx_kp_s_dy_an_integer_is_required_got_ty, ((PyObject *)Py_TYPE(__pyx_t_4))); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1276, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1276, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_GIVEREF(__pyx_t_1);
+    PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_1);
+    __pyx_t_1 = 0;
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_t_4, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1276, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __Pyx_Raise(__pyx_t_1, 0, 0, 0);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __PYX_ERR(0, 1276, __pyx_L1_error)
+
+    /* "Scroll.pyx":1275
+ *     if not isinstance(dx, int):
+ *         raise TypeError('dx, an integer is required (got type %s)' % type(dx))
+ *     if not isinstance(dy, int):             # <<<<<<<<<<<<<<
+ *         raise TypeError('dy, an integer is required (got type %s)' % type(dy))
+ *     if not isinstance(surface, pygame.Surface):
+ */
+  }
+
+  /* "Scroll.pyx":1277
+ *     if not isinstance(dy, int):
+ *         raise TypeError('dy, an integer is required (got type %s)' % type(dy))
+ *     if not isinstance(surface, pygame.Surface):             # <<<<<<<<<<<<<<
+ *         raise TypeError('surface, a pygame surface is required (got type %s)' % type(surface))
+ * 
+ */
+  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_pygame); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1277, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_Surface); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1277, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_2 = PyObject_IsInstance(__pyx_v_surface, __pyx_t_4); if (unlikely(__pyx_t_2 == ((int)-1))) __PYX_ERR(0, 1277, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_3 = ((!(__pyx_t_2 != 0)) != 0);
+  if (__pyx_t_3) {
+
+    /* "Scroll.pyx":1278
+ *         raise TypeError('dy, an integer is required (got type %s)' % type(dy))
+ *     if not isinstance(surface, pygame.Surface):
+ *         raise TypeError('surface, a pygame surface is required (got type %s)' % type(surface))             # <<<<<<<<<<<<<<
+ * 
+ *     try:
+ */
+    __pyx_t_4 = __Pyx_PyString_Format(__pyx_kp_s_surface_a_pygame_surface_is_requ, ((PyObject *)Py_TYPE(__pyx_v_surface))); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1278, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1278, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_GIVEREF(__pyx_t_4);
+    PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_4);
+    __pyx_t_4 = 0;
+    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_t_1, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1278, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __Pyx_Raise(__pyx_t_4, 0, 0, 0);
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __PYX_ERR(0, 1278, __pyx_L1_error)
+
+    /* "Scroll.pyx":1277
+ *     if not isinstance(dy, int):
+ *         raise TypeError('dy, an integer is required (got type %s)' % type(dy))
+ *     if not isinstance(surface, pygame.Surface):             # <<<<<<<<<<<<<<
+ *         raise TypeError('surface, a pygame surface is required (got type %s)' % type(surface))
+ * 
+ */
+  }
+
+  /* "Scroll.pyx":1280
+ *         raise TypeError('surface, a pygame surface is required (got type %s)' % type(surface))
+ * 
+ *     try:             # <<<<<<<<<<<<<<
+ *         array = pixels3d(surface)
+ *         alpha = pixels_alpha(surface)
+ */
   {
-      #if ((defined(__APPLE__) || defined(__OSX__)) && (defined(__GNUC__) && (__GNUC__ > 2 || (__GNUC__ == 2 && (__GNUC_MINOR__ > 95)))))
-          #undef likely
-          #undef unlikely
-          #define likely(x)   (x)
-          #define unlikely(x) (x)
-      #endif
-      __pyx_t_3 = (__pyx_t_1 - 0 + 4 - 4/abs(4)) / 4;
-      if (__pyx_t_3 > 0)
+    __Pyx_PyThreadState_declare
+    __Pyx_PyThreadState_assign
+    __Pyx_ExceptionSave(&__pyx_t_5, &__pyx_t_6, &__pyx_t_7);
+    __Pyx_XGOTREF(__pyx_t_5);
+    __Pyx_XGOTREF(__pyx_t_6);
+    __Pyx_XGOTREF(__pyx_t_7);
+    /*try:*/ {
+
+      /* "Scroll.pyx":1281
+ * 
+ *     try:
+ *         array = pixels3d(surface)             # <<<<<<<<<<<<<<
+ *         alpha = pixels_alpha(surface)
+ * 
+ */
+      __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_pixels3d); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1281, __pyx_L6_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      __pyx_t_8 = NULL;
+      if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_1))) {
+        __pyx_t_8 = PyMethod_GET_SELF(__pyx_t_1);
+        if (likely(__pyx_t_8)) {
+          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_1);
+          __Pyx_INCREF(__pyx_t_8);
+          __Pyx_INCREF(function);
+          __Pyx_DECREF_SET(__pyx_t_1, function);
+        }
+      }
+      if (!__pyx_t_8) {
+        __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_v_surface); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1281, __pyx_L6_error)
+        __Pyx_GOTREF(__pyx_t_4);
+      } else {
+        #if CYTHON_FAST_PYCALL
+        if (PyFunction_Check(__pyx_t_1)) {
+          PyObject *__pyx_temp[2] = {__pyx_t_8, __pyx_v_surface};
+          __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1281, __pyx_L6_error)
+          __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
+          __Pyx_GOTREF(__pyx_t_4);
+        } else
+        #endif
+        #if CYTHON_FAST_PYCCALL
+        if (__Pyx_PyFastCFunction_Check(__pyx_t_1)) {
+          PyObject *__pyx_temp[2] = {__pyx_t_8, __pyx_v_surface};
+          __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1281, __pyx_L6_error)
+          __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
+          __Pyx_GOTREF(__pyx_t_4);
+        } else
+        #endif
+        {
+          __pyx_t_9 = PyTuple_New(1+1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1281, __pyx_L6_error)
+          __Pyx_GOTREF(__pyx_t_9);
+          __Pyx_GIVEREF(__pyx_t_8); PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_8); __pyx_t_8 = NULL;
+          __Pyx_INCREF(__pyx_v_surface);
+          __Pyx_GIVEREF(__pyx_v_surface);
+          PyTuple_SET_ITEM(__pyx_t_9, 0+1, __pyx_v_surface);
+          __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_9, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1281, __pyx_L6_error)
+          __Pyx_GOTREF(__pyx_t_4);
+          __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+        }
+      }
+      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+      __pyx_v_array = __pyx_t_4;
+      __pyx_t_4 = 0;
+
+      /* "Scroll.pyx":1282
+ *     try:
+ *         array = pixels3d(surface)
+ *         alpha = pixels_alpha(surface)             # <<<<<<<<<<<<<<
+ * 
+ *     except (ValueError, pygame.error) as e:
+ */
+      __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_pixels_alpha); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1282, __pyx_L6_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      __pyx_t_9 = NULL;
+      if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_1))) {
+        __pyx_t_9 = PyMethod_GET_SELF(__pyx_t_1);
+        if (likely(__pyx_t_9)) {
+          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_1);
+          __Pyx_INCREF(__pyx_t_9);
+          __Pyx_INCREF(function);
+          __Pyx_DECREF_SET(__pyx_t_1, function);
+        }
+      }
+      if (!__pyx_t_9) {
+        __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_v_surface); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1282, __pyx_L6_error)
+        __Pyx_GOTREF(__pyx_t_4);
+      } else {
+        #if CYTHON_FAST_PYCALL
+        if (PyFunction_Check(__pyx_t_1)) {
+          PyObject *__pyx_temp[2] = {__pyx_t_9, __pyx_v_surface};
+          __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1282, __pyx_L6_error)
+          __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
+          __Pyx_GOTREF(__pyx_t_4);
+        } else
+        #endif
+        #if CYTHON_FAST_PYCCALL
+        if (__Pyx_PyFastCFunction_Check(__pyx_t_1)) {
+          PyObject *__pyx_temp[2] = {__pyx_t_9, __pyx_v_surface};
+          __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1282, __pyx_L6_error)
+          __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
+          __Pyx_GOTREF(__pyx_t_4);
+        } else
+        #endif
+        {
+          __pyx_t_8 = PyTuple_New(1+1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1282, __pyx_L6_error)
+          __Pyx_GOTREF(__pyx_t_8);
+          __Pyx_GIVEREF(__pyx_t_9); PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_9); __pyx_t_9 = NULL;
+          __Pyx_INCREF(__pyx_v_surface);
+          __Pyx_GIVEREF(__pyx_v_surface);
+          PyTuple_SET_ITEM(__pyx_t_8, 0+1, __pyx_v_surface);
+          __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_8, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1282, __pyx_L6_error)
+          __Pyx_GOTREF(__pyx_t_4);
+          __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+        }
+      }
+      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+      __pyx_v_alpha = __pyx_t_4;
+      __pyx_t_4 = 0;
+
+      /* "Scroll.pyx":1280
+ *         raise TypeError('surface, a pygame surface is required (got type %s)' % type(surface))
+ * 
+ *     try:             # <<<<<<<<<<<<<<
+ *         array = pixels3d(surface)
+ *         alpha = pixels_alpha(surface)
+ */
+    }
+    __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
+    __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
+    __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
+    goto __pyx_L11_try_end;
+    __pyx_L6_error:;
+    __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
+    __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
+    __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+
+    /* "Scroll.pyx":1284
+ *         alpha = pixels_alpha(surface)
+ * 
+ *     except (ValueError, pygame.error) as e:             # <<<<<<<<<<<<<<
+ *         try:
+ *             array = pygame.surfarray.array3d(surface)
+ */
+    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_pygame); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1284, __pyx_L8_except_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_error); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1284, __pyx_L8_except_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __pyx_t_10 = __Pyx_PyErr_ExceptionMatches(__pyx_builtin_ValueError) || __Pyx_PyErr_ExceptionMatches(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    if (__pyx_t_10) {
+      __Pyx_AddTraceback("Scroll.scroll_transparency_c", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      if (__Pyx_GetException(&__pyx_t_1, &__pyx_t_4, &__pyx_t_8) < 0) __PYX_ERR(0, 1284, __pyx_L8_except_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      __Pyx_GOTREF(__pyx_t_4);
+      __Pyx_GOTREF(__pyx_t_8);
+      __Pyx_INCREF(__pyx_t_4);
+      __pyx_v_e = __pyx_t_4;
+
+      /* "Scroll.pyx":1285
+ * 
+ *     except (ValueError, pygame.error) as e:
+ *         try:             # <<<<<<<<<<<<<<
+ *             array = pygame.surfarray.array3d(surface)
+ *             alpha = pygame.surfarray.array_alpha(surface)
+ */
       {
-          #ifdef _OPENMP
-          #pragma omp parallel private(__pyx_t_10, __pyx_t_11, __pyx_t_12, __pyx_t_13, __pyx_t_4, __pyx_t_5, __pyx_t_6, __pyx_t_7, __pyx_t_8, __pyx_t_9)
-          #endif /* _OPENMP */
+        __Pyx_PyThreadState_declare
+        __Pyx_PyThreadState_assign
+        __Pyx_ExceptionSave(&__pyx_t_11, &__pyx_t_12, &__pyx_t_13);
+        __Pyx_XGOTREF(__pyx_t_11);
+        __Pyx_XGOTREF(__pyx_t_12);
+        __Pyx_XGOTREF(__pyx_t_13);
+        /*try:*/ {
+
+          /* "Scroll.pyx":1286
+ *     except (ValueError, pygame.error) as e:
+ *         try:
+ *             array = pygame.surfarray.array3d(surface)             # <<<<<<<<<<<<<<
+ *             alpha = pygame.surfarray.array_alpha(surface)
+ *         except (ValueError, pygame.error) as e:
+ */
+          __pyx_t_14 = __Pyx_GetModuleGlobalName(__pyx_n_s_pygame); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 1286, __pyx_L14_error)
+          __Pyx_GOTREF(__pyx_t_14);
+          __pyx_t_15 = __Pyx_PyObject_GetAttrStr(__pyx_t_14, __pyx_n_s_surfarray); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 1286, __pyx_L14_error)
+          __Pyx_GOTREF(__pyx_t_15);
+          __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
+          __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_t_15, __pyx_n_s_array3d); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 1286, __pyx_L14_error)
+          __Pyx_GOTREF(__pyx_t_14);
+          __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
+          __pyx_t_15 = NULL;
+          if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_14))) {
+            __pyx_t_15 = PyMethod_GET_SELF(__pyx_t_14);
+            if (likely(__pyx_t_15)) {
+              PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_14);
+              __Pyx_INCREF(__pyx_t_15);
+              __Pyx_INCREF(function);
+              __Pyx_DECREF_SET(__pyx_t_14, function);
+            }
+          }
+          if (!__pyx_t_15) {
+            __pyx_t_9 = __Pyx_PyObject_CallOneArg(__pyx_t_14, __pyx_v_surface); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1286, __pyx_L14_error)
+            __Pyx_GOTREF(__pyx_t_9);
+          } else {
+            #if CYTHON_FAST_PYCALL
+            if (PyFunction_Check(__pyx_t_14)) {
+              PyObject *__pyx_temp[2] = {__pyx_t_15, __pyx_v_surface};
+              __pyx_t_9 = __Pyx_PyFunction_FastCall(__pyx_t_14, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1286, __pyx_L14_error)
+              __Pyx_XDECREF(__pyx_t_15); __pyx_t_15 = 0;
+              __Pyx_GOTREF(__pyx_t_9);
+            } else
+            #endif
+            #if CYTHON_FAST_PYCCALL
+            if (__Pyx_PyFastCFunction_Check(__pyx_t_14)) {
+              PyObject *__pyx_temp[2] = {__pyx_t_15, __pyx_v_surface};
+              __pyx_t_9 = __Pyx_PyCFunction_FastCall(__pyx_t_14, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1286, __pyx_L14_error)
+              __Pyx_XDECREF(__pyx_t_15); __pyx_t_15 = 0;
+              __Pyx_GOTREF(__pyx_t_9);
+            } else
+            #endif
+            {
+              __pyx_t_16 = PyTuple_New(1+1); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 1286, __pyx_L14_error)
+              __Pyx_GOTREF(__pyx_t_16);
+              __Pyx_GIVEREF(__pyx_t_15); PyTuple_SET_ITEM(__pyx_t_16, 0, __pyx_t_15); __pyx_t_15 = NULL;
+              __Pyx_INCREF(__pyx_v_surface);
+              __Pyx_GIVEREF(__pyx_v_surface);
+              PyTuple_SET_ITEM(__pyx_t_16, 0+1, __pyx_v_surface);
+              __pyx_t_9 = __Pyx_PyObject_Call(__pyx_t_14, __pyx_t_16, NULL); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1286, __pyx_L14_error)
+              __Pyx_GOTREF(__pyx_t_9);
+              __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
+            }
+          }
+          __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
+          __Pyx_XDECREF_SET(__pyx_v_array, __pyx_t_9);
+          __pyx_t_9 = 0;
+
+          /* "Scroll.pyx":1287
+ *         try:
+ *             array = pygame.surfarray.array3d(surface)
+ *             alpha = pygame.surfarray.array_alpha(surface)             # <<<<<<<<<<<<<<
+ *         except (ValueError, pygame.error) as e:
+ *             raise ValueError('\nIncompatible image pixel format.')
+ */
+          __pyx_t_14 = __Pyx_GetModuleGlobalName(__pyx_n_s_pygame); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 1287, __pyx_L14_error)
+          __Pyx_GOTREF(__pyx_t_14);
+          __pyx_t_16 = __Pyx_PyObject_GetAttrStr(__pyx_t_14, __pyx_n_s_surfarray); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 1287, __pyx_L14_error)
+          __Pyx_GOTREF(__pyx_t_16);
+          __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
+          __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_t_16, __pyx_n_s_array_alpha); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 1287, __pyx_L14_error)
+          __Pyx_GOTREF(__pyx_t_14);
+          __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
+          __pyx_t_16 = NULL;
+          if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_14))) {
+            __pyx_t_16 = PyMethod_GET_SELF(__pyx_t_14);
+            if (likely(__pyx_t_16)) {
+              PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_14);
+              __Pyx_INCREF(__pyx_t_16);
+              __Pyx_INCREF(function);
+              __Pyx_DECREF_SET(__pyx_t_14, function);
+            }
+          }
+          if (!__pyx_t_16) {
+            __pyx_t_9 = __Pyx_PyObject_CallOneArg(__pyx_t_14, __pyx_v_surface); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1287, __pyx_L14_error)
+            __Pyx_GOTREF(__pyx_t_9);
+          } else {
+            #if CYTHON_FAST_PYCALL
+            if (PyFunction_Check(__pyx_t_14)) {
+              PyObject *__pyx_temp[2] = {__pyx_t_16, __pyx_v_surface};
+              __pyx_t_9 = __Pyx_PyFunction_FastCall(__pyx_t_14, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1287, __pyx_L14_error)
+              __Pyx_XDECREF(__pyx_t_16); __pyx_t_16 = 0;
+              __Pyx_GOTREF(__pyx_t_9);
+            } else
+            #endif
+            #if CYTHON_FAST_PYCCALL
+            if (__Pyx_PyFastCFunction_Check(__pyx_t_14)) {
+              PyObject *__pyx_temp[2] = {__pyx_t_16, __pyx_v_surface};
+              __pyx_t_9 = __Pyx_PyCFunction_FastCall(__pyx_t_14, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1287, __pyx_L14_error)
+              __Pyx_XDECREF(__pyx_t_16); __pyx_t_16 = 0;
+              __Pyx_GOTREF(__pyx_t_9);
+            } else
+            #endif
+            {
+              __pyx_t_15 = PyTuple_New(1+1); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 1287, __pyx_L14_error)
+              __Pyx_GOTREF(__pyx_t_15);
+              __Pyx_GIVEREF(__pyx_t_16); PyTuple_SET_ITEM(__pyx_t_15, 0, __pyx_t_16); __pyx_t_16 = NULL;
+              __Pyx_INCREF(__pyx_v_surface);
+              __Pyx_GIVEREF(__pyx_v_surface);
+              PyTuple_SET_ITEM(__pyx_t_15, 0+1, __pyx_v_surface);
+              __pyx_t_9 = __Pyx_PyObject_Call(__pyx_t_14, __pyx_t_15, NULL); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1287, __pyx_L14_error)
+              __Pyx_GOTREF(__pyx_t_9);
+              __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
+            }
+          }
+          __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
+          __Pyx_XDECREF_SET(__pyx_v_alpha, __pyx_t_9);
+          __pyx_t_9 = 0;
+
+          /* "Scroll.pyx":1285
+ * 
+ *     except (ValueError, pygame.error) as e:
+ *         try:             # <<<<<<<<<<<<<<
+ *             array = pygame.surfarray.array3d(surface)
+ *             alpha = pygame.surfarray.array_alpha(surface)
+ */
+        }
+        __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
+        __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
+        __Pyx_XDECREF(__pyx_t_13); __pyx_t_13 = 0;
+        goto __pyx_L21_try_end;
+        __pyx_L14_error:;
+        __Pyx_XDECREF(__pyx_t_16); __pyx_t_16 = 0;
+        __Pyx_XDECREF(__pyx_t_15); __pyx_t_15 = 0;
+        __Pyx_XDECREF(__pyx_t_14); __pyx_t_14 = 0;
+        __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
+
+        /* "Scroll.pyx":1288
+ *             array = pygame.surfarray.array3d(surface)
+ *             alpha = pygame.surfarray.array_alpha(surface)
+ *         except (ValueError, pygame.error) as e:             # <<<<<<<<<<<<<<
+ *             raise ValueError('\nIncompatible image pixel format.')
+ * 
+ */
+        __pyx_t_9 = __Pyx_GetModuleGlobalName(__pyx_n_s_pygame); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1288, __pyx_L16_except_error)
+        __Pyx_GOTREF(__pyx_t_9);
+        __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_error); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 1288, __pyx_L16_except_error)
+        __Pyx_GOTREF(__pyx_t_14);
+        __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+        __pyx_t_10 = __Pyx_PyErr_ExceptionMatches(__pyx_builtin_ValueError) || __Pyx_PyErr_ExceptionMatches(__pyx_t_14);
+        __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
+        if (__pyx_t_10) {
+          __Pyx_AddTraceback("Scroll.scroll_transparency_c", __pyx_clineno, __pyx_lineno, __pyx_filename);
+          if (__Pyx_GetException(&__pyx_t_14, &__pyx_t_9, &__pyx_t_15) < 0) __PYX_ERR(0, 1288, __pyx_L16_except_error)
+          __Pyx_GOTREF(__pyx_t_14);
+          __Pyx_GOTREF(__pyx_t_9);
+          __Pyx_GOTREF(__pyx_t_15);
+          __Pyx_INCREF(__pyx_t_9);
+          __Pyx_DECREF_SET(__pyx_v_e, __pyx_t_9);
+
+          /* "Scroll.pyx":1289
+ *             alpha = pygame.surfarray.array_alpha(surface)
+ *         except (ValueError, pygame.error) as e:
+ *             raise ValueError('\nIncompatible image pixel format.')             # <<<<<<<<<<<<<<
+ * 
+ *     cdef int w, h
+ */
+          __pyx_t_16 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__31, NULL); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 1289, __pyx_L16_except_error)
+          __Pyx_GOTREF(__pyx_t_16);
+          __Pyx_Raise(__pyx_t_16, 0, 0, 0);
+          __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
+          __PYX_ERR(0, 1289, __pyx_L16_except_error)
+        }
+        goto __pyx_L16_except_error;
+        __pyx_L16_except_error:;
+
+        /* "Scroll.pyx":1285
+ * 
+ *     except (ValueError, pygame.error) as e:
+ *         try:             # <<<<<<<<<<<<<<
+ *             array = pygame.surfarray.array3d(surface)
+ *             alpha = pygame.surfarray.array_alpha(surface)
+ */
+        __Pyx_XGIVEREF(__pyx_t_11);
+        __Pyx_XGIVEREF(__pyx_t_12);
+        __Pyx_XGIVEREF(__pyx_t_13);
+        __Pyx_ExceptionReset(__pyx_t_11, __pyx_t_12, __pyx_t_13);
+        goto __pyx_L8_except_error;
+        __pyx_L21_try_end:;
+      }
+      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+      __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+      goto __pyx_L7_exception_handled;
+    }
+    goto __pyx_L8_except_error;
+    __pyx_L8_except_error:;
+
+    /* "Scroll.pyx":1280
+ *         raise TypeError('surface, a pygame surface is required (got type %s)' % type(surface))
+ * 
+ *     try:             # <<<<<<<<<<<<<<
+ *         array = pixels3d(surface)
+ *         alpha = pixels_alpha(surface)
+ */
+    __Pyx_XGIVEREF(__pyx_t_5);
+    __Pyx_XGIVEREF(__pyx_t_6);
+    __Pyx_XGIVEREF(__pyx_t_7);
+    __Pyx_ExceptionReset(__pyx_t_5, __pyx_t_6, __pyx_t_7);
+    goto __pyx_L1_error;
+    __pyx_L7_exception_handled:;
+    __Pyx_XGIVEREF(__pyx_t_5);
+    __Pyx_XGIVEREF(__pyx_t_6);
+    __Pyx_XGIVEREF(__pyx_t_7);
+    __Pyx_ExceptionReset(__pyx_t_5, __pyx_t_6, __pyx_t_7);
+    __pyx_L11_try_end:;
+  }
+
+  /* "Scroll.pyx":1292
+ * 
+ *     cdef int w, h
+ *     try:             # <<<<<<<<<<<<<<
+ *         w, h = array.shape[:2]
+ *     except (ValueError, pygame.error) as e:
+ */
+  {
+    __Pyx_PyThreadState_declare
+    __Pyx_PyThreadState_assign
+    __Pyx_ExceptionSave(&__pyx_t_7, &__pyx_t_6, &__pyx_t_5);
+    __Pyx_XGOTREF(__pyx_t_7);
+    __Pyx_XGOTREF(__pyx_t_6);
+    __Pyx_XGOTREF(__pyx_t_5);
+    /*try:*/ {
+
+      /* "Scroll.pyx":1293
+ *     cdef int w, h
+ *     try:
+ *         w, h = array.shape[:2]             # <<<<<<<<<<<<<<
+ *     except (ValueError, pygame.error) as e:
+ *         raise ValueError('\nArray shape not compatible.')
+ */
+      __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_array, __pyx_n_s_shape); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1293, __pyx_L24_error)
+      __Pyx_GOTREF(__pyx_t_8);
+      __pyx_t_4 = __Pyx_PyObject_GetSlice(__pyx_t_8, 0, 2, NULL, NULL, &__pyx_slice__32, 0, 1, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1293, __pyx_L24_error)
+      __Pyx_GOTREF(__pyx_t_4);
+      __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+      if ((likely(PyTuple_CheckExact(__pyx_t_4))) || (PyList_CheckExact(__pyx_t_4))) {
+        PyObject* sequence = __pyx_t_4;
+        #if !CYTHON_COMPILING_IN_PYPY
+        Py_ssize_t size = Py_SIZE(sequence);
+        #else
+        Py_ssize_t size = PySequence_Size(sequence);
+        #endif
+        if (unlikely(size != 2)) {
+          if (size > 2) __Pyx_RaiseTooManyValuesError(2);
+          else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
+          __PYX_ERR(0, 1293, __pyx_L24_error)
+        }
+        #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+        if (likely(PyTuple_CheckExact(sequence))) {
+          __pyx_t_8 = PyTuple_GET_ITEM(sequence, 0); 
+          __pyx_t_1 = PyTuple_GET_ITEM(sequence, 1); 
+        } else {
+          __pyx_t_8 = PyList_GET_ITEM(sequence, 0); 
+          __pyx_t_1 = PyList_GET_ITEM(sequence, 1); 
+        }
+        __Pyx_INCREF(__pyx_t_8);
+        __Pyx_INCREF(__pyx_t_1);
+        #else
+        __pyx_t_8 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1293, __pyx_L24_error)
+        __Pyx_GOTREF(__pyx_t_8);
+        __pyx_t_1 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1293, __pyx_L24_error)
+        __Pyx_GOTREF(__pyx_t_1);
+        #endif
+        __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+      } else {
+        Py_ssize_t index = -1;
+        __pyx_t_15 = PyObject_GetIter(__pyx_t_4); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 1293, __pyx_L24_error)
+        __Pyx_GOTREF(__pyx_t_15);
+        __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+        __pyx_t_17 = Py_TYPE(__pyx_t_15)->tp_iternext;
+        index = 0; __pyx_t_8 = __pyx_t_17(__pyx_t_15); if (unlikely(!__pyx_t_8)) goto __pyx_L30_unpacking_failed;
+        __Pyx_GOTREF(__pyx_t_8);
+        index = 1; __pyx_t_1 = __pyx_t_17(__pyx_t_15); if (unlikely(!__pyx_t_1)) goto __pyx_L30_unpacking_failed;
+        __Pyx_GOTREF(__pyx_t_1);
+        if (__Pyx_IternextUnpackEndCheck(__pyx_t_17(__pyx_t_15), 2) < 0) __PYX_ERR(0, 1293, __pyx_L24_error)
+        __pyx_t_17 = NULL;
+        __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
+        goto __pyx_L31_unpacking_done;
+        __pyx_L30_unpacking_failed:;
+        __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
+        __pyx_t_17 = NULL;
+        if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
+        __PYX_ERR(0, 1293, __pyx_L24_error)
+        __pyx_L31_unpacking_done:;
+      }
+      __pyx_t_10 = __Pyx_PyInt_As_int(__pyx_t_8); if (unlikely((__pyx_t_10 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 1293, __pyx_L24_error)
+      __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+      __pyx_t_18 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_18 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 1293, __pyx_L24_error)
+      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+      __pyx_v_w = __pyx_t_10;
+      __pyx_v_h = __pyx_t_18;
+
+      /* "Scroll.pyx":1292
+ * 
+ *     cdef int w, h
+ *     try:             # <<<<<<<<<<<<<<
+ *         w, h = array.shape[:2]
+ *     except (ValueError, pygame.error) as e:
+ */
+    }
+    __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
+    __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
+    __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
+    goto __pyx_L29_try_end;
+    __pyx_L24_error:;
+    __Pyx_XDECREF(__pyx_t_16); __pyx_t_16 = 0;
+    __Pyx_XDECREF(__pyx_t_14); __pyx_t_14 = 0;
+    __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
+    __Pyx_XDECREF(__pyx_t_15); __pyx_t_15 = 0;
+    __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
+    __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+
+    /* "Scroll.pyx":1294
+ *     try:
+ *         w, h = array.shape[:2]
+ *     except (ValueError, pygame.error) as e:             # <<<<<<<<<<<<<<
+ *         raise ValueError('\nArray shape not compatible.')
+ * 
+ */
+    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_pygame); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1294, __pyx_L26_except_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_error); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1294, __pyx_L26_except_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __pyx_t_18 = __Pyx_PyErr_ExceptionMatches(__pyx_builtin_ValueError) || __Pyx_PyErr_ExceptionMatches(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    if (__pyx_t_18) {
+      __Pyx_AddTraceback("Scroll.scroll_transparency_c", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      if (__Pyx_GetException(&__pyx_t_1, &__pyx_t_4, &__pyx_t_8) < 0) __PYX_ERR(0, 1294, __pyx_L26_except_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      __Pyx_GOTREF(__pyx_t_4);
+      __Pyx_GOTREF(__pyx_t_8);
+      __Pyx_INCREF(__pyx_t_4);
+      __Pyx_XDECREF_SET(__pyx_v_e, __pyx_t_4);
+
+      /* "Scroll.pyx":1295
+ *         w, h = array.shape[:2]
+ *     except (ValueError, pygame.error) as e:
+ *         raise ValueError('\nArray shape not compatible.')             # <<<<<<<<<<<<<<
+ * 
+ *     cdef:
+ */
+      __pyx_t_15 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__33, NULL); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 1295, __pyx_L26_except_error)
+      __Pyx_GOTREF(__pyx_t_15);
+      __Pyx_Raise(__pyx_t_15, 0, 0, 0);
+      __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
+      __PYX_ERR(0, 1295, __pyx_L26_except_error)
+    }
+    goto __pyx_L26_except_error;
+    __pyx_L26_except_error:;
+
+    /* "Scroll.pyx":1292
+ * 
+ *     cdef int w, h
+ *     try:             # <<<<<<<<<<<<<<
+ *         w, h = array.shape[:2]
+ *     except (ValueError, pygame.error) as e:
+ */
+    __Pyx_XGIVEREF(__pyx_t_7);
+    __Pyx_XGIVEREF(__pyx_t_6);
+    __Pyx_XGIVEREF(__pyx_t_5);
+    __Pyx_ExceptionReset(__pyx_t_7, __pyx_t_6, __pyx_t_5);
+    goto __pyx_L1_error;
+    __pyx_L29_try_end:;
+  }
+
+  /* "Scroll.pyx":1298
+ * 
+ *     cdef:
+ *         int i, j, ii=0, jj=0             # <<<<<<<<<<<<<<
+ *         unsigned char [:, :, :] rgb_array = array
+ *         unsigned char [:, :] alpha_array = alpha
+ */
+  __pyx_v_ii = 0;
+  __pyx_v_jj = 0;
+
+  /* "Scroll.pyx":1299
+ *     cdef:
+ *         int i, j, ii=0, jj=0
+ *         unsigned char [:, :, :] rgb_array = array             # <<<<<<<<<<<<<<
+ *         unsigned char [:, :] alpha_array = alpha
+ *         unsigned char [:, :, :] new_array = numpy.empty((h , w, 4), numpy.uint8)
+ */
+  __pyx_t_19 = __Pyx_PyObject_to_MemoryviewSlice_dsdsds_unsigned_char(__pyx_v_array);
+  if (unlikely(!__pyx_t_19.memview)) __PYX_ERR(0, 1299, __pyx_L1_error)
+  __pyx_v_rgb_array = __pyx_t_19;
+  __pyx_t_19.memview = NULL;
+  __pyx_t_19.data = NULL;
+
+  /* "Scroll.pyx":1300
+ *         int i, j, ii=0, jj=0
+ *         unsigned char [:, :, :] rgb_array = array
+ *         unsigned char [:, :] alpha_array = alpha             # <<<<<<<<<<<<<<
+ *         unsigned char [:, :, :] new_array = numpy.empty((h , w, 4), numpy.uint8)
+ * 
+ */
+  __pyx_t_20 = __Pyx_PyObject_to_MemoryviewSlice_dsds_unsigned_char(__pyx_v_alpha);
+  if (unlikely(!__pyx_t_20.memview)) __PYX_ERR(0, 1300, __pyx_L1_error)
+  __pyx_v_alpha_array = __pyx_t_20;
+  __pyx_t_20.memview = NULL;
+  __pyx_t_20.data = NULL;
+
+  /* "Scroll.pyx":1301
+ *         unsigned char [:, :, :] rgb_array = array
+ *         unsigned char [:, :] alpha_array = alpha
+ *         unsigned char [:, :, :] new_array = numpy.empty((h , w, 4), numpy.uint8)             # <<<<<<<<<<<<<<
+ * 
+ *     if dx==0 and dy==0:
+ */
+  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1301, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_empty); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1301, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_h); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1301, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_15 = __Pyx_PyInt_From_int(__pyx_v_w); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 1301, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_15);
+  __pyx_t_9 = PyTuple_New(3); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1301, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_9);
+  __Pyx_GIVEREF(__pyx_t_4);
+  PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_4);
+  __Pyx_GIVEREF(__pyx_t_15);
+  PyTuple_SET_ITEM(__pyx_t_9, 1, __pyx_t_15);
+  __Pyx_INCREF(__pyx_int_4);
+  __Pyx_GIVEREF(__pyx_int_4);
+  PyTuple_SET_ITEM(__pyx_t_9, 2, __pyx_int_4);
+  __pyx_t_4 = 0;
+  __pyx_t_15 = 0;
+  __pyx_t_15 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 1301, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_15);
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_15, __pyx_n_s_uint8); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1301, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
+  __pyx_t_15 = NULL;
+  __pyx_t_18 = 0;
+  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_1))) {
+    __pyx_t_15 = PyMethod_GET_SELF(__pyx_t_1);
+    if (likely(__pyx_t_15)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_1);
+      __Pyx_INCREF(__pyx_t_15);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_1, function);
+      __pyx_t_18 = 1;
+    }
+  }
+  #if CYTHON_FAST_PYCALL
+  if (PyFunction_Check(__pyx_t_1)) {
+    PyObject *__pyx_temp[3] = {__pyx_t_15, __pyx_t_9, __pyx_t_4};
+    __pyx_t_8 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_18, 2+__pyx_t_18); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1301, __pyx_L1_error)
+    __Pyx_XDECREF(__pyx_t_15); __pyx_t_15 = 0;
+    __Pyx_GOTREF(__pyx_t_8);
+    __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  } else
+  #endif
+  #if CYTHON_FAST_PYCCALL
+  if (__Pyx_PyFastCFunction_Check(__pyx_t_1)) {
+    PyObject *__pyx_temp[3] = {__pyx_t_15, __pyx_t_9, __pyx_t_4};
+    __pyx_t_8 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_18, 2+__pyx_t_18); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1301, __pyx_L1_error)
+    __Pyx_XDECREF(__pyx_t_15); __pyx_t_15 = 0;
+    __Pyx_GOTREF(__pyx_t_8);
+    __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  } else
+  #endif
+  {
+    __pyx_t_14 = PyTuple_New(2+__pyx_t_18); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 1301, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_14);
+    if (__pyx_t_15) {
+      __Pyx_GIVEREF(__pyx_t_15); PyTuple_SET_ITEM(__pyx_t_14, 0, __pyx_t_15); __pyx_t_15 = NULL;
+    }
+    __Pyx_GIVEREF(__pyx_t_9);
+    PyTuple_SET_ITEM(__pyx_t_14, 0+__pyx_t_18, __pyx_t_9);
+    __Pyx_GIVEREF(__pyx_t_4);
+    PyTuple_SET_ITEM(__pyx_t_14, 1+__pyx_t_18, __pyx_t_4);
+    __pyx_t_9 = 0;
+    __pyx_t_4 = 0;
+    __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_14, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1301, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_8);
+    __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
+  }
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_19 = __Pyx_PyObject_to_MemoryviewSlice_dsdsds_unsigned_char(__pyx_t_8);
+  if (unlikely(!__pyx_t_19.memview)) __PYX_ERR(0, 1301, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+  __pyx_v_new_array = __pyx_t_19;
+  __pyx_t_19.memview = NULL;
+  __pyx_t_19.data = NULL;
+
+  /* "Scroll.pyx":1303
+ *         unsigned char [:, :, :] new_array = numpy.empty((h , w, 4), numpy.uint8)
+ * 
+ *     if dx==0 and dy==0:             # <<<<<<<<<<<<<<
+ *         return surface
+ * 
+ */
+  __pyx_t_2 = ((__pyx_v_dx == 0) != 0);
+  if (__pyx_t_2) {
+  } else {
+    __pyx_t_3 = __pyx_t_2;
+    goto __pyx_L35_bool_binop_done;
+  }
+  __pyx_t_2 = ((__pyx_v_dy == 0) != 0);
+  __pyx_t_3 = __pyx_t_2;
+  __pyx_L35_bool_binop_done:;
+  if (__pyx_t_3) {
+
+    /* "Scroll.pyx":1304
+ * 
+ *     if dx==0 and dy==0:
+ *         return surface             # <<<<<<<<<<<<<<
+ * 
+ *     with nogil:
+ */
+    __Pyx_XDECREF(__pyx_r);
+    __Pyx_INCREF(__pyx_v_surface);
+    __pyx_r = __pyx_v_surface;
+    goto __pyx_L0;
+
+    /* "Scroll.pyx":1303
+ *         unsigned char [:, :, :] new_array = numpy.empty((h , w, 4), numpy.uint8)
+ * 
+ *     if dx==0 and dy==0:             # <<<<<<<<<<<<<<
+ *         return surface
+ * 
+ */
+  }
+
+  /* "Scroll.pyx":1306
+ *         return surface
+ * 
+ *     with nogil:             # <<<<<<<<<<<<<<
+ *         if dx !=0 and dy != 0:
+ * 
+ */
+  {
+      #ifdef WITH_THREAD
+      PyThreadState *_save;
+      Py_UNBLOCK_THREADS
+      __Pyx_FastGIL_Remember();
+      #endif
+      /*try:*/ {
+
+        /* "Scroll.pyx":1307
+ * 
+ *     with nogil:
+ *         if dx !=0 and dy != 0:             # <<<<<<<<<<<<<<
+ * 
+ *             for i in prange(0, w, schedule=SCHEDULE, num_threads=THREAD_NUMBER):
+ */
+        __pyx_t_2 = ((__pyx_v_dx != 0) != 0);
+        if (__pyx_t_2) {
+        } else {
+          __pyx_t_3 = __pyx_t_2;
+          goto __pyx_L41_bool_binop_done;
+        }
+        __pyx_t_2 = ((__pyx_v_dy != 0) != 0);
+        __pyx_t_3 = __pyx_t_2;
+        __pyx_L41_bool_binop_done:;
+        if (__pyx_t_3) {
+
+          /* "Scroll.pyx":1309
+ *         if dx !=0 and dy != 0:
+ * 
+ *             for i in prange(0, w, schedule=SCHEDULE, num_threads=THREAD_NUMBER):             # <<<<<<<<<<<<<<
+ *                     for j in range(0, h):
+ *                         ii = (i + dx) % w
+ */
+          __pyx_t_18 = __pyx_v_w;
+          if (1 == 0) abort();
           {
-              #ifdef _OPENMP
-              #pragma omp for firstprivate(__pyx_v_i) lastprivate(__pyx_v_i) lastprivate(__pyx_v_index) lastprivate(__pyx_v_j) lastprivate(__pyx_v_k)
-              #endif /* _OPENMP */
-              for (__pyx_t_2 = 0; __pyx_t_2 < __pyx_t_3; __pyx_t_2++){
+              #if ((defined(__APPLE__) || defined(__OSX__)) && (defined(__GNUC__) && (__GNUC__ > 2 || (__GNUC__ == 2 && (__GNUC_MINOR__ > 95)))))
+                  #undef likely
+                  #undef unlikely
+                  #define likely(x)   (x)
+                  #define unlikely(x) (x)
+              #endif
+              __pyx_t_22 = (__pyx_t_18 - 0 + 1 - 1/abs(1)) / 1;
+              if (__pyx_t_22 > 0)
+              {
+                  #ifdef _OPENMP
+                  #pragma omp parallel num_threads(10) private(__pyx_t_10, __pyx_t_23, __pyx_t_24, __pyx_t_25, __pyx_t_26, __pyx_t_27, __pyx_t_28, __pyx_t_29, __pyx_t_3, __pyx_t_30, __pyx_t_31, __pyx_t_32, __pyx_t_33, __pyx_t_34, __pyx_t_35, __pyx_t_36, __pyx_t_37, __pyx_t_38, __pyx_t_39, __pyx_t_40, __pyx_t_41, __pyx_t_42, __pyx_t_43, __pyx_t_44, __pyx_t_45, __pyx_t_46)
+                  #endif /* _OPENMP */
                   {
-                      __pyx_v_i = (int)(0 + 4 * __pyx_t_2);
-                      /* Initialize private variables to invalid values */
-                      __pyx_v_index = ((int)0xbad0bad0);
-                      __pyx_v_j = ((int)0xbad0bad0);
-                      __pyx_v_k = ((int)0xbad0bad0);
+                      #ifdef _OPENMP
+                      #pragma omp for firstprivate(__pyx_v_i) lastprivate(__pyx_v_i) lastprivate(__pyx_v_ii) lastprivate(__pyx_v_j) lastprivate(__pyx_v_jj) schedule(static)
+                      #endif /* _OPENMP */
+                      for (__pyx_t_21 = 0; __pyx_t_21 < __pyx_t_22; __pyx_t_21++){
+                          {
+                              __pyx_v_i = (int)(0 + 1 * __pyx_t_21);
+                              /* Initialize private variables to invalid values */
+                              __pyx_v_ii = ((int)0xbad0bad0);
+                              __pyx_v_j = ((int)0xbad0bad0);
+                              __pyx_v_jj = ((int)0xbad0bad0);
 
-                      /* "Scroll.pyx":1338
+                              /* "Scroll.pyx":1310
  * 
- *     for i in prange(0, w4, 4):
- *         for j in range(0, height):             # <<<<<<<<<<<<<<
- *             index = i + (w4 * j)
- *             k = (j * 4) + (i * height)
+ *             for i in prange(0, w, schedule=SCHEDULE, num_threads=THREAD_NUMBER):
+ *                     for j in range(0, h):             # <<<<<<<<<<<<<<
+ *                         ii = (i + dx) % w
+ *                         jj = (j + dy) % h
  */
-                      __pyx_t_4 = __pyx_v_height;
-                      for (__pyx_t_5 = 0; __pyx_t_5 < __pyx_t_4; __pyx_t_5+=1) {
-                        __pyx_v_j = __pyx_t_5;
+                              __pyx_t_10 = __pyx_v_h;
+                              for (__pyx_t_23 = 0; __pyx_t_23 < __pyx_t_10; __pyx_t_23+=1) {
+                                __pyx_v_j = __pyx_t_23;
 
-                        /* "Scroll.pyx":1339
- *     for i in prange(0, w4, 4):
- *         for j in range(0, height):
- *             index = i + (w4 * j)             # <<<<<<<<<<<<<<
- *             k = (j * 4) + (i * height)
- *             target[k] =  <unsigned char>source[index]
+                                /* "Scroll.pyx":1311
+ *             for i in prange(0, w, schedule=SCHEDULE, num_threads=THREAD_NUMBER):
+ *                     for j in range(0, h):
+ *                         ii = (i + dx) % w             # <<<<<<<<<<<<<<
+ *                         jj = (j + dy) % h
+ *                         if ii < 0:
  */
-                        __pyx_v_index = (__pyx_v_i + (__pyx_v_w4 * __pyx_v_j));
+                                __pyx_v_ii = ((__pyx_v_i + __pyx_v_dx) % __pyx_v_w);
 
-                        /* "Scroll.pyx":1340
- *         for j in range(0, height):
- *             index = i + (w4 * j)
- *             k = (j * 4) + (i * height)             # <<<<<<<<<<<<<<
- *             target[k] =  <unsigned char>source[index]
- *             target[k + 1] =  <unsigned char>source[index + 1]
+                                /* "Scroll.pyx":1312
+ *                     for j in range(0, h):
+ *                         ii = (i + dx) % w
+ *                         jj = (j + dy) % h             # <<<<<<<<<<<<<<
+ *                         if ii < 0:
+ *                             ii = ii + w
  */
-                        __pyx_v_k = ((__pyx_v_j * 4) + (__pyx_v_i * __pyx_v_height));
+                                __pyx_v_jj = ((__pyx_v_j + __pyx_v_dy) % __pyx_v_h);
 
-                        /* "Scroll.pyx":1341
- *             index = i + (w4 * j)
- *             k = (j * 4) + (i * height)
- *             target[k] =  <unsigned char>source[index]             # <<<<<<<<<<<<<<
- *             target[k + 1] =  <unsigned char>source[index + 1]
- *             target[k + 2] =  <unsigned char>source[index + 2]
+                                /* "Scroll.pyx":1313
+ *                         ii = (i + dx) % w
+ *                         jj = (j + dy) % h
+ *                         if ii < 0:             # <<<<<<<<<<<<<<
+ *                             ii = ii + w
+ *                         if jj < 0:
  */
-                        __pyx_t_6 = __pyx_v_index;
-                        __pyx_t_7 = __pyx_v_k;
-                        *((unsigned char *) ( /* dim=0 */ ((char *) (((unsigned char *) __pyx_v_target.data) + __pyx_t_7)) )) = ((unsigned char)(*((unsigned char *) ( /* dim=0 */ (__pyx_v_source.data + __pyx_t_6 * __pyx_v_source.strides[0]) ))));
+                                __pyx_t_3 = ((__pyx_v_ii < 0) != 0);
+                                if (__pyx_t_3) {
 
-                        /* "Scroll.pyx":1342
- *             k = (j * 4) + (i * height)
- *             target[k] =  <unsigned char>source[index]
- *             target[k + 1] =  <unsigned char>source[index + 1]             # <<<<<<<<<<<<<<
- *             target[k + 2] =  <unsigned char>source[index + 2]
- *             target[k + 3] =  <unsigned char>source[index + 3]
+                                  /* "Scroll.pyx":1314
+ *                         jj = (j + dy) % h
+ *                         if ii < 0:
+ *                             ii = ii + w             # <<<<<<<<<<<<<<
+ *                         if jj < 0:
+ *                             jj = jj + h
  */
-                        __pyx_t_8 = (__pyx_v_index + 1);
-                        __pyx_t_9 = (__pyx_v_k + 1);
-                        *((unsigned char *) ( /* dim=0 */ ((char *) (((unsigned char *) __pyx_v_target.data) + __pyx_t_9)) )) = ((unsigned char)(*((unsigned char *) ( /* dim=0 */ (__pyx_v_source.data + __pyx_t_8 * __pyx_v_source.strides[0]) ))));
+                                  __pyx_v_ii = (__pyx_v_ii + __pyx_v_w);
 
-                        /* "Scroll.pyx":1343
- *             target[k] =  <unsigned char>source[index]
- *             target[k + 1] =  <unsigned char>source[index + 1]
- *             target[k + 2] =  <unsigned char>source[index + 2]             # <<<<<<<<<<<<<<
- *             target[k + 3] =  <unsigned char>source[index + 3]
+                                  /* "Scroll.pyx":1313
+ *                         ii = (i + dx) % w
+ *                         jj = (j + dy) % h
+ *                         if ii < 0:             # <<<<<<<<<<<<<<
+ *                             ii = ii + w
+ *                         if jj < 0:
+ */
+                                }
+
+                                /* "Scroll.pyx":1315
+ *                         if ii < 0:
+ *                             ii = ii + w
+ *                         if jj < 0:             # <<<<<<<<<<<<<<
+ *                             jj = jj + h
+ *                         # ONLY ALPHA VALUES ARE MOVED
+ */
+                                __pyx_t_3 = ((__pyx_v_jj < 0) != 0);
+                                if (__pyx_t_3) {
+
+                                  /* "Scroll.pyx":1316
+ *                             ii = ii + w
+ *                         if jj < 0:
+ *                             jj = jj + h             # <<<<<<<<<<<<<<
+ *                         # ONLY ALPHA VALUES ARE MOVED
+ *                         # RGB VALUES ARE TRANSPOSED
+ */
+                                  __pyx_v_jj = (__pyx_v_jj + __pyx_v_h);
+
+                                  /* "Scroll.pyx":1315
+ *                         if ii < 0:
+ *                             ii = ii + w
+ *                         if jj < 0:             # <<<<<<<<<<<<<<
+ *                             jj = jj + h
+ *                         # ONLY ALPHA VALUES ARE MOVED
+ */
+                                }
+
+                                /* "Scroll.pyx":1319
+ *                         # ONLY ALPHA VALUES ARE MOVED
+ *                         # RGB VALUES ARE TRANSPOSED
+ *                         new_array[j, i, 0] = rgb_array[i, j, 0]             # <<<<<<<<<<<<<<
+ *                         new_array[j, i, 1] = rgb_array[i, j, 1]
+ *                         new_array[j, i, 2] = rgb_array[i, j, 2]
+ */
+                                __pyx_t_24 = __pyx_v_i;
+                                __pyx_t_25 = __pyx_v_j;
+                                __pyx_t_26 = 0;
+                                __pyx_t_27 = __pyx_v_j;
+                                __pyx_t_28 = __pyx_v_i;
+                                __pyx_t_29 = 0;
+                                *((unsigned char *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_new_array.data + __pyx_t_27 * __pyx_v_new_array.strides[0]) ) + __pyx_t_28 * __pyx_v_new_array.strides[1]) ) + __pyx_t_29 * __pyx_v_new_array.strides[2]) )) = (*((unsigned char *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rgb_array.data + __pyx_t_24 * __pyx_v_rgb_array.strides[0]) ) + __pyx_t_25 * __pyx_v_rgb_array.strides[1]) ) + __pyx_t_26 * __pyx_v_rgb_array.strides[2]) )));
+
+                                /* "Scroll.pyx":1320
+ *                         # RGB VALUES ARE TRANSPOSED
+ *                         new_array[j, i, 0] = rgb_array[i, j, 0]
+ *                         new_array[j, i, 1] = rgb_array[i, j, 1]             # <<<<<<<<<<<<<<
+ *                         new_array[j, i, 2] = rgb_array[i, j, 2]
+ *                         new_array[jj, ii, 3] = alpha_array[i, j]
+ */
+                                __pyx_t_30 = __pyx_v_i;
+                                __pyx_t_31 = __pyx_v_j;
+                                __pyx_t_32 = 1;
+                                __pyx_t_33 = __pyx_v_j;
+                                __pyx_t_34 = __pyx_v_i;
+                                __pyx_t_35 = 1;
+                                *((unsigned char *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_new_array.data + __pyx_t_33 * __pyx_v_new_array.strides[0]) ) + __pyx_t_34 * __pyx_v_new_array.strides[1]) ) + __pyx_t_35 * __pyx_v_new_array.strides[2]) )) = (*((unsigned char *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rgb_array.data + __pyx_t_30 * __pyx_v_rgb_array.strides[0]) ) + __pyx_t_31 * __pyx_v_rgb_array.strides[1]) ) + __pyx_t_32 * __pyx_v_rgb_array.strides[2]) )));
+
+                                /* "Scroll.pyx":1321
+ *                         new_array[j, i, 0] = rgb_array[i, j, 0]
+ *                         new_array[j, i, 1] = rgb_array[i, j, 1]
+ *                         new_array[j, i, 2] = rgb_array[i, j, 2]             # <<<<<<<<<<<<<<
+ *                         new_array[jj, ii, 3] = alpha_array[i, j]
  * 
  */
-                        __pyx_t_10 = (__pyx_v_index + 2);
-                        __pyx_t_11 = (__pyx_v_k + 2);
-                        *((unsigned char *) ( /* dim=0 */ ((char *) (((unsigned char *) __pyx_v_target.data) + __pyx_t_11)) )) = ((unsigned char)(*((unsigned char *) ( /* dim=0 */ (__pyx_v_source.data + __pyx_t_10 * __pyx_v_source.strides[0]) ))));
+                                __pyx_t_36 = __pyx_v_i;
+                                __pyx_t_37 = __pyx_v_j;
+                                __pyx_t_38 = 2;
+                                __pyx_t_39 = __pyx_v_j;
+                                __pyx_t_40 = __pyx_v_i;
+                                __pyx_t_41 = 2;
+                                *((unsigned char *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_new_array.data + __pyx_t_39 * __pyx_v_new_array.strides[0]) ) + __pyx_t_40 * __pyx_v_new_array.strides[1]) ) + __pyx_t_41 * __pyx_v_new_array.strides[2]) )) = (*((unsigned char *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rgb_array.data + __pyx_t_36 * __pyx_v_rgb_array.strides[0]) ) + __pyx_t_37 * __pyx_v_rgb_array.strides[1]) ) + __pyx_t_38 * __pyx_v_rgb_array.strides[2]) )));
 
-                        /* "Scroll.pyx":1344
- *             target[k + 1] =  <unsigned char>source[index + 1]
- *             target[k + 2] =  <unsigned char>source[index + 2]
- *             target[k + 3] =  <unsigned char>source[index + 3]             # <<<<<<<<<<<<<<
+                                /* "Scroll.pyx":1322
+ *                         new_array[j, i, 1] = rgb_array[i, j, 1]
+ *                         new_array[j, i, 2] = rgb_array[i, j, 2]
+ *                         new_array[jj, ii, 3] = alpha_array[i, j]             # <<<<<<<<<<<<<<
  * 
- *     return target
+ *         else:
  */
-                        __pyx_t_12 = (__pyx_v_index + 3);
-                        __pyx_t_13 = (__pyx_v_k + 3);
-                        *((unsigned char *) ( /* dim=0 */ ((char *) (((unsigned char *) __pyx_v_target.data) + __pyx_t_13)) )) = ((unsigned char)(*((unsigned char *) ( /* dim=0 */ (__pyx_v_source.data + __pyx_t_12 * __pyx_v_source.strides[0]) ))));
+                                __pyx_t_42 = __pyx_v_i;
+                                __pyx_t_43 = __pyx_v_j;
+                                __pyx_t_44 = __pyx_v_jj;
+                                __pyx_t_45 = __pyx_v_ii;
+                                __pyx_t_46 = 3;
+                                *((unsigned char *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_new_array.data + __pyx_t_44 * __pyx_v_new_array.strides[0]) ) + __pyx_t_45 * __pyx_v_new_array.strides[1]) ) + __pyx_t_46 * __pyx_v_new_array.strides[2]) )) = (*((unsigned char *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_alpha_array.data + __pyx_t_42 * __pyx_v_alpha_array.strides[0]) ) + __pyx_t_43 * __pyx_v_alpha_array.strides[1]) )));
+                              }
+                          }
                       }
                   }
               }
           }
+          #if ((defined(__APPLE__) || defined(__OSX__)) && (defined(__GNUC__) && (__GNUC__ > 2 || (__GNUC__ == 2 && (__GNUC_MINOR__ > 95)))))
+              #undef likely
+              #undef unlikely
+              #define likely(x)   __builtin_expect(!!(x), 1)
+              #define unlikely(x) __builtin_expect(!!(x), 0)
+          #endif
+
+          /* "Scroll.pyx":1307
+ * 
+ *     with nogil:
+ *         if dx !=0 and dy != 0:             # <<<<<<<<<<<<<<
+ * 
+ *             for i in prange(0, w, schedule=SCHEDULE, num_threads=THREAD_NUMBER):
+ */
+          goto __pyx_L40;
+        }
+
+        /* "Scroll.pyx":1325
+ * 
+ *         else:
+ *             if dx != 0:             # <<<<<<<<<<<<<<
+ *                 for i in prange(w, schedule=SCHEDULE, num_threads=THREAD_NUMBER):
+ *                     for j in range(h):
+ */
+        /*else*/ {
+          __pyx_t_3 = ((__pyx_v_dx != 0) != 0);
+          if (__pyx_t_3) {
+
+            /* "Scroll.pyx":1326
+ *         else:
+ *             if dx != 0:
+ *                 for i in prange(w, schedule=SCHEDULE, num_threads=THREAD_NUMBER):             # <<<<<<<<<<<<<<
+ *                     for j in range(h):
+ *                         ii = (i + dx) % w
+ */
+            __pyx_t_18 = __pyx_v_w;
+            if (1 == 0) abort();
+            {
+                #if ((defined(__APPLE__) || defined(__OSX__)) && (defined(__GNUC__) && (__GNUC__ > 2 || (__GNUC__ == 2 && (__GNUC_MINOR__ > 95)))))
+                    #undef likely
+                    #undef unlikely
+                    #define likely(x)   (x)
+                    #define unlikely(x) (x)
+                #endif
+                __pyx_t_23 = (__pyx_t_18 - 0 + 1 - 1/abs(1)) / 1;
+                if (__pyx_t_23 > 0)
+                {
+                    #ifdef _OPENMP
+                    #pragma omp parallel num_threads(10) private(__pyx_t_3, __pyx_t_47, __pyx_t_48, __pyx_t_49, __pyx_t_50, __pyx_t_51, __pyx_t_52, __pyx_t_53, __pyx_t_54, __pyx_t_55, __pyx_t_56, __pyx_t_57, __pyx_t_58, __pyx_t_59, __pyx_t_60, __pyx_t_61, __pyx_t_62, __pyx_t_63, __pyx_t_64, __pyx_t_65, __pyx_t_66, __pyx_t_67, __pyx_t_68, __pyx_t_69, __pyx_t_70, __pyx_t_71)
+                    #endif /* _OPENMP */
+                    {
+                        #ifdef _OPENMP
+                        #pragma omp for firstprivate(__pyx_v_i) lastprivate(__pyx_v_i) lastprivate(__pyx_v_ii) lastprivate(__pyx_v_j) schedule(static)
+                        #endif /* _OPENMP */
+                        for (__pyx_t_10 = 0; __pyx_t_10 < __pyx_t_23; __pyx_t_10++){
+                            {
+                                __pyx_v_i = (int)(0 + 1 * __pyx_t_10);
+                                /* Initialize private variables to invalid values */
+                                __pyx_v_ii = ((int)0xbad0bad0);
+                                __pyx_v_j = ((int)0xbad0bad0);
+
+                                /* "Scroll.pyx":1327
+ *             if dx != 0:
+ *                 for i in prange(w, schedule=SCHEDULE, num_threads=THREAD_NUMBER):
+ *                     for j in range(h):             # <<<<<<<<<<<<<<
+ *                         ii = (i + dx) % w
+ *                         if ii < 0:
+ */
+                                __pyx_t_47 = __pyx_v_h;
+                                for (__pyx_t_48 = 0; __pyx_t_48 < __pyx_t_47; __pyx_t_48+=1) {
+                                  __pyx_v_j = __pyx_t_48;
+
+                                  /* "Scroll.pyx":1328
+ *                 for i in prange(w, schedule=SCHEDULE, num_threads=THREAD_NUMBER):
+ *                     for j in range(h):
+ *                         ii = (i + dx) % w             # <<<<<<<<<<<<<<
+ *                         if ii < 0:
+ *                             ii = ii + w
+ */
+                                  __pyx_v_ii = ((__pyx_v_i + __pyx_v_dx) % __pyx_v_w);
+
+                                  /* "Scroll.pyx":1329
+ *                     for j in range(h):
+ *                         ii = (i + dx) % w
+ *                         if ii < 0:             # <<<<<<<<<<<<<<
+ *                             ii = ii + w
+ *                         # ONLY ALPHA VALUES ARE MOVED
+ */
+                                  __pyx_t_3 = ((__pyx_v_ii < 0) != 0);
+                                  if (__pyx_t_3) {
+
+                                    /* "Scroll.pyx":1330
+ *                         ii = (i + dx) % w
+ *                         if ii < 0:
+ *                             ii = ii + w             # <<<<<<<<<<<<<<
+ *                         # ONLY ALPHA VALUES ARE MOVED
+ *                         # RGB VALUES ARE TRANSPOSED
+ */
+                                    __pyx_v_ii = (__pyx_v_ii + __pyx_v_w);
+
+                                    /* "Scroll.pyx":1329
+ *                     for j in range(h):
+ *                         ii = (i + dx) % w
+ *                         if ii < 0:             # <<<<<<<<<<<<<<
+ *                             ii = ii + w
+ *                         # ONLY ALPHA VALUES ARE MOVED
+ */
+                                  }
+
+                                  /* "Scroll.pyx":1333
+ *                         # ONLY ALPHA VALUES ARE MOVED
+ *                         # RGB VALUES ARE TRANSPOSED
+ *                         new_array[j, i, 0] = rgb_array[i, j, 0]             # <<<<<<<<<<<<<<
+ *                         new_array[j, i, 1] = rgb_array[i, j, 1]
+ *                         new_array[j, i, 2] = rgb_array[i, j, 2]
+ */
+                                  __pyx_t_49 = __pyx_v_i;
+                                  __pyx_t_50 = __pyx_v_j;
+                                  __pyx_t_51 = 0;
+                                  __pyx_t_52 = __pyx_v_j;
+                                  __pyx_t_53 = __pyx_v_i;
+                                  __pyx_t_54 = 0;
+                                  *((unsigned char *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_new_array.data + __pyx_t_52 * __pyx_v_new_array.strides[0]) ) + __pyx_t_53 * __pyx_v_new_array.strides[1]) ) + __pyx_t_54 * __pyx_v_new_array.strides[2]) )) = (*((unsigned char *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rgb_array.data + __pyx_t_49 * __pyx_v_rgb_array.strides[0]) ) + __pyx_t_50 * __pyx_v_rgb_array.strides[1]) ) + __pyx_t_51 * __pyx_v_rgb_array.strides[2]) )));
+
+                                  /* "Scroll.pyx":1334
+ *                         # RGB VALUES ARE TRANSPOSED
+ *                         new_array[j, i, 0] = rgb_array[i, j, 0]
+ *                         new_array[j, i, 1] = rgb_array[i, j, 1]             # <<<<<<<<<<<<<<
+ *                         new_array[j, i, 2] = rgb_array[i, j, 2]
+ *                         new_array[j, ii, 3] = alpha_array[i, j]
+ */
+                                  __pyx_t_55 = __pyx_v_i;
+                                  __pyx_t_56 = __pyx_v_j;
+                                  __pyx_t_57 = 1;
+                                  __pyx_t_58 = __pyx_v_j;
+                                  __pyx_t_59 = __pyx_v_i;
+                                  __pyx_t_60 = 1;
+                                  *((unsigned char *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_new_array.data + __pyx_t_58 * __pyx_v_new_array.strides[0]) ) + __pyx_t_59 * __pyx_v_new_array.strides[1]) ) + __pyx_t_60 * __pyx_v_new_array.strides[2]) )) = (*((unsigned char *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rgb_array.data + __pyx_t_55 * __pyx_v_rgb_array.strides[0]) ) + __pyx_t_56 * __pyx_v_rgb_array.strides[1]) ) + __pyx_t_57 * __pyx_v_rgb_array.strides[2]) )));
+
+                                  /* "Scroll.pyx":1335
+ *                         new_array[j, i, 0] = rgb_array[i, j, 0]
+ *                         new_array[j, i, 1] = rgb_array[i, j, 1]
+ *                         new_array[j, i, 2] = rgb_array[i, j, 2]             # <<<<<<<<<<<<<<
+ *                         new_array[j, ii, 3] = alpha_array[i, j]
+ * 
+ */
+                                  __pyx_t_61 = __pyx_v_i;
+                                  __pyx_t_62 = __pyx_v_j;
+                                  __pyx_t_63 = 2;
+                                  __pyx_t_64 = __pyx_v_j;
+                                  __pyx_t_65 = __pyx_v_i;
+                                  __pyx_t_66 = 2;
+                                  *((unsigned char *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_new_array.data + __pyx_t_64 * __pyx_v_new_array.strides[0]) ) + __pyx_t_65 * __pyx_v_new_array.strides[1]) ) + __pyx_t_66 * __pyx_v_new_array.strides[2]) )) = (*((unsigned char *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rgb_array.data + __pyx_t_61 * __pyx_v_rgb_array.strides[0]) ) + __pyx_t_62 * __pyx_v_rgb_array.strides[1]) ) + __pyx_t_63 * __pyx_v_rgb_array.strides[2]) )));
+
+                                  /* "Scroll.pyx":1336
+ *                         new_array[j, i, 1] = rgb_array[i, j, 1]
+ *                         new_array[j, i, 2] = rgb_array[i, j, 2]
+ *                         new_array[j, ii, 3] = alpha_array[i, j]             # <<<<<<<<<<<<<<
+ * 
+ *             else:
+ */
+                                  __pyx_t_67 = __pyx_v_i;
+                                  __pyx_t_68 = __pyx_v_j;
+                                  __pyx_t_69 = __pyx_v_j;
+                                  __pyx_t_70 = __pyx_v_ii;
+                                  __pyx_t_71 = 3;
+                                  *((unsigned char *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_new_array.data + __pyx_t_69 * __pyx_v_new_array.strides[0]) ) + __pyx_t_70 * __pyx_v_new_array.strides[1]) ) + __pyx_t_71 * __pyx_v_new_array.strides[2]) )) = (*((unsigned char *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_alpha_array.data + __pyx_t_67 * __pyx_v_alpha_array.strides[0]) ) + __pyx_t_68 * __pyx_v_alpha_array.strides[1]) )));
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            #if ((defined(__APPLE__) || defined(__OSX__)) && (defined(__GNUC__) && (__GNUC__ > 2 || (__GNUC__ == 2 && (__GNUC_MINOR__ > 95)))))
+                #undef likely
+                #undef unlikely
+                #define likely(x)   __builtin_expect(!!(x), 1)
+                #define unlikely(x) __builtin_expect(!!(x), 0)
+            #endif
+
+            /* "Scroll.pyx":1325
+ * 
+ *         else:
+ *             if dx != 0:             # <<<<<<<<<<<<<<
+ *                 for i in prange(w, schedule=SCHEDULE, num_threads=THREAD_NUMBER):
+ *                     for j in range(h):
+ */
+            goto __pyx_L53;
+          }
+
+          /* "Scroll.pyx":1339
+ * 
+ *             else:
+ *                 for i in prange(w, schedule=SCHEDULE, num_threads=THREAD_NUMBER):             # <<<<<<<<<<<<<<
+ *                     for j in range(h):
+ *                         jj = (j + dy) % h
+ */
+          /*else*/ {
+            __pyx_t_23 = __pyx_v_w;
+            if (1 == 0) abort();
+            {
+                #if ((defined(__APPLE__) || defined(__OSX__)) && (defined(__GNUC__) && (__GNUC__ > 2 || (__GNUC__ == 2 && (__GNUC_MINOR__ > 95)))))
+                    #undef likely
+                    #undef unlikely
+                    #define likely(x)   (x)
+                    #define unlikely(x) (x)
+                #endif
+                __pyx_t_18 = (__pyx_t_23 - 0 + 1 - 1/abs(1)) / 1;
+                if (__pyx_t_18 > 0)
+                {
+                    #ifdef _OPENMP
+                    #pragma omp parallel num_threads(10) private(__pyx_t_3, __pyx_t_47, __pyx_t_48, __pyx_t_72, __pyx_t_73, __pyx_t_74, __pyx_t_75, __pyx_t_76, __pyx_t_77, __pyx_t_78, __pyx_t_79, __pyx_t_80, __pyx_t_81, __pyx_t_82, __pyx_t_83, __pyx_t_84, __pyx_t_85, __pyx_t_86, __pyx_t_87, __pyx_t_88, __pyx_t_89, __pyx_t_90, __pyx_t_91, __pyx_t_92, __pyx_t_93, __pyx_t_94)
+                    #endif /* _OPENMP */
+                    {
+                        #ifdef _OPENMP
+                        #pragma omp for firstprivate(__pyx_v_i) lastprivate(__pyx_v_i) lastprivate(__pyx_v_j) lastprivate(__pyx_v_jj) schedule(static)
+                        #endif /* _OPENMP */
+                        for (__pyx_t_10 = 0; __pyx_t_10 < __pyx_t_18; __pyx_t_10++){
+                            {
+                                __pyx_v_i = (int)(0 + 1 * __pyx_t_10);
+                                /* Initialize private variables to invalid values */
+                                __pyx_v_j = ((int)0xbad0bad0);
+                                __pyx_v_jj = ((int)0xbad0bad0);
+
+                                /* "Scroll.pyx":1340
+ *             else:
+ *                 for i in prange(w, schedule=SCHEDULE, num_threads=THREAD_NUMBER):
+ *                     for j in range(h):             # <<<<<<<<<<<<<<
+ *                         jj = (j + dy) % h
+ *                         if jj < 0:
+ */
+                                __pyx_t_47 = __pyx_v_h;
+                                for (__pyx_t_48 = 0; __pyx_t_48 < __pyx_t_47; __pyx_t_48+=1) {
+                                  __pyx_v_j = __pyx_t_48;
+
+                                  /* "Scroll.pyx":1341
+ *                 for i in prange(w, schedule=SCHEDULE, num_threads=THREAD_NUMBER):
+ *                     for j in range(h):
+ *                         jj = (j + dy) % h             # <<<<<<<<<<<<<<
+ *                         if jj < 0:
+ *                             jj = jj + h
+ */
+                                  __pyx_v_jj = ((__pyx_v_j + __pyx_v_dy) % __pyx_v_h);
+
+                                  /* "Scroll.pyx":1342
+ *                     for j in range(h):
+ *                         jj = (j + dy) % h
+ *                         if jj < 0:             # <<<<<<<<<<<<<<
+ *                             jj = jj + h
+ *                         # ONLY ALPHA VALUES ARE MOVED
+ */
+                                  __pyx_t_3 = ((__pyx_v_jj < 0) != 0);
+                                  if (__pyx_t_3) {
+
+                                    /* "Scroll.pyx":1343
+ *                         jj = (j + dy) % h
+ *                         if jj < 0:
+ *                             jj = jj + h             # <<<<<<<<<<<<<<
+ *                         # ONLY ALPHA VALUES ARE MOVED
+ *                         # RGB VALUES ARE TRANSPOSED
+ */
+                                    __pyx_v_jj = (__pyx_v_jj + __pyx_v_h);
+
+                                    /* "Scroll.pyx":1342
+ *                     for j in range(h):
+ *                         jj = (j + dy) % h
+ *                         if jj < 0:             # <<<<<<<<<<<<<<
+ *                             jj = jj + h
+ *                         # ONLY ALPHA VALUES ARE MOVED
+ */
+                                  }
+
+                                  /* "Scroll.pyx":1346
+ *                         # ONLY ALPHA VALUES ARE MOVED
+ *                         # RGB VALUES ARE TRANSPOSED
+ *                         new_array[j, i, 0] = rgb_array[i, j, 0]             # <<<<<<<<<<<<<<
+ *                         new_array[j, i, 1] = rgb_array[i, j, 1]
+ *                         new_array[j, i, 2] = rgb_array[i, j, 2]
+ */
+                                  __pyx_t_72 = __pyx_v_i;
+                                  __pyx_t_73 = __pyx_v_j;
+                                  __pyx_t_74 = 0;
+                                  __pyx_t_75 = __pyx_v_j;
+                                  __pyx_t_76 = __pyx_v_i;
+                                  __pyx_t_77 = 0;
+                                  *((unsigned char *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_new_array.data + __pyx_t_75 * __pyx_v_new_array.strides[0]) ) + __pyx_t_76 * __pyx_v_new_array.strides[1]) ) + __pyx_t_77 * __pyx_v_new_array.strides[2]) )) = (*((unsigned char *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rgb_array.data + __pyx_t_72 * __pyx_v_rgb_array.strides[0]) ) + __pyx_t_73 * __pyx_v_rgb_array.strides[1]) ) + __pyx_t_74 * __pyx_v_rgb_array.strides[2]) )));
+
+                                  /* "Scroll.pyx":1347
+ *                         # RGB VALUES ARE TRANSPOSED
+ *                         new_array[j, i, 0] = rgb_array[i, j, 0]
+ *                         new_array[j, i, 1] = rgb_array[i, j, 1]             # <<<<<<<<<<<<<<
+ *                         new_array[j, i, 2] = rgb_array[i, j, 2]
+ *                         new_array[jj, i, 3] = alpha_array[i, j]
+ */
+                                  __pyx_t_78 = __pyx_v_i;
+                                  __pyx_t_79 = __pyx_v_j;
+                                  __pyx_t_80 = 1;
+                                  __pyx_t_81 = __pyx_v_j;
+                                  __pyx_t_82 = __pyx_v_i;
+                                  __pyx_t_83 = 1;
+                                  *((unsigned char *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_new_array.data + __pyx_t_81 * __pyx_v_new_array.strides[0]) ) + __pyx_t_82 * __pyx_v_new_array.strides[1]) ) + __pyx_t_83 * __pyx_v_new_array.strides[2]) )) = (*((unsigned char *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rgb_array.data + __pyx_t_78 * __pyx_v_rgb_array.strides[0]) ) + __pyx_t_79 * __pyx_v_rgb_array.strides[1]) ) + __pyx_t_80 * __pyx_v_rgb_array.strides[2]) )));
+
+                                  /* "Scroll.pyx":1348
+ *                         new_array[j, i, 0] = rgb_array[i, j, 0]
+ *                         new_array[j, i, 1] = rgb_array[i, j, 1]
+ *                         new_array[j, i, 2] = rgb_array[i, j, 2]             # <<<<<<<<<<<<<<
+ *                         new_array[jj, i, 3] = alpha_array[i, j]
+ * 
+ */
+                                  __pyx_t_84 = __pyx_v_i;
+                                  __pyx_t_85 = __pyx_v_j;
+                                  __pyx_t_86 = 2;
+                                  __pyx_t_87 = __pyx_v_j;
+                                  __pyx_t_88 = __pyx_v_i;
+                                  __pyx_t_89 = 2;
+                                  *((unsigned char *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_new_array.data + __pyx_t_87 * __pyx_v_new_array.strides[0]) ) + __pyx_t_88 * __pyx_v_new_array.strides[1]) ) + __pyx_t_89 * __pyx_v_new_array.strides[2]) )) = (*((unsigned char *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rgb_array.data + __pyx_t_84 * __pyx_v_rgb_array.strides[0]) ) + __pyx_t_85 * __pyx_v_rgb_array.strides[1]) ) + __pyx_t_86 * __pyx_v_rgb_array.strides[2]) )));
+
+                                  /* "Scroll.pyx":1349
+ *                         new_array[j, i, 1] = rgb_array[i, j, 1]
+ *                         new_array[j, i, 2] = rgb_array[i, j, 2]
+ *                         new_array[jj, i, 3] = alpha_array[i, j]             # <<<<<<<<<<<<<<
+ * 
+ *     return pygame.image.frombuffer(new_array, (w, h), 'RGBA')
+ */
+                                  __pyx_t_90 = __pyx_v_i;
+                                  __pyx_t_91 = __pyx_v_j;
+                                  __pyx_t_92 = __pyx_v_jj;
+                                  __pyx_t_93 = __pyx_v_i;
+                                  __pyx_t_94 = 3;
+                                  *((unsigned char *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_new_array.data + __pyx_t_92 * __pyx_v_new_array.strides[0]) ) + __pyx_t_93 * __pyx_v_new_array.strides[1]) ) + __pyx_t_94 * __pyx_v_new_array.strides[2]) )) = (*((unsigned char *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_alpha_array.data + __pyx_t_90 * __pyx_v_alpha_array.strides[0]) ) + __pyx_t_91 * __pyx_v_alpha_array.strides[1]) )));
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            #if ((defined(__APPLE__) || defined(__OSX__)) && (defined(__GNUC__) && (__GNUC__ > 2 || (__GNUC__ == 2 && (__GNUC_MINOR__ > 95)))))
+                #undef likely
+                #undef unlikely
+                #define likely(x)   __builtin_expect(!!(x), 1)
+                #define unlikely(x) __builtin_expect(!!(x), 0)
+            #endif
+          }
+          __pyx_L53:;
+        }
+        __pyx_L40:;
+      }
+
+      /* "Scroll.pyx":1306
+ *         return surface
+ * 
+ *     with nogil:             # <<<<<<<<<<<<<<
+ *         if dx !=0 and dy != 0:
+ * 
+ */
+      /*finally:*/ {
+        /*normal exit:*/{
+          #ifdef WITH_THREAD
+          __Pyx_FastGIL_Forget();
+          Py_BLOCK_THREADS
+          #endif
+          goto __pyx_L39;
+        }
+        __pyx_L39:;
       }
   }
-  #if ((defined(__APPLE__) || defined(__OSX__)) && (defined(__GNUC__) && (__GNUC__ > 2 || (__GNUC__ == 2 && (__GNUC_MINOR__ > 95)))))
-      #undef likely
-      #undef unlikely
-      #define likely(x)   __builtin_expect(!!(x), 1)
-      #define unlikely(x) __builtin_expect(!!(x), 0)
-  #endif
 
-  /* "Scroll.pyx":1346
- *             target[k + 3] =  <unsigned char>source[index + 3]
+  /* "Scroll.pyx":1351
+ *                         new_array[jj, i, 3] = alpha_array[i, j]
  * 
- *     return target             # <<<<<<<<<<<<<<
+ *     return pygame.image.frombuffer(new_array, (w, h), 'RGBA')             # <<<<<<<<<<<<<<
+ * 
  */
-  __PYX_INC_MEMVIEW(&__pyx_v_target, 1);
-  __pyx_r = __pyx_v_target;
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_pygame); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1351, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_image); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 1351, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_14);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_14, __pyx_n_s_frombuffer); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1351, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
+  __pyx_t_14 = __pyx_memoryview_fromslice(__pyx_v_new_array, 3, (PyObject *(*)(char *)) __pyx_memview_get_unsigned_char, (int (*)(char *, PyObject *)) __pyx_memview_set_unsigned_char, 0);; if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 1351, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_14);
+  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_w); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1351, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_9 = __Pyx_PyInt_From_int(__pyx_v_h); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1351, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_9);
+  __pyx_t_15 = PyTuple_New(2); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 1351, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_15);
+  __Pyx_GIVEREF(__pyx_t_4);
+  PyTuple_SET_ITEM(__pyx_t_15, 0, __pyx_t_4);
+  __Pyx_GIVEREF(__pyx_t_9);
+  PyTuple_SET_ITEM(__pyx_t_15, 1, __pyx_t_9);
+  __pyx_t_4 = 0;
+  __pyx_t_9 = 0;
+  __pyx_t_9 = NULL;
+  __pyx_t_18 = 0;
+  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_1))) {
+    __pyx_t_9 = PyMethod_GET_SELF(__pyx_t_1);
+    if (likely(__pyx_t_9)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_1);
+      __Pyx_INCREF(__pyx_t_9);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_1, function);
+      __pyx_t_18 = 1;
+    }
+  }
+  #if CYTHON_FAST_PYCALL
+  if (PyFunction_Check(__pyx_t_1)) {
+    PyObject *__pyx_temp[4] = {__pyx_t_9, __pyx_t_14, __pyx_t_15, __pyx_n_s_RGBA};
+    __pyx_t_8 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_18, 3+__pyx_t_18); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1351, __pyx_L1_error)
+    __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
+    __Pyx_GOTREF(__pyx_t_8);
+    __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
+    __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
+  } else
+  #endif
+  #if CYTHON_FAST_PYCCALL
+  if (__Pyx_PyFastCFunction_Check(__pyx_t_1)) {
+    PyObject *__pyx_temp[4] = {__pyx_t_9, __pyx_t_14, __pyx_t_15, __pyx_n_s_RGBA};
+    __pyx_t_8 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_18, 3+__pyx_t_18); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1351, __pyx_L1_error)
+    __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
+    __Pyx_GOTREF(__pyx_t_8);
+    __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
+    __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
+  } else
+  #endif
+  {
+    __pyx_t_4 = PyTuple_New(3+__pyx_t_18); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1351, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    if (__pyx_t_9) {
+      __Pyx_GIVEREF(__pyx_t_9); PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_9); __pyx_t_9 = NULL;
+    }
+    __Pyx_GIVEREF(__pyx_t_14);
+    PyTuple_SET_ITEM(__pyx_t_4, 0+__pyx_t_18, __pyx_t_14);
+    __Pyx_GIVEREF(__pyx_t_15);
+    PyTuple_SET_ITEM(__pyx_t_4, 1+__pyx_t_18, __pyx_t_15);
+    __Pyx_INCREF(__pyx_n_s_RGBA);
+    __Pyx_GIVEREF(__pyx_n_s_RGBA);
+    PyTuple_SET_ITEM(__pyx_t_4, 2+__pyx_t_18, __pyx_n_s_RGBA);
+    __pyx_t_14 = 0;
+    __pyx_t_15 = 0;
+    __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_4, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1351, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_8);
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  }
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_r = __pyx_t_8;
+  __pyx_t_8 = 0;
   goto __pyx_L0;
 
-  /* "Scroll.pyx":1297
+  /* "Scroll.pyx":1261
  * @cython.nonecheck(False)
  * @cython.cdivision(True)
- * cdef unsigned char [::1] vfb32_c(unsigned char [:] source, unsigned char [::1] target,             # <<<<<<<<<<<<<<
- *                                    int width, int height)nogil:
+ * cdef scroll_transparency_c(surface, int dy, int dx):             # <<<<<<<<<<<<<<
  *     """
+ *     Scroll channel alpha (lateral/vertical using optional dx, dy values)
  */
 
   /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_8);
+  __Pyx_XDECREF(__pyx_t_9);
+  __Pyx_XDECREF(__pyx_t_14);
+  __Pyx_XDECREF(__pyx_t_15);
+  __Pyx_XDECREF(__pyx_t_16);
+  __PYX_XDEC_MEMVIEW(&__pyx_t_19, 1);
+  __PYX_XDEC_MEMVIEW(&__pyx_t_20, 1);
+  __Pyx_AddTraceback("Scroll.scroll_transparency_c", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = 0;
   __pyx_L0:;
-  if (unlikely(!__pyx_r.memview)) {
-    PyErr_SetString(PyExc_TypeError, "Memoryview return value is not initialized");
-  }
+  __Pyx_XDECREF(__pyx_v_array);
+  __Pyx_XDECREF(__pyx_v_alpha);
+  __Pyx_XDECREF(__pyx_v_e);
+  __PYX_XDEC_MEMVIEW(&__pyx_v_rgb_array, 1);
+  __PYX_XDEC_MEMVIEW(&__pyx_v_alpha_array, 1);
+  __PYX_XDEC_MEMVIEW(&__pyx_v_new_array, 1);
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
@@ -19642,7 +20792,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  * 
  *             if ((flags & pybuf.PyBUF_F_CONTIGUOUS == pybuf.PyBUF_F_CONTIGUOUS)
  */
-    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__31, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 235, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__34, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 235, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_Raise(__pyx_t_3, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -19698,7 +20848,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  * 
  *             info.buf = PyArray_DATA(self)
  */
-    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__32, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 239, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__35, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 239, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_Raise(__pyx_t_3, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -20007,7 +21157,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  *                 if   t == NPY_BYTE:        f = "b"
  *                 elif t == NPY_UBYTE:       f = "B"
  */
-      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__33, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 276, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__36, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 276, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_Raise(__pyx_t_3, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -20896,7 +22046,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
  * 
  *         if ((child.byteorder == c'>' and little_endian) or
  */
-      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple__34, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 823, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple__37, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 823, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_Raise(__pyx_t_3, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -20964,7 +22114,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
  *             # One could encode it in the format string and have Cython
  *             # complain instead, BUT: < and > in format strings also imply
  */
-      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__35, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 827, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__38, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 827, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_Raise(__pyx_t_3, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -21073,7 +22223,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
  * 
  *             # Until ticket #99 is fixed, use integers to avoid warnings
  */
-        __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple__36, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 847, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple__39, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 847, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_Raise(__pyx_t_4, 0, 0, 0);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -21753,7 +22903,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
  * 
  * cdef inline int import_umath() except -1:
  */
-      __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_ImportError, __pyx_tuple__37, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 1013, __pyx_L5_except_error)
+      __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_ImportError, __pyx_tuple__40, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 1013, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_Raise(__pyx_t_8, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
@@ -21882,7 +23032,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
  * 
  * cdef inline int import_ufunc() except -1:
  */
-      __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_ImportError, __pyx_tuple__38, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 1019, __pyx_L5_except_error)
+      __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_ImportError, __pyx_tuple__41, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 1019, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_Raise(__pyx_t_8, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
@@ -22008,7 +23158,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
  *     except Exception:
  *         raise ImportError("numpy.core.umath failed to import")             # <<<<<<<<<<<<<<
  */
-      __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_ImportError, __pyx_tuple__39, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 1025, __pyx_L5_except_error)
+      __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_ImportError, __pyx_tuple__42, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 1025, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_Raise(__pyx_t_8, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
@@ -22251,7 +23401,7 @@ static int __pyx_array___pyx_pf_15View_dot_MemoryView_5array___cinit__(struct __
  * 
  *         if itemsize <= 0:
  */
-    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__40, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 131, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__43, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 131, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_Raise(__pyx_t_3, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -22283,7 +23433,7 @@ static int __pyx_array___pyx_pf_15View_dot_MemoryView_5array___cinit__(struct __
  * 
  *         if not isinstance(format, bytes):
  */
-    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__41, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 134, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__44, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 134, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_Raise(__pyx_t_3, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -22318,7 +23468,7 @@ static int __pyx_array___pyx_pf_15View_dot_MemoryView_5array___cinit__(struct __
  */
     __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_format, __pyx_n_s_encode); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 137, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_tuple__42, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(2, 137, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_tuple__45, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(2, 137, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF_SET(__pyx_v_format, __pyx_t_5);
@@ -22398,7 +23548,7 @@ static int __pyx_array___pyx_pf_15View_dot_MemoryView_5array___cinit__(struct __
  * 
  * 
  */
-    __pyx_t_5 = __Pyx_PyObject_Call(__pyx_builtin_MemoryError, __pyx_tuple__43, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(2, 146, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_Call(__pyx_builtin_MemoryError, __pyx_tuple__46, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(2, 146, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_Raise(__pyx_t_5, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -22682,7 +23832,7 @@ static int __pyx_array___pyx_pf_15View_dot_MemoryView_5array___cinit__(struct __
  * 
  *             if self.dtype_is_object:
  */
-      __pyx_t_5 = __Pyx_PyObject_Call(__pyx_builtin_MemoryError, __pyx_tuple__44, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(2, 174, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyObject_Call(__pyx_builtin_MemoryError, __pyx_tuple__47, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(2, 174, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_Raise(__pyx_t_5, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -22920,7 +24070,7 @@ static int __pyx_array___pyx_pf_15View_dot_MemoryView_5array_2__getbuffer__(stru
  *         info.buf = self.data
  *         info.len = self.len
  */
-    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__45, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 190, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__48, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 190, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_Raise(__pyx_t_3, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -23636,7 +24786,7 @@ static PyObject *__pyx_pf___pyx_array___reduce_cython__(CYTHON_UNUSED struct __p
  * def __setstate_cython__(self, __pyx_state):
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  */
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__46, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 2, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__49, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 2, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_Raise(__pyx_t_1, 0, 0, 0);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -23689,7 +24839,7 @@ static PyObject *__pyx_pf___pyx_array_2__setstate_cython__(CYTHON_UNUSED struct 
  * def __setstate_cython__(self, __pyx_state):
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
  */
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__47, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 4, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__50, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 4, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_Raise(__pyx_t_1, 0, 0, 0);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -26332,7 +27482,7 @@ static PyObject *__pyx_memoryview_convert_item_to_object(struct __pyx_memoryview
  *         else:
  *             if len(self.view.format) == 1:
  */
-      __pyx_t_6 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__48, NULL); if (unlikely(!__pyx_t_6)) __PYX_ERR(2, 486, __pyx_L5_except_error)
+      __pyx_t_6 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__51, NULL); if (unlikely(!__pyx_t_6)) __PYX_ERR(2, 486, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_Raise(__pyx_t_6, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -27171,7 +28321,7 @@ static PyObject *__pyx_pf_15View_dot_MemoryView_10memoryview_7strides___get__(st
  * 
  *         return tuple([stride for stride in self.view.strides[:self.view.ndim]])
  */
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__49, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(2, 558, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__52, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(2, 558, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_Raise(__pyx_t_2, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -27285,7 +28435,7 @@ static PyObject *__pyx_pf_15View_dot_MemoryView_10memoryview_10suboffsets___get_
     __Pyx_XDECREF(__pyx_r);
     __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_self->view.ndim); if (unlikely(!__pyx_t_2)) __PYX_ERR(2, 565, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_3 = PyNumber_Multiply(__pyx_tuple__50, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 565, __pyx_L1_error)
+    __pyx_t_3 = PyNumber_Multiply(__pyx_tuple__53, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 565, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_r = __pyx_t_3;
@@ -28292,7 +29442,7 @@ static PyObject *__pyx_pf___pyx_memoryview___reduce_cython__(CYTHON_UNUSED struc
  * def __setstate_cython__(self, __pyx_state):
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  */
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__51, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 2, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__54, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 2, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_Raise(__pyx_t_1, 0, 0, 0);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -28345,7 +29495,7 @@ static PyObject *__pyx_pf___pyx_memoryview_2__setstate_cython__(CYTHON_UNUSED st
  * def __setstate_cython__(self, __pyx_state):
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
  */
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__52, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 4, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__55, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 4, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_Raise(__pyx_t_1, 0, 0, 0);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -28696,9 +29846,9 @@ static PyObject *_unellipsify(PyObject *__pyx_v_index, int __pyx_v_ndim) {
         __Pyx_GOTREF(__pyx_t_7);
         { Py_ssize_t __pyx_temp;
           for (__pyx_temp=0; __pyx_temp < ((__pyx_v_ndim - __pyx_t_8) + 1); __pyx_temp++) {
-            __Pyx_INCREF(__pyx_slice__53);
-            __Pyx_GIVEREF(__pyx_slice__53);
-            PyList_SET_ITEM(__pyx_t_7, __pyx_temp, __pyx_slice__53);
+            __Pyx_INCREF(__pyx_slice__56);
+            __Pyx_GIVEREF(__pyx_slice__56);
+            PyList_SET_ITEM(__pyx_t_7, __pyx_temp, __pyx_slice__56);
           }
         }
         __pyx_t_9 = __Pyx_PyList_Extend(__pyx_v_result, __pyx_t_7); if (unlikely(__pyx_t_9 == ((int)-1))) __PYX_ERR(2, 670, __pyx_L1_error)
@@ -28731,7 +29881,7 @@ static PyObject *_unellipsify(PyObject *__pyx_v_index, int __pyx_v_ndim) {
  *         else:
  */
       /*else*/ {
-        __pyx_t_9 = __Pyx_PyList_Append(__pyx_v_result, __pyx_slice__54); if (unlikely(__pyx_t_9 == ((int)-1))) __PYX_ERR(2, 673, __pyx_L1_error)
+        __pyx_t_9 = __Pyx_PyList_Append(__pyx_v_result, __pyx_slice__57); if (unlikely(__pyx_t_9 == ((int)-1))) __PYX_ERR(2, 673, __pyx_L1_error)
       }
       __pyx_L7:;
 
@@ -28876,9 +30026,9 @@ static PyObject *_unellipsify(PyObject *__pyx_v_index, int __pyx_v_ndim) {
     __Pyx_GOTREF(__pyx_t_3);
     { Py_ssize_t __pyx_temp;
       for (__pyx_temp=0; __pyx_temp < __pyx_v_nslices; __pyx_temp++) {
-        __Pyx_INCREF(__pyx_slice__55);
-        __Pyx_GIVEREF(__pyx_slice__55);
-        PyList_SET_ITEM(__pyx_t_3, __pyx_temp, __pyx_slice__55);
+        __Pyx_INCREF(__pyx_slice__58);
+        __Pyx_GIVEREF(__pyx_slice__58);
+        PyList_SET_ITEM(__pyx_t_3, __pyx_temp, __pyx_slice__58);
       }
     }
     __pyx_t_9 = __Pyx_PyList_Extend(__pyx_v_result, __pyx_t_3); if (unlikely(__pyx_t_9 == ((int)-1))) __PYX_ERR(2, 684, __pyx_L1_error)
@@ -29002,7 +30152,7 @@ static PyObject *assert_direct_dimensions(Py_ssize_t *__pyx_v_suboffsets, int __
  * 
  * 
  */
-      __pyx_t_5 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__56, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(2, 691, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__59, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(2, 691, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_Raise(__pyx_t_5, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -31173,7 +32323,7 @@ static PyObject *__pyx_pf___pyx_memoryviewslice___reduce_cython__(CYTHON_UNUSED 
  * def __setstate_cython__(self, __pyx_state):
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  */
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__57, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 2, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__60, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 2, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_Raise(__pyx_t_1, 0, 0, 0);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -31226,7 +32376,7 @@ static PyObject *__pyx_pf___pyx_memoryviewslice_2__setstate_cython__(CYTHON_UNUS
  * def __setstate_cython__(self, __pyx_state):
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
  */
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__58, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 4, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__61, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 4, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_Raise(__pyx_t_1, 0, 0, 0);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -35660,7 +36810,6 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_getstate, __pyx_k_getstate, sizeof(__pyx_k_getstate), 0, 0, 1, 1},
   {&__pyx_kp_s_got_differing_extents_in_dimensi, __pyx_k_got_differing_extents_in_dimensi, sizeof(__pyx_k_got_differing_extents_in_dimensi), 0, 0, 1, 0},
   {&__pyx_n_s_h, __pyx_k_h, sizeof(__pyx_k_h), 0, 0, 1, 1},
-  {&__pyx_n_s_height, __pyx_k_height, sizeof(__pyx_k_height), 0, 0, 1, 1},
   {&__pyx_n_s_id, __pyx_k_id, sizeof(__pyx_k_id), 0, 0, 1, 1},
   {&__pyx_n_s_image, __pyx_k_image, sizeof(__pyx_k_image), 0, 0, 1, 1},
   {&__pyx_n_s_import, __pyx_k_import, sizeof(__pyx_k_import), 0, 0, 1, 1},
@@ -35720,11 +36869,11 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_scroll_buffer32, __pyx_k_scroll_buffer32, sizeof(__pyx_k_scroll_buffer32), 0, 0, 1, 1},
   {&__pyx_n_s_scroll_surface24, __pyx_k_scroll_surface24, sizeof(__pyx_k_scroll_surface24), 0, 0, 1, 1},
   {&__pyx_n_s_scroll_surface32, __pyx_k_scroll_surface32, sizeof(__pyx_k_scroll_surface32), 0, 0, 1, 1},
+  {&__pyx_n_s_scroll_transparency, __pyx_k_scroll_transparency, sizeof(__pyx_k_scroll_transparency), 0, 0, 1, 1},
   {&__pyx_n_s_setstate, __pyx_k_setstate, sizeof(__pyx_k_setstate), 0, 0, 1, 1},
   {&__pyx_n_s_setstate_cython, __pyx_k_setstate_cython, sizeof(__pyx_k_setstate_cython), 0, 0, 1, 1},
   {&__pyx_n_s_shape, __pyx_k_shape, sizeof(__pyx_k_shape), 0, 0, 1, 1},
   {&__pyx_n_s_size, __pyx_k_size, sizeof(__pyx_k_size), 0, 0, 1, 1},
-  {&__pyx_n_s_source, __pyx_k_source, sizeof(__pyx_k_source), 0, 0, 1, 1},
   {&__pyx_n_s_stack_buffer, __pyx_k_stack_buffer, sizeof(__pyx_k_stack_buffer), 0, 0, 1, 1},
   {&__pyx_n_s_stack_mem, __pyx_k_stack_mem, sizeof(__pyx_k_stack_mem), 0, 0, 1, 1},
   {&__pyx_n_s_stack_object, __pyx_k_stack_object, sizeof(__pyx_k_stack_object), 0, 0, 1, 1},
@@ -35741,7 +36890,6 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_kp_s_surface_a_pygame_Surface_is_requ, __pyx_k_surface_a_pygame_Surface_is_requ, sizeof(__pyx_k_surface_a_pygame_Surface_is_requ), 0, 0, 1, 0},
   {&__pyx_kp_s_surface_a_pygame_surface_is_requ, __pyx_k_surface_a_pygame_surface_is_requ, sizeof(__pyx_k_surface_a_pygame_surface_is_requ), 0, 0, 1, 0},
   {&__pyx_n_s_surfarray, __pyx_k_surfarray, sizeof(__pyx_k_surfarray), 0, 0, 1, 1},
-  {&__pyx_n_s_target, __pyx_k_target, sizeof(__pyx_k_target), 0, 0, 1, 1},
   {&__pyx_n_s_test, __pyx_k_test, sizeof(__pyx_k_test), 0, 0, 1, 1},
   {&__pyx_n_s_transpose, __pyx_k_transpose, sizeof(__pyx_k_transpose), 0, 0, 1, 1},
   {&__pyx_n_s_transpose24, __pyx_k_transpose24, sizeof(__pyx_k_transpose24), 0, 0, 1, 1},
@@ -35754,19 +36902,17 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_unstack_buffer, __pyx_k_unstack_buffer, sizeof(__pyx_k_unstack_buffer), 0, 0, 1, 1},
   {&__pyx_n_s_unstack_object, __pyx_k_unstack_object, sizeof(__pyx_k_unstack_object), 0, 0, 1, 1},
   {&__pyx_n_s_update, __pyx_k_update, sizeof(__pyx_k_update), 0, 0, 1, 1},
-  {&__pyx_n_s_vfb24, __pyx_k_vfb24, sizeof(__pyx_k_vfb24), 0, 0, 1, 1},
-  {&__pyx_n_s_vfb32, __pyx_k_vfb32, sizeof(__pyx_k_vfb32), 0, 0, 1, 1},
+  {&__pyx_n_s_version, __pyx_k_version, sizeof(__pyx_k_version), 0, 0, 1, 1},
   {&__pyx_n_s_w, __pyx_k_w, sizeof(__pyx_k_w), 0, 0, 1, 1},
-  {&__pyx_n_s_width, __pyx_k_width, sizeof(__pyx_k_width), 0, 0, 1, 1},
   {&__pyx_n_s_zeros, __pyx_k_zeros, sizeof(__pyx_k_zeros), 0, 0, 1, 1},
   {0, 0, 0, 0, 0, 0, 0}
 };
 static int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_ImportError = __Pyx_GetBuiltinName(__pyx_n_s_ImportError); if (!__pyx_builtin_ImportError) __PYX_ERR(0, 93, __pyx_L1_error)
-  __pyx_builtin_SystemExit = __Pyx_GetBuiltinName(__pyx_n_s_SystemExit); if (!__pyx_builtin_SystemExit) __PYX_ERR(0, 96, __pyx_L1_error)
-  __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_n_s_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(0, 303, __pyx_L1_error)
-  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 312, __pyx_L1_error)
-  __pyx_builtin_TypeError = __Pyx_GetBuiltinName(__pyx_n_s_TypeError); if (!__pyx_builtin_TypeError) __PYX_ERR(0, 757, __pyx_L1_error)
+  __pyx_builtin_ImportError = __Pyx_GetBuiltinName(__pyx_n_s_ImportError); if (!__pyx_builtin_ImportError) __PYX_ERR(0, 87, __pyx_L1_error)
+  __pyx_builtin_SystemExit = __Pyx_GetBuiltinName(__pyx_n_s_SystemExit); if (!__pyx_builtin_SystemExit) __PYX_ERR(0, 90, __pyx_L1_error)
+  __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_n_s_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(0, 323, __pyx_L1_error)
+  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 332, __pyx_L1_error)
+  __pyx_builtin_TypeError = __Pyx_GetBuiltinName(__pyx_n_s_TypeError); if (!__pyx_builtin_TypeError) __PYX_ERR(0, 777, __pyx_L1_error)
   __pyx_builtin_RuntimeError = __Pyx_GetBuiltinName(__pyx_n_s_RuntimeError); if (!__pyx_builtin_RuntimeError) __PYX_ERR(1, 823, __pyx_L1_error)
   __pyx_builtin_MemoryError = __Pyx_GetBuiltinName(__pyx_n_s_MemoryError); if (!__pyx_builtin_MemoryError) __PYX_ERR(2, 146, __pyx_L1_error)
   __pyx_builtin_enumerate = __Pyx_GetBuiltinName(__pyx_n_s_enumerate); if (!__pyx_builtin_enumerate) __PYX_ERR(2, 149, __pyx_L1_error)
@@ -35782,335 +36928,368 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "Scroll.pyx":302
+  /* "Scroll.pyx":322
  *     cdef int w, h
  *     try:
  *         w, h = (<object> rgb_array_).shape[:2]             # <<<<<<<<<<<<<<
  *     except (ValueError, pygame.error) as e:
  *         raise ValueError('\nArray shape not understood.')
  */
-  __pyx_slice_ = PySlice_New(Py_None, __pyx_int_2, Py_None); if (unlikely(!__pyx_slice_)) __PYX_ERR(0, 302, __pyx_L1_error)
+  __pyx_slice_ = PySlice_New(Py_None, __pyx_int_2, Py_None); if (unlikely(!__pyx_slice_)) __PYX_ERR(0, 322, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice_);
   __Pyx_GIVEREF(__pyx_slice_);
 
-  /* "Scroll.pyx":304
+  /* "Scroll.pyx":324
  *         w, h = (<object> rgb_array_).shape[:2]
  *     except (ValueError, pygame.error) as e:
  *         raise ValueError('\nArray shape not understood.')             # <<<<<<<<<<<<<<
  * 
  *     cdef:
  */
-  __pyx_tuple__2 = PyTuple_Pack(1, __pyx_kp_s_Array_shape_not_understood); if (unlikely(!__pyx_tuple__2)) __PYX_ERR(0, 304, __pyx_L1_error)
+  __pyx_tuple__2 = PyTuple_Pack(1, __pyx_kp_s_Array_shape_not_understood); if (unlikely(!__pyx_tuple__2)) __PYX_ERR(0, 324, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__2);
   __Pyx_GIVEREF(__pyx_tuple__2);
 
-  /* "Scroll.pyx":332
+  /* "Scroll.pyx":352
  *     cdef int w, h
  *     try:
  *         w, h = (<object> rgb_array_).shape[:2]             # <<<<<<<<<<<<<<
  *     except (ValueError, pygame.error) as e:
  *         raise ValueError('\nArray shape not understood.')
  */
-  __pyx_slice__3 = PySlice_New(Py_None, __pyx_int_2, Py_None); if (unlikely(!__pyx_slice__3)) __PYX_ERR(0, 332, __pyx_L1_error)
+  __pyx_slice__3 = PySlice_New(Py_None, __pyx_int_2, Py_None); if (unlikely(!__pyx_slice__3)) __PYX_ERR(0, 352, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice__3);
   __Pyx_GIVEREF(__pyx_slice__3);
 
-  /* "Scroll.pyx":334
+  /* "Scroll.pyx":354
  *         w, h = (<object> rgb_array_).shape[:2]
  *     except (ValueError, pygame.error) as e:
  *         raise ValueError('\nArray shape not understood.')             # <<<<<<<<<<<<<<
  * 
  *     cdef:
  */
-  __pyx_tuple__4 = PyTuple_Pack(1, __pyx_kp_s_Array_shape_not_understood); if (unlikely(!__pyx_tuple__4)) __PYX_ERR(0, 334, __pyx_L1_error)
+  __pyx_tuple__4 = PyTuple_Pack(1, __pyx_kp_s_Array_shape_not_understood); if (unlikely(!__pyx_tuple__4)) __PYX_ERR(0, 354, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__4);
   __Pyx_GIVEREF(__pyx_tuple__4);
 
-  /* "Scroll.pyx":369
+  /* "Scroll.pyx":389
  *     cdef int width, height
  *     try:
  *         width, height = (<object> rgb_array_).shape[:2]             # <<<<<<<<<<<<<<
  *     except (ValueError, pygame.error) as e:
  *         raise ValueError('\nArray shape not understood.')
  */
-  __pyx_slice__5 = PySlice_New(Py_None, __pyx_int_2, Py_None); if (unlikely(!__pyx_slice__5)) __PYX_ERR(0, 369, __pyx_L1_error)
+  __pyx_slice__5 = PySlice_New(Py_None, __pyx_int_2, Py_None); if (unlikely(!__pyx_slice__5)) __PYX_ERR(0, 389, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice__5);
   __Pyx_GIVEREF(__pyx_slice__5);
 
-  /* "Scroll.pyx":371
+  /* "Scroll.pyx":391
  *         width, height = (<object> rgb_array_).shape[:2]
  *     except (ValueError, pygame.error) as e:
  *         raise ValueError('\nArray shape not understood.')             # <<<<<<<<<<<<<<
  * 
  *     cdef:
  */
-  __pyx_tuple__6 = PyTuple_Pack(1, __pyx_kp_s_Array_shape_not_understood); if (unlikely(!__pyx_tuple__6)) __PYX_ERR(0, 371, __pyx_L1_error)
+  __pyx_tuple__6 = PyTuple_Pack(1, __pyx_kp_s_Array_shape_not_understood); if (unlikely(!__pyx_tuple__6)) __PYX_ERR(0, 391, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__6);
   __Pyx_GIVEREF(__pyx_tuple__6);
 
-  /* "Scroll.pyx":476
+  /* "Scroll.pyx":496
  *     cdef int width, height
  *     try:
  *         width, height = (<object> rgb_array_).shape[:2]             # <<<<<<<<<<<<<<
  *     except (ValueError, pygame.error) as e:
  *         raise ValueError('\nArray shape not understood.')
  */
-  __pyx_slice__7 = PySlice_New(Py_None, __pyx_int_2, Py_None); if (unlikely(!__pyx_slice__7)) __PYX_ERR(0, 476, __pyx_L1_error)
+  __pyx_slice__7 = PySlice_New(Py_None, __pyx_int_2, Py_None); if (unlikely(!__pyx_slice__7)) __PYX_ERR(0, 496, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice__7);
   __Pyx_GIVEREF(__pyx_slice__7);
 
-  /* "Scroll.pyx":478
+  /* "Scroll.pyx":498
  *         width, height = (<object> rgb_array_).shape[:2]
  *     except (ValueError, pygame.error) as e:
  *         raise ValueError('\nArray shape not understood.')             # <<<<<<<<<<<<<<
  * 
  *     cdef:
  */
-  __pyx_tuple__8 = PyTuple_Pack(1, __pyx_kp_s_Array_shape_not_understood); if (unlikely(!__pyx_tuple__8)) __PYX_ERR(0, 478, __pyx_L1_error)
+  __pyx_tuple__8 = PyTuple_Pack(1, __pyx_kp_s_Array_shape_not_understood); if (unlikely(!__pyx_tuple__8)) __PYX_ERR(0, 498, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__8);
   __Pyx_GIVEREF(__pyx_tuple__8);
 
-  /* "Scroll.pyx":520
+  /* "Scroll.pyx":540
  *     cdef int w, h, d
  *     try:
  *         w, h, d = (<object> rgba_array_).shape[:3]             # <<<<<<<<<<<<<<
  *     except (ValueError, pygame.error) as e:
  *         raise ValueError('\nArray shape not understood.')
  */
-  __pyx_slice__9 = PySlice_New(Py_None, __pyx_int_3, Py_None); if (unlikely(!__pyx_slice__9)) __PYX_ERR(0, 520, __pyx_L1_error)
+  __pyx_slice__9 = PySlice_New(Py_None, __pyx_int_3, Py_None); if (unlikely(!__pyx_slice__9)) __PYX_ERR(0, 540, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice__9);
   __Pyx_GIVEREF(__pyx_slice__9);
 
-  /* "Scroll.pyx":522
+  /* "Scroll.pyx":542
  *         w, h, d = (<object> rgba_array_).shape[:3]
  *     except (ValueError, pygame.error) as e:
  *         raise ValueError('\nArray shape not understood.')             # <<<<<<<<<<<<<<
  * 
  *     assert d==4, 'Invalid depth for arguement rgba_array_, must be 4 got %s ' % d
  */
-  __pyx_tuple__10 = PyTuple_Pack(1, __pyx_kp_s_Array_shape_not_understood); if (unlikely(!__pyx_tuple__10)) __PYX_ERR(0, 522, __pyx_L1_error)
+  __pyx_tuple__10 = PyTuple_Pack(1, __pyx_kp_s_Array_shape_not_understood); if (unlikely(!__pyx_tuple__10)) __PYX_ERR(0, 542, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__10);
   __Pyx_GIVEREF(__pyx_tuple__10);
 
-  /* "Scroll.pyx":573
+  /* "Scroll.pyx":593
  * 
  *     if b_length != w * h * 4:
  *         raise ValueError("Buffer length does not match image dimensions.")             # <<<<<<<<<<<<<<
  * 
  *     cdef:
  */
-  __pyx_tuple__11 = PyTuple_Pack(1, __pyx_kp_s_Buffer_length_does_not_match_ima); if (unlikely(!__pyx_tuple__11)) __PYX_ERR(0, 573, __pyx_L1_error)
+  __pyx_tuple__11 = PyTuple_Pack(1, __pyx_kp_s_Buffer_length_does_not_match_ima); if (unlikely(!__pyx_tuple__11)) __PYX_ERR(0, 593, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__11);
   __Pyx_GIVEREF(__pyx_tuple__11);
 
-  /* "Scroll.pyx":618
+  /* "Scroll.pyx":638
  *         b_length = len(<object>buffer_)
  *     except:
  *         raise ValueError("Possibly wrong type for argument buffer_")             # <<<<<<<<<<<<<<
  * 
  *     assert b_length == w * h * 3, \
  */
-  __pyx_tuple__12 = PyTuple_Pack(1, __pyx_kp_s_Possibly_wrong_type_for_argument); if (unlikely(!__pyx_tuple__12)) __PYX_ERR(0, 618, __pyx_L1_error)
+  __pyx_tuple__12 = PyTuple_Pack(1, __pyx_kp_s_Possibly_wrong_type_for_argument); if (unlikely(!__pyx_tuple__12)) __PYX_ERR(0, 638, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__12);
   __Pyx_GIVEREF(__pyx_tuple__12);
 
-  /* "Scroll.pyx":684
+  /* "Scroll.pyx":704
  *         b_length = len(<object>buffer_)
  *     except:
  *         raise ValueError("Possibly wrong type for argument buffer_")             # <<<<<<<<<<<<<<
  * 
  *     assert b_length == w * h * 4, \
  */
-  __pyx_tuple__13 = PyTuple_Pack(1, __pyx_kp_s_Possibly_wrong_type_for_argument); if (unlikely(!__pyx_tuple__13)) __PYX_ERR(0, 684, __pyx_L1_error)
+  __pyx_tuple__13 = PyTuple_Pack(1, __pyx_kp_s_Possibly_wrong_type_for_argument); if (unlikely(!__pyx_tuple__13)) __PYX_ERR(0, 704, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__13);
   __Pyx_GIVEREF(__pyx_tuple__13);
 
-  /* "Scroll.pyx":763
+  /* "Scroll.pyx":783
  *     cdef int w, h, dim
  *     try:
  *         w, h, dim = (<object>rgb_array_).shape[:3]             # <<<<<<<<<<<<<<
  *     except (ValueError, pygame.error) as e:
  *         raise ValueError('\nArray shape not compatible.')
  */
-  __pyx_slice__14 = PySlice_New(Py_None, __pyx_int_3, Py_None); if (unlikely(!__pyx_slice__14)) __PYX_ERR(0, 763, __pyx_L1_error)
+  __pyx_slice__14 = PySlice_New(Py_None, __pyx_int_3, Py_None); if (unlikely(!__pyx_slice__14)) __PYX_ERR(0, 783, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice__14);
   __Pyx_GIVEREF(__pyx_slice__14);
 
-  /* "Scroll.pyx":765
+  /* "Scroll.pyx":785
  *         w, h, dim = (<object>rgb_array_).shape[:3]
  *     except (ValueError, pygame.error) as e:
  *         raise ValueError('\nArray shape not compatible.')             # <<<<<<<<<<<<<<
  * 
  *     if dx == 0 and dy == 0:
  */
-  __pyx_tuple__15 = PyTuple_Pack(1, __pyx_kp_s_Array_shape_not_compatible); if (unlikely(!__pyx_tuple__15)) __PYX_ERR(0, 765, __pyx_L1_error)
+  __pyx_tuple__15 = PyTuple_Pack(1, __pyx_kp_s_Array_shape_not_compatible); if (unlikely(!__pyx_tuple__15)) __PYX_ERR(0, 785, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__15);
   __Pyx_GIVEREF(__pyx_tuple__15);
 
-  /* "Scroll.pyx":848
+  /* "Scroll.pyx":868
  *     cdef int w, h, dim
  *     try:
  *         w, h, dim = (<object> rgb_array).shape[:3]             # <<<<<<<<<<<<<<
  *     except (ValueError, pygame.error) as e:
  *         raise ValueError('\nArray shape not compatible.')
  */
-  __pyx_slice__16 = PySlice_New(Py_None, __pyx_int_3, Py_None); if (unlikely(!__pyx_slice__16)) __PYX_ERR(0, 848, __pyx_L1_error)
+  __pyx_slice__16 = PySlice_New(Py_None, __pyx_int_3, Py_None); if (unlikely(!__pyx_slice__16)) __PYX_ERR(0, 868, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice__16);
   __Pyx_GIVEREF(__pyx_slice__16);
 
-  /* "Scroll.pyx":850
+  /* "Scroll.pyx":870
  *         w, h, dim = (<object> rgb_array).shape[:3]
  *     except (ValueError, pygame.error) as e:
  *         raise ValueError('\nArray shape not compatible.')             # <<<<<<<<<<<<<<
  * 
  *     if dx == 0 and dy == 0:
  */
-  __pyx_tuple__17 = PyTuple_Pack(1, __pyx_kp_s_Array_shape_not_compatible); if (unlikely(!__pyx_tuple__17)) __PYX_ERR(0, 850, __pyx_L1_error)
+  __pyx_tuple__17 = PyTuple_Pack(1, __pyx_kp_s_Array_shape_not_compatible); if (unlikely(!__pyx_tuple__17)) __PYX_ERR(0, 870, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__17);
   __Pyx_GIVEREF(__pyx_tuple__17);
 
-  /* "Scroll.pyx":935
+  /* "Scroll.pyx":955
  *     cdef int w, h, dim
  *     try:
  *         w, h, dim = (<object> rgb_array).shape[:3]             # <<<<<<<<<<<<<<
  *     except (ValueError, pygame.error) as e:
  *         raise ValueError('\nArray shape not compatible.')
  */
-  __pyx_slice__18 = PySlice_New(Py_None, __pyx_int_3, Py_None); if (unlikely(!__pyx_slice__18)) __PYX_ERR(0, 935, __pyx_L1_error)
+  __pyx_slice__18 = PySlice_New(Py_None, __pyx_int_3, Py_None); if (unlikely(!__pyx_slice__18)) __PYX_ERR(0, 955, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice__18);
   __Pyx_GIVEREF(__pyx_slice__18);
 
-  /* "Scroll.pyx":937
+  /* "Scroll.pyx":957
  *         w, h, dim = (<object> rgb_array).shape[:3]
  *     except (ValueError, pygame.error) as e:
  *         raise ValueError('\nArray shape not compatible.')             # <<<<<<<<<<<<<<
  * 
  *     if dx == 0 and dy == 0:
  */
-  __pyx_tuple__19 = PyTuple_Pack(1, __pyx_kp_s_Array_shape_not_compatible); if (unlikely(!__pyx_tuple__19)) __PYX_ERR(0, 937, __pyx_L1_error)
+  __pyx_tuple__19 = PyTuple_Pack(1, __pyx_kp_s_Array_shape_not_compatible); if (unlikely(!__pyx_tuple__19)) __PYX_ERR(0, 957, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__19);
   __Pyx_GIVEREF(__pyx_tuple__19);
 
-  /* "Scroll.pyx":1020
+  /* "Scroll.pyx":1040
  *     cdef int w, h
  *     try:
  *         w, h = (<object>array_).shape[:2]             # <<<<<<<<<<<<<<
  *     except (ValueError, pygame.error) as e:
  *         raise ValueError('\nArray shape not compatible.')
  */
-  __pyx_slice__20 = PySlice_New(Py_None, __pyx_int_2, Py_None); if (unlikely(!__pyx_slice__20)) __PYX_ERR(0, 1020, __pyx_L1_error)
+  __pyx_slice__20 = PySlice_New(Py_None, __pyx_int_2, Py_None); if (unlikely(!__pyx_slice__20)) __PYX_ERR(0, 1040, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice__20);
   __Pyx_GIVEREF(__pyx_slice__20);
 
-  /* "Scroll.pyx":1022
+  /* "Scroll.pyx":1042
  *         w, h = (<object>array_).shape[:2]
  *     except (ValueError, pygame.error) as e:
  *         raise ValueError('\nArray shape not compatible.')             # <<<<<<<<<<<<<<
  *     if dx != 0:
  *         array = numpy.roll(array_, dx, axis=1)
  */
-  __pyx_tuple__21 = PyTuple_Pack(1, __pyx_kp_s_Array_shape_not_compatible); if (unlikely(!__pyx_tuple__21)) __PYX_ERR(0, 1022, __pyx_L1_error)
+  __pyx_tuple__21 = PyTuple_Pack(1, __pyx_kp_s_Array_shape_not_compatible); if (unlikely(!__pyx_tuple__21)) __PYX_ERR(0, 1042, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__21);
   __Pyx_GIVEREF(__pyx_tuple__21);
 
-  /* "Scroll.pyx":1055
+  /* "Scroll.pyx":1075
  * 
  *     except (ValueError, pygame.error) as e:
  *         raise ValueError('\nArray shape not compatible.')             # <<<<<<<<<<<<<<
  * 
  *     try:
  */
-  __pyx_tuple__22 = PyTuple_Pack(1, __pyx_kp_s_Array_shape_not_compatible); if (unlikely(!__pyx_tuple__22)) __PYX_ERR(0, 1055, __pyx_L1_error)
+  __pyx_tuple__22 = PyTuple_Pack(1, __pyx_kp_s_Array_shape_not_compatible); if (unlikely(!__pyx_tuple__22)) __PYX_ERR(0, 1075, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__22);
   __Pyx_GIVEREF(__pyx_tuple__22);
 
-  /* "Scroll.pyx":1063
+  /* "Scroll.pyx":1083
  *             array = pygame.surfarray.array3d(surface_)
  *         except (pygame.error, ValueError):
  *             raise ValueError('Surface not compatible.')             # <<<<<<<<<<<<<<
  * 
  *     if dx != 0:
  */
-  __pyx_tuple__23 = PyTuple_Pack(1, __pyx_kp_s_Surface_not_compatible); if (unlikely(!__pyx_tuple__23)) __PYX_ERR(0, 1063, __pyx_L1_error)
+  __pyx_tuple__23 = PyTuple_Pack(1, __pyx_kp_s_Surface_not_compatible); if (unlikely(!__pyx_tuple__23)) __PYX_ERR(0, 1083, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__23);
   __Pyx_GIVEREF(__pyx_tuple__23);
 
-  /* "Scroll.pyx":1069
+  /* "Scroll.pyx":1089
  *     if dy != 0:
  *         array = numpy.roll(array, dy, axis=0)
  *     return pygame.image.frombuffer(array.transpose(1, 0, 2), (w, h), 'RGB'), array             # <<<<<<<<<<<<<<
  * 
  * @cython.boundscheck(False)
  */
-  __pyx_tuple__24 = PyTuple_Pack(3, __pyx_int_1, __pyx_int_0, __pyx_int_2); if (unlikely(!__pyx_tuple__24)) __PYX_ERR(0, 1069, __pyx_L1_error)
+  __pyx_tuple__24 = PyTuple_Pack(3, __pyx_int_1, __pyx_int_0, __pyx_int_2); if (unlikely(!__pyx_tuple__24)) __PYX_ERR(0, 1089, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__24);
   __Pyx_GIVEREF(__pyx_tuple__24);
 
-  /* "Scroll.pyx":1101
+  /* "Scroll.pyx":1121
  *             alpha = array_alpha(surface)
  *         except (ValueError, pygame.error) as e:
  *             raise ValueError('\nIncompatible pixel format.')             # <<<<<<<<<<<<<<
  * 
  *     try:
  */
-  __pyx_tuple__25 = PyTuple_Pack(1, __pyx_kp_s_Incompatible_pixel_format); if (unlikely(!__pyx_tuple__25)) __PYX_ERR(0, 1101, __pyx_L1_error)
+  __pyx_tuple__25 = PyTuple_Pack(1, __pyx_kp_s_Incompatible_pixel_format); if (unlikely(!__pyx_tuple__25)) __PYX_ERR(0, 1121, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__25);
   __Pyx_GIVEREF(__pyx_tuple__25);
 
-  /* "Scroll.pyx":1104
+  /* "Scroll.pyx":1124
  * 
  *     try:
  *         w, h, dim = (<object> array).shape[:3]             # <<<<<<<<<<<<<<
  *     except (ValueError, pygame.error) as e:
  *         raise ValueError('\nArray shape not compatible.')
  */
-  __pyx_slice__26 = PySlice_New(Py_None, __pyx_int_3, Py_None); if (unlikely(!__pyx_slice__26)) __PYX_ERR(0, 1104, __pyx_L1_error)
+  __pyx_slice__26 = PySlice_New(Py_None, __pyx_int_3, Py_None); if (unlikely(!__pyx_slice__26)) __PYX_ERR(0, 1124, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice__26);
   __Pyx_GIVEREF(__pyx_slice__26);
 
-  /* "Scroll.pyx":1106
+  /* "Scroll.pyx":1126
  *         w, h, dim = (<object> array).shape[:3]
  *     except (ValueError, pygame.error) as e:
  *         raise ValueError('\nArray shape not compatible.')             # <<<<<<<<<<<<<<
  * 
  *     cdef:
  */
-  __pyx_tuple__27 = PyTuple_Pack(1, __pyx_kp_s_Array_shape_not_compatible); if (unlikely(!__pyx_tuple__27)) __PYX_ERR(0, 1106, __pyx_L1_error)
+  __pyx_tuple__27 = PyTuple_Pack(1, __pyx_kp_s_Array_shape_not_compatible); if (unlikely(!__pyx_tuple__27)) __PYX_ERR(0, 1126, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__27);
   __Pyx_GIVEREF(__pyx_tuple__27);
 
-  /* "Scroll.pyx":1181
+  /* "Scroll.pyx":1201
  *             alpha = pygame.surfarray.array_alpha(surface)
  *         except (ValueError, pygame.error) as e:
  *             raise ValueError('\nIncompatible image pixel format.')             # <<<<<<<<<<<<<<
  * 
  *     cdef int w, h
  */
-  __pyx_tuple__28 = PyTuple_Pack(1, __pyx_kp_s_Incompatible_image_pixel_format); if (unlikely(!__pyx_tuple__28)) __PYX_ERR(0, 1181, __pyx_L1_error)
+  __pyx_tuple__28 = PyTuple_Pack(1, __pyx_kp_s_Incompatible_image_pixel_format); if (unlikely(!__pyx_tuple__28)) __PYX_ERR(0, 1201, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__28);
   __Pyx_GIVEREF(__pyx_tuple__28);
 
-  /* "Scroll.pyx":1185
+  /* "Scroll.pyx":1205
  *     cdef int w, h
  *     try:
  *         w, h = array.shape[:2]             # <<<<<<<<<<<<<<
  *     except (ValueError, pygame.error) as e:
  *         raise ValueError('\nArray shape not compatible.')
  */
-  __pyx_slice__29 = PySlice_New(Py_None, __pyx_int_2, Py_None); if (unlikely(!__pyx_slice__29)) __PYX_ERR(0, 1185, __pyx_L1_error)
+  __pyx_slice__29 = PySlice_New(Py_None, __pyx_int_2, Py_None); if (unlikely(!__pyx_slice__29)) __PYX_ERR(0, 1205, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice__29);
   __Pyx_GIVEREF(__pyx_slice__29);
 
-  /* "Scroll.pyx":1187
+  /* "Scroll.pyx":1207
  *         w, h = array.shape[:2]
  *     except (ValueError, pygame.error) as e:
  *         raise ValueError('\nArray shape not compatible.')             # <<<<<<<<<<<<<<
  * 
  *     cdef:
  */
-  __pyx_tuple__30 = PyTuple_Pack(1, __pyx_kp_s_Array_shape_not_compatible); if (unlikely(!__pyx_tuple__30)) __PYX_ERR(0, 1187, __pyx_L1_error)
+  __pyx_tuple__30 = PyTuple_Pack(1, __pyx_kp_s_Array_shape_not_compatible); if (unlikely(!__pyx_tuple__30)) __PYX_ERR(0, 1207, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__30);
   __Pyx_GIVEREF(__pyx_tuple__30);
+
+  /* "Scroll.pyx":1289
+ *             alpha = pygame.surfarray.array_alpha(surface)
+ *         except (ValueError, pygame.error) as e:
+ *             raise ValueError('\nIncompatible image pixel format.')             # <<<<<<<<<<<<<<
+ * 
+ *     cdef int w, h
+ */
+  __pyx_tuple__31 = PyTuple_Pack(1, __pyx_kp_s_Incompatible_image_pixel_format); if (unlikely(!__pyx_tuple__31)) __PYX_ERR(0, 1289, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__31);
+  __Pyx_GIVEREF(__pyx_tuple__31);
+
+  /* "Scroll.pyx":1293
+ *     cdef int w, h
+ *     try:
+ *         w, h = array.shape[:2]             # <<<<<<<<<<<<<<
+ *     except (ValueError, pygame.error) as e:
+ *         raise ValueError('\nArray shape not compatible.')
+ */
+  __pyx_slice__32 = PySlice_New(Py_None, __pyx_int_2, Py_None); if (unlikely(!__pyx_slice__32)) __PYX_ERR(0, 1293, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_slice__32);
+  __Pyx_GIVEREF(__pyx_slice__32);
+
+  /* "Scroll.pyx":1295
+ *         w, h = array.shape[:2]
+ *     except (ValueError, pygame.error) as e:
+ *         raise ValueError('\nArray shape not compatible.')             # <<<<<<<<<<<<<<
+ * 
+ *     cdef:
+ */
+  __pyx_tuple__33 = PyTuple_Pack(1, __pyx_kp_s_Array_shape_not_compatible); if (unlikely(!__pyx_tuple__33)) __PYX_ERR(0, 1295, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__33);
+  __Pyx_GIVEREF(__pyx_tuple__33);
 
   /* "../../AppData/Local/Programs/Python/Python36/lib/site-packages/Cython/Includes/numpy/__init__.pxd":235
  *             if ((flags & pybuf.PyBUF_C_CONTIGUOUS == pybuf.PyBUF_C_CONTIGUOUS)
@@ -36119,9 +37298,9 @@ static int __Pyx_InitCachedConstants(void) {
  * 
  *             if ((flags & pybuf.PyBUF_F_CONTIGUOUS == pybuf.PyBUF_F_CONTIGUOUS)
  */
-  __pyx_tuple__31 = PyTuple_Pack(1, __pyx_kp_u_ndarray_is_not_C_contiguous); if (unlikely(!__pyx_tuple__31)) __PYX_ERR(1, 235, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__31);
-  __Pyx_GIVEREF(__pyx_tuple__31);
+  __pyx_tuple__34 = PyTuple_Pack(1, __pyx_kp_u_ndarray_is_not_C_contiguous); if (unlikely(!__pyx_tuple__34)) __PYX_ERR(1, 235, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__34);
+  __Pyx_GIVEREF(__pyx_tuple__34);
 
   /* "../../AppData/Local/Programs/Python/Python36/lib/site-packages/Cython/Includes/numpy/__init__.pxd":239
  *             if ((flags & pybuf.PyBUF_F_CONTIGUOUS == pybuf.PyBUF_F_CONTIGUOUS)
@@ -36130,9 +37309,9 @@ static int __Pyx_InitCachedConstants(void) {
  * 
  *             info.buf = PyArray_DATA(self)
  */
-  __pyx_tuple__32 = PyTuple_Pack(1, __pyx_kp_u_ndarray_is_not_Fortran_contiguou); if (unlikely(!__pyx_tuple__32)) __PYX_ERR(1, 239, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__32);
-  __Pyx_GIVEREF(__pyx_tuple__32);
+  __pyx_tuple__35 = PyTuple_Pack(1, __pyx_kp_u_ndarray_is_not_Fortran_contiguou); if (unlikely(!__pyx_tuple__35)) __PYX_ERR(1, 239, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__35);
+  __Pyx_GIVEREF(__pyx_tuple__35);
 
   /* "../../AppData/Local/Programs/Python/Python36/lib/site-packages/Cython/Includes/numpy/__init__.pxd":276
  *                 if ((descr.byteorder == c'>' and little_endian) or
@@ -36141,9 +37320,9 @@ static int __Pyx_InitCachedConstants(void) {
  *                 if   t == NPY_BYTE:        f = "b"
  *                 elif t == NPY_UBYTE:       f = "B"
  */
-  __pyx_tuple__33 = PyTuple_Pack(1, __pyx_kp_u_Non_native_byte_order_not_suppor); if (unlikely(!__pyx_tuple__33)) __PYX_ERR(1, 276, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__33);
-  __Pyx_GIVEREF(__pyx_tuple__33);
+  __pyx_tuple__36 = PyTuple_Pack(1, __pyx_kp_u_Non_native_byte_order_not_suppor); if (unlikely(!__pyx_tuple__36)) __PYX_ERR(1, 276, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__36);
+  __Pyx_GIVEREF(__pyx_tuple__36);
 
   /* "../../AppData/Local/Programs/Python/Python36/lib/site-packages/Cython/Includes/numpy/__init__.pxd":823
  * 
@@ -36152,9 +37331,9 @@ static int __Pyx_InitCachedConstants(void) {
  * 
  *         if ((child.byteorder == c'>' and little_endian) or
  */
-  __pyx_tuple__34 = PyTuple_Pack(1, __pyx_kp_u_Format_string_allocated_too_shor); if (unlikely(!__pyx_tuple__34)) __PYX_ERR(1, 823, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__34);
-  __Pyx_GIVEREF(__pyx_tuple__34);
+  __pyx_tuple__37 = PyTuple_Pack(1, __pyx_kp_u_Format_string_allocated_too_shor); if (unlikely(!__pyx_tuple__37)) __PYX_ERR(1, 823, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__37);
+  __Pyx_GIVEREF(__pyx_tuple__37);
 
   /* "../../AppData/Local/Programs/Python/Python36/lib/site-packages/Cython/Includes/numpy/__init__.pxd":827
  *         if ((child.byteorder == c'>' and little_endian) or
@@ -36163,9 +37342,9 @@ static int __Pyx_InitCachedConstants(void) {
  *             # One could encode it in the format string and have Cython
  *             # complain instead, BUT: < and > in format strings also imply
  */
-  __pyx_tuple__35 = PyTuple_Pack(1, __pyx_kp_u_Non_native_byte_order_not_suppor); if (unlikely(!__pyx_tuple__35)) __PYX_ERR(1, 827, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__35);
-  __Pyx_GIVEREF(__pyx_tuple__35);
+  __pyx_tuple__38 = PyTuple_Pack(1, __pyx_kp_u_Non_native_byte_order_not_suppor); if (unlikely(!__pyx_tuple__38)) __PYX_ERR(1, 827, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__38);
+  __Pyx_GIVEREF(__pyx_tuple__38);
 
   /* "../../AppData/Local/Programs/Python/Python36/lib/site-packages/Cython/Includes/numpy/__init__.pxd":847
  *             t = child.type_num
@@ -36174,9 +37353,9 @@ static int __Pyx_InitCachedConstants(void) {
  * 
  *             # Until ticket #99 is fixed, use integers to avoid warnings
  */
-  __pyx_tuple__36 = PyTuple_Pack(1, __pyx_kp_u_Format_string_allocated_too_shor_2); if (unlikely(!__pyx_tuple__36)) __PYX_ERR(1, 847, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__36);
-  __Pyx_GIVEREF(__pyx_tuple__36);
+  __pyx_tuple__39 = PyTuple_Pack(1, __pyx_kp_u_Format_string_allocated_too_shor_2); if (unlikely(!__pyx_tuple__39)) __PYX_ERR(1, 847, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__39);
+  __Pyx_GIVEREF(__pyx_tuple__39);
 
   /* "../../AppData/Local/Programs/Python/Python36/lib/site-packages/Cython/Includes/numpy/__init__.pxd":1013
  *         _import_array()
@@ -36185,9 +37364,9 @@ static int __Pyx_InitCachedConstants(void) {
  * 
  * cdef inline int import_umath() except -1:
  */
-  __pyx_tuple__37 = PyTuple_Pack(1, __pyx_kp_s_numpy_core_multiarray_failed_to); if (unlikely(!__pyx_tuple__37)) __PYX_ERR(1, 1013, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__37);
-  __Pyx_GIVEREF(__pyx_tuple__37);
+  __pyx_tuple__40 = PyTuple_Pack(1, __pyx_kp_s_numpy_core_multiarray_failed_to); if (unlikely(!__pyx_tuple__40)) __PYX_ERR(1, 1013, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__40);
+  __Pyx_GIVEREF(__pyx_tuple__40);
 
   /* "../../AppData/Local/Programs/Python/Python36/lib/site-packages/Cython/Includes/numpy/__init__.pxd":1019
  *         _import_umath()
@@ -36196,18 +37375,18 @@ static int __Pyx_InitCachedConstants(void) {
  * 
  * cdef inline int import_ufunc() except -1:
  */
-  __pyx_tuple__38 = PyTuple_Pack(1, __pyx_kp_s_numpy_core_umath_failed_to_impor); if (unlikely(!__pyx_tuple__38)) __PYX_ERR(1, 1019, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__38);
-  __Pyx_GIVEREF(__pyx_tuple__38);
+  __pyx_tuple__41 = PyTuple_Pack(1, __pyx_kp_s_numpy_core_umath_failed_to_impor); if (unlikely(!__pyx_tuple__41)) __PYX_ERR(1, 1019, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__41);
+  __Pyx_GIVEREF(__pyx_tuple__41);
 
   /* "../../AppData/Local/Programs/Python/Python36/lib/site-packages/Cython/Includes/numpy/__init__.pxd":1025
  *         _import_umath()
  *     except Exception:
  *         raise ImportError("numpy.core.umath failed to import")             # <<<<<<<<<<<<<<
  */
-  __pyx_tuple__39 = PyTuple_Pack(1, __pyx_kp_s_numpy_core_umath_failed_to_impor); if (unlikely(!__pyx_tuple__39)) __PYX_ERR(1, 1025, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__39);
-  __Pyx_GIVEREF(__pyx_tuple__39);
+  __pyx_tuple__42 = PyTuple_Pack(1, __pyx_kp_s_numpy_core_umath_failed_to_impor); if (unlikely(!__pyx_tuple__42)) __PYX_ERR(1, 1025, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__42);
+  __Pyx_GIVEREF(__pyx_tuple__42);
 
   /* "View.MemoryView":131
  * 
@@ -36216,9 +37395,9 @@ static int __Pyx_InitCachedConstants(void) {
  * 
  *         if itemsize <= 0:
  */
-  __pyx_tuple__40 = PyTuple_Pack(1, __pyx_kp_s_Empty_shape_tuple_for_cython_arr); if (unlikely(!__pyx_tuple__40)) __PYX_ERR(2, 131, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__40);
-  __Pyx_GIVEREF(__pyx_tuple__40);
+  __pyx_tuple__43 = PyTuple_Pack(1, __pyx_kp_s_Empty_shape_tuple_for_cython_arr); if (unlikely(!__pyx_tuple__43)) __PYX_ERR(2, 131, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__43);
+  __Pyx_GIVEREF(__pyx_tuple__43);
 
   /* "View.MemoryView":134
  * 
@@ -36227,9 +37406,9 @@ static int __Pyx_InitCachedConstants(void) {
  * 
  *         if not isinstance(format, bytes):
  */
-  __pyx_tuple__41 = PyTuple_Pack(1, __pyx_kp_s_itemsize_0_for_cython_array); if (unlikely(!__pyx_tuple__41)) __PYX_ERR(2, 134, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__41);
-  __Pyx_GIVEREF(__pyx_tuple__41);
+  __pyx_tuple__44 = PyTuple_Pack(1, __pyx_kp_s_itemsize_0_for_cython_array); if (unlikely(!__pyx_tuple__44)) __PYX_ERR(2, 134, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__44);
+  __Pyx_GIVEREF(__pyx_tuple__44);
 
   /* "View.MemoryView":137
  * 
@@ -36238,9 +37417,9 @@ static int __Pyx_InitCachedConstants(void) {
  *         self._format = format  # keep a reference to the byte string
  *         self.format = self._format
  */
-  __pyx_tuple__42 = PyTuple_Pack(1, __pyx_n_s_ASCII); if (unlikely(!__pyx_tuple__42)) __PYX_ERR(2, 137, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__42);
-  __Pyx_GIVEREF(__pyx_tuple__42);
+  __pyx_tuple__45 = PyTuple_Pack(1, __pyx_n_s_ASCII); if (unlikely(!__pyx_tuple__45)) __PYX_ERR(2, 137, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__45);
+  __Pyx_GIVEREF(__pyx_tuple__45);
 
   /* "View.MemoryView":146
  * 
@@ -36249,9 +37428,9 @@ static int __Pyx_InitCachedConstants(void) {
  * 
  * 
  */
-  __pyx_tuple__43 = PyTuple_Pack(1, __pyx_kp_s_unable_to_allocate_shape_and_str); if (unlikely(!__pyx_tuple__43)) __PYX_ERR(2, 146, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__43);
-  __Pyx_GIVEREF(__pyx_tuple__43);
+  __pyx_tuple__46 = PyTuple_Pack(1, __pyx_kp_s_unable_to_allocate_shape_and_str); if (unlikely(!__pyx_tuple__46)) __PYX_ERR(2, 146, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__46);
+  __Pyx_GIVEREF(__pyx_tuple__46);
 
   /* "View.MemoryView":174
  *             self.data = <char *>malloc(self.len)
@@ -36260,9 +37439,9 @@ static int __Pyx_InitCachedConstants(void) {
  * 
  *             if self.dtype_is_object:
  */
-  __pyx_tuple__44 = PyTuple_Pack(1, __pyx_kp_s_unable_to_allocate_array_data); if (unlikely(!__pyx_tuple__44)) __PYX_ERR(2, 174, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__44);
-  __Pyx_GIVEREF(__pyx_tuple__44);
+  __pyx_tuple__47 = PyTuple_Pack(1, __pyx_kp_s_unable_to_allocate_array_data); if (unlikely(!__pyx_tuple__47)) __PYX_ERR(2, 174, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__47);
+  __Pyx_GIVEREF(__pyx_tuple__47);
 
   /* "View.MemoryView":190
  *             bufmode = PyBUF_F_CONTIGUOUS | PyBUF_ANY_CONTIGUOUS
@@ -36271,9 +37450,9 @@ static int __Pyx_InitCachedConstants(void) {
  *         info.buf = self.data
  *         info.len = self.len
  */
-  __pyx_tuple__45 = PyTuple_Pack(1, __pyx_kp_s_Can_only_create_a_buffer_that_is); if (unlikely(!__pyx_tuple__45)) __PYX_ERR(2, 190, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__45);
-  __Pyx_GIVEREF(__pyx_tuple__45);
+  __pyx_tuple__48 = PyTuple_Pack(1, __pyx_kp_s_Can_only_create_a_buffer_that_is); if (unlikely(!__pyx_tuple__48)) __PYX_ERR(2, 190, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__48);
+  __Pyx_GIVEREF(__pyx_tuple__48);
 
   /* "(tree fragment)":2
  * def __reduce_cython__(self):
@@ -36281,18 +37460,18 @@ static int __Pyx_InitCachedConstants(void) {
  * def __setstate_cython__(self, __pyx_state):
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  */
-  __pyx_tuple__46 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__46)) __PYX_ERR(2, 2, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__46);
-  __Pyx_GIVEREF(__pyx_tuple__46);
+  __pyx_tuple__49 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__49)) __PYX_ERR(2, 2, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__49);
+  __Pyx_GIVEREF(__pyx_tuple__49);
 
   /* "(tree fragment)":4
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  * def __setstate_cython__(self, __pyx_state):
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
  */
-  __pyx_tuple__47 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__47)) __PYX_ERR(2, 4, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__47);
-  __Pyx_GIVEREF(__pyx_tuple__47);
+  __pyx_tuple__50 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__50)) __PYX_ERR(2, 4, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__50);
+  __Pyx_GIVEREF(__pyx_tuple__50);
 
   /* "View.MemoryView":486
  *             result = struct.unpack(self.view.format, bytesitem)
@@ -36301,9 +37480,9 @@ static int __Pyx_InitCachedConstants(void) {
  *         else:
  *             if len(self.view.format) == 1:
  */
-  __pyx_tuple__48 = PyTuple_Pack(1, __pyx_kp_s_Unable_to_convert_item_to_object); if (unlikely(!__pyx_tuple__48)) __PYX_ERR(2, 486, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__48);
-  __Pyx_GIVEREF(__pyx_tuple__48);
+  __pyx_tuple__51 = PyTuple_Pack(1, __pyx_kp_s_Unable_to_convert_item_to_object); if (unlikely(!__pyx_tuple__51)) __PYX_ERR(2, 486, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__51);
+  __Pyx_GIVEREF(__pyx_tuple__51);
 
   /* "View.MemoryView":558
  *         if self.view.strides == NULL:
@@ -36312,9 +37491,9 @@ static int __Pyx_InitCachedConstants(void) {
  * 
  *         return tuple([stride for stride in self.view.strides[:self.view.ndim]])
  */
-  __pyx_tuple__49 = PyTuple_Pack(1, __pyx_kp_s_Buffer_view_does_not_expose_stri); if (unlikely(!__pyx_tuple__49)) __PYX_ERR(2, 558, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__49);
-  __Pyx_GIVEREF(__pyx_tuple__49);
+  __pyx_tuple__52 = PyTuple_Pack(1, __pyx_kp_s_Buffer_view_does_not_expose_stri); if (unlikely(!__pyx_tuple__52)) __PYX_ERR(2, 558, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__52);
+  __Pyx_GIVEREF(__pyx_tuple__52);
 
   /* "View.MemoryView":565
  *     def suboffsets(self):
@@ -36323,12 +37502,12 @@ static int __Pyx_InitCachedConstants(void) {
  * 
  *         return tuple([suboffset for suboffset in self.view.suboffsets[:self.view.ndim]])
  */
-  __pyx_tuple__50 = PyTuple_New(1); if (unlikely(!__pyx_tuple__50)) __PYX_ERR(2, 565, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__50);
+  __pyx_tuple__53 = PyTuple_New(1); if (unlikely(!__pyx_tuple__53)) __PYX_ERR(2, 565, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__53);
   __Pyx_INCREF(__pyx_int_neg_1);
   __Pyx_GIVEREF(__pyx_int_neg_1);
-  PyTuple_SET_ITEM(__pyx_tuple__50, 0, __pyx_int_neg_1);
-  __Pyx_GIVEREF(__pyx_tuple__50);
+  PyTuple_SET_ITEM(__pyx_tuple__53, 0, __pyx_int_neg_1);
+  __Pyx_GIVEREF(__pyx_tuple__53);
 
   /* "(tree fragment)":2
  * def __reduce_cython__(self):
@@ -36336,18 +37515,18 @@ static int __Pyx_InitCachedConstants(void) {
  * def __setstate_cython__(self, __pyx_state):
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  */
-  __pyx_tuple__51 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__51)) __PYX_ERR(2, 2, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__51);
-  __Pyx_GIVEREF(__pyx_tuple__51);
+  __pyx_tuple__54 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__54)) __PYX_ERR(2, 2, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__54);
+  __Pyx_GIVEREF(__pyx_tuple__54);
 
   /* "(tree fragment)":4
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  * def __setstate_cython__(self, __pyx_state):
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
  */
-  __pyx_tuple__52 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__52)) __PYX_ERR(2, 4, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__52);
-  __Pyx_GIVEREF(__pyx_tuple__52);
+  __pyx_tuple__55 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__55)) __PYX_ERR(2, 4, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__55);
+  __Pyx_GIVEREF(__pyx_tuple__55);
 
   /* "View.MemoryView":670
  *         if item is Ellipsis:
@@ -36356,9 +37535,9 @@ static int __Pyx_InitCachedConstants(void) {
  *                 seen_ellipsis = True
  *             else:
  */
-  __pyx_slice__53 = PySlice_New(Py_None, Py_None, Py_None); if (unlikely(!__pyx_slice__53)) __PYX_ERR(2, 670, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_slice__53);
-  __Pyx_GIVEREF(__pyx_slice__53);
+  __pyx_slice__56 = PySlice_New(Py_None, Py_None, Py_None); if (unlikely(!__pyx_slice__56)) __PYX_ERR(2, 670, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_slice__56);
+  __Pyx_GIVEREF(__pyx_slice__56);
 
   /* "View.MemoryView":673
  *                 seen_ellipsis = True
@@ -36367,9 +37546,9 @@ static int __Pyx_InitCachedConstants(void) {
  *             have_slices = True
  *         else:
  */
-  __pyx_slice__54 = PySlice_New(Py_None, Py_None, Py_None); if (unlikely(!__pyx_slice__54)) __PYX_ERR(2, 673, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_slice__54);
-  __Pyx_GIVEREF(__pyx_slice__54);
+  __pyx_slice__57 = PySlice_New(Py_None, Py_None, Py_None); if (unlikely(!__pyx_slice__57)) __PYX_ERR(2, 673, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_slice__57);
+  __Pyx_GIVEREF(__pyx_slice__57);
 
   /* "View.MemoryView":684
  *     nslices = ndim - len(result)
@@ -36378,9 +37557,9 @@ static int __Pyx_InitCachedConstants(void) {
  * 
  *     return have_slices or nslices, tuple(result)
  */
-  __pyx_slice__55 = PySlice_New(Py_None, Py_None, Py_None); if (unlikely(!__pyx_slice__55)) __PYX_ERR(2, 684, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_slice__55);
-  __Pyx_GIVEREF(__pyx_slice__55);
+  __pyx_slice__58 = PySlice_New(Py_None, Py_None, Py_None); if (unlikely(!__pyx_slice__58)) __PYX_ERR(2, 684, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_slice__58);
+  __Pyx_GIVEREF(__pyx_slice__58);
 
   /* "View.MemoryView":691
  *     for suboffset in suboffsets[:ndim]:
@@ -36389,9 +37568,9 @@ static int __Pyx_InitCachedConstants(void) {
  * 
  * 
  */
-  __pyx_tuple__56 = PyTuple_Pack(1, __pyx_kp_s_Indirect_dimensions_not_supporte); if (unlikely(!__pyx_tuple__56)) __PYX_ERR(2, 691, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__56);
-  __Pyx_GIVEREF(__pyx_tuple__56);
+  __pyx_tuple__59 = PyTuple_Pack(1, __pyx_kp_s_Indirect_dimensions_not_supporte); if (unlikely(!__pyx_tuple__59)) __PYX_ERR(2, 691, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__59);
+  __Pyx_GIVEREF(__pyx_tuple__59);
 
   /* "(tree fragment)":2
  * def __reduce_cython__(self):
@@ -36399,234 +37578,222 @@ static int __Pyx_InitCachedConstants(void) {
  * def __setstate_cython__(self, __pyx_state):
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  */
-  __pyx_tuple__57 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__57)) __PYX_ERR(2, 2, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__57);
-  __Pyx_GIVEREF(__pyx_tuple__57);
+  __pyx_tuple__60 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__60)) __PYX_ERR(2, 2, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__60);
+  __Pyx_GIVEREF(__pyx_tuple__60);
 
   /* "(tree fragment)":4
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  * def __setstate_cython__(self, __pyx_state):
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
  */
-  __pyx_tuple__58 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__58)) __PYX_ERR(2, 4, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__58);
-  __Pyx_GIVEREF(__pyx_tuple__58);
+  __pyx_tuple__61 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__61)) __PYX_ERR(2, 4, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__61);
+  __Pyx_GIVEREF(__pyx_tuple__61);
 
-  /* "Scroll.pyx":186
- * 
- * # ROLL BUFFER COMPATIBLE 24-BIT TEXTURE
+  /* "Scroll.pyx":194
+ * # Refer to pygame doc in order to extract
+ * # a buffer from an image get_view()
  * def scroll_buffer24(buffer_, w, h, dx=0, dy=0):             # <<<<<<<<<<<<<<
  *     return scroll_buffer24_c(buffer_, w, h, dx, dy)
  * 
  */
-  __pyx_tuple__59 = PyTuple_Pack(5, __pyx_n_s_buffer, __pyx_n_s_w, __pyx_n_s_h, __pyx_n_s_dx, __pyx_n_s_dy); if (unlikely(!__pyx_tuple__59)) __PYX_ERR(0, 186, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__59);
-  __Pyx_GIVEREF(__pyx_tuple__59);
-  __pyx_codeobj__60 = (PyObject*)__Pyx_PyCode_New(5, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__59, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_Scroll_pyx, __pyx_n_s_scroll_buffer24, 186, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__60)) __PYX_ERR(0, 186, __pyx_L1_error)
+  __pyx_tuple__62 = PyTuple_Pack(5, __pyx_n_s_buffer, __pyx_n_s_w, __pyx_n_s_h, __pyx_n_s_dx, __pyx_n_s_dy); if (unlikely(!__pyx_tuple__62)) __PYX_ERR(0, 194, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__62);
+  __Pyx_GIVEREF(__pyx_tuple__62);
+  __pyx_codeobj__63 = (PyObject*)__Pyx_PyCode_New(5, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__62, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_Scroll_pyx, __pyx_n_s_scroll_buffer24, 194, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__63)) __PYX_ERR(0, 194, __pyx_L1_error)
 
-  /* "Scroll.pyx":190
- * 
- * # ROLL BUFFER COMPATIBLE 32-BIT TEXTURE
+  /* "Scroll.pyx":200
+ * # Refer to pygame doc to extract
+ * # a buffer from an image get_view()
  * def scroll_buffer32(buffer_, w, h, dx=0, dy=0):             # <<<<<<<<<<<<<<
  *     return scroll_buffer32_c(buffer_, w, h, dx, dy)
  * 
  */
-  __pyx_tuple__61 = PyTuple_Pack(5, __pyx_n_s_buffer, __pyx_n_s_w, __pyx_n_s_h, __pyx_n_s_dx, __pyx_n_s_dy); if (unlikely(!__pyx_tuple__61)) __PYX_ERR(0, 190, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__61);
-  __Pyx_GIVEREF(__pyx_tuple__61);
-  __pyx_codeobj__62 = (PyObject*)__Pyx_PyCode_New(5, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__61, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_Scroll_pyx, __pyx_n_s_scroll_buffer32, 190, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__62)) __PYX_ERR(0, 190, __pyx_L1_error)
+  __pyx_tuple__64 = PyTuple_Pack(5, __pyx_n_s_buffer, __pyx_n_s_w, __pyx_n_s_h, __pyx_n_s_dx, __pyx_n_s_dy); if (unlikely(!__pyx_tuple__64)) __PYX_ERR(0, 200, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__64);
+  __Pyx_GIVEREF(__pyx_tuple__64);
+  __pyx_codeobj__65 = (PyObject*)__Pyx_PyCode_New(5, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__64, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_Scroll_pyx, __pyx_n_s_scroll_buffer32, 200, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__65)) __PYX_ERR(0, 200, __pyx_L1_error)
 
-  /* "Scroll.pyx":194
- * 
- * # ROLL ARRAY 3D TYPE (W, H, 3) NUMPY.UINT8
+  /* "Scroll.pyx":206
+ * # Refer to pygame doc surfarray methods
+ * # to get a 3d array from an image (pixels3d, array3d)
  * def scroll_array24(array_, dy=0, dx=0):             # <<<<<<<<<<<<<<
  *     return scroll_array24_c(array_, dy, dx)
  * 
  */
-  __pyx_tuple__63 = PyTuple_Pack(3, __pyx_n_s_array, __pyx_n_s_dy, __pyx_n_s_dx); if (unlikely(!__pyx_tuple__63)) __PYX_ERR(0, 194, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__63);
-  __Pyx_GIVEREF(__pyx_tuple__63);
-  __pyx_codeobj__64 = (PyObject*)__Pyx_PyCode_New(3, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__63, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_Scroll_pyx, __pyx_n_s_scroll_array24, 194, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__64)) __PYX_ERR(0, 194, __pyx_L1_error)
+  __pyx_tuple__66 = PyTuple_Pack(3, __pyx_n_s_array, __pyx_n_s_dy, __pyx_n_s_dx); if (unlikely(!__pyx_tuple__66)) __PYX_ERR(0, 206, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__66);
+  __Pyx_GIVEREF(__pyx_tuple__66);
+  __pyx_codeobj__67 = (PyObject*)__Pyx_PyCode_New(3, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__66, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_Scroll_pyx, __pyx_n_s_scroll_array24, 206, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__67)) __PYX_ERR(0, 206, __pyx_L1_error)
 
-  /* "Scroll.pyx":198
- * 
- * # ROLL ARRAY 3D TYPE (W, H, 4) NUMPY.UINT8
+  /* "Scroll.pyx":212
+ * # Refer to pygame doc surfarray methods
+ * # to get a 3d array from an image (pixels3d, array3d)
  * def scroll_array32(array_, dy=0, dx=0):             # <<<<<<<<<<<<<<
  *     return scroll_array32_c(array_, dy, dx)
  * 
  */
-  __pyx_tuple__65 = PyTuple_Pack(3, __pyx_n_s_array, __pyx_n_s_dy, __pyx_n_s_dx); if (unlikely(!__pyx_tuple__65)) __PYX_ERR(0, 198, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__65);
-  __Pyx_GIVEREF(__pyx_tuple__65);
-  __pyx_codeobj__66 = (PyObject*)__Pyx_PyCode_New(3, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__65, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_Scroll_pyx, __pyx_n_s_scroll_array32, 198, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__66)) __PYX_ERR(0, 198, __pyx_L1_error)
+  __pyx_tuple__68 = PyTuple_Pack(3, __pyx_n_s_array, __pyx_n_s_dy, __pyx_n_s_dx); if (unlikely(!__pyx_tuple__68)) __PYX_ERR(0, 212, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__68);
+  __Pyx_GIVEREF(__pyx_tuple__68);
+  __pyx_codeobj__69 = (PyObject*)__Pyx_PyCode_New(3, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__68, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_Scroll_pyx, __pyx_n_s_scroll_array32, 212, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__69)) __PYX_ERR(0, 212, __pyx_L1_error)
 
-  /* "Scroll.pyx":204
- * # Return a 3d array type (w, h, 4)
- * # inputs : 3d array (w, h, 3) and alpha (w, h)
+  /* "Scroll.pyx":220
+ * # Refer to pygame doc surfarray methods
+ * # to get a 3d array from an image (pixels3d, array3d)
  * def scroll_array32m(array_, alpha_, dy=0, dx=0):             # <<<<<<<<<<<<<<
  *     return scroll_array32m_c(array_, alpha_, dy, dx)
  * 
  */
-  __pyx_tuple__67 = PyTuple_Pack(4, __pyx_n_s_array, __pyx_n_s_alpha, __pyx_n_s_dy, __pyx_n_s_dx); if (unlikely(!__pyx_tuple__67)) __PYX_ERR(0, 204, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__67);
-  __Pyx_GIVEREF(__pyx_tuple__67);
-  __pyx_codeobj__68 = (PyObject*)__Pyx_PyCode_New(4, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__67, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_Scroll_pyx, __pyx_n_s_scroll_array32m, 204, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__68)) __PYX_ERR(0, 204, __pyx_L1_error)
+  __pyx_tuple__70 = PyTuple_Pack(4, __pyx_n_s_array, __pyx_n_s_alpha, __pyx_n_s_dy, __pyx_n_s_dx); if (unlikely(!__pyx_tuple__70)) __PYX_ERR(0, 220, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__70);
+  __Pyx_GIVEREF(__pyx_tuple__70);
+  __pyx_codeobj__71 = (PyObject*)__Pyx_PyCode_New(4, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__70, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_Scroll_pyx, __pyx_n_s_scroll_array32m, 220, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__71)) __PYX_ERR(0, 220, __pyx_L1_error)
 
-  /* "Scroll.pyx":208
+  /* "Scroll.pyx":224
  * 
- * # USE NUMPY LIBRARY (NUMPY.ROLL METHOD)
- * def roll_surface(surface_, dx=0, dy=0):             # <<<<<<<<<<<<<<
- *     return roll_surface_c(surface_, dx, dy)
+ * # ROLL TRANSPARENCY ONLY
+ * def scroll_transparency(surface, dy=0, dx=0):             # <<<<<<<<<<<<<<
+ *     return scroll_transparency_c(surface, dy, dx)
  * 
  */
-  __pyx_tuple__69 = PyTuple_Pack(3, __pyx_n_s_surface, __pyx_n_s_dx, __pyx_n_s_dy); if (unlikely(!__pyx_tuple__69)) __PYX_ERR(0, 208, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__69);
-  __Pyx_GIVEREF(__pyx_tuple__69);
-  __pyx_codeobj__70 = (PyObject*)__Pyx_PyCode_New(3, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__69, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_Scroll_pyx, __pyx_n_s_roll_surface, 208, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__70)) __PYX_ERR(0, 208, __pyx_L1_error)
+  __pyx_tuple__72 = PyTuple_Pack(3, __pyx_n_s_surface, __pyx_n_s_dy, __pyx_n_s_dx); if (unlikely(!__pyx_tuple__72)) __PYX_ERR(0, 224, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__72);
+  __Pyx_GIVEREF(__pyx_tuple__72);
+  __pyx_codeobj__73 = (PyObject*)__Pyx_PyCode_New(3, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__72, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_Scroll_pyx, __pyx_n_s_scroll_transparency, 224, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__73)) __PYX_ERR(0, 224, __pyx_L1_error)
 
-  /* "Scroll.pyx":211
- *     return roll_surface_c(surface_, dx, dy)
- * 
- * def roll_array(array_, dx=0, dy=0):             # <<<<<<<<<<<<<<
- *     return roll_array_c(array_, dx, dy)
- * 
- */
-  __pyx_tuple__71 = PyTuple_Pack(3, __pyx_n_s_array, __pyx_n_s_dx, __pyx_n_s_dy); if (unlikely(!__pyx_tuple__71)) __PYX_ERR(0, 211, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__71);
-  __Pyx_GIVEREF(__pyx_tuple__71);
-  __pyx_codeobj__72 = (PyObject*)__Pyx_PyCode_New(3, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__71, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_Scroll_pyx, __pyx_n_s_roll_array, 211, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__72)) __PYX_ERR(0, 211, __pyx_L1_error)
-
-  /* "Scroll.pyx":216
- * # ROLL ARRAY (lateral and vertical)
- * # Identical algorithm (scroll_array) but returns a tuple (surface, array)
+  /* "Scroll.pyx":231
+ * # returns a tuple (surface, array)
+ * # See pygame.Surface for more details
  * def scroll_surface24(surface, dy=0, dx=0):             # <<<<<<<<<<<<<<
  *     return scroll_surface24_c(surface, dy, dx)
  * 
  */
-  __pyx_tuple__73 = PyTuple_Pack(3, __pyx_n_s_surface_2, __pyx_n_s_dy, __pyx_n_s_dx); if (unlikely(!__pyx_tuple__73)) __PYX_ERR(0, 216, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__73);
-  __Pyx_GIVEREF(__pyx_tuple__73);
-  __pyx_codeobj__74 = (PyObject*)__Pyx_PyCode_New(3, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__73, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_Scroll_pyx, __pyx_n_s_scroll_surface24, 216, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__74)) __PYX_ERR(0, 216, __pyx_L1_error)
+  __pyx_tuple__74 = PyTuple_Pack(3, __pyx_n_s_surface, __pyx_n_s_dy, __pyx_n_s_dx); if (unlikely(!__pyx_tuple__74)) __PYX_ERR(0, 231, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__74);
+  __Pyx_GIVEREF(__pyx_tuple__74);
+  __pyx_codeobj__75 = (PyObject*)__Pyx_PyCode_New(3, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__74, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_Scroll_pyx, __pyx_n_s_scroll_surface24, 231, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__75)) __PYX_ERR(0, 231, __pyx_L1_error)
 
-  /* "Scroll.pyx":220
- * 
+  /* "Scroll.pyx":236
  * # ROLL IMAGE 32-bit
+ * # See pygame.Surface for more details
  * def scroll_surface32(surface, dy=0, dx=0):             # <<<<<<<<<<<<<<
  *     return scroll_surface32_c(surface, dy, dx)
  * 
  */
-  __pyx_tuple__75 = PyTuple_Pack(3, __pyx_n_s_surface_2, __pyx_n_s_dy, __pyx_n_s_dx); if (unlikely(!__pyx_tuple__75)) __PYX_ERR(0, 220, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__75);
-  __Pyx_GIVEREF(__pyx_tuple__75);
-  __pyx_codeobj__76 = (PyObject*)__Pyx_PyCode_New(3, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__75, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_Scroll_pyx, __pyx_n_s_scroll_surface32, 220, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__76)) __PYX_ERR(0, 220, __pyx_L1_error)
+  __pyx_tuple__76 = PyTuple_Pack(3, __pyx_n_s_surface, __pyx_n_s_dy, __pyx_n_s_dx); if (unlikely(!__pyx_tuple__76)) __PYX_ERR(0, 236, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__76);
+  __Pyx_GIVEREF(__pyx_tuple__76);
+  __pyx_codeobj__77 = (PyObject*)__Pyx_PyCode_New(3, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__76, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_Scroll_pyx, __pyx_n_s_scroll_surface32, 236, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__77)) __PYX_ERR(0, 236, __pyx_L1_error)
 
-  /* "Scroll.pyx":232
+  /* "Scroll.pyx":242
+ * # USE NUMPY LIBRARY (NUMPY.ROLL METHOD)
+ * # See pygame.Surface for more details
+ * def roll_surface(surface_, dx=0, dy=0):             # <<<<<<<<<<<<<<
+ *     return roll_surface_c(surface_, dx, dy)
+ * 
+ */
+  __pyx_tuple__78 = PyTuple_Pack(3, __pyx_n_s_surface_2, __pyx_n_s_dx, __pyx_n_s_dy); if (unlikely(!__pyx_tuple__78)) __PYX_ERR(0, 242, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__78);
+  __Pyx_GIVEREF(__pyx_tuple__78);
+  __pyx_codeobj__79 = (PyObject*)__Pyx_PyCode_New(3, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__78, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_Scroll_pyx, __pyx_n_s_roll_surface, 242, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__79)) __PYX_ERR(0, 242, __pyx_L1_error)
+
+  /* "Scroll.pyx":245
+ *     return roll_surface_c(surface_, dx, dy)
+ * 
+ * def roll_array(array_, dx=0, dy=0):             # <<<<<<<<<<<<<<
+ *     return roll_array_c(array_, dx, dy)
+ * # ----------------
+ */
+  __pyx_tuple__80 = PyTuple_Pack(3, __pyx_n_s_array, __pyx_n_s_dx, __pyx_n_s_dy); if (unlikely(!__pyx_tuple__80)) __PYX_ERR(0, 245, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__80);
+  __Pyx_GIVEREF(__pyx_tuple__80);
+  __pyx_codeobj__81 = (PyObject*)__Pyx_PyCode_New(3, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__80, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_Scroll_pyx, __pyx_n_s_roll_array, 245, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__81)) __PYX_ERR(0, 245, __pyx_L1_error)
+
+  /* "Scroll.pyx":258
  * # RETURN A PYTHON OBJECT
  * # Twice faster than numpy.dstack
  * def stack_object(rgb_array_, alpha_, transpose):             # <<<<<<<<<<<<<<
  *     return stack_object_c(rgb_array_, alpha_, transpose)
  * 
  */
-  __pyx_tuple__77 = PyTuple_Pack(3, __pyx_n_s_rgb_array, __pyx_n_s_alpha, __pyx_n_s_transpose); if (unlikely(!__pyx_tuple__77)) __PYX_ERR(0, 232, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__77);
-  __Pyx_GIVEREF(__pyx_tuple__77);
-  __pyx_codeobj__78 = (PyObject*)__Pyx_PyCode_New(3, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__77, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_Scroll_pyx, __pyx_n_s_stack_object, 232, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__78)) __PYX_ERR(0, 232, __pyx_L1_error)
+  __pyx_tuple__82 = PyTuple_Pack(3, __pyx_n_s_rgb_array, __pyx_n_s_alpha, __pyx_n_s_transpose); if (unlikely(!__pyx_tuple__82)) __PYX_ERR(0, 258, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__82);
+  __Pyx_GIVEREF(__pyx_tuple__82);
+  __pyx_codeobj__83 = (PyObject*)__Pyx_PyCode_New(3, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__82, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_Scroll_pyx, __pyx_n_s_stack_object, 258, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__83)) __PYX_ERR(0, 258, __pyx_L1_error)
 
-  /* "Scroll.pyx":238
+  /* "Scroll.pyx":264
  * # RETURN A MEMORYVIEW (slightly faster than stack_object)
  * # Twice faster than numpy.dstack
  * def stack_mem(rgb_array_, alpha_, transpose):             # <<<<<<<<<<<<<<
  *     return stack_mem_c(rgb_array_, alpha_, transpose)
  * 
  */
-  __pyx_tuple__79 = PyTuple_Pack(3, __pyx_n_s_rgb_array, __pyx_n_s_alpha, __pyx_n_s_transpose); if (unlikely(!__pyx_tuple__79)) __PYX_ERR(0, 238, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__79);
-  __Pyx_GIVEREF(__pyx_tuple__79);
-  __pyx_codeobj__80 = (PyObject*)__Pyx_PyCode_New(3, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__79, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_Scroll_pyx, __pyx_n_s_stack_mem, 238, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__80)) __PYX_ERR(0, 238, __pyx_L1_error)
+  __pyx_tuple__84 = PyTuple_Pack(3, __pyx_n_s_rgb_array, __pyx_n_s_alpha, __pyx_n_s_transpose); if (unlikely(!__pyx_tuple__84)) __PYX_ERR(0, 264, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__84);
+  __Pyx_GIVEREF(__pyx_tuple__84);
+  __pyx_codeobj__85 = (PyObject*)__Pyx_PyCode_New(3, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__84, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_Scroll_pyx, __pyx_n_s_stack_mem, 264, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__85)) __PYX_ERR(0, 264, __pyx_L1_error)
 
-  /* "Scroll.pyx":242
+  /* "Scroll.pyx":268
  * 
  * # UN-STACK RGBA ARRAY VALUES
  * def unstack_object(rgba_array):             # <<<<<<<<<<<<<<
  *     return unstack_object_c(rgba_array)
  * # ------------------
  */
-  __pyx_tuple__81 = PyTuple_Pack(1, __pyx_n_s_rgba_array); if (unlikely(!__pyx_tuple__81)) __PYX_ERR(0, 242, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__81);
-  __Pyx_GIVEREF(__pyx_tuple__81);
-  __pyx_codeobj__82 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__81, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_Scroll_pyx, __pyx_n_s_unstack_object, 242, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__82)) __PYX_ERR(0, 242, __pyx_L1_error)
+  __pyx_tuple__86 = PyTuple_Pack(1, __pyx_n_s_rgba_array); if (unlikely(!__pyx_tuple__86)) __PYX_ERR(0, 268, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__86);
+  __Pyx_GIVEREF(__pyx_tuple__86);
+  __pyx_codeobj__87 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__86, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_Scroll_pyx, __pyx_n_s_unstack_object, 268, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__87)) __PYX_ERR(0, 268, __pyx_L1_error)
 
-  /* "Scroll.pyx":249
+  /* "Scroll.pyx":275
  * 
  * # STACK RGB AND ALPHA BUFFERS
  * def stack_buffer(rgb_array_, alpha_, w, h, transpose):             # <<<<<<<<<<<<<<
  *     return stack_buffer_c(rgb_array_, alpha_, w, h, transpose)
  * 
  */
-  __pyx_tuple__83 = PyTuple_Pack(5, __pyx_n_s_rgb_array, __pyx_n_s_alpha, __pyx_n_s_w, __pyx_n_s_h, __pyx_n_s_transpose); if (unlikely(!__pyx_tuple__83)) __PYX_ERR(0, 249, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__83);
-  __Pyx_GIVEREF(__pyx_tuple__83);
-  __pyx_codeobj__84 = (PyObject*)__Pyx_PyCode_New(5, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__83, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_Scroll_pyx, __pyx_n_s_stack_buffer, 249, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__84)) __PYX_ERR(0, 249, __pyx_L1_error)
+  __pyx_tuple__88 = PyTuple_Pack(5, __pyx_n_s_rgb_array, __pyx_n_s_alpha, __pyx_n_s_w, __pyx_n_s_h, __pyx_n_s_transpose); if (unlikely(!__pyx_tuple__88)) __PYX_ERR(0, 275, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__88);
+  __Pyx_GIVEREF(__pyx_tuple__88);
+  __pyx_codeobj__89 = (PyObject*)__Pyx_PyCode_New(5, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__88, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_Scroll_pyx, __pyx_n_s_stack_buffer, 275, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__89)) __PYX_ERR(0, 275, __pyx_L1_error)
 
-  /* "Scroll.pyx":254
+  /* "Scroll.pyx":280
  * # UN-STACK/SPLIT RGBA BUFFER WITH RGBA INTO
  * # (RGB BUFFER & ALPHA_BUFFER)
  * def unstack_buffer(rgba_buffer_, w, h):             # <<<<<<<<<<<<<<
  *     return unstack_buffer_c(rgba_buffer_, w, h)
  * # -------------------
  */
-  __pyx_tuple__85 = PyTuple_Pack(3, __pyx_n_s_rgba_buffer, __pyx_n_s_w, __pyx_n_s_h); if (unlikely(!__pyx_tuple__85)) __PYX_ERR(0, 254, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__85);
-  __Pyx_GIVEREF(__pyx_tuple__85);
-  __pyx_codeobj__86 = (PyObject*)__Pyx_PyCode_New(3, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__85, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_Scroll_pyx, __pyx_n_s_unstack_buffer, 254, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__86)) __PYX_ERR(0, 254, __pyx_L1_error)
+  __pyx_tuple__90 = PyTuple_Pack(3, __pyx_n_s_rgba_buffer, __pyx_n_s_w, __pyx_n_s_h); if (unlikely(!__pyx_tuple__90)) __PYX_ERR(0, 280, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__90);
+  __Pyx_GIVEREF(__pyx_tuple__90);
+  __pyx_codeobj__91 = (PyObject*)__Pyx_PyCode_New(3, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__90, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_Scroll_pyx, __pyx_n_s_unstack_buffer, 280, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__91)) __PYX_ERR(0, 280, __pyx_L1_error)
 
-  /* "Scroll.pyx":264
- * # TRANSPOSE ROWS AND COLUMNS ARRAY (W, H, 3)
+  /* "Scroll.pyx":291
  * # !! Method slower than numpy.transpose(1, 0, 2)
+ * # Use it if you don't want to import numpy
  * def transpose24(rgb_array_):             # <<<<<<<<<<<<<<
  *     return transpose24_c(rgb_array_)
  * 
  */
-  __pyx_tuple__87 = PyTuple_Pack(1, __pyx_n_s_rgb_array); if (unlikely(!__pyx_tuple__87)) __PYX_ERR(0, 264, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__87);
-  __Pyx_GIVEREF(__pyx_tuple__87);
-  __pyx_codeobj__88 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__87, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_Scroll_pyx, __pyx_n_s_transpose24, 264, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__88)) __PYX_ERR(0, 264, __pyx_L1_error)
+  __pyx_tuple__92 = PyTuple_Pack(1, __pyx_n_s_rgb_array); if (unlikely(!__pyx_tuple__92)) __PYX_ERR(0, 291, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__92);
+  __Pyx_GIVEREF(__pyx_tuple__92);
+  __pyx_codeobj__93 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__92, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_Scroll_pyx, __pyx_n_s_transpose24, 291, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__93)) __PYX_ERR(0, 291, __pyx_L1_error)
 
-  /* "Scroll.pyx":269
- * # TRANSPOSE ROWS AND COLUMNS ARRAY (W, H, 4)
+  /* "Scroll.pyx":297
  * # !! Method slower than numpy.transpose(1, 0, 2)
+ * # Use it if you don't want to import numpy
  * def transpose32(rgb_array_):             # <<<<<<<<<<<<<<
  *     return transpose32_c(rgb_array_)
  * 
  */
-  __pyx_tuple__89 = PyTuple_Pack(1, __pyx_n_s_rgb_array); if (unlikely(!__pyx_tuple__89)) __PYX_ERR(0, 269, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__89);
-  __Pyx_GIVEREF(__pyx_tuple__89);
-  __pyx_codeobj__90 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__89, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_Scroll_pyx, __pyx_n_s_transpose32, 269, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__90)) __PYX_ERR(0, 269, __pyx_L1_error)
-
-  /* "Scroll.pyx":273
- * 
- * # TRANSPOSE/ FLIP BUFFER (compatible 24-bit)
- * def vfb24(source, target, width, height):             # <<<<<<<<<<<<<<
- *     return vfb24_c(source, target, width, height)
- * 
- */
-  __pyx_tuple__91 = PyTuple_Pack(4, __pyx_n_s_source, __pyx_n_s_target, __pyx_n_s_width, __pyx_n_s_height); if (unlikely(!__pyx_tuple__91)) __PYX_ERR(0, 273, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__91);
-  __Pyx_GIVEREF(__pyx_tuple__91);
-  __pyx_codeobj__92 = (PyObject*)__Pyx_PyCode_New(4, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__91, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_Scroll_pyx, __pyx_n_s_vfb24, 273, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__92)) __PYX_ERR(0, 273, __pyx_L1_error)
-
-  /* "Scroll.pyx":277
- * 
- * # TRANSPOSE / FLIP BUFFER (compatible 32-bit)
- * def vfb32(source, target, width, height):             # <<<<<<<<<<<<<<
- *     return vfb32_c(source, target, width, height)
- * 
- */
-  __pyx_tuple__93 = PyTuple_Pack(4, __pyx_n_s_source, __pyx_n_s_target, __pyx_n_s_width, __pyx_n_s_height); if (unlikely(!__pyx_tuple__93)) __PYX_ERR(0, 277, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__93);
-  __Pyx_GIVEREF(__pyx_tuple__93);
-  __pyx_codeobj__94 = (PyObject*)__Pyx_PyCode_New(4, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__93, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_Scroll_pyx, __pyx_n_s_vfb32, 277, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__94)) __PYX_ERR(0, 277, __pyx_L1_error)
+  __pyx_tuple__94 = PyTuple_Pack(1, __pyx_n_s_rgb_array); if (unlikely(!__pyx_tuple__94)) __PYX_ERR(0, 297, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__94);
+  __Pyx_GIVEREF(__pyx_tuple__94);
+  __pyx_codeobj__95 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__94, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_Scroll_pyx, __pyx_n_s_transpose32, 297, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__95)) __PYX_ERR(0, 297, __pyx_L1_error)
 
   /* "View.MemoryView":284
  *         return self.name
@@ -36635,9 +37802,9 @@ static int __Pyx_InitCachedConstants(void) {
  * cdef strided = Enum("<strided and direct>") # default
  * cdef indirect = Enum("<strided and indirect>")
  */
-  __pyx_tuple__95 = PyTuple_Pack(1, __pyx_kp_s_strided_and_direct_or_indirect); if (unlikely(!__pyx_tuple__95)) __PYX_ERR(2, 284, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__95);
-  __Pyx_GIVEREF(__pyx_tuple__95);
+  __pyx_tuple__96 = PyTuple_Pack(1, __pyx_kp_s_strided_and_direct_or_indirect); if (unlikely(!__pyx_tuple__96)) __PYX_ERR(2, 284, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__96);
+  __Pyx_GIVEREF(__pyx_tuple__96);
 
   /* "View.MemoryView":285
  * 
@@ -36646,9 +37813,9 @@ static int __Pyx_InitCachedConstants(void) {
  * cdef indirect = Enum("<strided and indirect>")
  * 
  */
-  __pyx_tuple__96 = PyTuple_Pack(1, __pyx_kp_s_strided_and_direct); if (unlikely(!__pyx_tuple__96)) __PYX_ERR(2, 285, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__96);
-  __Pyx_GIVEREF(__pyx_tuple__96);
+  __pyx_tuple__97 = PyTuple_Pack(1, __pyx_kp_s_strided_and_direct); if (unlikely(!__pyx_tuple__97)) __PYX_ERR(2, 285, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__97);
+  __Pyx_GIVEREF(__pyx_tuple__97);
 
   /* "View.MemoryView":286
  * cdef generic = Enum("<strided and direct or indirect>")
@@ -36657,9 +37824,9 @@ static int __Pyx_InitCachedConstants(void) {
  * 
  * 
  */
-  __pyx_tuple__97 = PyTuple_Pack(1, __pyx_kp_s_strided_and_indirect); if (unlikely(!__pyx_tuple__97)) __PYX_ERR(2, 286, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__97);
-  __Pyx_GIVEREF(__pyx_tuple__97);
+  __pyx_tuple__98 = PyTuple_Pack(1, __pyx_kp_s_strided_and_indirect); if (unlikely(!__pyx_tuple__98)) __PYX_ERR(2, 286, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__98);
+  __Pyx_GIVEREF(__pyx_tuple__98);
 
   /* "View.MemoryView":289
  * 
@@ -36668,9 +37835,9 @@ static int __Pyx_InitCachedConstants(void) {
  * cdef indirect_contiguous = Enum("<contiguous and indirect>")
  * 
  */
-  __pyx_tuple__98 = PyTuple_Pack(1, __pyx_kp_s_contiguous_and_direct); if (unlikely(!__pyx_tuple__98)) __PYX_ERR(2, 289, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__98);
-  __Pyx_GIVEREF(__pyx_tuple__98);
+  __pyx_tuple__99 = PyTuple_Pack(1, __pyx_kp_s_contiguous_and_direct); if (unlikely(!__pyx_tuple__99)) __PYX_ERR(2, 289, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__99);
+  __Pyx_GIVEREF(__pyx_tuple__99);
 
   /* "View.MemoryView":290
  * 
@@ -36679,19 +37846,19 @@ static int __Pyx_InitCachedConstants(void) {
  * 
  * 
  */
-  __pyx_tuple__99 = PyTuple_Pack(1, __pyx_kp_s_contiguous_and_indirect); if (unlikely(!__pyx_tuple__99)) __PYX_ERR(2, 290, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__99);
-  __Pyx_GIVEREF(__pyx_tuple__99);
+  __pyx_tuple__100 = PyTuple_Pack(1, __pyx_kp_s_contiguous_and_indirect); if (unlikely(!__pyx_tuple__100)) __PYX_ERR(2, 290, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__100);
+  __Pyx_GIVEREF(__pyx_tuple__100);
 
   /* "(tree fragment)":1
  * def __pyx_unpickle_Enum(__pyx_type, long __pyx_checksum, __pyx_state):             # <<<<<<<<<<<<<<
  *     if __pyx_checksum != 0xb068931:
  *         from pickle import PickleError as __pyx_PickleError
  */
-  __pyx_tuple__100 = PyTuple_Pack(5, __pyx_n_s_pyx_type, __pyx_n_s_pyx_checksum, __pyx_n_s_pyx_state, __pyx_n_s_pyx_PickleError, __pyx_n_s_pyx_result); if (unlikely(!__pyx_tuple__100)) __PYX_ERR(2, 1, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__100);
-  __Pyx_GIVEREF(__pyx_tuple__100);
-  __pyx_codeobj__101 = (PyObject*)__Pyx_PyCode_New(3, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__100, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_pyx_unpickle_Enum, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__101)) __PYX_ERR(2, 1, __pyx_L1_error)
+  __pyx_tuple__101 = PyTuple_Pack(5, __pyx_n_s_pyx_type, __pyx_n_s_pyx_checksum, __pyx_n_s_pyx_state, __pyx_n_s_pyx_PickleError, __pyx_n_s_pyx_result); if (unlikely(!__pyx_tuple__101)) __PYX_ERR(2, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__101);
+  __Pyx_GIVEREF(__pyx_tuple__101);
+  __pyx_codeobj__102 = (PyObject*)__Pyx_PyCode_New(3, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__101, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_pyx_unpickle_Enum, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__102)) __PYX_ERR(2, 1, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -36708,6 +37875,7 @@ PyEval_InitThreads();
 if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 2, __pyx_L1_error)
 
   if (__Pyx_InitStrings(__pyx_string_tab) < 0) __PYX_ERR(0, 2, __pyx_L1_error);
+  __pyx_float_1_01 = PyFloat_FromDouble(1.01); if (unlikely(!__pyx_float_1_01)) __PYX_ERR(0, 2, __pyx_L1_error)
   __pyx_int_0 = PyInt_FromLong(0); if (unlikely(!__pyx_int_0)) __PYX_ERR(0, 2, __pyx_L1_error)
   __pyx_int_1 = PyInt_FromLong(1); if (unlikely(!__pyx_int_1)) __PYX_ERR(0, 2, __pyx_L1_error)
   __pyx_int_2 = PyInt_FromLong(2); if (unlikely(!__pyx_int_2)) __PYX_ERR(0, 2, __pyx_L1_error)
@@ -36868,6 +38036,23 @@ static int __pyx_pymod_exec_Scroll(PyObject *__pyx_pyinit_module)
   indirect_contiguous = Py_None; Py_INCREF(Py_None);
   /*--- Variable export code ---*/
   /*--- Function export code ---*/
+  if (__Pyx_ExportFunction("scroll_buffer24_c", (void (*)(void))__pyx_f_6Scroll_scroll_buffer24_c, "PyObject *(__Pyx_memviewslice, int, int, int, int)") < 0) __PYX_ERR(0, 2, __pyx_L1_error)
+  if (__Pyx_ExportFunction("scroll_buffer32_c", (void (*)(void))__pyx_f_6Scroll_scroll_buffer32_c, "PyObject *(__Pyx_memviewslice, int, int, int, int)") < 0) __PYX_ERR(0, 2, __pyx_L1_error)
+  if (__Pyx_ExportFunction("scroll_array24_c", (void (*)(void))__pyx_f_6Scroll_scroll_array24_c, "__Pyx_memviewslice (__Pyx_memviewslice, int, int)") < 0) __PYX_ERR(0, 2, __pyx_L1_error)
+  if (__Pyx_ExportFunction("scroll_array32_c", (void (*)(void))__pyx_f_6Scroll_scroll_array32_c, "__Pyx_memviewslice (__Pyx_memviewslice, int, int)") < 0) __PYX_ERR(0, 2, __pyx_L1_error)
+  if (__Pyx_ExportFunction("scroll_array32m_c", (void (*)(void))__pyx_f_6Scroll_scroll_array32m_c, "PyObject *(__Pyx_memviewslice, __Pyx_memviewslice, int, int)") < 0) __PYX_ERR(0, 2, __pyx_L1_error)
+  if (__Pyx_ExportFunction("scroll_transparency_c", (void (*)(void))__pyx_f_6Scroll_scroll_transparency_c, "PyObject *(PyObject *, int, int)") < 0) __PYX_ERR(0, 2, __pyx_L1_error)
+  if (__Pyx_ExportFunction("scroll_surface24_c", (void (*)(void))__pyx_f_6Scroll_scroll_surface24_c, "PyObject *(PyObject *, int, int)") < 0) __PYX_ERR(0, 2, __pyx_L1_error)
+  if (__Pyx_ExportFunction("scroll_surface32_c", (void (*)(void))__pyx_f_6Scroll_scroll_surface32_c, "PyObject *(PyObject *, int, int)") < 0) __PYX_ERR(0, 2, __pyx_L1_error)
+  if (__Pyx_ExportFunction("roll_surface_c", (void (*)(void))__pyx_f_6Scroll_roll_surface_c, "PyObject *(PyObject *, struct __pyx_opt_args_6Scroll_roll_surface_c *__pyx_optional_args)") < 0) __PYX_ERR(0, 2, __pyx_L1_error)
+  if (__Pyx_ExportFunction("roll_array_c", (void (*)(void))__pyx_f_6Scroll_roll_array_c, "PyObject *(PyObject *, struct __pyx_opt_args_6Scroll_roll_array_c *__pyx_optional_args)") < 0) __PYX_ERR(0, 2, __pyx_L1_error)
+  if (__Pyx_ExportFunction("stack_object_c", (void (*)(void))__pyx_f_6Scroll_stack_object_c, "PyObject *(__Pyx_memviewslice, __Pyx_memviewslice, struct __pyx_opt_args_6Scroll_stack_object_c *__pyx_optional_args)") < 0) __PYX_ERR(0, 2, __pyx_L1_error)
+  if (__Pyx_ExportFunction("stack_mem_c", (void (*)(void))__pyx_f_6Scroll_stack_mem_c, "__Pyx_memviewslice (__Pyx_memviewslice, __Pyx_memviewslice, struct __pyx_opt_args_6Scroll_stack_mem_c *__pyx_optional_args)") < 0) __PYX_ERR(0, 2, __pyx_L1_error)
+  if (__Pyx_ExportFunction("unstack_object_c", (void (*)(void))__pyx_f_6Scroll_unstack_object_c, "PyObject *(__Pyx_memviewslice)") < 0) __PYX_ERR(0, 2, __pyx_L1_error)
+  if (__Pyx_ExportFunction("stack_buffer_c", (void (*)(void))__pyx_f_6Scroll_stack_buffer_c, "__Pyx_memviewslice (PyObject *, PyObject *, int, int, struct __pyx_opt_args_6Scroll_stack_buffer_c *__pyx_optional_args)") < 0) __PYX_ERR(0, 2, __pyx_L1_error)
+  if (__Pyx_ExportFunction("unstack_buffer_c", (void (*)(void))__pyx_f_6Scroll_unstack_buffer_c, "PyObject *(__Pyx_memviewslice, int, int)") < 0) __PYX_ERR(0, 2, __pyx_L1_error)
+  if (__Pyx_ExportFunction("transpose24_c", (void (*)(void))__pyx_f_6Scroll_transpose24_c, "__Pyx_memviewslice (__Pyx_memviewslice)") < 0) __PYX_ERR(0, 2, __pyx_L1_error)
+  if (__Pyx_ExportFunction("transpose32_c", (void (*)(void))__pyx_f_6Scroll_transpose32_c, "__Pyx_memviewslice (__Pyx_memviewslice)") < 0) __PYX_ERR(0, 2, __pyx_L1_error)
   /*--- Type init code ---*/
   __pyx_vtabptr_array = &__pyx_vtable_array;
   __pyx_vtable_array.get_memview = (PyObject *(*)(struct __pyx_array_obj *))__pyx_array_get_memview;
@@ -36923,7 +38108,7 @@ static int __pyx_pymod_exec_Scroll(PyObject *__pyx_pyinit_module)
   if (__Pyx_patch_abc() < 0) __PYX_ERR(0, 2, __pyx_L1_error)
   #endif
 
-  /* "Scroll.pyx":89
+  /* "Scroll.pyx":83
  * 
  * # NUMPY IS REQUIRED
  * try:             # <<<<<<<<<<<<<<
@@ -36939,26 +38124,26 @@ static int __pyx_pymod_exec_Scroll(PyObject *__pyx_pyinit_module)
     __Pyx_XGOTREF(__pyx_t_3);
     /*try:*/ {
 
-      /* "Scroll.pyx":90
+      /* "Scroll.pyx":84
  * # NUMPY IS REQUIRED
  * try:
  *     import numpy             # <<<<<<<<<<<<<<
  *     from numpy import ndarray, zeros, empty, uint8, int32, float64, float32, dstack, full, ones,\
  *     asarray, ascontiguousarray
  */
-      __pyx_t_4 = __Pyx_Import(__pyx_n_s_numpy, 0, -1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 90, __pyx_L2_error)
+      __pyx_t_4 = __Pyx_Import(__pyx_n_s_numpy, 0, -1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 84, __pyx_L2_error)
       __Pyx_GOTREF(__pyx_t_4);
-      if (PyDict_SetItem(__pyx_d, __pyx_n_s_numpy, __pyx_t_4) < 0) __PYX_ERR(0, 90, __pyx_L2_error)
+      if (PyDict_SetItem(__pyx_d, __pyx_n_s_numpy, __pyx_t_4) < 0) __PYX_ERR(0, 84, __pyx_L2_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-      /* "Scroll.pyx":91
+      /* "Scroll.pyx":85
  * try:
  *     import numpy
  *     from numpy import ndarray, zeros, empty, uint8, int32, float64, float32, dstack, full, ones,\             # <<<<<<<<<<<<<<
  *     asarray, ascontiguousarray
  * except ImportError:
  */
-      __pyx_t_4 = PyList_New(12); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 91, __pyx_L2_error)
+      __pyx_t_4 = PyList_New(12); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 85, __pyx_L2_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_INCREF(__pyx_n_s_ndarray);
       __Pyx_GIVEREF(__pyx_n_s_ndarray);
@@ -36996,60 +38181,60 @@ static int __pyx_pymod_exec_Scroll(PyObject *__pyx_pyinit_module)
       __Pyx_INCREF(__pyx_n_s_ascontiguousarray);
       __Pyx_GIVEREF(__pyx_n_s_ascontiguousarray);
       PyList_SET_ITEM(__pyx_t_4, 11, __pyx_n_s_ascontiguousarray);
-      __pyx_t_5 = __Pyx_Import(__pyx_n_s_numpy, __pyx_t_4, -1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 91, __pyx_L2_error)
+      __pyx_t_5 = __Pyx_Import(__pyx_n_s_numpy, __pyx_t_4, -1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 85, __pyx_L2_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __pyx_t_4 = __Pyx_ImportFrom(__pyx_t_5, __pyx_n_s_ndarray); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 91, __pyx_L2_error)
+      __pyx_t_4 = __Pyx_ImportFrom(__pyx_t_5, __pyx_n_s_ndarray); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 85, __pyx_L2_error)
       __Pyx_GOTREF(__pyx_t_4);
-      if (PyDict_SetItem(__pyx_d, __pyx_n_s_ndarray, __pyx_t_4) < 0) __PYX_ERR(0, 91, __pyx_L2_error)
+      if (PyDict_SetItem(__pyx_d, __pyx_n_s_ndarray, __pyx_t_4) < 0) __PYX_ERR(0, 85, __pyx_L2_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __pyx_t_4 = __Pyx_ImportFrom(__pyx_t_5, __pyx_n_s_zeros); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 91, __pyx_L2_error)
+      __pyx_t_4 = __Pyx_ImportFrom(__pyx_t_5, __pyx_n_s_zeros); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 85, __pyx_L2_error)
       __Pyx_GOTREF(__pyx_t_4);
-      if (PyDict_SetItem(__pyx_d, __pyx_n_s_zeros, __pyx_t_4) < 0) __PYX_ERR(0, 91, __pyx_L2_error)
+      if (PyDict_SetItem(__pyx_d, __pyx_n_s_zeros, __pyx_t_4) < 0) __PYX_ERR(0, 85, __pyx_L2_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __pyx_t_4 = __Pyx_ImportFrom(__pyx_t_5, __pyx_n_s_empty); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 91, __pyx_L2_error)
+      __pyx_t_4 = __Pyx_ImportFrom(__pyx_t_5, __pyx_n_s_empty); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 85, __pyx_L2_error)
       __Pyx_GOTREF(__pyx_t_4);
-      if (PyDict_SetItem(__pyx_d, __pyx_n_s_empty, __pyx_t_4) < 0) __PYX_ERR(0, 91, __pyx_L2_error)
+      if (PyDict_SetItem(__pyx_d, __pyx_n_s_empty, __pyx_t_4) < 0) __PYX_ERR(0, 85, __pyx_L2_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __pyx_t_4 = __Pyx_ImportFrom(__pyx_t_5, __pyx_n_s_uint8); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 91, __pyx_L2_error)
+      __pyx_t_4 = __Pyx_ImportFrom(__pyx_t_5, __pyx_n_s_uint8); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 85, __pyx_L2_error)
       __Pyx_GOTREF(__pyx_t_4);
-      if (PyDict_SetItem(__pyx_d, __pyx_n_s_uint8, __pyx_t_4) < 0) __PYX_ERR(0, 91, __pyx_L2_error)
+      if (PyDict_SetItem(__pyx_d, __pyx_n_s_uint8, __pyx_t_4) < 0) __PYX_ERR(0, 85, __pyx_L2_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __pyx_t_4 = __Pyx_ImportFrom(__pyx_t_5, __pyx_n_s_int32); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 91, __pyx_L2_error)
+      __pyx_t_4 = __Pyx_ImportFrom(__pyx_t_5, __pyx_n_s_int32); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 85, __pyx_L2_error)
       __Pyx_GOTREF(__pyx_t_4);
-      if (PyDict_SetItem(__pyx_d, __pyx_n_s_int32, __pyx_t_4) < 0) __PYX_ERR(0, 91, __pyx_L2_error)
+      if (PyDict_SetItem(__pyx_d, __pyx_n_s_int32, __pyx_t_4) < 0) __PYX_ERR(0, 85, __pyx_L2_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __pyx_t_4 = __Pyx_ImportFrom(__pyx_t_5, __pyx_n_s_float64); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 91, __pyx_L2_error)
+      __pyx_t_4 = __Pyx_ImportFrom(__pyx_t_5, __pyx_n_s_float64); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 85, __pyx_L2_error)
       __Pyx_GOTREF(__pyx_t_4);
-      if (PyDict_SetItem(__pyx_d, __pyx_n_s_float64, __pyx_t_4) < 0) __PYX_ERR(0, 91, __pyx_L2_error)
+      if (PyDict_SetItem(__pyx_d, __pyx_n_s_float64, __pyx_t_4) < 0) __PYX_ERR(0, 85, __pyx_L2_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __pyx_t_4 = __Pyx_ImportFrom(__pyx_t_5, __pyx_n_s_float32); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 91, __pyx_L2_error)
+      __pyx_t_4 = __Pyx_ImportFrom(__pyx_t_5, __pyx_n_s_float32); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 85, __pyx_L2_error)
       __Pyx_GOTREF(__pyx_t_4);
-      if (PyDict_SetItem(__pyx_d, __pyx_n_s_float32, __pyx_t_4) < 0) __PYX_ERR(0, 91, __pyx_L2_error)
+      if (PyDict_SetItem(__pyx_d, __pyx_n_s_float32, __pyx_t_4) < 0) __PYX_ERR(0, 85, __pyx_L2_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __pyx_t_4 = __Pyx_ImportFrom(__pyx_t_5, __pyx_n_s_dstack); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 91, __pyx_L2_error)
+      __pyx_t_4 = __Pyx_ImportFrom(__pyx_t_5, __pyx_n_s_dstack); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 85, __pyx_L2_error)
       __Pyx_GOTREF(__pyx_t_4);
-      if (PyDict_SetItem(__pyx_d, __pyx_n_s_dstack, __pyx_t_4) < 0) __PYX_ERR(0, 91, __pyx_L2_error)
+      if (PyDict_SetItem(__pyx_d, __pyx_n_s_dstack, __pyx_t_4) < 0) __PYX_ERR(0, 85, __pyx_L2_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __pyx_t_4 = __Pyx_ImportFrom(__pyx_t_5, __pyx_n_s_full); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 91, __pyx_L2_error)
+      __pyx_t_4 = __Pyx_ImportFrom(__pyx_t_5, __pyx_n_s_full); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 85, __pyx_L2_error)
       __Pyx_GOTREF(__pyx_t_4);
-      if (PyDict_SetItem(__pyx_d, __pyx_n_s_full, __pyx_t_4) < 0) __PYX_ERR(0, 91, __pyx_L2_error)
+      if (PyDict_SetItem(__pyx_d, __pyx_n_s_full, __pyx_t_4) < 0) __PYX_ERR(0, 85, __pyx_L2_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __pyx_t_4 = __Pyx_ImportFrom(__pyx_t_5, __pyx_n_s_ones); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 91, __pyx_L2_error)
+      __pyx_t_4 = __Pyx_ImportFrom(__pyx_t_5, __pyx_n_s_ones); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 85, __pyx_L2_error)
       __Pyx_GOTREF(__pyx_t_4);
-      if (PyDict_SetItem(__pyx_d, __pyx_n_s_ones, __pyx_t_4) < 0) __PYX_ERR(0, 91, __pyx_L2_error)
+      if (PyDict_SetItem(__pyx_d, __pyx_n_s_ones, __pyx_t_4) < 0) __PYX_ERR(0, 85, __pyx_L2_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __pyx_t_4 = __Pyx_ImportFrom(__pyx_t_5, __pyx_n_s_asarray); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 91, __pyx_L2_error)
+      __pyx_t_4 = __Pyx_ImportFrom(__pyx_t_5, __pyx_n_s_asarray); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 85, __pyx_L2_error)
       __Pyx_GOTREF(__pyx_t_4);
-      if (PyDict_SetItem(__pyx_d, __pyx_n_s_asarray, __pyx_t_4) < 0) __PYX_ERR(0, 92, __pyx_L2_error)
+      if (PyDict_SetItem(__pyx_d, __pyx_n_s_asarray, __pyx_t_4) < 0) __PYX_ERR(0, 86, __pyx_L2_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __pyx_t_4 = __Pyx_ImportFrom(__pyx_t_5, __pyx_n_s_ascontiguousarray); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 91, __pyx_L2_error)
+      __pyx_t_4 = __Pyx_ImportFrom(__pyx_t_5, __pyx_n_s_ascontiguousarray); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 85, __pyx_L2_error)
       __Pyx_GOTREF(__pyx_t_4);
-      if (PyDict_SetItem(__pyx_d, __pyx_n_s_ascontiguousarray, __pyx_t_4) < 0) __PYX_ERR(0, 92, __pyx_L2_error)
+      if (PyDict_SetItem(__pyx_d, __pyx_n_s_ascontiguousarray, __pyx_t_4) < 0) __PYX_ERR(0, 86, __pyx_L2_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-      /* "Scroll.pyx":89
+      /* "Scroll.pyx":83
  * 
  * # NUMPY IS REQUIRED
  * try:             # <<<<<<<<<<<<<<
@@ -37065,7 +38250,7 @@ static int __pyx_pymod_exec_Scroll(PyObject *__pyx_pyinit_module)
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-    /* "Scroll.pyx":93
+    /* "Scroll.pyx":87
  *     from numpy import ndarray, zeros, empty, uint8, int32, float64, float32, dstack, full, ones,\
  *     asarray, ascontiguousarray
  * except ImportError:             # <<<<<<<<<<<<<<
@@ -37075,21 +38260,21 @@ static int __pyx_pymod_exec_Scroll(PyObject *__pyx_pyinit_module)
     __pyx_t_6 = __Pyx_PyErr_ExceptionMatches(__pyx_builtin_ImportError);
     if (__pyx_t_6) {
       __Pyx_AddTraceback("Scroll", __pyx_clineno, __pyx_lineno, __pyx_filename);
-      if (__Pyx_GetException(&__pyx_t_5, &__pyx_t_4, &__pyx_t_7) < 0) __PYX_ERR(0, 93, __pyx_L4_except_error)
+      if (__Pyx_GetException(&__pyx_t_5, &__pyx_t_4, &__pyx_t_7) < 0) __PYX_ERR(0, 87, __pyx_L4_except_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_GOTREF(__pyx_t_7);
 
-      /* "Scroll.pyx":94
+      /* "Scroll.pyx":88
  *     asarray, ascontiguousarray
  * except ImportError:
  *     print("\n<numpy> library is missing on your system."             # <<<<<<<<<<<<<<
  *           "\nTry: \n   C:\\pip install numpy on a window command prompt.")
  *     raise SystemExit
  */
-      if (__Pyx_PrintOne(0, __pyx_kp_s_numpy_library_is_missing_on_you) < 0) __PYX_ERR(0, 94, __pyx_L4_except_error)
+      if (__Pyx_PrintOne(0, __pyx_kp_s_numpy_library_is_missing_on_you) < 0) __PYX_ERR(0, 88, __pyx_L4_except_error)
 
-      /* "Scroll.pyx":96
+      /* "Scroll.pyx":90
  *     print("\n<numpy> library is missing on your system."
  *           "\nTry: \n   C:\\pip install numpy on a window command prompt.")
  *     raise SystemExit             # <<<<<<<<<<<<<<
@@ -37097,12 +38282,12 @@ static int __pyx_pymod_exec_Scroll(PyObject *__pyx_pyinit_module)
  * # CYTHON IS REQUIRED
  */
       __Pyx_Raise(__pyx_builtin_SystemExit, 0, 0, 0);
-      __PYX_ERR(0, 96, __pyx_L4_except_error)
+      __PYX_ERR(0, 90, __pyx_L4_except_error)
     }
     goto __pyx_L4_except_error;
     __pyx_L4_except_error:;
 
-    /* "Scroll.pyx":89
+    /* "Scroll.pyx":83
  * 
  * # NUMPY IS REQUIRED
  * try:             # <<<<<<<<<<<<<<
@@ -37117,7 +38302,7 @@ static int __pyx_pymod_exec_Scroll(PyObject *__pyx_pyinit_module)
     __pyx_L7_try_end:;
   }
 
-  /* "Scroll.pyx":99
+  /* "Scroll.pyx":93
  * 
  * # CYTHON IS REQUIRED
  * try:             # <<<<<<<<<<<<<<
@@ -37128,7 +38313,7 @@ static int __pyx_pymod_exec_Scroll(PyObject *__pyx_pyinit_module)
     (void)__pyx_t_3; (void)__pyx_t_2; (void)__pyx_t_1; /* mark used */
     /*try:*/ {
 
-      /* "Scroll.pyx":101
+      /* "Scroll.pyx":95
  * try:
  *     cimport cython
  *     from cython.parallel cimport prange             # <<<<<<<<<<<<<<
@@ -37138,7 +38323,7 @@ static int __pyx_pymod_exec_Scroll(PyObject *__pyx_pyinit_module)
     }
   }
 
-  /* "Scroll.pyx":111
+  /* "Scroll.pyx":104
  * 
  * # PYGAME IS REQUIRED
  * try:             # <<<<<<<<<<<<<<
@@ -37154,26 +38339,26 @@ static int __pyx_pymod_exec_Scroll(PyObject *__pyx_pyinit_module)
     __Pyx_XGOTREF(__pyx_t_3);
     /*try:*/ {
 
-      /* "Scroll.pyx":112
+      /* "Scroll.pyx":105
  * # PYGAME IS REQUIRED
  * try:
  *     import pygame             # <<<<<<<<<<<<<<
  *     from pygame import Color, Surface, SRCALPHA, RLEACCEL, BufferProxy
  *     from pygame.surfarray import pixels3d, array_alpha, pixels_alpha, array3d
  */
-      __pyx_t_7 = __Pyx_Import(__pyx_n_s_pygame, 0, -1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 112, __pyx_L16_error)
+      __pyx_t_7 = __Pyx_Import(__pyx_n_s_pygame, 0, -1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 105, __pyx_L16_error)
       __Pyx_GOTREF(__pyx_t_7);
-      if (PyDict_SetItem(__pyx_d, __pyx_n_s_pygame, __pyx_t_7) < 0) __PYX_ERR(0, 112, __pyx_L16_error)
+      if (PyDict_SetItem(__pyx_d, __pyx_n_s_pygame, __pyx_t_7) < 0) __PYX_ERR(0, 105, __pyx_L16_error)
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-      /* "Scroll.pyx":113
+      /* "Scroll.pyx":106
  * try:
  *     import pygame
  *     from pygame import Color, Surface, SRCALPHA, RLEACCEL, BufferProxy             # <<<<<<<<<<<<<<
  *     from pygame.surfarray import pixels3d, array_alpha, pixels_alpha, array3d
  *     from pygame.image import frombuffer
  */
-      __pyx_t_7 = PyList_New(5); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 113, __pyx_L16_error)
+      __pyx_t_7 = PyList_New(5); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 106, __pyx_L16_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_INCREF(__pyx_n_s_Color);
       __Pyx_GIVEREF(__pyx_n_s_Color);
@@ -37190,39 +38375,39 @@ static int __pyx_pymod_exec_Scroll(PyObject *__pyx_pyinit_module)
       __Pyx_INCREF(__pyx_n_s_BufferProxy);
       __Pyx_GIVEREF(__pyx_n_s_BufferProxy);
       PyList_SET_ITEM(__pyx_t_7, 4, __pyx_n_s_BufferProxy);
-      __pyx_t_4 = __Pyx_Import(__pyx_n_s_pygame, __pyx_t_7, -1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 113, __pyx_L16_error)
+      __pyx_t_4 = __Pyx_Import(__pyx_n_s_pygame, __pyx_t_7, -1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 106, __pyx_L16_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-      __pyx_t_7 = __Pyx_ImportFrom(__pyx_t_4, __pyx_n_s_Color); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 113, __pyx_L16_error)
+      __pyx_t_7 = __Pyx_ImportFrom(__pyx_t_4, __pyx_n_s_Color); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 106, __pyx_L16_error)
       __Pyx_GOTREF(__pyx_t_7);
-      if (PyDict_SetItem(__pyx_d, __pyx_n_s_Color, __pyx_t_7) < 0) __PYX_ERR(0, 113, __pyx_L16_error)
+      if (PyDict_SetItem(__pyx_d, __pyx_n_s_Color, __pyx_t_7) < 0) __PYX_ERR(0, 106, __pyx_L16_error)
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-      __pyx_t_7 = __Pyx_ImportFrom(__pyx_t_4, __pyx_n_s_Surface); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 113, __pyx_L16_error)
+      __pyx_t_7 = __Pyx_ImportFrom(__pyx_t_4, __pyx_n_s_Surface); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 106, __pyx_L16_error)
       __Pyx_GOTREF(__pyx_t_7);
-      if (PyDict_SetItem(__pyx_d, __pyx_n_s_Surface, __pyx_t_7) < 0) __PYX_ERR(0, 113, __pyx_L16_error)
+      if (PyDict_SetItem(__pyx_d, __pyx_n_s_Surface, __pyx_t_7) < 0) __PYX_ERR(0, 106, __pyx_L16_error)
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-      __pyx_t_7 = __Pyx_ImportFrom(__pyx_t_4, __pyx_n_s_SRCALPHA); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 113, __pyx_L16_error)
+      __pyx_t_7 = __Pyx_ImportFrom(__pyx_t_4, __pyx_n_s_SRCALPHA); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 106, __pyx_L16_error)
       __Pyx_GOTREF(__pyx_t_7);
-      if (PyDict_SetItem(__pyx_d, __pyx_n_s_SRCALPHA, __pyx_t_7) < 0) __PYX_ERR(0, 113, __pyx_L16_error)
+      if (PyDict_SetItem(__pyx_d, __pyx_n_s_SRCALPHA, __pyx_t_7) < 0) __PYX_ERR(0, 106, __pyx_L16_error)
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-      __pyx_t_7 = __Pyx_ImportFrom(__pyx_t_4, __pyx_n_s_RLEACCEL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 113, __pyx_L16_error)
+      __pyx_t_7 = __Pyx_ImportFrom(__pyx_t_4, __pyx_n_s_RLEACCEL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 106, __pyx_L16_error)
       __Pyx_GOTREF(__pyx_t_7);
-      if (PyDict_SetItem(__pyx_d, __pyx_n_s_RLEACCEL, __pyx_t_7) < 0) __PYX_ERR(0, 113, __pyx_L16_error)
+      if (PyDict_SetItem(__pyx_d, __pyx_n_s_RLEACCEL, __pyx_t_7) < 0) __PYX_ERR(0, 106, __pyx_L16_error)
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-      __pyx_t_7 = __Pyx_ImportFrom(__pyx_t_4, __pyx_n_s_BufferProxy); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 113, __pyx_L16_error)
+      __pyx_t_7 = __Pyx_ImportFrom(__pyx_t_4, __pyx_n_s_BufferProxy); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 106, __pyx_L16_error)
       __Pyx_GOTREF(__pyx_t_7);
-      if (PyDict_SetItem(__pyx_d, __pyx_n_s_BufferProxy, __pyx_t_7) < 0) __PYX_ERR(0, 113, __pyx_L16_error)
+      if (PyDict_SetItem(__pyx_d, __pyx_n_s_BufferProxy, __pyx_t_7) < 0) __PYX_ERR(0, 106, __pyx_L16_error)
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-      /* "Scroll.pyx":114
+      /* "Scroll.pyx":107
  *     import pygame
  *     from pygame import Color, Surface, SRCALPHA, RLEACCEL, BufferProxy
  *     from pygame.surfarray import pixels3d, array_alpha, pixels_alpha, array3d             # <<<<<<<<<<<<<<
  *     from pygame.image import frombuffer
  * 
  */
-      __pyx_t_4 = PyList_New(4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 114, __pyx_L16_error)
+      __pyx_t_4 = PyList_New(4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 107, __pyx_L16_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_INCREF(__pyx_n_s_pixels3d);
       __Pyx_GIVEREF(__pyx_n_s_pixels3d);
@@ -37236,49 +38421,49 @@ static int __pyx_pymod_exec_Scroll(PyObject *__pyx_pyinit_module)
       __Pyx_INCREF(__pyx_n_s_array3d);
       __Pyx_GIVEREF(__pyx_n_s_array3d);
       PyList_SET_ITEM(__pyx_t_4, 3, __pyx_n_s_array3d);
-      __pyx_t_7 = __Pyx_Import(__pyx_n_s_pygame_surfarray, __pyx_t_4, -1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 114, __pyx_L16_error)
+      __pyx_t_7 = __Pyx_Import(__pyx_n_s_pygame_surfarray, __pyx_t_4, -1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 107, __pyx_L16_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __pyx_t_4 = __Pyx_ImportFrom(__pyx_t_7, __pyx_n_s_pixels3d); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 114, __pyx_L16_error)
+      __pyx_t_4 = __Pyx_ImportFrom(__pyx_t_7, __pyx_n_s_pixels3d); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 107, __pyx_L16_error)
       __Pyx_GOTREF(__pyx_t_4);
-      if (PyDict_SetItem(__pyx_d, __pyx_n_s_pixels3d, __pyx_t_4) < 0) __PYX_ERR(0, 114, __pyx_L16_error)
+      if (PyDict_SetItem(__pyx_d, __pyx_n_s_pixels3d, __pyx_t_4) < 0) __PYX_ERR(0, 107, __pyx_L16_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __pyx_t_4 = __Pyx_ImportFrom(__pyx_t_7, __pyx_n_s_array_alpha); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 114, __pyx_L16_error)
+      __pyx_t_4 = __Pyx_ImportFrom(__pyx_t_7, __pyx_n_s_array_alpha); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 107, __pyx_L16_error)
       __Pyx_GOTREF(__pyx_t_4);
-      if (PyDict_SetItem(__pyx_d, __pyx_n_s_array_alpha, __pyx_t_4) < 0) __PYX_ERR(0, 114, __pyx_L16_error)
+      if (PyDict_SetItem(__pyx_d, __pyx_n_s_array_alpha, __pyx_t_4) < 0) __PYX_ERR(0, 107, __pyx_L16_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __pyx_t_4 = __Pyx_ImportFrom(__pyx_t_7, __pyx_n_s_pixels_alpha); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 114, __pyx_L16_error)
+      __pyx_t_4 = __Pyx_ImportFrom(__pyx_t_7, __pyx_n_s_pixels_alpha); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 107, __pyx_L16_error)
       __Pyx_GOTREF(__pyx_t_4);
-      if (PyDict_SetItem(__pyx_d, __pyx_n_s_pixels_alpha, __pyx_t_4) < 0) __PYX_ERR(0, 114, __pyx_L16_error)
+      if (PyDict_SetItem(__pyx_d, __pyx_n_s_pixels_alpha, __pyx_t_4) < 0) __PYX_ERR(0, 107, __pyx_L16_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __pyx_t_4 = __Pyx_ImportFrom(__pyx_t_7, __pyx_n_s_array3d); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 114, __pyx_L16_error)
+      __pyx_t_4 = __Pyx_ImportFrom(__pyx_t_7, __pyx_n_s_array3d); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 107, __pyx_L16_error)
       __Pyx_GOTREF(__pyx_t_4);
-      if (PyDict_SetItem(__pyx_d, __pyx_n_s_array3d, __pyx_t_4) < 0) __PYX_ERR(0, 114, __pyx_L16_error)
+      if (PyDict_SetItem(__pyx_d, __pyx_n_s_array3d, __pyx_t_4) < 0) __PYX_ERR(0, 107, __pyx_L16_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-      /* "Scroll.pyx":115
+      /* "Scroll.pyx":108
  *     from pygame import Color, Surface, SRCALPHA, RLEACCEL, BufferProxy
  *     from pygame.surfarray import pixels3d, array_alpha, pixels_alpha, array3d
  *     from pygame.image import frombuffer             # <<<<<<<<<<<<<<
  * 
  * except ImportError:
  */
-      __pyx_t_7 = PyList_New(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 115, __pyx_L16_error)
+      __pyx_t_7 = PyList_New(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 108, __pyx_L16_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_INCREF(__pyx_n_s_frombuffer);
       __Pyx_GIVEREF(__pyx_n_s_frombuffer);
       PyList_SET_ITEM(__pyx_t_7, 0, __pyx_n_s_frombuffer);
-      __pyx_t_4 = __Pyx_Import(__pyx_n_s_pygame_image, __pyx_t_7, -1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 115, __pyx_L16_error)
+      __pyx_t_4 = __Pyx_Import(__pyx_n_s_pygame_image, __pyx_t_7, -1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 108, __pyx_L16_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-      __pyx_t_7 = __Pyx_ImportFrom(__pyx_t_4, __pyx_n_s_frombuffer); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 115, __pyx_L16_error)
+      __pyx_t_7 = __Pyx_ImportFrom(__pyx_t_4, __pyx_n_s_frombuffer); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 108, __pyx_L16_error)
       __Pyx_GOTREF(__pyx_t_7);
-      if (PyDict_SetItem(__pyx_d, __pyx_n_s_frombuffer, __pyx_t_7) < 0) __PYX_ERR(0, 115, __pyx_L16_error)
+      if (PyDict_SetItem(__pyx_d, __pyx_n_s_frombuffer, __pyx_t_7) < 0) __PYX_ERR(0, 108, __pyx_L16_error)
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-      /* "Scroll.pyx":111
+      /* "Scroll.pyx":104
  * 
  * # PYGAME IS REQUIRED
  * try:             # <<<<<<<<<<<<<<
@@ -37295,7 +38480,7 @@ static int __pyx_pymod_exec_Scroll(PyObject *__pyx_pyinit_module)
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-    /* "Scroll.pyx":117
+    /* "Scroll.pyx":110
  *     from pygame.image import frombuffer
  * 
  * except ImportError:             # <<<<<<<<<<<<<<
@@ -37305,34 +38490,34 @@ static int __pyx_pymod_exec_Scroll(PyObject *__pyx_pyinit_module)
     __pyx_t_6 = __Pyx_PyErr_ExceptionMatches(__pyx_builtin_ImportError);
     if (__pyx_t_6) {
       __Pyx_AddTraceback("Scroll", __pyx_clineno, __pyx_lineno, __pyx_filename);
-      if (__Pyx_GetException(&__pyx_t_4, &__pyx_t_7, &__pyx_t_5) < 0) __PYX_ERR(0, 117, __pyx_L18_except_error)
+      if (__Pyx_GetException(&__pyx_t_4, &__pyx_t_7, &__pyx_t_5) < 0) __PYX_ERR(0, 110, __pyx_L18_except_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_GOTREF(__pyx_t_5);
 
-      /* "Scroll.pyx":118
+      /* "Scroll.pyx":111
  * 
  * except ImportError:
  *     print("\n<Pygame> library is missing on your system."             # <<<<<<<<<<<<<<
  *           "\nTry: \n   C:\\pip install pygame on a window command prompt.")
  *     raise SystemExit
  */
-      if (__Pyx_PrintOne(0, __pyx_kp_s_Pygame_library_is_missing_on_yo) < 0) __PYX_ERR(0, 118, __pyx_L18_except_error)
+      if (__Pyx_PrintOne(0, __pyx_kp_s_Pygame_library_is_missing_on_yo) < 0) __PYX_ERR(0, 111, __pyx_L18_except_error)
 
-      /* "Scroll.pyx":120
+      /* "Scroll.pyx":113
  *     print("\n<Pygame> library is missing on your system."
  *           "\nTry: \n   C:\\pip install pygame on a window command prompt.")
  *     raise SystemExit             # <<<<<<<<<<<<<<
  * 
- * cimport numpy as np
+ * __version__ = 1.01
  */
       __Pyx_Raise(__pyx_builtin_SystemExit, 0, 0, 0);
-      __PYX_ERR(0, 120, __pyx_L18_except_error)
+      __PYX_ERR(0, 113, __pyx_L18_except_error)
     }
     goto __pyx_L18_except_error;
     __pyx_L18_except_error:;
 
-    /* "Scroll.pyx":111
+    /* "Scroll.pyx":104
  * 
  * # PYGAME IS REQUIRED
  * try:             # <<<<<<<<<<<<<<
@@ -37347,265 +38532,262 @@ static int __pyx_pymod_exec_Scroll(PyObject *__pyx_pyinit_module)
     __pyx_L21_try_end:;
   }
 
-  /* "Scroll.pyx":123
+  /* "Scroll.pyx":115
+ *     raise SystemExit
+ * 
+ * __version__ = 1.01             # <<<<<<<<<<<<<<
+ * 
+ * ## VERSION 1.0
+ */
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_version, __pyx_float_1_01) < 0) __PYX_ERR(0, 115, __pyx_L1_error)
+
+  /* "Scroll.pyx":129
  * 
  * cimport numpy as np
  * import random             # <<<<<<<<<<<<<<
  * from random import randint
  * import math
  */
-  __pyx_t_5 = __Pyx_Import(__pyx_n_s_random, 0, -1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 123, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_Import(__pyx_n_s_random, 0, -1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 129, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_random, __pyx_t_5) < 0) __PYX_ERR(0, 123, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_random, __pyx_t_5) < 0) __PYX_ERR(0, 129, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "Scroll.pyx":124
+  /* "Scroll.pyx":130
  * cimport numpy as np
  * import random
  * from random import randint             # <<<<<<<<<<<<<<
  * import math
  * 
  */
-  __pyx_t_5 = PyList_New(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 124, __pyx_L1_error)
+  __pyx_t_5 = PyList_New(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 130, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_INCREF(__pyx_n_s_randint);
   __Pyx_GIVEREF(__pyx_n_s_randint);
   PyList_SET_ITEM(__pyx_t_5, 0, __pyx_n_s_randint);
-  __pyx_t_7 = __Pyx_Import(__pyx_n_s_random, __pyx_t_5, -1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 124, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_Import(__pyx_n_s_random, __pyx_t_5, -1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 130, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_ImportFrom(__pyx_t_7, __pyx_n_s_randint); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 124, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_ImportFrom(__pyx_t_7, __pyx_n_s_randint); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 130, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_randint, __pyx_t_5) < 0) __PYX_ERR(0, 124, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_randint, __pyx_t_5) < 0) __PYX_ERR(0, 130, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-  /* "Scroll.pyx":125
+  /* "Scroll.pyx":131
  * import random
  * from random import randint
  * import math             # <<<<<<<<<<<<<<
  * 
  * from libc.math cimport sin, sqrt, cos, atan2, pi, round, floor, fmax, fmin, pi, tan, exp, ceil, fmod
  */
-  __pyx_t_7 = __Pyx_Import(__pyx_n_s_math, 0, -1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 125, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_Import(__pyx_n_s_math, 0, -1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 131, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_math, __pyx_t_7) < 0) __PYX_ERR(0, 125, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_math, __pyx_t_7) < 0) __PYX_ERR(0, 131, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-  /* "Scroll.pyx":186
- * 
- * # ROLL BUFFER COMPATIBLE 24-BIT TEXTURE
+  /* "Scroll.pyx":194
+ * # Refer to pygame doc in order to extract
+ * # a buffer from an image get_view()
  * def scroll_buffer24(buffer_, w, h, dx=0, dy=0):             # <<<<<<<<<<<<<<
  *     return scroll_buffer24_c(buffer_, w, h, dx, dy)
  * 
  */
-  __pyx_t_7 = PyCFunction_NewEx(&__pyx_mdef_6Scroll_1scroll_buffer24, NULL, __pyx_n_s_Scroll); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 186, __pyx_L1_error)
+  __pyx_t_7 = PyCFunction_NewEx(&__pyx_mdef_6Scroll_1scroll_buffer24, NULL, __pyx_n_s_Scroll); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 194, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_scroll_buffer24, __pyx_t_7) < 0) __PYX_ERR(0, 186, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_scroll_buffer24, __pyx_t_7) < 0) __PYX_ERR(0, 194, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-  /* "Scroll.pyx":190
- * 
- * # ROLL BUFFER COMPATIBLE 32-BIT TEXTURE
+  /* "Scroll.pyx":200
+ * # Refer to pygame doc to extract
+ * # a buffer from an image get_view()
  * def scroll_buffer32(buffer_, w, h, dx=0, dy=0):             # <<<<<<<<<<<<<<
  *     return scroll_buffer32_c(buffer_, w, h, dx, dy)
  * 
  */
-  __pyx_t_7 = PyCFunction_NewEx(&__pyx_mdef_6Scroll_3scroll_buffer32, NULL, __pyx_n_s_Scroll); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 190, __pyx_L1_error)
+  __pyx_t_7 = PyCFunction_NewEx(&__pyx_mdef_6Scroll_3scroll_buffer32, NULL, __pyx_n_s_Scroll); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 200, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_scroll_buffer32, __pyx_t_7) < 0) __PYX_ERR(0, 190, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_scroll_buffer32, __pyx_t_7) < 0) __PYX_ERR(0, 200, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-  /* "Scroll.pyx":194
- * 
- * # ROLL ARRAY 3D TYPE (W, H, 3) NUMPY.UINT8
+  /* "Scroll.pyx":206
+ * # Refer to pygame doc surfarray methods
+ * # to get a 3d array from an image (pixels3d, array3d)
  * def scroll_array24(array_, dy=0, dx=0):             # <<<<<<<<<<<<<<
  *     return scroll_array24_c(array_, dy, dx)
  * 
  */
-  __pyx_t_7 = PyCFunction_NewEx(&__pyx_mdef_6Scroll_5scroll_array24, NULL, __pyx_n_s_Scroll); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 194, __pyx_L1_error)
+  __pyx_t_7 = PyCFunction_NewEx(&__pyx_mdef_6Scroll_5scroll_array24, NULL, __pyx_n_s_Scroll); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 206, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_scroll_array24, __pyx_t_7) < 0) __PYX_ERR(0, 194, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_scroll_array24, __pyx_t_7) < 0) __PYX_ERR(0, 206, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-  /* "Scroll.pyx":198
- * 
- * # ROLL ARRAY 3D TYPE (W, H, 4) NUMPY.UINT8
+  /* "Scroll.pyx":212
+ * # Refer to pygame doc surfarray methods
+ * # to get a 3d array from an image (pixels3d, array3d)
  * def scroll_array32(array_, dy=0, dx=0):             # <<<<<<<<<<<<<<
  *     return scroll_array32_c(array_, dy, dx)
  * 
  */
-  __pyx_t_7 = PyCFunction_NewEx(&__pyx_mdef_6Scroll_7scroll_array32, NULL, __pyx_n_s_Scroll); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 198, __pyx_L1_error)
+  __pyx_t_7 = PyCFunction_NewEx(&__pyx_mdef_6Scroll_7scroll_array32, NULL, __pyx_n_s_Scroll); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 212, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_scroll_array32, __pyx_t_7) < 0) __PYX_ERR(0, 198, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_scroll_array32, __pyx_t_7) < 0) __PYX_ERR(0, 212, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-  /* "Scroll.pyx":204
- * # Return a 3d array type (w, h, 4)
- * # inputs : 3d array (w, h, 3) and alpha (w, h)
+  /* "Scroll.pyx":220
+ * # Refer to pygame doc surfarray methods
+ * # to get a 3d array from an image (pixels3d, array3d)
  * def scroll_array32m(array_, alpha_, dy=0, dx=0):             # <<<<<<<<<<<<<<
  *     return scroll_array32m_c(array_, alpha_, dy, dx)
  * 
  */
-  __pyx_t_7 = PyCFunction_NewEx(&__pyx_mdef_6Scroll_9scroll_array32m, NULL, __pyx_n_s_Scroll); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 204, __pyx_L1_error)
+  __pyx_t_7 = PyCFunction_NewEx(&__pyx_mdef_6Scroll_9scroll_array32m, NULL, __pyx_n_s_Scroll); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 220, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_scroll_array32m, __pyx_t_7) < 0) __PYX_ERR(0, 204, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_scroll_array32m, __pyx_t_7) < 0) __PYX_ERR(0, 220, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-  /* "Scroll.pyx":208
+  /* "Scroll.pyx":224
  * 
- * # USE NUMPY LIBRARY (NUMPY.ROLL METHOD)
- * def roll_surface(surface_, dx=0, dy=0):             # <<<<<<<<<<<<<<
- *     return roll_surface_c(surface_, dx, dy)
+ * # ROLL TRANSPARENCY ONLY
+ * def scroll_transparency(surface, dy=0, dx=0):             # <<<<<<<<<<<<<<
+ *     return scroll_transparency_c(surface, dy, dx)
  * 
  */
-  __pyx_t_7 = PyCFunction_NewEx(&__pyx_mdef_6Scroll_11roll_surface, NULL, __pyx_n_s_Scroll); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 208, __pyx_L1_error)
+  __pyx_t_7 = PyCFunction_NewEx(&__pyx_mdef_6Scroll_11scroll_transparency, NULL, __pyx_n_s_Scroll); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 224, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_roll_surface, __pyx_t_7) < 0) __PYX_ERR(0, 208, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_scroll_transparency, __pyx_t_7) < 0) __PYX_ERR(0, 224, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-  /* "Scroll.pyx":211
- *     return roll_surface_c(surface_, dx, dy)
- * 
- * def roll_array(array_, dx=0, dy=0):             # <<<<<<<<<<<<<<
- *     return roll_array_c(array_, dx, dy)
- * 
- */
-  __pyx_t_7 = PyCFunction_NewEx(&__pyx_mdef_6Scroll_13roll_array, NULL, __pyx_n_s_Scroll); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 211, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_7);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_roll_array, __pyx_t_7) < 0) __PYX_ERR(0, 211, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-
-  /* "Scroll.pyx":216
- * # ROLL ARRAY (lateral and vertical)
- * # Identical algorithm (scroll_array) but returns a tuple (surface, array)
+  /* "Scroll.pyx":231
+ * # returns a tuple (surface, array)
+ * # See pygame.Surface for more details
  * def scroll_surface24(surface, dy=0, dx=0):             # <<<<<<<<<<<<<<
  *     return scroll_surface24_c(surface, dy, dx)
  * 
  */
-  __pyx_t_7 = PyCFunction_NewEx(&__pyx_mdef_6Scroll_15scroll_surface24, NULL, __pyx_n_s_Scroll); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 216, __pyx_L1_error)
+  __pyx_t_7 = PyCFunction_NewEx(&__pyx_mdef_6Scroll_13scroll_surface24, NULL, __pyx_n_s_Scroll); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 231, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_scroll_surface24, __pyx_t_7) < 0) __PYX_ERR(0, 216, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_scroll_surface24, __pyx_t_7) < 0) __PYX_ERR(0, 231, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-  /* "Scroll.pyx":220
- * 
+  /* "Scroll.pyx":236
  * # ROLL IMAGE 32-bit
+ * # See pygame.Surface for more details
  * def scroll_surface32(surface, dy=0, dx=0):             # <<<<<<<<<<<<<<
  *     return scroll_surface32_c(surface, dy, dx)
  * 
  */
-  __pyx_t_7 = PyCFunction_NewEx(&__pyx_mdef_6Scroll_17scroll_surface32, NULL, __pyx_n_s_Scroll); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 220, __pyx_L1_error)
+  __pyx_t_7 = PyCFunction_NewEx(&__pyx_mdef_6Scroll_15scroll_surface32, NULL, __pyx_n_s_Scroll); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 236, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_scroll_surface32, __pyx_t_7) < 0) __PYX_ERR(0, 220, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_scroll_surface32, __pyx_t_7) < 0) __PYX_ERR(0, 236, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-  /* "Scroll.pyx":232
+  /* "Scroll.pyx":242
+ * # USE NUMPY LIBRARY (NUMPY.ROLL METHOD)
+ * # See pygame.Surface for more details
+ * def roll_surface(surface_, dx=0, dy=0):             # <<<<<<<<<<<<<<
+ *     return roll_surface_c(surface_, dx, dy)
+ * 
+ */
+  __pyx_t_7 = PyCFunction_NewEx(&__pyx_mdef_6Scroll_17roll_surface, NULL, __pyx_n_s_Scroll); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 242, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_7);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_roll_surface, __pyx_t_7) < 0) __PYX_ERR(0, 242, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+
+  /* "Scroll.pyx":245
+ *     return roll_surface_c(surface_, dx, dy)
+ * 
+ * def roll_array(array_, dx=0, dy=0):             # <<<<<<<<<<<<<<
+ *     return roll_array_c(array_, dx, dy)
+ * # ----------------
+ */
+  __pyx_t_7 = PyCFunction_NewEx(&__pyx_mdef_6Scroll_19roll_array, NULL, __pyx_n_s_Scroll); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 245, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_7);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_roll_array, __pyx_t_7) < 0) __PYX_ERR(0, 245, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+
+  /* "Scroll.pyx":258
  * # RETURN A PYTHON OBJECT
  * # Twice faster than numpy.dstack
  * def stack_object(rgb_array_, alpha_, transpose):             # <<<<<<<<<<<<<<
  *     return stack_object_c(rgb_array_, alpha_, transpose)
  * 
  */
-  __pyx_t_7 = PyCFunction_NewEx(&__pyx_mdef_6Scroll_19stack_object, NULL, __pyx_n_s_Scroll); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 232, __pyx_L1_error)
+  __pyx_t_7 = PyCFunction_NewEx(&__pyx_mdef_6Scroll_21stack_object, NULL, __pyx_n_s_Scroll); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 258, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_stack_object, __pyx_t_7) < 0) __PYX_ERR(0, 232, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_stack_object, __pyx_t_7) < 0) __PYX_ERR(0, 258, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-  /* "Scroll.pyx":238
+  /* "Scroll.pyx":264
  * # RETURN A MEMORYVIEW (slightly faster than stack_object)
  * # Twice faster than numpy.dstack
  * def stack_mem(rgb_array_, alpha_, transpose):             # <<<<<<<<<<<<<<
  *     return stack_mem_c(rgb_array_, alpha_, transpose)
  * 
  */
-  __pyx_t_7 = PyCFunction_NewEx(&__pyx_mdef_6Scroll_21stack_mem, NULL, __pyx_n_s_Scroll); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 238, __pyx_L1_error)
+  __pyx_t_7 = PyCFunction_NewEx(&__pyx_mdef_6Scroll_23stack_mem, NULL, __pyx_n_s_Scroll); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 264, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_stack_mem, __pyx_t_7) < 0) __PYX_ERR(0, 238, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_stack_mem, __pyx_t_7) < 0) __PYX_ERR(0, 264, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-  /* "Scroll.pyx":242
+  /* "Scroll.pyx":268
  * 
  * # UN-STACK RGBA ARRAY VALUES
  * def unstack_object(rgba_array):             # <<<<<<<<<<<<<<
  *     return unstack_object_c(rgba_array)
  * # ------------------
  */
-  __pyx_t_7 = PyCFunction_NewEx(&__pyx_mdef_6Scroll_23unstack_object, NULL, __pyx_n_s_Scroll); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 242, __pyx_L1_error)
+  __pyx_t_7 = PyCFunction_NewEx(&__pyx_mdef_6Scroll_25unstack_object, NULL, __pyx_n_s_Scroll); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 268, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_unstack_object, __pyx_t_7) < 0) __PYX_ERR(0, 242, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_unstack_object, __pyx_t_7) < 0) __PYX_ERR(0, 268, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-  /* "Scroll.pyx":249
+  /* "Scroll.pyx":275
  * 
  * # STACK RGB AND ALPHA BUFFERS
  * def stack_buffer(rgb_array_, alpha_, w, h, transpose):             # <<<<<<<<<<<<<<
  *     return stack_buffer_c(rgb_array_, alpha_, w, h, transpose)
  * 
  */
-  __pyx_t_7 = PyCFunction_NewEx(&__pyx_mdef_6Scroll_25stack_buffer, NULL, __pyx_n_s_Scroll); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 249, __pyx_L1_error)
+  __pyx_t_7 = PyCFunction_NewEx(&__pyx_mdef_6Scroll_27stack_buffer, NULL, __pyx_n_s_Scroll); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 275, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_stack_buffer, __pyx_t_7) < 0) __PYX_ERR(0, 249, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_stack_buffer, __pyx_t_7) < 0) __PYX_ERR(0, 275, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-  /* "Scroll.pyx":254
+  /* "Scroll.pyx":280
  * # UN-STACK/SPLIT RGBA BUFFER WITH RGBA INTO
  * # (RGB BUFFER & ALPHA_BUFFER)
  * def unstack_buffer(rgba_buffer_, w, h):             # <<<<<<<<<<<<<<
  *     return unstack_buffer_c(rgba_buffer_, w, h)
  * # -------------------
  */
-  __pyx_t_7 = PyCFunction_NewEx(&__pyx_mdef_6Scroll_27unstack_buffer, NULL, __pyx_n_s_Scroll); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 254, __pyx_L1_error)
+  __pyx_t_7 = PyCFunction_NewEx(&__pyx_mdef_6Scroll_29unstack_buffer, NULL, __pyx_n_s_Scroll); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 280, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_unstack_buffer, __pyx_t_7) < 0) __PYX_ERR(0, 254, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_unstack_buffer, __pyx_t_7) < 0) __PYX_ERR(0, 280, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-  /* "Scroll.pyx":264
- * # TRANSPOSE ROWS AND COLUMNS ARRAY (W, H, 3)
+  /* "Scroll.pyx":291
  * # !! Method slower than numpy.transpose(1, 0, 2)
+ * # Use it if you don't want to import numpy
  * def transpose24(rgb_array_):             # <<<<<<<<<<<<<<
  *     return transpose24_c(rgb_array_)
  * 
  */
-  __pyx_t_7 = PyCFunction_NewEx(&__pyx_mdef_6Scroll_29transpose24, NULL, __pyx_n_s_Scroll); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 264, __pyx_L1_error)
+  __pyx_t_7 = PyCFunction_NewEx(&__pyx_mdef_6Scroll_31transpose24, NULL, __pyx_n_s_Scroll); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 291, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_transpose24, __pyx_t_7) < 0) __PYX_ERR(0, 264, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_transpose24, __pyx_t_7) < 0) __PYX_ERR(0, 291, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-  /* "Scroll.pyx":269
- * # TRANSPOSE ROWS AND COLUMNS ARRAY (W, H, 4)
+  /* "Scroll.pyx":297
  * # !! Method slower than numpy.transpose(1, 0, 2)
+ * # Use it if you don't want to import numpy
  * def transpose32(rgb_array_):             # <<<<<<<<<<<<<<
  *     return transpose32_c(rgb_array_)
  * 
  */
-  __pyx_t_7 = PyCFunction_NewEx(&__pyx_mdef_6Scroll_31transpose32, NULL, __pyx_n_s_Scroll); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 269, __pyx_L1_error)
+  __pyx_t_7 = PyCFunction_NewEx(&__pyx_mdef_6Scroll_33transpose32, NULL, __pyx_n_s_Scroll); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 297, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_transpose32, __pyx_t_7) < 0) __PYX_ERR(0, 269, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-
-  /* "Scroll.pyx":273
- * 
- * # TRANSPOSE/ FLIP BUFFER (compatible 24-bit)
- * def vfb24(source, target, width, height):             # <<<<<<<<<<<<<<
- *     return vfb24_c(source, target, width, height)
- * 
- */
-  __pyx_t_7 = PyCFunction_NewEx(&__pyx_mdef_6Scroll_33vfb24, NULL, __pyx_n_s_Scroll); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 273, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_7);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_vfb24, __pyx_t_7) < 0) __PYX_ERR(0, 273, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-
-  /* "Scroll.pyx":277
- * 
- * # TRANSPOSE / FLIP BUFFER (compatible 32-bit)
- * def vfb32(source, target, width, height):             # <<<<<<<<<<<<<<
- *     return vfb32_c(source, target, width, height)
- * 
- */
-  __pyx_t_7 = PyCFunction_NewEx(&__pyx_mdef_6Scroll_35vfb32, NULL, __pyx_n_s_Scroll); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 277, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_7);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_vfb32, __pyx_t_7) < 0) __PYX_ERR(0, 277, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_transpose32, __pyx_t_7) < 0) __PYX_ERR(0, 297, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
   /* "Scroll.pyx":2
@@ -37639,7 +38821,7 @@ static int __pyx_pymod_exec_Scroll(PyObject *__pyx_pyinit_module)
  * cdef strided = Enum("<strided and direct>") # default
  * cdef indirect = Enum("<strided and indirect>")
  */
-  __pyx_t_7 = __Pyx_PyObject_Call(((PyObject *)__pyx_MemviewEnum_type), __pyx_tuple__95, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(2, 284, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_Call(((PyObject *)__pyx_MemviewEnum_type), __pyx_tuple__96, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(2, 284, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_XGOTREF(generic);
   __Pyx_DECREF_SET(generic, __pyx_t_7);
@@ -37653,7 +38835,7 @@ static int __pyx_pymod_exec_Scroll(PyObject *__pyx_pyinit_module)
  * cdef indirect = Enum("<strided and indirect>")
  * 
  */
-  __pyx_t_7 = __Pyx_PyObject_Call(((PyObject *)__pyx_MemviewEnum_type), __pyx_tuple__96, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(2, 285, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_Call(((PyObject *)__pyx_MemviewEnum_type), __pyx_tuple__97, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(2, 285, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_XGOTREF(strided);
   __Pyx_DECREF_SET(strided, __pyx_t_7);
@@ -37667,7 +38849,7 @@ static int __pyx_pymod_exec_Scroll(PyObject *__pyx_pyinit_module)
  * 
  * 
  */
-  __pyx_t_7 = __Pyx_PyObject_Call(((PyObject *)__pyx_MemviewEnum_type), __pyx_tuple__97, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(2, 286, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_Call(((PyObject *)__pyx_MemviewEnum_type), __pyx_tuple__98, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(2, 286, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_XGOTREF(indirect);
   __Pyx_DECREF_SET(indirect, __pyx_t_7);
@@ -37681,7 +38863,7 @@ static int __pyx_pymod_exec_Scroll(PyObject *__pyx_pyinit_module)
  * cdef indirect_contiguous = Enum("<contiguous and indirect>")
  * 
  */
-  __pyx_t_7 = __Pyx_PyObject_Call(((PyObject *)__pyx_MemviewEnum_type), __pyx_tuple__98, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(2, 289, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_Call(((PyObject *)__pyx_MemviewEnum_type), __pyx_tuple__99, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(2, 289, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_XGOTREF(contiguous);
   __Pyx_DECREF_SET(contiguous, __pyx_t_7);
@@ -37695,7 +38877,7 @@ static int __pyx_pymod_exec_Scroll(PyObject *__pyx_pyinit_module)
  * 
  * 
  */
-  __pyx_t_7 = __Pyx_PyObject_Call(((PyObject *)__pyx_MemviewEnum_type), __pyx_tuple__99, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(2, 290, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_Call(((PyObject *)__pyx_MemviewEnum_type), __pyx_tuple__100, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(2, 290, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_XGOTREF(indirect_contiguous);
   __Pyx_DECREF_SET(indirect_contiguous, __pyx_t_7);
@@ -42190,17 +43372,17 @@ __pyx_fail:
 }
 
 /* ObjectToMemviewSlice */
-        static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_dc_unsigned_char(PyObject *obj) {
+        static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_d_d_dc_unsigned_char(PyObject *obj) {
     __Pyx_memviewslice result = { 0, 0, { 0 }, { 0 }, { 0 } };
     __Pyx_BufFmt_StackElem stack[1];
-    int axes_specs[] = { (__Pyx_MEMVIEW_DIRECT | __Pyx_MEMVIEW_CONTIG) };
+    int axes_specs[] = { (__Pyx_MEMVIEW_DIRECT | __Pyx_MEMVIEW_FOLLOW), (__Pyx_MEMVIEW_DIRECT | __Pyx_MEMVIEW_FOLLOW), (__Pyx_MEMVIEW_DIRECT | __Pyx_MEMVIEW_CONTIG) };
     int retcode;
     if (obj == Py_None) {
         result.memview = (struct __pyx_memoryview_obj *) Py_None;
         return result;
     }
     retcode = __Pyx_ValidateAndInit_memviewslice(axes_specs, __Pyx_IS_C_CONTIG,
-                                                 (PyBUF_C_CONTIGUOUS | PyBUF_FORMAT | PyBUF_WRITABLE), 1,
+                                                 (PyBUF_C_CONTIGUOUS | PyBUF_FORMAT | PyBUF_WRITABLE), 3,
                                                  &__Pyx_TypeInfo_unsigned_char, stack,
                                                  &result, obj);
     if (unlikely(retcode == -1))
@@ -42213,17 +43395,17 @@ __pyx_fail:
 }
 
 /* ObjectToMemviewSlice */
-        static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_d_d_dc_unsigned_char(PyObject *obj) {
+        static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_dc_unsigned_char(PyObject *obj) {
     __Pyx_memviewslice result = { 0, 0, { 0 }, { 0 }, { 0 } };
     __Pyx_BufFmt_StackElem stack[1];
-    int axes_specs[] = { (__Pyx_MEMVIEW_DIRECT | __Pyx_MEMVIEW_FOLLOW), (__Pyx_MEMVIEW_DIRECT | __Pyx_MEMVIEW_FOLLOW), (__Pyx_MEMVIEW_DIRECT | __Pyx_MEMVIEW_CONTIG) };
+    int axes_specs[] = { (__Pyx_MEMVIEW_DIRECT | __Pyx_MEMVIEW_CONTIG) };
     int retcode;
     if (obj == Py_None) {
         result.memview = (struct __pyx_memoryview_obj *) Py_None;
         return result;
     }
     retcode = __Pyx_ValidateAndInit_memviewslice(axes_specs, __Pyx_IS_C_CONTIG,
-                                                 (PyBUF_C_CONTIGUOUS | PyBUF_FORMAT | PyBUF_WRITABLE), 3,
+                                                 (PyBUF_C_CONTIGUOUS | PyBUF_FORMAT | PyBUF_WRITABLE), 1,
                                                  &__Pyx_TypeInfo_unsigned_char, stack,
                                                  &result, obj);
     if (unlikely(retcode == -1))
@@ -42272,6 +43454,43 @@ __pyx_fail:
         return PyErr_WarnEx(NULL, message, 1);
     }
     return 0;
+}
+
+/* FunctionExport */
+        static int __Pyx_ExportFunction(const char *name, void (*f)(void), const char *sig) {
+    PyObject *d = 0;
+    PyObject *cobj = 0;
+    union {
+        void (*fp)(void);
+        void *p;
+    } tmp;
+    d = PyObject_GetAttrString(__pyx_m, (char *)"__pyx_capi__");
+    if (!d) {
+        PyErr_Clear();
+        d = PyDict_New();
+        if (!d)
+            goto bad;
+        Py_INCREF(d);
+        if (PyModule_AddObject(__pyx_m, (char *)"__pyx_capi__", d) < 0)
+            goto bad;
+    }
+    tmp.fp = f;
+#if PY_VERSION_HEX >= 0x02070000
+    cobj = PyCapsule_New(tmp.p, sig, 0);
+#else
+    cobj = PyCObject_FromVoidPtrAndDesc(tmp.p, (void *)sig, 0);
+#endif
+    if (!cobj)
+        goto bad;
+    if (PyDict_SetItemString(d, name, cobj) < 0)
+        goto bad;
+    Py_DECREF(cobj);
+    Py_DECREF(d);
+    return 0;
+bad:
+    Py_XDECREF(cobj);
+    Py_XDECREF(d);
+    return -1;
 }
 
 /* ModuleImport */

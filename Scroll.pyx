@@ -35,7 +35,7 @@ Note that we are using prange to increase algorithm speed.
 
 2) Numpy arrays or memoryviewslice (memory buffer types) are also providing good performances and
 gives easy access to the texture's pixels (with row and column indexing).
-eg buffer[row, column, 0] pointing to a pixel RGB or RGBA model
+eg buffer[row, column, 0] pointing to a red pixel.
 
 Other methods such as TRANSPOSE and STACKING are not essential but could be very useful
 in certain circumstances for image processing.
@@ -78,7 +78,6 @@ buffer/array (when using the method in the loop). This will increase performance
 the function will not create a numpy.empty array each call.
 """
 
-# TODO: TEST IF IT IS SAFE TO HAVE DX OR DY > WIDTH OR HEIGHT
 
 # NUMPY IS REQUIRED
 try:
@@ -101,7 +100,6 @@ except ImportError:
 
 cimport numpy as np
 
-
 # PYGAME IS REQUIRED
 try:
     import pygame
@@ -113,6 +111,19 @@ except ImportError:
     print("\n<Pygame> library is missing on your system."
           "\nTry: \n   C:\\pip install pygame on a window command prompt.")
     raise SystemExit
+
+__version__ = 1.01
+
+## VERSION 1.0
+# ORIGINAL
+
+## VERSION 1.01
+# NOW WORKS FOR ASYMMETRIC SURFACE
+# ++ BUG CORRECTION scroll_transparency
+# --> unsigned char [:, :, :] new_array = numpy.empty((w , h, 4), numpy.uint8)
+# NOW unsigned char [:, :, :] new_array = numpy.empty((h , w, 4), numpy.uint8)
+
+
 
 cimport numpy as np
 import random
@@ -209,15 +220,9 @@ def scroll_array32(array_, dy=0, dx=0):
 def scroll_array32m(array_, alpha_, dy=0, dx=0):
     return scroll_array32m_c(array_, alpha_, dy, dx)
 
-# ---------- NUMPY
-# USE NUMPY LIBRARY (NUMPY.ROLL METHOD)
-# See pygame.Surface for more details
-def roll_surface(surface_, dx=0, dy=0):
-    return roll_surface_c(surface_, dx, dy)
-
-def roll_array(array_, dx=0, dy=0):
-    return roll_array_c(array_, dx, dy)
-# ----------------
+# ROLL TRANSPARENCY ONLY
+def scroll_transparency(surface, dy=0, dx=0):
+    return scroll_transparency_c(surface, dy, dx)
 
 # ROLL ARRAY (lateral and vertical)
 # Identical algorithm (scroll_array) but
@@ -230,6 +235,16 @@ def scroll_surface24(surface, dy=0, dx=0):
 # See pygame.Surface for more details
 def scroll_surface32(surface, dy=0, dx=0):
     return scroll_surface32_c(surface, dy, dx)
+
+# ---------- NUMPY
+# USE NUMPY LIBRARY (NUMPY.ROLL METHOD)
+# See pygame.Surface for more details
+def roll_surface(surface_, dx=0, dy=0):
+    return roll_surface_c(surface_, dx, dy)
+
+def roll_array(array_, dx=0, dy=0):
+    return roll_array_c(array_, dx, dy)
+# ----------------
 
 #*********************************************
 #**********  METHOD STACKING  *************
@@ -272,25 +287,15 @@ def unstack_buffer(rgba_buffer_, w, h):
 
 # TRANSPOSE ROWS AND COLUMNS ARRAY (W, H, 3)
 # !! Method slower than numpy.transpose(1, 0, 2)
+# Use it if you don't want to import numpy
 def transpose24(rgb_array_):
     return transpose24_c(rgb_array_)
 
 # TRANSPOSE ROWS AND COLUMNS ARRAY (W, H, 4)
 # !! Method slower than numpy.transpose(1, 0, 2)
+# Use it if you don't want to import numpy
 def transpose32(rgb_array_):
     return transpose32_c(rgb_array_)
-
-# TRANSPOSE/ FLIP BUFFER (compatible 24-bit)
-# method faster than transpose24
-# No known equivalence with numpy
-def vfb24(source, target, width, height):
-    return vfb24_c(source, target, width, height)
-
-# TRANSPOSE / FLIP BUFFER (compatible 32-bit)
-# method faster than transpose32
-# No known equivalence with numpy
-def vfb32(source, target, width, height):
-    return vfb32_c(source, target, width, height)
 
 # ----------------END INTERFACE -----------------
 #
@@ -1167,7 +1172,7 @@ cdef scroll_surface24_c(surface, int dy, int dx):
 @cython.cdivision(True)
 cdef scroll_surface32_c(surface, int dy, int dx):
     """
-    Scroll surface channel alpha (lateral/vertical using optional dx, dy values)
+    Scroll surface 32-bit (lateral/vertical using optional dx, dy values)
     
     :param surface: 32 bit pygame surface only or 24-bit surface converted
     with convert_alpha() pygame method. An error will be thrown if the surface does not contains
@@ -1248,114 +1253,100 @@ cdef scroll_surface32_c(surface, int dy, int dx):
 
     return pygame.image.frombuffer(new_array, (w, h), 'RGBA')
 
-@cython.boundscheck(False)
-@cython.wraparound(False)
-@cython.nonecheck(False)
-@cython.cdivision(True)
-cdef unsigned char [:] vfb24_c(unsigned char [:] source, unsigned char [:] target, int width, int height)nogil:
-    """
-    Vertically flipped buffer   
-
-    Flip a C-buffer vertically filled with RGB values
-    Re-sample a buffer in order to swap rows and columns of its equivalent 3d model
-    For a 3d numpy.array this function would be equivalent to a transpose (1, 0, 2)
-    Buffer length must be equivalent to width x height x RGB otherwise a valuerror
-    will be raised.
-    This method is using Multiprocessing OPENMP
-    e.g
-    Here is a 9 pixels buffer (length = 27), pixel format RGB   
-
-    buffer = [RGB1, RGB2, RGB3, RGB4, RGB5, RGB6, RGB7, RGB8, RGB9]
-    Equivalent 3d model would be (3x3x3):
-    3d model = [RGB1 RGB2 RGB3]
-               [RGB4 RGB5 RGB6]
-               [RGB7 RGB8 RGB9]
-
-    After vbf_rgb:
-    output buffer = [RGB1, RGB4, RGB7, RGB2, RGB5, RGB8, RGB3, RGB6, RGB9]
-    and its equivalent 3d model
-    3D model = [RGB1, RGB4, RGB7]
-               [RGB2, RGB5, RGB8]
-               [RGB3, RGB6, RGB9]       
-
-    :param source: 1d buffer to flip vertically (unsigned char values).
-     The array length is known with (width * height * depth). The buffer represent 
-     image 's pixels RGB.     
-    :param target: Target buffer must have same length than source buffer)
-    :param width: integer; width of the image 
-    :param height: integer; height of the image
-    :return: Return a vertically flipped buffer 
-    """
-
-    cdef:
-        # int i, j
-        cdef Py_ssize_t i, j
-        int index, k 
-        int w3 = width * 3
-
-    for i in prange(0, w3, 3):
-        for j in range(0, height):
-            index = i + (w3 * j)
-            k = (j * 3) + (i * height)
-            target[k] =  source[index]
-            target[k + 1] =  source[index + 1]
-            target[k + 2] =  source[index + 2]
-
-    return target
-
-
 
 @cython.boundscheck(False)
 @cython.wraparound(False)
 @cython.nonecheck(False)
 @cython.cdivision(True)
-cdef unsigned char [::1] vfb32_c(unsigned char [:] source, unsigned char [::1] target,
-                                   int width, int height)nogil:
+cdef scroll_transparency_c(surface, int dy, int dx):
     """
-    Vertically flipped buffer
+    Scroll channel alpha (lateral/vertical using optional dx, dy values)
     
-    Flip a C-buffer vertically filled with RGBA values
-    Re-sample a buffer in order to swap rows and columns of its equivalent 3d model
-    For a 3d numpy.array this function would be equivalent to a transpose (1, 0, 2)
-    Buffer length must be equivalent to width x height x RGBA otherwise a valuerror
-    will be raised.
-    This method is using Multiprocessing OPENMP
-    e.g
-    Here is a 9 pixels buffer (length = 36), pixel format RGBA
-    
-    buffer = [RGBA1, RGBA2, RGBA3, RGBA4, RGBA5, RGBA6, RGBA7, RGBA8, RGBA9]
-    Equivalent 3d model would be (3x3x4):
-    3d model = [RGBA1 RGBA2 RGBA3]
-               [RGBA4 RGBA5 RGBA6]
-               [RGBA7 RGBA8 RGBA9]
+    :param surface: 32 bit pygame surface only or 24-bit surface converted
+    with convert_alpha() pygame method. An error will be thrown if the surface does not contains
+    per-pixel transparency. 
+    :param dy: scroll the array vertically (-dy up, +dy down) 
+    :param dx: scroll the array horizontally (-dx left, +dx right)
+    :return: Return a tuple (surface: 32 bit Surface with per-pixel info,
+    array:3d array numpy.ndarray shape (w, h, 4)) 
+    """
+    if not isinstance(dx, int):
+        raise TypeError('dx, an integer is required (got type %s)' % type(dx))
+    if not isinstance(dy, int):
+        raise TypeError('dy, an integer is required (got type %s)' % type(dy))
+    if not isinstance(surface, pygame.Surface):
+        raise TypeError('surface, a pygame surface is required (got type %s)' % type(surface))
 
-    After vbf_rgba:
-    output buffer = [RGB1A, RGB4A, RGB7A, RGB2A, RGB5A, RGBA8, RGBA3, RGBA6, RGBA9]
-    and its equivalent 3d model
-    3D model = [RGBA1, RGBA4, RGBA7]
-               [RGBA2, RGBA5, RGBA8]
-               [RGBA3, RGBA6, RGBA9]
-        
-    :param source: 1d buffer to flip vertically (unsigned char values).
-     The array length is known with (width * height * depth). The buffer represent 
-     image 's pixels RGBA. 
-     
-    :param target: Target buffer must have same length than source buffer)
-    :param width: integer; width of the image 
-    :param height: integer; height of the image
-    :return: Return a vertically flipped buffer 
-    """
+    try:
+        array = pixels3d(surface)
+        alpha = pixels_alpha(surface)
+
+    except (ValueError, pygame.error) as e:
+        try:
+            array = pygame.surfarray.array3d(surface)
+            alpha = pygame.surfarray.array_alpha(surface)
+        except (ValueError, pygame.error) as e:      
+            raise ValueError('\nIncompatible image pixel format.')
+
+    cdef int w, h
+    try:
+        w, h = array.shape[:2]
+    except (ValueError, pygame.error) as e:
+        raise ValueError('\nArray shape not compatible.')
+
     cdef:
-        int i, j, index, k
-        int w4 = width * 4
+        int i, j, ii=0, jj=0
+        unsigned char [:, :, :] rgb_array = array
+        unsigned char [:, :] alpha_array = alpha
+        unsigned char [:, :, :] new_array = numpy.empty((h , w, 4), numpy.uint8)
 
-    for i in prange(0, w4, 4):
-        for j in range(0, height):
-            index = i + (w4 * j)
-            k = (j * 4) + (i * height)
-            target[k] =  source[index]
-            target[k + 1] =  source[index + 1]
-            target[k + 2] =  source[index + 2]
-            target[k + 3] =  source[index + 3]
+    if dx==0 and dy==0:
+        return surface
+    
+    with nogil:
+        if dx !=0 and dy != 0:
 
-    return target
+            for i in prange(0, w, schedule=SCHEDULE, num_threads=THREAD_NUMBER):
+                    for j in range(0, h):
+                        ii = (i + dx) % w
+                        jj = (j + dy) % h
+                        if ii < 0:
+                            ii = ii + w
+                        if jj < 0:
+                            jj = jj + h
+                        # ONLY ALPHA VALUES ARE MOVED
+                        # RGB VALUES ARE TRANSPOSED
+                        new_array[j, i, 0] = rgb_array[i, j, 0]
+                        new_array[j, i, 1] = rgb_array[i, j, 1]
+                        new_array[j, i, 2] = rgb_array[i, j, 2]
+                        new_array[jj, ii, 3] = alpha_array[i, j]
+
+        else:
+            if dx != 0:
+                for i in prange(w, schedule=SCHEDULE, num_threads=THREAD_NUMBER):
+                    for j in range(h):
+                        ii = (i + dx) % w
+                        if ii < 0:
+                            ii = ii + w
+                        # ONLY ALPHA VALUES ARE MOVED
+                        # RGB VALUES ARE TRANSPOSED
+                        new_array[j, i, 0] = rgb_array[i, j, 0]
+                        new_array[j, i, 1] = rgb_array[i, j, 1]
+                        new_array[j, i, 2] = rgb_array[i, j, 2]
+                        new_array[j, ii, 3] = alpha_array[i, j]
+                        
+            else:
+                for i in prange(w, schedule=SCHEDULE, num_threads=THREAD_NUMBER):
+                    for j in range(h):
+                        jj = (j + dy) % h
+                        if jj < 0:
+                            jj = jj + h
+                        # ONLY ALPHA VALUES ARE MOVED
+                        # RGB VALUES ARE TRANSPOSED
+                        new_array[j, i, 0] = rgb_array[i, j, 0]
+                        new_array[j, i, 1] = rgb_array[i, j, 1]
+                        new_array[j, i, 2] = rgb_array[i, j, 2]
+                        new_array[jj, i, 3] = alpha_array[i, j]
+    
+    return pygame.image.frombuffer(new_array, (w, h), 'RGBA')
+
